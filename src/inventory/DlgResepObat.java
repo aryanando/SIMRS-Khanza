@@ -1965,37 +1965,78 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         }else if(!(TPasien.getText().trim().equals(""))){
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             Sequel.queryu("delete from temporary_resep where temp37='"+akses.getalamatip()+"'");
+//            try {
+//                i=0;
+//                ps=koneksi.prepareStatement(
+//                    "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,databarang.kode_sat, "+
+//                    "detail_pemberian_obat.kode_brng,detail_pemberian_obat.jml,detail_pemberian_obat.total,"+
+//                    "databarang.nama_brng,detail_pemberian_obat.no_rawat from detail_pemberian_obat inner join databarang "+
+//                    "on detail_pemberian_obat.kode_brng=databarang.kode_brng inner join resep_obat on resep_obat.no_rawat=detail_pemberian_obat.no_rawat "+
+//                    "and detail_pemberian_obat.tgl_perawatan=resep_obat.tgl_perawatan and detail_pemberian_obat.jam=resep_obat.jam "+
+//                    "where resep_obat.no_resep=?");
+//                try {
+//                    ps.setString(1,NoResep.getText());
+//                    rs=ps.executeQuery();
+//                    while(rs.next()){
+//                        Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
+//                            ""+i,rs.getString("nama_brng"),Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs.getString("tgl_perawatan")+"' and jam='"+rs.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kode_brng='"+rs.getString("kode_brng")+"'"),rs.getString("jml"),Valid.SetAngka(rs.getDouble("total")),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",akses.getalamatip()
+//                        });
+//                        i++;
+//                    }
+//                } catch (Exception e) {
+//                    System.out.println("Notif 2 : "+e);
+//                } finally{
+//                    if(rs!=null){
+//                        rs.close();
+//                    }
+//                    if(ps!=null){
+//                        ps.close();
+//                    }
+//                }
+//            } catch (Exception e) {
+//                System.out.println("Notif : "+e);
+//            }
             try {
                 i=0;
-                ps=koneksi.prepareStatement(
-                    "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,databarang.kode_sat, "+
-                    "detail_pemberian_obat.kode_brng,detail_pemberian_obat.jml,detail_pemberian_obat.total,"+
-                    "databarang.nama_brng,detail_pemberian_obat.no_rawat from detail_pemberian_obat inner join databarang "+
-                    "on detail_pemberian_obat.kode_brng=databarang.kode_brng inner join resep_obat on resep_obat.no_rawat=detail_pemberian_obat.no_rawat "+
-                    "and detail_pemberian_obat.tgl_perawatan=resep_obat.tgl_perawatan and detail_pemberian_obat.jam=resep_obat.jam "+
-                    "where resep_obat.no_resep=?");
-                try {
-                    ps.setString(1,NoResep.getText());
-                    rs=ps.executeQuery();
-                    while(rs.next()){
+//                ps=koneksi.prepareStatement(
+//                    "select detail_pemberian_obat.tgl_perawatan,detail_pemberian_obat.jam,databarang.kode_sat, "+
+//                    "detail_pemberian_obat.kode_brng,detail_pemberian_obat.jml,detail_pemberian_obat.total,"+
+//                    "databarang.nama_brng,detail_pemberian_obat.no_rawat,resep_obat.no_resep from detail_pemberian_obat inner join databarang "+
+//                    "on detail_pemberian_obat.kode_brng=databarang.kode_brng inner join resep_obat on resep_obat.no_rawat=detail_pemberian_obat.no_rawat "+
+//                    "and detail_pemberian_obat.tgl_perawatan=resep_obat.tgl_perawatan and detail_pemberian_obat.jam=resep_obat.jam "+
+//                    "where resep_obat.no_resep=?");
+                ps = koneksi.prepareStatement(
+                    "SELECT resep_dokter.no_resep, resep_dokter.kode_brng, resep_dokter.jml, resep_dokter.aturan_pakai, databarang.nama_brng " +
+                    "FROM resep_dokter INNER JOIN databarang ON databarang.kode_brng = resep_dokter.kode_brng " +
+                    "WHERE resep_dokter.no_resep=?"
+                );
+
+
+            try {
+                ps.setString(1, NoResep.getText());
+                rs = ps.executeQuery();
+                while(rs.next()){
                         Sequel.menyimpan("temporary_resep","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?",38,new String[]{
-                            ""+i,rs.getString("nama_brng"),Sequel.cariIsi("select aturan from aturan_pakai where tgl_perawatan='"+rs.getString("tgl_perawatan")+"' and jam='"+rs.getString("jam")+"' and no_rawat='"+rs.getString("no_rawat")+"' and kode_brng='"+rs.getString("kode_brng")+"'"),rs.getString("jml"),Valid.SetAngka(rs.getDouble("total")),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",akses.getalamatip()
+                            ""+i,rs.getString("nama_brng"),rs.getString("aturan_pakai"),rs.getString("jml"),"","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",akses.getalamatip()
                         });
                         i++;
                     }
-                } catch (Exception e) {
-                    System.out.println("Notif 2 : "+e);
-                } finally{
-                    if(rs!=null){
-                        rs.close();
-                    }
-                    if(ps!=null){
-                        ps.close();
-                    }
+            } catch (Exception e) {
+                System.out.println("Notif 2 : " + e);
+            } finally {
+                if (rs != null) {
+                    rs.close();
                 }
+                if (ps != null) {
+                    ps.close();
+                }
+            }
+
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
             }
+
+
             
             Map<String, Object> param = new HashMap<>();  
             param.put("namars",akses.getnamars());

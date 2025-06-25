@@ -1339,6 +1339,13 @@ public final class RMDataResumePasien extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         dokter.dispose();
+        try {
+            i=JOptionPane.showConfirmDialog(null, "Set status Cek Resume?","Konfirmasi",JOptionPane.YES_NO_OPTION);
+            if(i==JOptionPane.YES_OPTION){
+                Sequel.mengedittf("reg_periksa","no_rawat=?","stts=?",2,new String[]{"CekResume",TNoRw.getText()});
+            }
+        } catch (Exception e) {
+        }
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 

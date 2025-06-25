@@ -867,6 +867,8 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         MnDIrawat = new javax.swing.JMenuItem();
         MnMeninggal = new javax.swing.JMenuItem();
         MnPulangPaksa = new javax.swing.JMenuItem();
+        MnCekResume = new javax.swing.JMenuItem();
+        MnCekDiagnosa = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         MnStatusBaru = new javax.swing.JMenuItem();
         MnStatusLama = new javax.swing.JMenuItem();
@@ -4197,6 +4199,38 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         MnStatus.add(MnPulangPaksa);
+        
+        MnCekDiagnosa.setBackground(new java.awt.Color(255, 255, 254));
+        MnCekDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCekDiagnosa.setForeground(new java.awt.Color(50, 50, 50));
+        MnCekDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCekDiagnosa.setText("Cek Diagnosa");
+        MnCekDiagnosa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCekDiagnosa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCekDiagnosa.setName("MnCekDiagnosa"); // NOI18N
+        MnCekDiagnosa.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnCekDiagnosa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCekDiagnosaActionPerformed(evt);
+            }
+        });
+        MnStatus.add(MnCekDiagnosa);        
+        
+        MnCekResume.setBackground(new java.awt.Color(255, 255, 254));
+        MnCekResume.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCekResume.setForeground(new java.awt.Color(50, 50, 50));
+        MnCekResume.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCekResume.setText("Cek Resume");
+        MnCekResume.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnCekResume.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnCekResume.setName("MnCekResume"); // NOI18N
+        MnCekResume.setPreferredSize(new java.awt.Dimension(180, 26));
+        MnCekResume.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCekResumeActionPerformed(evt);
+            }
+        });
+        MnStatus.add(MnCekResume);
 
         jMenu7.setBackground(new java.awt.Color(255, 255, 254));
         jMenu7.setForeground(new java.awt.Color(50, 50, 50));
@@ -8288,6 +8322,35 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
         }
     }//GEN-LAST:event_MnBatalActionPerformed
+    private void MnCekDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBatalActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"No.Rawat");
+        }else{
+            if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                Valid.editTable(tabModekasir,"reg_periksa","no_rawat",TNoRw,"stts='CekDiagnosa'");
+                if(tbKasirRalan.getSelectedRow()>-1){
+                    tabModekasir.setValueAt("Cek Diagnosa",tbKasirRalan.getSelectedRow(),10);
+                }
+            }
+        }
+    }//GEN-LAST:event_MnCekDiagnosaActionPerformed
+    
+    private void MnCekResumeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnBatalActionPerformed
+        if(TNoRw.getText().trim().equals("")){
+            Valid.textKosong(TNoRw,"No.Rawat");
+        }else{
+            if(Sequel.cariInteger("select count(kamar_inap.no_rawat) from kamar_inap where kamar_inap.no_rawat=?",TNoRw.getText())>0){
+                JOptionPane.showMessageDialog(null,"Maaf, Pasien sudah masuk Kamar Inap. Gunakan billing Ranap..!!!");
+            }else {
+                Valid.editTable(tabModekasir,"reg_periksa","no_rawat",TNoRw,"stts='CekResume'");
+                if(tbKasirRalan.getSelectedRow()>-1){
+                    tabModekasir.setValueAt("Cek Resume",tbKasirRalan.getSelectedRow(),10);
+                }
+            }
+        }
+    }//GEN-LAST:event_MnCekResumeActionPerformed
 
     private void MnOperasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnOperasiActionPerformed
         if(TNoRw.getText().trim().equals("")){
@@ -15194,6 +15257,8 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private javax.swing.JMenuItem MnBarcodeRM9;
     private javax.swing.JMenuItem MnBatal;
     private javax.swing.JMenuItem MnBelum;
+    private javax.swing.JMenuItem MnCekDiagnosa;
+    private javax.swing.JMenuItem MnCekResume;
     private javax.swing.JMenuItem MnBelumTerbitSEP;
     private javax.swing.JMenuItem MnBilling;
     private javax.swing.JMenuItem MnBilling1;
