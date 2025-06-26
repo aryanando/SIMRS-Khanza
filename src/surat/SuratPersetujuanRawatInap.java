@@ -130,7 +130,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         NamaKeluarga.setDocument(new batasInput((int)130).getKata(NamaKeluarga));
         AlamatPj.setDocument(new batasInput((int)100).getKata(AlamatPj));  
         NoTelp.setDocument(new batasInput((byte)30).getKata(NoTelp));     
-        Pembiayaan.setDocument(new batasInput((byte)30).getKata(Pembiayaan));    
+        Pembiayaan.setDocument(new batasInput((byte)100).getKata(Pembiayaan));    
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
