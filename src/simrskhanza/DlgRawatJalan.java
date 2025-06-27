@@ -204,6 +204,13 @@ import simrskhanza.DlgCatatan;
 import simrskhanza.DlgKamarInap;
 import simrskhanza.DlgRujuk;
 import simrskhanza.DlgRujukanPoliInternal;
+//New 
+import rekammedis.DlgTBAK;
+import rekammedis.ValidasiSBAR;
+import rekammedis.DlgSBARRalan;
+//import rekammedis.ValidasiSOAP;
+import rekammedis.ValidasiTBAK;
+
 
 /**
  *

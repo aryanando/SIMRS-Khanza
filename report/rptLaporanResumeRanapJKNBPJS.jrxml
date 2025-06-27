@@ -34,22 +34,49 @@
 	<parameter name="namadokter3" class="java.lang.String"/>
 	<parameter name="jamkeluar" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select reg_periksa.no_rawat,reg_periksa.no_rkm_medis,pasien.nm_pasien,resume_pasien_ranap.kd_dokter,dokter.nm_dokter,reg_periksa.kd_dokter as kodepengirim,pengirim.nm_dokter as pengirim,
-                    reg_periksa.tgl_registrasi,reg_periksa.jam_reg,resume_pasien_ranap.diagnosa_awal,resume_pasien_ranap.alasan,resume_pasien_ranap.keluhan_utama,resume_pasien_ranap.pemeriksaan_fisik,
-                    resume_pasien_ranap.jalannya_penyakit,resume_pasien_ranap.pemeriksaan_penunjang,resume_pasien_ranap.hasil_laborat,resume_pasien_ranap.tindakan_dan_operasi,resume_pasien_ranap.obat_di_rs,
-                    resume_pasien_ranap.diagnosa_utama,resume_pasien_ranap.kd_diagnosa_utama,resume_pasien_ranap.diagnosa_sekunder,resume_pasien_ranap.kd_diagnosa_sekunder,resume_pasien_ranap.diagnosa_sekunder2,
-                    resume_pasien_ranap.kd_diagnosa_sekunder2,resume_pasien_ranap.diagnosa_sekunder3,resume_pasien_ranap.kd_diagnosa_sekunder3,resume_pasien_ranap.diagnosa_sekunder4,
-                    resume_pasien_ranap.kd_diagnosa_sekunder4,resume_pasien_ranap.prosedur_utama,resume_pasien_ranap.kd_prosedur_utama,resume_pasien_ranap.prosedur_sekunder,resume_pasien_ranap.kd_prosedur_sekunder,
-                    resume_pasien_ranap.prosedur_sekunder2,resume_pasien_ranap.kd_prosedur_sekunder2,resume_pasien_ranap.prosedur_sekunder3,resume_pasien_ranap.kd_prosedur_sekunder3,resume_pasien_ranap.alergi,
-                    resume_pasien_ranap.diet,resume_pasien_ranap.lab_belum,resume_pasien_ranap.edukasi,resume_pasien_ranap.cara_keluar,resume_pasien_ranap.ket_keluar,resume_pasien_ranap.keadaan,
-                    resume_pasien_ranap.ket_keadaan,resume_pasien_ranap.dilanjutkan,resume_pasien_ranap.ket_dilanjutkan,resume_pasien_ranap.kontrol,resume_pasien_ranap.obat_pulang,reg_periksa.kd_pj,penjab.png_jawab,
-                    reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.pekerjaan,pasien.jk,pasien.tgl_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) as alamat
-                   
-                    from resume_pasien_ranap inner join reg_periksa on resume_pasien_ranap.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-                    inner join dokter on resume_pasien_ranap.kd_dokter=dokter.kd_dokter inner join dokter as pengirim on reg_periksa.kd_dokter=pengirim.kd_dokter 
-                    inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab 
-                    inner join penjab on penjab.kd_pj=reg_periksa.kd_pj
-where resume_pasien_ranap.no_rawat= $P{norawat}]]>
+		<![CDATA[SELECT 
+    reg_periksa.no_rawat, reg_periksa.no_rkm_medis, pasien.nm_pasien, resume_pasien_ranap.kd_dokter, dokter.nm_dokter, 
+    reg_periksa.kd_dokter AS kodepengirim, pengirim.nm_dokter AS pengirim, reg_periksa.tgl_registrasi, reg_periksa.jam_reg, 
+    resume_pasien_ranap.diagnosa_awal, resume_pasien_ranap.alasan, resume_pasien_ranap.keluhan_utama, 
+    resume_pasien_ranap.pemeriksaan_fisik, resume_pasien_ranap.jalannya_penyakit, resume_pasien_ranap.pemeriksaan_penunjang, 
+    resume_pasien_ranap.hasil_laborat, resume_pasien_ranap.tindakan_dan_operasi, resume_pasien_ranap.obat_di_rs, 
+    resume_pasien_ranap.diagnosa_utama, resume_pasien_ranap.kd_diagnosa_utama, resume_pasien_ranap.diagnosa_sekunder, 
+    resume_pasien_ranap.kd_diagnosa_sekunder, resume_pasien_ranap.diagnosa_sekunder2, resume_pasien_ranap.kd_diagnosa_sekunder2, 
+    resume_pasien_ranap.diagnosa_sekunder3, resume_pasien_ranap.kd_diagnosa_sekunder3, resume_pasien_ranap.diagnosa_sekunder4, 
+    resume_pasien_ranap.kd_diagnosa_sekunder4, resume_pasien_ranap.prosedur_utama, resume_pasien_ranap.kd_prosedur_utama, 
+    resume_pasien_ranap.prosedur_sekunder, resume_pasien_ranap.kd_prosedur_sekunder, resume_pasien_ranap.prosedur_sekunder2, 
+    resume_pasien_ranap.kd_prosedur_sekunder2, resume_pasien_ranap.prosedur_sekunder3, resume_pasien_ranap.kd_prosedur_sekunder3, 
+    resume_pasien_ranap.alergi, resume_pasien_ranap.diet, resume_pasien_ranap.lab_belum, resume_pasien_ranap.edukasi, 
+    resume_pasien_ranap.cara_keluar, resume_pasien_ranap.ket_keluar, resume_pasien_ranap.keadaan, 
+    resume_pasien_ranap.ket_keadaan, resume_pasien_ranap.dilanjutkan, resume_pasien_ranap.ket_dilanjutkan, 
+    resume_pasien_ranap.kontrol, resume_pasien_ranap.obat_pulang, reg_periksa.kd_pj, penjab.png_jawab, 
+    reg_periksa.umurdaftar, reg_periksa.sttsumur, pasien.pekerjaan, pasien.jk, pasien.tgl_lahir, 
+    CONCAT(pasien.alamat, ', ', kelurahan.nm_kel, ', ', kecamatan.nm_kec, ', ', kabupaten.nm_kab) AS alamat, 
+    sep.no_sep, sep.tglsep, sep.tglrujukan, sep.no_rujukan, sep.kdppkrujukan, sep.nmppkrujukan, 
+    sep.kdppkpelayanan, sep.nmppkpelayanan, sep.jnspelayanan, sep.catatan, sep.diagawal, sep.nmdiagnosaawal, 
+    sep.kdpolitujuan, sep.nmpolitujuan, sep.klsrawat, sep.klsnaik, sep.pembiayaan, sep.pjnaikkelas, 
+    sep.lakalantas, sep.nomr, sep.nama_pasien AS nama_pasien_sep, sep.tanggal_lahir AS tanggal_lahir_sep, 
+    sep.peserta, sep.jkel AS jkel_sep, sep.no_kartu, sep.tglpulang, sep.asal_rujukan, sep.eksekutif, 
+    sep.cob, sep.notelep, sep.katarak, sep.tglkkl, sep.keterangankkl, sep.suplesi, 
+    sep.no_sep_suplesi, sep.kdprop, sep.nmprop, sep.kdkab, sep.nmkab, sep.kdkec, 
+    sep.nmkec, sep.noskdp, sep.kddpjp, sep.nmdpdjp, sep.tujuankunjungan, sep.flagprosedur, 
+    sep.penunjang, sep.asesmenpelayanan, sep.kddpjplayanan, sep.nmdpjplayanan, peg.nama AS nama_dpjp
+
+FROM 
+    resume_pasien_ranap
+INNER JOIN reg_periksa ON resume_pasien_ranap.no_rawat = reg_periksa.no_rawat
+INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis 
+INNER JOIN dokter ON resume_pasien_ranap.kd_dokter = dokter.kd_dokter
+INNER JOIN dokter AS pengirim ON reg_periksa.kd_dokter = pengirim.kd_dokter 
+INNER JOIN penjab ON penjab.kd_pj = reg_periksa.kd_pj 
+INNER JOIN kelurahan ON pasien.kd_kel = kelurahan.kd_kel 
+INNER JOIN kecamatan ON pasien.kd_kec = kecamatan.kd_kec 
+INNER JOIN kabupaten ON pasien.kd_kab = kabupaten.kd_kab 
+LEFT JOIN bridging_sep AS sep ON sep.no_rawat = reg_periksa.no_rawat
+LEFT JOIN pegawai AS peg ON peg.nik = sep.kddpjp
+
+WHERE 
+    resume_pasien_ranap.no_rawat = $P{parameter}]]>
 	</queryString>
 	<field name="no_rawat" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="no_rawat"/>

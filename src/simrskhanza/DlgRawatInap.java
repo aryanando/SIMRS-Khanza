@@ -162,6 +162,12 @@ import rekammedis.RMTransferPasienAntarRuang;
 import simrskhanza.DlgCariPasien;
 import simrskhanza.DlgCatatan;
 import simrskhanza.DlgRujuk;
+//New 
+import rekammedis.DlgTBAK;
+import rekammedis.ValidasiSBAR;
+//import rekammedis.ValidasiSOAP;
+import rekammedis.ValidasiTBAK;
+import simrskhanza.DlgCariPasien;
 
 /**
  *
@@ -805,7 +811,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                     SpO2.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),15).toString());
                     TGCS.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),16).toString());
                     TAlergi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),17).toString());
-//                    LingkarPerut.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),18).toString());
+//                  LingkarPerut.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),18).toString());
                     TEvaluasi.requestFocus();                    
                 }          
             }
@@ -1122,8 +1128,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        BtnSoap = new widget.Button();
-//        
+
         BagianRS = new javax.swing.JTextField();
         Bhp = new javax.swing.JTextField();
         JmDokter = new javax.swing.JTextField();
@@ -2432,20 +2437,6 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
         panelGlass12.add(Btn5Soap);
         Btn5Soap.setBounds(405, 40, 28, 23);
-        
-        BtnSoap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/Stethoscope.png"))); // NOI18N
-        BtnSoap.setMnemonic('M');
-        BtnSoap.setText("SOAP");
-        BtnSoap.setToolTipText("Alt+M");
-        BtnSoap.setName("BtnSoap"); // NOI18N
-        BtnSoap.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnSoap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSoapActionPerformed(evt);
-            }
-        });
-        panelGlass12.add(BtnSoap);
-        BtnSoap.setBounds(910, 40, 100, 30);
 
         jLabel7.setText("Suhu (°C) :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -7382,7 +7373,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }//GEN-LAST:event_BtnPenilaianTambahanGeriatriActionPerformed
     
-//  Btn History Soap
     private void BtnSoapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSoapActionPerformed
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
@@ -8835,8 +8825,6 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button BtnSoap;
-//    
     private javax.swing.JTextField BagianRS;
     private javax.swing.JTextField Bhp;
     private widget.Button Btn5Soap;
