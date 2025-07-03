@@ -168,6 +168,7 @@ import rekammedis.ValidasiSBAR;
 import kepegawaian.DlgCariPegawai2;
 import rekammedis.DlgSBAR;
 import rekammedis.ValidasiTBAK;
+import rekammedis.RMRiwayatRadiologi;
 
 
 /**
@@ -187,6 +188,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     public  DlgCariPegawai2 pegawai2=new DlgCariPegawai2(null,false);
     public  DlgCariPasien pasien=new DlgCariPasien(null,false);
     private RMSoapTerakhir soapakhir=new RMSoapTerakhir(null,false);
+    private RMRiwayatRadiologi riwayatrad=new RMRiwayatRadiologi(null,false);
     private PreparedStatement ps,ps2,ps3,ps4,ps5,psrekening,ps6,ps7;
     private ResultSet rs,rsrekening;
     private int i=0,tinggi=0;
@@ -1499,6 +1501,9 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         jLabel59 = new widget.Label();
         Btn5Soap = new widget.Button();
         BtnSoap = new widget.Button();
+        BtnHistoryLab = new widget.Button();
+        BtnHistoryRad = new widget.Button();
+        
         jLabel7 = new widget.Label();
         TSuhu = new widget.TextBox();
         jLabel17 = new widget.Label();
@@ -2707,6 +2712,38 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         });
         panelGlass12.add(BtnSoap);
         BtnSoap.setBounds(910, 40, 100, 30);
+        
+        // === History Lab Button ===
+        BtnHistoryLab = new widget.Button();
+        BtnHistoryLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/microscope.png"))); // Replace with actual lab icon
+        BtnHistoryLab.setMnemonic('L');
+        BtnHistoryLab.setText("Riwayat Lab");
+        BtnHistoryLab.setToolTipText("Alt+L");
+        BtnHistoryLab.setName("BtnHistoryLab"); // NOI18N
+        BtnHistoryLab.setPreferredSize(new java.awt.Dimension(120, 30));
+        BtnHistoryLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHistoryLabActionPerformed(evt);
+            }
+        });
+        panelGlass12.add(BtnHistoryLab);
+        BtnHistoryLab.setBounds(1020, 40, 120, 30); // Adjust position as needed
+
+        // === History Radiologi Button ===
+        BtnHistoryRad = new widget.Button();
+        BtnHistoryRad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/radiology.png"))); // Replace with actual radiology icon
+        BtnHistoryRad.setMnemonic('R');
+        BtnHistoryRad.setText("Riwayat Radiologi");
+        BtnHistoryRad.setToolTipText("Alt+R");
+        BtnHistoryRad.setName("BtnHistoryRad"); // NOI18N
+        BtnHistoryRad.setPreferredSize(new java.awt.Dimension(150, 30));
+        BtnHistoryRad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHistoryRadActionPerformed(evt);
+            }
+        });
+        panelGlass12.add(BtnHistoryRad);
+        BtnHistoryRad.setBounds(1150, 40, 150, 30); // Adjust position as needed
 
         jLabel7.setText("Suhu (°C) :");
         jLabel7.setName("jLabel7"); // NOI18N
@@ -8968,6 +9005,25 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     }
+    
+    private void BtnHistoryLabActionPerformed(java.awt.event.ActionEvent evt) {
+        JOptionPane.showMessageDialog(null, "History Lab");
+    }
+
+    private void BtnHistoryRadActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+//            riwayatrad.setNoRM(TNoRM.getText());
+            riwayatrad.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            riwayatrad.setLocationRelativeTo(internalFrame1);
+            riwayatrad.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
 
     private void BtnSkriningNutrisiDewasaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSkriningNutrisiDewasaActionPerformed
         if(TNoRw.getText().trim().equals("")){
@@ -10411,6 +10467,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     private javax.swing.JTextField Bhp;
     private widget.Button Btn5Soap;
     private widget.Button BtnSoap;
+    private widget.Button BtnHistoryLab;
+    private widget.Button BtnHistoryRad;
     private widget.Button BtnAll;
     private widget.Button BtnAsuhanGizi;
     private widget.Button BtnAwalFisioterapi;
