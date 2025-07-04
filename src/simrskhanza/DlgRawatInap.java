@@ -169,6 +169,7 @@ import kepegawaian.DlgCariPegawai2;
 import rekammedis.DlgSBAR;
 import rekammedis.ValidasiTBAK;
 import rekammedis.RMRiwayatRadiologi;
+import rekammedis.RMRiwayatLab;
 
 
 /**
@@ -189,6 +190,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
     public  DlgCariPasien pasien=new DlgCariPasien(null,false);
     private RMSoapTerakhir soapakhir=new RMSoapTerakhir(null,false);
     private RMRiwayatRadiologi riwayatrad=new RMRiwayatRadiologi(null,false);
+    private RMRiwayatLab riwayatlab=new RMRiwayatLab(null,false);
     private PreparedStatement ps,ps2,ps3,ps4,ps5,psrekening,ps6,ps7;
     private ResultSet rs,rsrekening;
     private int i=0,tinggi=0;
@@ -9007,7 +9009,17 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
     }
     
     private void BtnHistoryLabActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(null, "History Lab");
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            riwayatlab.setNoRM(TNoRM.getText());
+            riwayatlab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            riwayatlab.setLocationRelativeTo(internalFrame1);
+            riwayatlab.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
     }
 
     private void BtnHistoryRadActionPerformed(java.awt.event.ActionEvent evt) {
@@ -9016,7 +9028,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             TCari.requestFocus();
         }else{
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//            riwayatrad.setNoRM(TNoRM.getText());
+            riwayatrad.setNoRM(TNoRM.getText());
             riwayatrad.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
             riwayatrad.setLocationRelativeTo(internalFrame1);
             riwayatrad.setVisible(true);

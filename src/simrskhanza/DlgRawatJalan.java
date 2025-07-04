@@ -210,7 +210,8 @@ import rekammedis.ValidasiSBAR;
 import kepegawaian.DlgCariPegawai2;
 import rekammedis.DlgSBAR;
 import rekammedis.ValidasiTBAK;
-
+import rekammedis.RMRiwayatRadiologi;
+import rekammedis.RMRiwayatLab;
 
 
 /**
@@ -230,6 +231,8 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     public  DlgCariPegawai pegawai=new DlgCariPegawai(null,false);   
     public  DlgCariPegawai2 pegawai2=new DlgCariPegawai2(null,false);
     private RMSoapTerakhir soapakhir=new RMSoapTerakhir(null,false);
+    private RMRiwayatRadiologi riwayatrad=new RMRiwayatRadiologi(null,false);
+    private RMRiwayatLab riwayatlab=new RMRiwayatLab(null,false);
     private PreparedStatement ps,ps2,ps3,ps4,ps5,ps6,ps7,pstindakan,psset_tarif,psrekening;
     private ResultSet rs,rstindakan,rsset_tarif,rsrekening;
     private int i=0,jmlparsial=0,jml=0,index=0,tinggi=0;
@@ -1444,7 +1447,10 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private void initComponents() {
 //        
 //        tbPemeriksaanSbar = new widget.Table();
-//        
+//      New Init
+        BtnHistoryLab = new widget.Button();
+        BtnHistoryRad = new widget.Button();    
+//
 
         internalFrame1 = new widget.InternalFrame();
         jPanel3 = new javax.swing.JPanel();
@@ -2879,6 +2885,38 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         });
         panelGlass12.add(BtnTemplatePemeriksaan);
         BtnTemplatePemeriksaan.setBounds(405, 40, 28, 23);
+        
+                // === History Lab Button ===
+        BtnHistoryLab = new widget.Button();
+        BtnHistoryLab.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/microscope.png"))); // Replace with actual lab icon
+        BtnHistoryLab.setMnemonic('L');
+        BtnHistoryLab.setText("Riwayat Lab");
+        BtnHistoryLab.setToolTipText("Alt+L");
+        BtnHistoryLab.setName("BtnHistoryLab"); // NOI18N
+        BtnHistoryLab.setPreferredSize(new java.awt.Dimension(120, 30));
+        BtnHistoryLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHistoryLabActionPerformed(evt);
+            }
+        });
+        panelGlass12.add(BtnHistoryLab);
+        BtnHistoryLab.setBounds(1020, 40, 120, 30); // Adjust position as needed
+
+        // === History Radiologi Button ===
+        BtnHistoryRad = new widget.Button();
+        BtnHistoryRad.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/radiology.png"))); // Replace with actual radiology icon
+        BtnHistoryRad.setMnemonic('R');
+        BtnHistoryRad.setText("Riwayat Radiologi");
+        BtnHistoryRad.setToolTipText("Alt+R");
+        BtnHistoryRad.setName("BtnHistoryRad"); // NOI18N
+        BtnHistoryRad.setPreferredSize(new java.awt.Dimension(150, 30));
+        BtnHistoryRad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnHistoryRadActionPerformed(evt);
+            }
+        });
+        panelGlass12.add(BtnHistoryRad);
+        BtnHistoryRad.setBounds(1150, 40, 150, 30); // Adjust position as needed
 
         PanelInput.add(panelGlass12, java.awt.BorderLayout.CENTER);
 
@@ -9127,6 +9165,34 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnSoapActionPerformed
+    
+    private void BtnHistoryLabActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            riwayatlab.setNoRM(TNoRM.getText());
+            riwayatlab.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            riwayatlab.setLocationRelativeTo(internalFrame1);
+            riwayatlab.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+
+    private void BtnHistoryRadActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            riwayatrad.setNoRM(TNoRM.getText());
+            riwayatrad.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            riwayatrad.setLocationRelativeTo(internalFrame1);
+            riwayatrad.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
 
     private void BtnPenilaianTambahanGeriatriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPenilaianTambahanGeriatriActionPerformed
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
@@ -11564,7 +11630,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
 //    private widget.TextBox Jabatan1;
 //    private widget.Button BtnSeekPegawai1;
 //    private widget.Button BtnVerifSbar;
-
+//    New Private
+    private widget.Button BtnHistoryLab;
+    private widget.Button BtnHistoryRad;
+    
     
     
     // End of variables declaration//GEN-END:variables
