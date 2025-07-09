@@ -380,7 +380,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
                 "where reg_periksa.status_lanjut='Ranap' " +
                 "and (reg_periksa.no_rkm_medis like ? ) " +  // <-- the closing + is wrong
-                "order by reg_periksa.tgl_registrasi DESC"
+                "order by reg_periksa.tgl_registrasi"
             );
             ps.setString(1, "%" + norm + "%");
             
