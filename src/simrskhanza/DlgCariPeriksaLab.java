@@ -1914,7 +1914,7 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                         param.put("emailrs",akses.getemailrs());   
                         param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
                         pspermintaan=koneksi.prepareStatement(
-                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan from permintaan_lab where "+
+                                "select noorder,DATE_FORMAT(tgl_permintaan,'%d-%m-%Y') as tgl_permintaan,jam_permintaan,DATE_FORMAT(tgl_sampel,'%d-%m-%Y') as tgl_sampel,jam_sampel from permintaan_lab where "+
                                 "no_rawat=? and tgl_hasil=? and jam_hasil=?");
                         try {
                             pspermintaan.setString(1,rs.getString("no_rawat"));
@@ -1925,6 +1925,8 @@ private void tbDokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                 param.put("nopermintaan",rspermintaan.getString("noorder"));   
                                 param.put("tanggalpermintaan",rspermintaan.getString("tgl_permintaan"));  
                                 param.put("jampermintaan",rspermintaan.getString("jam_permintaan"));
+                                param.put("tanggalsampel",rspermintaan.getString("tgl_sampel"));
+                                param.put("jamsampel",rspermintaan.getString("jam_sampel"));
                                 Valid.MyReport("rptPeriksaLabPermintaan.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   
                             }else{
                                 Valid.MyReport("rptPeriksaLab.jasper","report","::[ Pemeriksaan Laboratorium ]::",param);   

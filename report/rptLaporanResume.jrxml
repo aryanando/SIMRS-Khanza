@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="536" leftMargin="39" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7435c0f7-de74-4940-ae33-c2370e46f8e7">
 	<property name="ireport.zoom" value="1.399522140629204"/>
 	<property name="ireport.x" value="0"/>
@@ -843,7 +843,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="492" width="44" height="10" backcolor="#CCCCCC" uuid="7a3ec87f-db2d-488f-81a1-84bf2a86147e">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="492" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="7a3ec87f-db2d-488f-81a1-84bf2a86147e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -887,7 +887,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="504" width="44" height="10" backcolor="#CCCCCC" uuid="bc0e5d60-1b84-48c3-90ef-93a7c3e76b73">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="504" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="bc0e5d60-1b84-48c3-90ef-93a7c3e76b73">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -931,7 +931,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="516" width="44" height="10" backcolor="#CCCCCC" uuid="905bfd6f-1d98-4a39-a172-0aeb5e74e348">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="516" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="905bfd6f-1d98-4a39-a172-0aeb5e74e348">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -975,7 +975,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="528" width="44" height="10" backcolor="#CCCCCC" uuid="7903d137-823d-4e3e-9025-cfd726817fb0">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="528" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="7903d137-823d-4e3e-9025-cfd726817fb0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -1019,7 +1019,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="540" width="44" height="10" backcolor="#CCCCCC" uuid="bca8aa81-737d-44e0-bd05-4ea590b62daf">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="540" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="bca8aa81-737d-44e0-bd05-4ea590b62daf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -1063,7 +1063,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="556" width="44" height="10" backcolor="#CCCCCC" uuid="b83ece08-a875-4a55-88d0-29838e54b3e0">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="556" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="b83ece08-a875-4a55-88d0-29838e54b3e0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -1107,7 +1107,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="568" width="44" height="10" backcolor="#CCCCCC" uuid="1f207c13-b8df-4aab-9e8e-9e1061d36a25">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="568" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="1f207c13-b8df-4aab-9e8e-9e1061d36a25">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -1151,7 +1151,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="580" width="44" height="10" backcolor="#CCCCCC" uuid="a528b777-a326-480e-b0f5-dedbc6beeece">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="580" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="a528b777-a326-480e-b0f5-dedbc6beeece">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">
@@ -1195,7 +1195,7 @@ where resume_pasien.no_rawat= $P{norawat}]]>
 				<text><![CDATA[)]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" mode="Transparent" x="481" y="592" width="44" height="10" backcolor="#CCCCCC" uuid="98a167c3-3135-40a6-958e-7ef732c3af39">
+				<reportElement positionType="Float" mode="Transparent" x="481" y="592" width="44" height="10" forecolor="#FFFFFF" backcolor="#CCCCCC" uuid="98a167c3-3135-40a6-958e-7ef732c3af39">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center">

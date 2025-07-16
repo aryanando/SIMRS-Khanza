@@ -442,13 +442,25 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 //                                 System.out.println("Notif Rekening : "+stylee);
 //                                 System.out.println("Notif Rekening : "+rs2.getString("nik"));
                                 //2021/04/18/000056
+                                String namaValidator = rs2.getString("namavalidator");
+                                String tglValidasi = rs2.getString("tgl_validasi");
+                                String jamValidasi = rs2.getString("jam_validasi");
+
+                                if ((namaValidator == null || namaValidator.trim().isEmpty()) &&
+                                    (tglValidasi == null || tglValidasi.trim().isEmpty()) &&
+                                    (jamValidasi == null || jamValidasi.trim().isEmpty())) {
+                                    namaValidator = "Belum divalidasi";
+                                    tglValidasi = "";
+                                    jamValidasi = "";
+                                }
+                                
                                  htmlContent.append(                             
                                     "<tr class='isi'  >"+
                                         "<td align='center' "+stylee+" >"+rs2.getString("tgl_perawatan")+"<br>"+rs2.getString("jam_rawat")+"</td>"+
                                         "<td valign='top'  "+stylee+" >"+rs2.getString("nama")+"<br>"+"("+rs2.getString("departemen.nama")+")</td>"+
                                         "<td align='left' "+stylee+" >"+rs2.getString("situation")+"</td>"+
-                                        
-                                        "<td align='left' "+stylee+" "+gbrverif+">"+"<br>"+rs2.getString("namavalidator")+"<br>"+rs2.getString("tgl_validasi")+"<br>"+rs2.getString("jam_validasi")+"</td>"+
+                                        "<td align='left' "+stylee+" "+gbrverif+">"+"<br>"+namaValidator+"<br>"+tglValidasi+"<br>"+jamValidasi+"</td>"+
+//                                        "<td align='left' "+stylee+" "+gbrverif+">"+"<br>"+rs2.getString("namavalidator")+"<br>"+rs2.getString("tgl_validasi")+"<br>"+rs2.getString("jam_validasi")+"</td>"+
                                     "</tr>"
                                  ); 
                             } 

@@ -116,12 +116,12 @@
 		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
-	<field name="tanggal_masuk" class="java.sql.Date">
+	<field name="tanggal_masuk" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="tanggal_masuk"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="transfer_pasien_antar_ruang"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="tanggal_pindah" class="java.sql.Date">
+	<field name="tanggal_pindah" class="java.sql.Timestamp">
 		<property name="com.jaspersoft.studio.field.label" value="tanggal_pindah"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="transfer_pasien_antar_ruang"/>
 	</field>
@@ -475,7 +475,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="false"/>
+					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Petugas / Perawat Yang Menyerahkan]]></text>
@@ -486,7 +486,7 @@
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="false"/>
+					<font fontName="Tahoma" size="8" isBold="true"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Petugas / Perawat Yang Menerima]]></text>
@@ -515,8 +515,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{petugasmenerima}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="3" y="120" width="246" height="11" uuid="27a888df-a641-4a4b-865b-f2b932908c45">
+			<textField pattern="dd-MM-yyyy HH:mm:ss">
+				<reportElement x="3" y="120" width="270" height="11" uuid="27a888df-a641-4a4b-865b-f2b932908c45">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -525,15 +525,15 @@
 				</textElement>
 				<textFieldExpression><![CDATA["Masuk : " + $F{tanggal_masuk}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="251" y="120" width="246" height="11" uuid="3313f5d3-2c4b-4228-9a12-96671a04af57">
+			<textField pattern="dd-MM-yyyy HH:mm:ss">
+				<reportElement x="273" y="120" width="276" height="11" uuid="3313f5d3-2c4b-4228-9a12-96671a04af57">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pindah : " + $F{tanggal_pindah}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pindah : "+ $F{tanggal_masuk}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="3" y="134" width="342" height="11" uuid="51b3f760-79b1-40d5-b42a-6b9feadb0a33">
