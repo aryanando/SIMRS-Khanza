@@ -384,10 +384,11 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 //            );
 
             ps = koneksi.prepareStatement(
-                "select reg_periksa.no_rawat, reg_periksa.tgl_registrasi, reg_periksa.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur " +
+                "select reg_periksa.no_rawat, reg_periksa.tgl_registrasi, reg_periksa.no_rkm_medis, pasien.nm_pasien, pasien.jk, concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) as umur,reg_periksa.status_lanjut " +
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis " +
-                "where reg_periksa.status_lanjut='Ranap' " +
-                "and (reg_periksa.no_rkm_medis like ? ) " +  // <-- the closing + is wrong
+                "where " +
+//                        + "reg_periksa.status_lanjut='Ranap' and " +
+                "(reg_periksa.no_rkm_medis like ? ) " +  // <-- the closing + is wrong
                 "order by reg_periksa.tgl_registrasi"
             );
             ps.setString(1, "%" + norm + "%");
@@ -406,7 +407,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                 htmlContent.append(
                     "<tr class='isi'>"+
                         "<td valign='middle' align='center'>" + rs.getString("tgl_registrasi") + "</td>"+
-                        "<td valign='middle' align='center'>" + rs.getString("no_rawat") + "</td>"+
+                        "<td valign='middle' align='center'>" + rs.getString("no_rawat") + "<br><i> " + rs.getString("status_lanjut")  + "</i></td>"+
                         "<td valign='middle' align='center'>" + rs.getString("no_rkm_medis") + "</td>"+
                         "<td valign='middle' align='left'>" + rs.getString("nm_pasien") + " / " + rs.getString("jk") + " / " + rs.getString("umur") + "</td>"+
                         "<td valign='top' align='center'>"

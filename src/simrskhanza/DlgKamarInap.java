@@ -11,6 +11,9 @@
  */
 
 package simrskhanza;
+
+//New
+import permintaan.DlgPermintaanRanap2;
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekSuplesiJasaRaharja;
 import rekammedis.RMRiwayatPerawatan;
@@ -187,6 +190,7 @@ import surat.SuratPersetujuanUmum;
 import surat.SuratPulangAtasPermintaanSendiri;
 import surat.SuratSakit;
 import surat.SuratSakitPihak2;
+
 
 /**
  *
@@ -692,7 +696,9 @@ public class DlgKamarInap extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+//      New
+        ppPerminRanap = new javax.swing.JMenuItem();
+        
         WindowInputKamar = new javax.swing.JDialog();
         internalFrame2 = new widget.InternalFrame();
         norawat = new widget.TextBox();
@@ -4130,6 +4136,24 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         });
         MenuInputData.add(ppSkriningManagerPelayananPasien);
+
+        jPopupMenu1.add(MenuInputData);
+
+        ppPerminRanap.setBackground(new java.awt.Color(255, 255, 254));
+        ppPerminRanap.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppPerminRanap.setForeground(new java.awt.Color(50, 50, 50));
+        ppPerminRanap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppPerminRanap.setText("Permintaan Ranap");
+        ppPerminRanap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppPerminRanap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppPerminRanap.setName("ppPerminRanap"); // NOI18N
+        ppPerminRanap.setPreferredSize(new java.awt.Dimension(225, 26));
+        ppPerminRanap.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppPerminRanapBtnPrintActionPerformed(evt);
+            }
+        });
+        MenuInputData.add(ppPerminRanap);
 
         jPopupMenu1.add(MenuInputData);
 
@@ -14332,6 +14356,33 @@ public class DlgKamarInap extends javax.swing.JDialog {
             }
         } 
     }//GEN-LAST:event_ppSkriningManagerPelayananPasienBtnPrintActionPerformed
+    
+    private void ppPerminRanapBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppPerminRanapBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+//            TNoReg.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+//            tbPetugas.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            DlgPermintaanRanap2 form=new DlgPermintaanRanap2(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setNoRm(TNoRwCari.getText(),
+                    TNoRM.getText(),
+                    TPasien.getText(),
+                    Sequel.cariIsi("select dokter.nm_dokter from reg_periksa LEFT JOIN dokter ON dokter.kd_dokter=reg_periksa.kd_dokter where reg_periksa.no_rawat=?",TNoRwCari.getText()),
+                    Sequel.cariIsi("select penjab.png_jawab from reg_periksa LEFT JOIN penjab ON penjab.kd_pj=reg_periksa.kd_pj where reg_periksa.no_rawat=?",TNoRwCari.getText()),
+                    "-",
+                    Sequel.cariIsi("select pasien.no_tlp from pasien where pasien.no_rkm_medis=?",TNoRM.getText())
+            );
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
+            
+        } 
+    }//GEN-LAST:event_ppPerminRanapBtnPrintActionPerformed
 
     private void MnPenilaianPasienPenyakitMenularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianPasienPenyakitMenularActionPerformed
         if(tabMode.getRowCount()==0){
@@ -18406,6 +18457,11 @@ public class DlgKamarInap extends javax.swing.JDialog {
     private widget.TextBox ttlbiaya;
     private widget.TextBox ttlbiayapindah;
     // End of variables declaration//GEN-END:variables
+    
+    // New
+    private javax.swing.JMenuItem ppPerminRanap;    
+    
+    
     private javax.swing.JMenuItem MnSkorBromagePascaAnestesi,MnPenilaianPreInduksi,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnBelumTerbitSEP,MnSudahTerbitSEP,MnHasilPemeriksaanUSGNeonatus,MnHasilEndoskopiFaringLaring,
                                   MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,MnPenilaianAwalKeperawatanRanapNeonatus,MnPenilaianPasienImunitasRendah,MnCatatanKeseimbanganCairan,MnCatatanObservasiCHBP,MnCatatanObservasiInduksiPersalinan,MnPermintaanKonsultasiMedik,
                                   MnDataOperasi,MnPenilaianAwalKeperawatanRanapBayiAnak,MnCatatanObservasiRestrainNonFarmakologi,MnCatatanObservasiVentilator,MnCatatanAnastesiSedasi,MnChecklistPemberianFibrinolitik,MnPenilaianPsikologKlinis,MnPenilaianAwalMedisNeonatus,
