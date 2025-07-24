@@ -20,20 +20,7 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMRiwayatLab.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMTransferPasienAntarRuang.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/ValidasiSBAR.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/DlgSBAR.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMPenilaianAwalMedisRanapDewasa.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/DlgSBARRalan.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/ValidasiTBAKRalan.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMSoapTerakhir.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/simrskhanza/DlgRawatInap.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/simrskhanza/DlgRawatJalan.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMTimeOutSebelumInsisi.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMRiwayatRadiologi.java</file>
-            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/ValidasiSBARRalan.java</file>
+            <file>file:/D:/Project/SIMRS-Khanza/src/rekammedis/RMDataPartograf.java</file>
         </group>
     </open-files>
 </project-private>
