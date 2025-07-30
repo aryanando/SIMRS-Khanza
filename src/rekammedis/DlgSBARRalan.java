@@ -373,18 +373,40 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='66%'>S.B.A.R</td>"+
                 "</tr>"
             );     
-            ps=koneksi.prepareStatement(
-                    //"+noRawat+"
-                "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, "+
-                "reg_periksa.status_lanjut from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='"+noRawat+"' "+
-                " "+(TCari.getText().trim().equals("")?"":
-                "and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or reg_periksa.status_lanjut like ?)")+" order by reg_periksa.tgl_registrasi");
+//            ps=koneksi.prepareStatement(
+//                    //"+noRawat+"
+//                "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, "+
+//                "reg_periksa.status_lanjut from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='"+noRawat+"' "+
+//                " "+(TCari.getText().trim().equals("")?"":
+//                "and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or reg_periksa.status_lanjut like ?)")+" order by reg_periksa.tgl_registrasi");
+//            try {
+//                if(!TCari.getText().trim().equals("")){
+//                    ps.setString(1,"%"+TCari.getText().trim()+"%");
+//                    ps.setString(2,"%"+TCari.getText().trim()+"%");
+//                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+//                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+//                }
+            ps = koneksi.prepareStatement(
+                "SELECT distinct reg_periksa.no_rawat, reg_periksa.tgl_registrasi, reg_periksa.no_rkm_medis, pasien.nm_pasien, pasien.jk, " +
+                "CONCAT(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) AS umur, reg_periksa.status_lanjut " +
+                "FROM reg_periksa " +
+                "INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
+                "INNER JOIN pemeriksaan_ralan_sbar AS sbar ON sbar.no_rawat = reg_periksa.no_rawat " +
+                "WHERE reg_periksa.tgl_registrasi BETWEEN ? AND ? " +
+                (TCari.getText().trim().equals("") ? "" :
+                 "AND (reg_periksa.no_rawat LIKE ? OR reg_periksa.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ? OR reg_periksa.status_lanjut LIKE ?) ") +
+                "ORDER BY reg_periksa.tgl_registrasi"
+            );
+
             try {
+//                ps.setString(1, noRawat); 
+                ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
                 if(!TCari.getText().trim().equals("")){
-                    ps.setString(1,"%"+TCari.getText().trim()+"%");
-                    ps.setString(2,"%"+TCari.getText().trim()+"%");
                     ps.setString(3,"%"+TCari.getText().trim()+"%");
                     ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
                 while(rs.next()){
@@ -505,6 +527,8 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
         this.setCursor(Cursor.getDefaultCursor());
         
     }
+    
+    
     
     public void isCek(){
         BtnPrint.setEnabled(akses.getharian_klasifikasi_pasien_ranap());

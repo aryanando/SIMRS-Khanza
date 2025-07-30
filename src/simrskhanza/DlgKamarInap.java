@@ -14,6 +14,8 @@ package simrskhanza;
 
 //New
 import permintaan.DlgPermintaanRanap2;
+import rekammedis.RMDataPartograf;
+//
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekSuplesiJasaRaharja;
 import rekammedis.RMRiwayatPerawatan;
@@ -2305,6 +2307,8 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 MnCatatanObservasiRanapKebidananActionPerformed(evt);
             }
         });
+        
+        
 
         MnCatatanObservasiRanapPostPartum.setBackground(new java.awt.Color(255, 255, 254));
         MnCatatanObservasiRanapPostPartum.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -12329,6 +12333,32 @@ public class DlgKamarInap extends javax.swing.JDialog {
     }//GEN-LAST:event_MnCatatanObservasiRanapActionPerformed
 
     private void MnCatatanObservasiRanapKebidananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanObservasiRanapKebidananActionPerformed
+//        if(tabMode.getRowCount()==0){
+//            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+//            TCari.requestFocus();
+//        }else if(TPasien.getText().trim().equals("")){
+//            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+//            tbKamIn.requestFocus();
+//        }else{
+//            if(tbKamIn.getSelectedRow()!= -1){
+//                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+//                RMDataCatatanObservasiRanapKebidanan resume=new RMDataCatatanObservasiRanapKebidanan(null,false);
+//                resume.emptTeks();
+//                if(R1.isSelected()==true){
+//                    resume.setNoRm(norawat.getText(),new Date());
+//                }else if(R2.isSelected()==true){
+//                    resume.setNoRm(norawat.getText(),DTPCari2.getDate());
+//                }else if(R3.isSelected()==true){
+//                    resume.setNoRm(norawat.getText(),DTPCari4.getDate());
+//                }
+//                resume.tampil();
+//                resume.isCek();
+//                resume.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+//                resume.setLocationRelativeTo(internalFrame1);
+//                resume.setVisible(true);
+//                this.setCursor(Cursor.getDefaultCursor());
+//            }
+//        }
         if(tabMode.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
             TCari.requestFocus();

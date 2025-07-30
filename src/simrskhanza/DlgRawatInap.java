@@ -170,6 +170,8 @@ import rekammedis.DlgSBAR;
 import rekammedis.ValidasiTBAK;
 import rekammedis.RMRiwayatRadiologi;
 import rekammedis.RMRiwayatLab;
+import rekammedis.RMDataPartograf;
+
 
 
 /**
@@ -4998,6 +5000,7 @@ public final class DlgRawatInap extends javax.swing.JDialog {
                 BtnCatatanObservasiRanapKebidananActionPerformed(evt);
             }
         });
+        
 
         BtnCatatanObservasiRanapPostPartum.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png"))); // NOI18N
         BtnCatatanObservasiRanapPostPartum.setText("Observasi Post Partum");
@@ -8745,6 +8748,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnCatatanObservasiRanapKebidananActionPerformed
+    
+ 
 
     private void BtnCatatanObservasiRanapPostPartumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCatatanObservasiRanapPostPartumActionPerformed
         if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
@@ -10474,6 +10479,8 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         });
     }
 
+    //
+//    private widget.Button BtnPartograf;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField BagianRS;
     private javax.swing.JTextField Bhp;

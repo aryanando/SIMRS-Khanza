@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
@@ -974,29 +974,14 @@
 			</staticText>
 		</band>
 		<band height="256">
-			<staticText>
-				<reportElement positionType="Float" x="3" y="0" width="247" height="11" uuid="63927a41-109e-4d3f-b09c-00f6eeee0be7">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="true"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[III. Bukti Pelayanan]]></text>
-			</staticText>
 			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="1" height="256" uuid="e19d943b-47dc-43ec-91f5-a8fc511e1037">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="0" width="1" height="95" uuid="e19d943b-47dc-43ec-91f5-a8fc511e1037"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="556" y="0" width="1" height="256" uuid="2762f4c0-8626-4507-852a-f8ce0f6027db">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="556" y="0" width="1" height="95" uuid="2762f4c0-8626-4507-852a-f8ce0f6027db"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
@@ -1008,23 +993,14 @@
 				</graphicElement>
 			</line>
 			<image scaleImage="FillFrame" isUsingCache="true" onErrorType="Blank">
-				<reportElement x="8" y="14" width="541" height="237" uuid="9d3fd61c-1c49-402b-b478-b94a7488c8b4"/>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
-		</band>
-	</detail>
-	<summary>
-		<band height="145">
-			<line>
-				<reportElement x="255" y="1" width="1" height="55" uuid="5a4aec2f-b7ad-4af1-98aa-b9ff60d31b08">
+				<reportElement x="83" y="56" width="87" height="40" uuid="9d3fd61c-1c49-402b-b478-b94a7488c8b4">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<graphicElement>
-					<pen lineWidth="0.4"/>
-				</graphicElement>
-			</line>
+				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+			</image>
 			<staticText>
-				<reportElement x="3" y="2" width="250" height="11" uuid="c8fb9ecc-62b9-4660-8eb4-7882e21017ce">
+				<reportElement x="1" y="1" width="250" height="11" uuid="c8fb9ecc-62b9-4660-8eb4-7882e21017ce">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -1034,8 +1010,68 @@
 				</textElement>
 				<text><![CDATA[Tanggal dan Jam]]></text>
 			</staticText>
+			<textField pattern="MMM, dd/MM/yyyy hh:mm:ss z">
+				<reportElement mode="Transparent" x="0" y="12" width="250" height="11" uuid="5ac4fe61-989e-424d-afbf-5c25db826ac5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Transparent" x="259" y="102" width="295" height="11" uuid="09a5ff6b-5257-46f5-bfae-3f4e83a492b0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="360" y="56" width="85" height="38" isRemoveLineWhenBlank="true" uuid="f149c486-1f18-4cc6-a8af-3d702dd4978a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
 			<staticText>
-				<reportElement x="259" y="2" width="295" height="11" uuid="edc2f9ef-360b-481c-b6d0-aac40b237bcd">
+				<reportElement x="0" y="39" width="256" height="11" uuid="183e35fd-5546-432e-a1ec-d30111d18dda">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanda Tangan]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="30" y="100" width="185" height="11" uuid="7faf4d99-bc98-4670-bbee-fb77e3f1619d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="145">
+			<line>
+				<reportElement x="255" y="-218" width="1" height="76" uuid="5a4aec2f-b7ad-4af1-98aa-b9ff60d31b08"/>
+				<graphicElement>
+					<pen lineWidth="0.4"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="259" y="-217" width="295" height="11" uuid="edc2f9ef-360b-481c-b6d0-aac40b237bcd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -1046,63 +1082,31 @@
 				<text><![CDATA[Nama Dokter dan Tanda Tangan]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="14" width="557" height="1" uuid="0fc11d74-41a2-408c-8eb5-0e429afb1142"/>
+				<reportElement x="0" y="-205" width="557" height="1" uuid="0fc11d74-41a2-408c-8eb5-0e429afb1142"/>
 				<graphicElement>
 					<pen lineWidth="0.4"/>
 				</graphicElement>
 			</line>
-			<textField pattern="MMM, dd/MM/yyyy hh:mm:ss z">
-				<reportElement mode="Transparent" x="3" y="28" width="250" height="11" uuid="5ac4fe61-989e-424d-afbf-5c25db826ac5">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
-					<font fontName="Tahoma" size="8" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
-			</textField>
-			<componentElement>
-				<reportElement x="259" y="15" width="87" height="40" isRemoveLineWhenBlank="true" uuid="f149c486-1f18-4cc6-a8af-3d702dd4978a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
-					<jr:codeExpression><![CDATA[$P{finger}]]></jr:codeExpression>
-				</jr:QRCode>
-			</componentElement>
-			<textField>
-				<reportElement mode="Transparent" x="259" y="43" width="295" height="11" uuid="09a5ff6b-5257-46f5-bfae-3f4e83a492b0">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="8" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_dokter}]]></textFieldExpression>
-			</textField>
 			<line>
-				<reportElement x="0" y="1" width="1" height="55" uuid="03a10c39-e93f-42d9-89f3-2bdf40855ded">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="-218" width="1" height="76" uuid="03a10c39-e93f-42d9-89f3-2bdf40855ded"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="556" y="1" width="1" height="55" uuid="e2e5c87c-37a6-4cee-b82a-76694065035f">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="556" y="-218" width="1" height="76" uuid="e2e5c87c-37a6-4cee-b82a-76694065035f"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="56" width="557" height="1" uuid="91b92793-bd2d-43ef-8197-978f1112d5e5"/>
+				<reportElement x="0" y="-142" width="557" height="1" uuid="91b92793-bd2d-43ef-8197-978f1112d5e5"/>
 				<graphicElement>
 					<pen lineWidth="0.75" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="0" width="557" height="1" uuid="b22303b7-6760-4ebb-aaa0-6a8dfcbf00f9"/>
+				<reportElement x="0" y="-219" width="557" height="1" uuid="b22303b7-6760-4ebb-aaa0-6a8dfcbf00f9"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>

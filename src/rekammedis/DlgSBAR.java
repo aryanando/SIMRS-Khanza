@@ -312,7 +312,7 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        prosesCari();
+        prosesCari2();
     }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
@@ -373,13 +373,185 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                     "<td valign='middle' bgcolor='#FFFAF8' align='center' width='66%'>S.B.A.R</td>"+
                 "</tr>"
             );     
+            ps = koneksi.prepareStatement(
+                "SELECT distinct reg_periksa.no_rawat, reg_periksa.tgl_registrasi, reg_periksa.no_rkm_medis, pasien.nm_pasien, pasien.jk, " +
+                "CONCAT(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur) AS umur, reg_periksa.status_lanjut " +
+                "FROM reg_periksa " +
+                "INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
+                "INNER JOIN pemeriksaan_ranap_sbar AS sbar ON sbar.no_rawat = reg_periksa.no_rawat " +
+                "WHERE reg_periksa.tgl_registrasi BETWEEN ? AND ? " +
+                (TCari.getText().trim().equals("") ? "" :
+                 "AND (reg_periksa.no_rawat LIKE ? OR reg_periksa.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ? OR reg_periksa.status_lanjut LIKE ?) ") +
+                "ORDER BY reg_periksa.tgl_registrasi"
+            );
+
+            try {
+//                ps.setString(1, noRawat); 
+                ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
+                if(!TCari.getText().trim().equals("")){
+                    ps.setString(3,"%"+TCari.getText().trim()+"%");
+                    ps.setString(4,"%"+TCari.getText().trim()+"%");
+                    ps.setString(5,"%"+TCari.getText().trim()+"%");
+                    ps.setString(6,"%"+TCari.getText().trim()+"%");
+                }
+                rs=ps.executeQuery();
+                while(rs.next()){
+                    htmlContent.append(
+                        "<tr class='isi'>"+
+                            "<td valign='middle' align='center'>"+rs.getString("tgl_registrasi")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("no_rawat")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("no_rkm_medis")+"</td>"+
+                            "<td valign='middle' align='left'>"+rs.getString("nm_pasien")+" / "+rs.getString("jk")+" / "+rs.getString("umur")+"</td>"+
+                            "<td valign='middle' align='center'>"+rs.getString("status_lanjut")+"</td>"+
+                            "<td valign='top' align='center'>"+
+                                "<table width='100%' border='0' align='center' cellpadding='2px' cellspacing='0'>");
+                    try {
+                        // try {
+//                        rs2=koneksi.prepareStatement(
+//                                "select pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat,pemeriksaan_ranap.keluhan,"+
+//                                "pemeriksaan_ranap.pemeriksaan,pemeriksaan_ranap.rtl,pemeriksaan_ranap.penilaian,pemeriksaan_ranap.nik,pegawai.nama,departemen.nama "+
+//                                "from pemeriksaan_ranap inner join pegawai on pemeriksaan_ranap.nik=pegawai.nik inner join departemen on pegawai.departemen=departemen.dep_id where pemeriksaan_ranap.no_rawat='"+rs.getString("no_rawat")+"' "+
+//                                "order by pemeriksaan_ranap.tgl_perawatan,pemeriksaan_ranap.jam_rawat").executeQuery();
+                        rs2=koneksi.prepareStatement(
+                                "select pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat,pemeriksaan_ranap_sbar.situation,"+
+                                "pemeriksaan_ranap_sbar.background,pemeriksaan_ranap_sbar.assesment,pemeriksaan_ranap_sbar.recommendation,pemeriksaan_ranap_sbar.nip,pegawai.nama,departemen.nama, "+
+                                "validasi_pemeriksaan_sbar.nik_validator,namavalidator.nama as namavalidator,validasi_pemeriksaan_sbar.tgl_validasi,validasi_pemeriksaan_sbar.jam_validasi,validasi_pemeriksaan_sbar.status_validasi "+ 
+                                "from pemeriksaan_ranap_sbar "
+                                        + "LEFT JOIN validasi_pemeriksaan_sbar ON validasi_pemeriksaan_sbar.no_rawat = pemeriksaan_ranap_sbar.no_rawat AND validasi_pemeriksaan_sbar.tgl_perawatan = pemeriksaan_ranap_sbar.tgl_perawatan AND validasi_pemeriksaan_sbar.jam_rawat = pemeriksaan_ranap_sbar.jam_rawat "
+                                        + "inner join pegawai on pemeriksaan_ranap_sbar.nip=pegawai.nik inner join departemen on pegawai.departemen=departemen.dep_id LEFT JOIN pegawai AS namavalidator ON validasi_pemeriksaan_sbar.nik_validator=namavalidator.nik "
+                                        + "where pemeriksaan_ranap_sbar.no_rawat='"+rs.getString("no_rawat")+"' "+
+                                "order by pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat").executeQuery();
+                        if(rs2.next()){
+                            htmlContent.append(
+                                    "<tr class='isi'>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='10%'>Tanggal</td>"+
+                                        "<td valign='middle' align='center'  width=40%' bgcolor='#FFFAF8'>Nama Pegawai</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='23%'>Subjek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='24%'>Objek</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='23%'>Asesmen</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='23%'>Recommendation</td>"+
+                                        "<td valign='middle' bgcolor='#FFFFF8' align='center' width='23%'>Validasi</td>"+
+                                    "</tr>");
+                            rs2.beforeFirst();
+                            while(rs2.next()){
+                                String bagian="",stylee="",gbrverif="";
+                                
+                                bagian=Sequel.cariIsi("SELECT bidang FROM pegawai WHERE nik='"+rs2.getString("nip")+"'");
+                                
+                                //19960928201806045
+                                if(bagian.equals("Medis")){
+                                    stylee=" style=' background-color:#f7d4e8 '";
+                                }else{
+                                    stylee=" style=' background-color:#ccffcc '";
+                                }
+                                
+                                if(Sequel.cariInteger("select count(validasi_pemeriksaan_sbar.nik_validator) " +
+                                        "from pemeriksaan_ranap_sbar "
+                                        + "LEFT JOIN validasi_pemeriksaan_sbar ON validasi_pemeriksaan_sbar.no_rawat = pemeriksaan_ranap_sbar.no_rawat AND validasi_pemeriksaan_sbar.tgl_perawatan = pemeriksaan_ranap_sbar.tgl_perawatan AND validasi_pemeriksaan_sbar.jam_rawat = pemeriksaan_ranap_sbar.jam_rawat "
+                                        + "inner join pegawai on pemeriksaan_ranap_sbar.nip=pegawai.nik inner join departemen on pegawai.departemen=departemen.dep_id "
+                                        + "LEFT JOIN pegawai AS namavalidator ON validasi_pemeriksaan_sbar.nik_validator=namavalidator.nik where pemeriksaan_ranap_sbar.no_rawat='"+rs.getString("no_rawat")+"' AND validasi_pemeriksaan_sbar.nik_validator='"+rs2.getString("nik_validator")+"'" +
+                                        "order by pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat")>0){
+                                    gbrverif="<img src ='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/images/verif.png' align='center' width='100' height='50'/";
+                                }else{
+                                    gbrverif="<img src ='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/images/notverif.png' align='center' width='100' height='50'/";
+                                }
+                                
+                                
+//                                 System.out.println("Notif Rekening : "+stylee);
+//                                 System.out.println("Notif Rekening : "+rs2.getString("nik"));
+                                //2021/04/18/000056
+                                String namaValidator = rs2.getString("namavalidator");
+                                String tglValidasi = rs2.getString("tgl_validasi");
+                                String jamValidasi = rs2.getString("jam_validasi");
+
+                                if ((namaValidator == null || namaValidator.trim().isEmpty()) &&
+                                    (tglValidasi == null || tglValidasi.trim().isEmpty()) &&
+                                    (jamValidasi == null || jamValidasi.trim().isEmpty())) {
+                                    namaValidator = "Belum divalidasi";
+                                    tglValidasi = "";
+                                    jamValidasi = "";
+                                }
+                                 htmlContent.append(                             
+                                    "<tr class='isi'  >"+
+                                        "<td align='center' "+stylee+" >"+rs2.getString("tgl_perawatan")+"<br>"+rs2.getString("jam_rawat")+"</td>"+
+                                        "<td valign='top'  "+stylee+" >"+rs2.getString("nama")+"<br>"+"("+rs2.getString("departemen.nama")+")</td>"+
+                                        "<td align='left' "+stylee+" >"+rs2.getString("situation")+"</td>"+
+                                        "<td align='left' "+stylee+">"+rs2.getString("background")+"</td>"+
+                                        "<td align='left' "+stylee+">"+rs2.getString("assesment")+"</td>"+
+                                        "<td align='left' "+stylee+">"+rs2.getString("recommendation")+"</td>"+
+//                                        "<td align='left' "+stylee+" "+gbrverif+">"+"<br>"+rs2.getString("namavalidator")+"<br>"+rs2.getString("tgl_validasi")+"<br>"+rs2.getString("jam_validasi")+"</td>"+
+//                                    "</tr>"
+                                        "<td align='left' "+stylee+" "+gbrverif+">"+"<br>"+namaValidator+"<br>"+tglValidasi+"<br>"+jamValidasi+"</td>"+
+                                    "</tr>"
+                                 ); 
+                            } 
+                        }       
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally{
+                        if(rs2!=null){
+                            rs2.close();
+                        }
+                    }
+                    htmlContent.append(
+                                "</table>"+
+                            "</td>"+
+                        "</tr>"
+                    );
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : "+e);
+            } finally{
+                if(rs!=null){
+                    rs.close();
+                }
+                if(ps!=null){
+                    ps.close();
+                }
+            }
+            
+            LoadHTML.setText(
+                    "<html>"+
+                      "<table width='100%' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                       htmlContent.toString()+
+                      "</table>"+
+                    "</html>");
+        } catch (Exception e) {
+            System.out.println("laporan.DlgRL4A.prosesCari() 5 : "+e);
+        } 
+        this.setCursor(Cursor.getDefaultCursor());
+        
+    }
+    
+    private  void prosesCari2() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        try {
+            StringBuilder htmlContent = new StringBuilder();
+            htmlContent.append(                             
+                "<tr class='isi'>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='5%'>Tgl.Reg</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='8%'>No.Rawat</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='4%'>No.R.M</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='14%'>Nama Pasien</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='3%'>Status</td>"+
+                    "<td valign='middle' bgcolor='#FFFAF8' align='center' width='66%'>S.B.A.R</td>"+
+                "</tr>"
+            );     
             ps=koneksi.prepareStatement(
                     //"+noRawat+"
-                "select reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,concat(reg_periksa.umurdaftar,' ',reg_periksa.sttsumur)as umur, "+
-                "reg_periksa.status_lanjut from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat='"+noRawat+"' "+
-                " "+(TCari.getText().trim().equals("")?"":
-                "and (reg_periksa.no_rawat like ? or reg_periksa.no_rkm_medis like ? or pasien.nm_pasien like ? or reg_periksa.status_lanjut like ?)")+" order by reg_periksa.tgl_registrasi");
+    "SELECT distinct reg_periksa.no_rawat, reg_periksa.tgl_registrasi, reg_periksa.no_rkm_medis, pasien.nm_pasien, pasien.jk, " +
+    "CONCAT(reg_periksa.umurdaftar, ' ', reg_periksa.sttsumur) AS umur, reg_periksa.status_lanjut " +
+    "FROM reg_periksa " +
+    "INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
+    "inner JOIN pemeriksaan_ranap_sbar AS sbar ON sbar.no_rawat = reg_periksa.no_rawat " +
+    "WHERE reg_periksa.tgl_registrasi BETWEEN ? AND ? " +
+    (TCari.getText().trim().equals("") ? "" :
+    "AND (reg_periksa.no_rawat LIKE ? OR reg_periksa.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ? OR reg_periksa.status_lanjut LIKE ?) ") +
+    "ORDER BY reg_periksa.tgl_registrasi");
             try {
+                ps.setString(1, Valid.SetTgl(Tgl1.getSelectedItem() + ""));
+                ps.setString(2, Valid.SetTgl(Tgl2.getSelectedItem() + ""));
                 if(!TCari.getText().trim().equals("")){
                     ps.setString(1,"%"+TCari.getText().trim()+"%");
                     ps.setString(2,"%"+TCari.getText().trim()+"%");
@@ -408,7 +580,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 "select pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat,pemeriksaan_ranap_sbar.situation,"+
                                 "pemeriksaan_ranap_sbar.background,pemeriksaan_ranap_sbar.assesment,pemeriksaan_ranap_sbar.recommendation,pemeriksaan_ranap_sbar.nip,pegawai.nama,departemen.nama, "+
                                 "validasi_pemeriksaan_sbar.nik_validator,namavalidator.nama as namavalidator,validasi_pemeriksaan_sbar.tgl_validasi,validasi_pemeriksaan_sbar.jam_validasi,validasi_pemeriksaan_sbar.status_validasi "+ 
-                                "from pemeriksaan_ranap_sbar LEFT JOIN validasi_pemeriksaan_sbar ON validasi_pemeriksaan_sbar.no_rawat = pemeriksaan_ranap_sbar.no_rawat AND validasi_pemeriksaan_sbar.tgl_perawatan = pemeriksaan_ranap_sbar.tgl_perawatan AND validasi_pemeriksaan_sbar.jam_rawat = pemeriksaan_ranap_sbar.jam_rawat inner join pegawai on pemeriksaan_ranap_sbar.nip=pegawai.nik inner join departemen on pegawai.departemen=departemen.dep_id LEFT JOIN pegawai AS namavalidator ON validasi_pemeriksaan_sbar.nik_validator=namavalidator.nik where pemeriksaan_ranap_sbar.no_rawat='"+rs.getString("no_rawat")+"' "+
+                                "from pemeriksaan_ranap_sbar "
+                                        + "LEFT JOIN validasi_pemeriksaan_sbar ON validasi_pemeriksaan_sbar.no_rawat = pemeriksaan_ranap_sbar.no_rawat AND validasi_pemeriksaan_sbar.tgl_perawatan = pemeriksaan_ranap_sbar.tgl_perawatan AND validasi_pemeriksaan_sbar.jam_rawat = pemeriksaan_ranap_sbar.jam_rawat "
+                                        + "inner join pegawai on pemeriksaan_ranap_sbar.nip=pegawai.nik inner join departemen on pegawai.departemen=departemen.dep_id LEFT JOIN pegawai AS namavalidator ON validasi_pemeriksaan_sbar.nik_validator=namavalidator.nik "
+                                        + "where pemeriksaan_ranap_sbar.no_rawat='"+rs.getString("no_rawat")+"' "+
                                 "order by pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat").executeQuery();
                         if(rs2.next()){
                             htmlContent.append(
@@ -435,7 +610,10 @@ private void btnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_b
                                 }
                                 
                                 if(Sequel.cariInteger("select count(validasi_pemeriksaan_sbar.nik_validator) " +
-                                        "from pemeriksaan_ranap_sbar LEFT JOIN validasi_pemeriksaan_sbar ON validasi_pemeriksaan_sbar.no_rawat = pemeriksaan_ranap_sbar.no_rawat AND validasi_pemeriksaan_sbar.tgl_perawatan = pemeriksaan_ranap_sbar.tgl_perawatan AND validasi_pemeriksaan_sbar.jam_rawat = pemeriksaan_ranap_sbar.jam_rawat inner join pegawai on pemeriksaan_ranap_sbar.nip=pegawai.nik inner join departemen on pegawai.departemen=departemen.dep_id LEFT JOIN pegawai AS namavalidator ON validasi_pemeriksaan_sbar.nik_validator=namavalidator.nik where pemeriksaan_ranap_sbar.no_rawat='"+rs.getString("no_rawat")+"' AND validasi_pemeriksaan_sbar.nik_validator='"+rs2.getString("nik_validator")+"'" +
+                                        "from pemeriksaan_ranap_sbar "
+                                        + "LEFT JOIN validasi_pemeriksaan_sbar ON validasi_pemeriksaan_sbar.no_rawat = pemeriksaan_ranap_sbar.no_rawat AND validasi_pemeriksaan_sbar.tgl_perawatan = pemeriksaan_ranap_sbar.tgl_perawatan AND validasi_pemeriksaan_sbar.jam_rawat = pemeriksaan_ranap_sbar.jam_rawat "
+                                        + "inner join pegawai on pemeriksaan_ranap_sbar.nip=pegawai.nik inner join departemen on pegawai.departemen=departemen.dep_id "
+                                        + "LEFT JOIN pegawai AS namavalidator ON validasi_pemeriksaan_sbar.nik_validator=namavalidator.nik where pemeriksaan_ranap_sbar.no_rawat='"+rs.getString("no_rawat")+"' AND validasi_pemeriksaan_sbar.nik_validator='"+rs2.getString("nik_validator")+"'" +
                                         "order by pemeriksaan_ranap_sbar.tgl_perawatan,pemeriksaan_ranap_sbar.jam_rawat")>0){
                                     gbrverif="<img src ='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/images/verif.png' align='center' width='100' height='50'/";
                                 }else{
