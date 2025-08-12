@@ -1692,7 +1692,6 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     private widget.ScrollPane scrollPane14;
     private widget.ScrollPane scrollPane15;
     private widget.ScrollPane scrollPane16;
-    private widget.ScrollPane scrollPane17;
     private widget.ScrollPane scrollPane18;
     private widget.ScrollPane scrollPane6;
     private widget.ScrollPane scrollPane9;
