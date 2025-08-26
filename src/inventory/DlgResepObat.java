@@ -2054,6 +2054,25 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("peresep",NmDokter.getText());
             param.put("noresep",NoResep.getText());
             param.put("poli",Sequel.cariIsi("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli=?",Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText())));   
+//            String sttsLanjut = Sequel.cariIsi(
+//                "SELECT reg_periksa.status_lanjut FROM reg_periksa WHERE reg_periksa.no_rawat=?",
+//                TNoRw.getText()
+//            );
+//
+//            if("Ralan".equalsIgnoreCase(sttsLanjut)){
+//                param.put("poli", Sequel.cariIsi(
+//                    "SELECT poliklinik.nm_poli FROM poliklinik WHERE poliklinik.kd_poli=?",
+//                    Sequel.cariIsi("SELECT reg_periksa.kd_poli FROM reg_periksa WHERE reg_periksa.no_rawat=?", TNoRw.getText())
+//                ));
+//            }else{ // kalau Ranap
+//                param.put("poli", Sequel.cariIsi(
+//                    "SELECT bangsal.nm_bangsal FROM kamar_inap INNER JOIN kamar ON kamar_inap.kd_kamar=kamar.kd_kamar " +
+//                    "INNER JOIN bangsal ON kamar.kd_bangsal=bangsal.kd_bangsal " +
+//                    "WHERE kamar_inap.no_rawat=? ORDER BY kamar_inap.tgl_masuk DESC LIMIT 1",
+//                    TNoRw.getText()
+//                ));
+//            }
+
             param.put("jam",cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             

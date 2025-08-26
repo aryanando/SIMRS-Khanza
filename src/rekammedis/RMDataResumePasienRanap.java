@@ -53,8 +53,10 @@ import java.net.URI;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.text.SimpleDateFormat;
 import java.util.Base64;
 import org.apache.hc.core5.http.io.entity.StringEntity;
+import simrskhanza.DlgInputResepPulang;
 
 
 /**
@@ -62,6 +64,8 @@ import org.apache.hc.core5.http.io.entity.StringEntity;
  * @author perpustakaan
  */
 public final class RMDataResumePasienRanap extends javax.swing.JDialog {
+    SimpleDateFormat dateformat2 = new SimpleDateFormat("dd-MM-yyyy");
+    
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -70,7 +74,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private ResultSet rs,rs2;
     private int i=0;    
     private DlgCariDokter dokter=new DlgCariDokter(null,false);
-    private String kodekamar="",namakamar="",tglkeluar="",jamkeluar="",finger="",json;
+    private String kodekamar="",namakamar="",tglkeluar="",jamkeluar="",finger="",bangsal="",json;
     private ObjectMapper mapper= new ObjectMapper();
     private JsonNode root;
     
@@ -480,6 +484,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         ObatSelamaDiRS = new widget.TextArea();
         jLabel13 = new widget.Label();
         BtnDokter6 = new widget.Button();
+        BtnDokter21 = new widget.Button();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -885,7 +890,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-08-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -899,7 +904,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-08-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1752,7 +1757,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         KetDilanjutkan.setBounds(236, 1081, 270, 23);
 
         Kontrol.setForeground(new java.awt.Color(50, 70, 50));
-        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-06-2025 12:29:30" }));
+        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-08-2025 09:00:57" }));
         Kontrol.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Kontrol.setName("Kontrol"); // NOI18N
         Kontrol.setOpaque(false);
@@ -1868,7 +1873,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
             }
         });
         FormInput.add(BtnDokter19);
-        BtnDokter19.setBounds(72, 1137, 28, 23);
+        BtnDokter19.setBounds(70, 1140, 28, 23);
 
         BtnDokter20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnDokter20.setMnemonic('2');
@@ -1917,6 +1922,21 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         });
         FormInput.add(BtnDokter6);
         BtnDokter6.setBounds(192, 300, 28, 23);
+
+        BtnDokter21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/obat_pulang.png")));
+        BtnDokter21.setMnemonic('2');
+        BtnDokter21.setText("Input Obat Pulang");
+        BtnDokter21.setToolTipText("Alt+2");
+        BtnDokter21.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        BtnDokter21.setName("BtnDokter21"); // NOI18N
+        BtnDokter21.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnDokter21.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDokter21ActionPerformed(evt);
+            }
+        });
+        FormInput.add(BtnDokter21);
+        BtnDokter21.setBounds(790, 1110, 140, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3134,6 +3154,33 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_MnLaporanResumeBPJSActionPerformed
 
+    private void BtnDokter21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter21ActionPerformed
+        if(bangsal.equals("")){
+            if(Sequel.cariIsi("select set_lokasi.asal_stok from set_lokasi").equals("Gunakan Stok Bangsal")){
+                    akses.setkdbangsal(Sequel.cariIsi(
+                    "SELECT kamar.kd_bangsal " +
+                    "FROM kamar_inap " +
+                    "INNER JOIN kamar ON kamar.kd_kamar = kamar_inap.kd_kamar " +
+                    "WHERE kamar_inap.no_rawat = ? " +
+                    "AND kamar_inap.stts_pulang <> 'Pindah Kamar' " +
+                    "LIMIT 1",
+                    TNoRw.getText()
+                )); 
+            }else{
+                akses.setkdbangsal(Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi"));
+            }
+        }else{
+            akses.setkdbangsal(bangsal);
+        }
+        DlgInputResepPulang inputresep=new DlgInputResepPulang(null,false);
+        inputresep.isCek();
+        inputresep.setNoRm(TNoRw.getText(),TNoRM.getText(),TPasien.getText(),"-",dateformat2.format(new Date()).toString(),Sequel.cariIsi("select current_time()"));
+        inputresep.tampil();
+        inputresep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        inputresep.setLocationRelativeTo(internalFrame1);
+        inputresep.setVisible(true);
+    }//GEN-LAST:event_BtnDokter21ActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3167,6 +3214,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.Button BtnDokter19;
     private widget.Button BtnDokter2;
     private widget.Button BtnDokter20;
+    private widget.Button BtnDokter21;
     private widget.Button BtnDokter3;
     private widget.Button BtnDokter5;
     private widget.Button BtnDokter6;

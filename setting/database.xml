@@ -32,6 +32,7 @@
     <entry key="ALARMPERMINTAANRANAP">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="TANGGALMUNDUR">yes</entry>
+	<entry key="TAMPILKANCOPYRESEPDOKTERLAIN">yes</entry>
     <entry key="URLAPIBPJS">https://apijkn.bpjs-kesehatan.go.id/vclaim-rest/</entry>
     <entry key="SECRETKEYAPIBPJS">J+u9Mj3Ivhgc8yJzqT6UKg==</entry>
     <entry key="CONSIDAPIBPJS">wMcfksgP6nrjrI7NkleTWQ==</entry>

@@ -274,6 +274,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         jLabel23 = new widget.Label();
         jLabel24 = new widget.Label();
         Tanggal_Selanjutnya = new widget.Tanggal();
+        ChkStopTerapi = new javax.swing.JCheckBox();
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -313,7 +314,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         LoadHTML.setName("LoadHTML"); // NOI18N
 
         Tanggal1.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2025" }));
+        Tanggal1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2025" }));
         Tanggal1.setDisplayFormat("dd-MM-yyyy");
         Tanggal1.setName("Tanggal1"); // NOI18N
         Tanggal1.setOpaque(false);
@@ -493,7 +494,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -507,7 +508,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -603,7 +604,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         TPasien.setBounds(326, 10, 295, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "29-07-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -744,7 +745,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         scrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         scrollPane1.setName("scrollPane1"); // NOI18N
 
-        PermintaanTerapi.setEditable(false);
+        PermintaanTerapi.setEditable(true);
         PermintaanTerapi.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         PermintaanTerapi.setColumns(20);
         PermintaanTerapi.setRows(5);
@@ -763,7 +764,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         jLabel14.setText("Tanggal Selanjutnya");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(570, 160, 110, 23);
+        jLabel14.setBounds(530, 160, 100, 23);
 
         Program.setHighlighter(null);
         Program.setName("Program"); // NOI18N
@@ -790,7 +791,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         jLabel20.setText("Reasesmen");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(280, 160, 60, 23);
+        jLabel20.setBounds(270, 160, 60, 23);
 
         Reasesmen.setHighlighter(null);
         Reasesmen.setName("Reasesmen"); // NOI18N
@@ -800,7 +801,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             }
         });
         FormInput.add(Reasesmen);
-        Reasesmen.setBounds(350, 160, 190, 23);
+        Reasesmen.setBounds(330, 160, 190, 23);
 
         jLabel22.setText(":");
         jLabel22.setName("jLabel22"); // NOI18N
@@ -816,10 +817,10 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         jLabel24.setText(":");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(280, 160, 70, 23);
+        jLabel24.setBounds(280, 160, 50, 23);
 
         Tanggal_Selanjutnya.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal_Selanjutnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-08-2025" }));
+        Tanggal_Selanjutnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-08-2025" }));
         Tanggal_Selanjutnya.setDisplayFormat("dd-MM-yyyy");
         Tanggal_Selanjutnya.setName("Tanggal_Selanjutnya"); // NOI18N
         Tanggal_Selanjutnya.setOpaque(false);
@@ -829,7 +830,16 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             }
         });
         FormInput.add(Tanggal_Selanjutnya);
-        Tanggal_Selanjutnya.setBounds(680, 160, 90, 23);
+        Tanggal_Selanjutnya.setBounds(630, 160, 90, 23);
+
+        ChkStopTerapi.setName("ChkStopTerapi"); // NOI18N
+        ChkStopTerapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ChkStopTerapiActionPerformed(evt);
+            }
+        });
+        FormInput.add(ChkStopTerapi);
+        ChkStopTerapi.setBounds(720, 160, 20, 21);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -1442,6 +1452,10 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_Tanggal1KeyPressed
 
+    private void ChkStopTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkStopTerapiActionPerformed
+
+    }//GEN-LAST:event_ChkStopTerapiActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -1471,6 +1485,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.CekBox ChkKejadian;
+    private javax.swing.JCheckBox ChkStopTerapi;
     public widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
     private widget.ComboBox Detik;
@@ -1637,8 +1652,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                         rs.getString("tanggal"),
                         rs.getString("no_rawat_layanan"),
                         rs.getString("diagnosa_medis"),
-                        rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)", "; ") + ". " +
-                        rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)", "; "),
+                        rs.getString("tatalaksana").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)", "; "),
+//                        rs.getString("evaluasi").replaceAll("\t", "").replaceAll("(\r\n|\r|\n|\n\r)", "; ")
                         rs.getString("program"),
                         rs.getString("nip"),
                         rs.getString("nama"),
@@ -1916,6 +1931,12 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
 //        } 
 //    }
         private void simpan() {
+            String tglSelanjutnya;
+            if (ChkStopTerapi.isSelected()) {
+                tglSelanjutnya = "0000-00-00"; 
+            } else {
+                tglSelanjutnya = Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + "");
+            }
             if (Sequel.menyimpantf(
                     "layanan_program_kfr",
                     "?,?,?,?,?,?,?", // now has 7 parameters
@@ -1927,7 +1948,9 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                         NIP.getText(),
                         Program.getText(),
                         Reasesmen.getText(), // Assuming this is the input field for reasesmen
-                        Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + "") // Assuming you have a JDateComboBox named TanggalSelanjutnya
+//                      Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + "") // Assuming you have a JDateComboBox named TanggalSelanjutnya
+                        tglSelanjutnya
+
                     }
             ) == true) {
                 tabMode.addRow(new Object[]{
@@ -1945,8 +1968,11 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                     NIP.getText(),
                     NamaPetugas.getText(),
                     Reasesmen.getText(),
-                    Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + "")
+//                    Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + "")
+                    tglSelanjutnya
+
                 });
+                Sequel.mengedittf("reg_periksa","no_rawat=?","stts=?",2,new String[]{"CekDiagnosa",TNoRw.getText()});
                 LCount.setText("" + tabMode.getRowCount());
                 emptTeks();
                 status = true;
