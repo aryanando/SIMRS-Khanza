@@ -1408,6 +1408,18 @@ public final class DlgDataHAIs extends javax.swing.JDialog {
         }
     }
     
+    public void setNoRm2(String norwt, Date tgl1, Date tgl2) {
+        TNoRw.setText(norwt);
+        TCari.setText(norwt);
+        DTPCari1.setDate(tgl1);
+        DTPCari2.setDate(tgl2);
+        isRawat();
+        isPsien();              
+        ChkInput.setSelected(true);
+        isForm();
+        Kamar.setText(Sequel.cariIsi("SELECT kamar.kd_bangsal FROM reg_periksa AS reg INNER JOIN kamar ON kamar.kd_kamar=reg.kd_poli WHERE  reg.kd_poli='IGDK' AND no_rawat=?",TNoRw.getText()));
+    }
+    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);

@@ -485,6 +485,8 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         jLabel13 = new widget.Label();
         BtnDokter6 = new widget.Button();
         BtnDokter21 = new widget.Button();
+        RspIGD = new javax.swing.JButton();
+        FisikIGD = new javax.swing.JButton();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -890,7 +892,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-08-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -904,7 +906,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-08-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1757,7 +1759,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         KetDilanjutkan.setBounds(236, 1081, 270, 23);
 
         Kontrol.setForeground(new java.awt.Color(50, 70, 50));
-        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-08-2025 09:00:57" }));
+        Kontrol.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "17-09-2025 15:31:09" }));
         Kontrol.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Kontrol.setName("Kontrol"); // NOI18N
         Kontrol.setOpaque(false);
@@ -1937,6 +1939,26 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         });
         FormInput.add(BtnDokter21);
         BtnDokter21.setBounds(790, 1110, 140, 23);
+
+        RspIGD.setText("RSP IGD");
+        RspIGD.setName("RspIGD"); // NOI18N
+        RspIGD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RspIGDActionPerformed(evt);
+            }
+        });
+        FormInput.add(RspIGD);
+        RspIGD.setBounds(800, 160, 110, 23);
+
+        FisikIGD.setText("Fisik IGD");
+        FisikIGD.setName("FisikIGD"); // NOI18N
+        FisikIGD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FisikIGDActionPerformed(evt);
+            }
+        });
+        FormInput.add(FisikIGD);
+        FisikIGD.setBounds(800, 220, 110, 23);
 
         scrollInput.setViewportView(FormInput);
 
@@ -3181,6 +3203,72 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
         inputresep.setVisible(true);
     }//GEN-LAST:event_BtnDokter21ActionPerformed
 
+    private void RspIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RspIGDActionPerformed
+    try 
+        {
+            ps = koneksi.prepareStatement(
+                "SELECT igd.rps " +
+                "FROM penilaian_medis_igd AS igd " +
+                "INNER JOIN reg_periksa AS reg ON reg.no_rawat = igd.no_rawat " +
+                "INNER JOIN pegawai AS peg ON peg.nik = igd.kd_dokter " +
+                "WHERE reg.no_rawat = ?"
+            );
+            ps.setString(1, TNoRw.getText());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                KeluhanUtama.setText(rs.getString("rps"));
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : " + ex);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (Exception e) {
+                System.out.println("Cleanup error: " + e);
+            }
+        }
+    }//GEN-LAST:event_RspIGDActionPerformed
+
+    private void FisikIGDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FisikIGDActionPerformed
+    try 
+        {
+            ps = koneksi.prepareStatement(
+                "SELECT igd.ket_fisik, igd.td, igd.nadi, igd.rr, igd.suhu, igd.spo, igd.bb, igd.tb " +
+                "FROM penilaian_medis_igd AS igd " +
+                "INNER JOIN reg_periksa AS reg ON reg.no_rawat = igd.no_rawat " +
+                "INNER JOIN pegawai AS peg ON peg.nik = igd.kd_dokter " +
+                "WHERE reg.no_rawat = ?"
+            );
+            ps.setString(1, TNoRw.getText());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                StringBuilder sb = new StringBuilder();
+                sb.append("Ket Fisik: ").append(rs.getString("ket_fisik")).append("\n");
+                sb.append("TD: ").append(rs.getString("td")).append("\n");
+                sb.append("Nadi: ").append(rs.getString("nadi")).append("\n");
+                sb.append("RR: ").append(rs.getString("rr")).append("\n");
+                sb.append("Suhu: ").append(rs.getString("suhu")).append("\n");
+                sb.append("SpO₂: ").append(rs.getString("spo")).append("\n");
+                sb.append("BB: ").append(rs.getString("bb")).append("\n");
+                sb.append("TB: ").append(rs.getString("tb"));
+
+                PemeriksaanFisik.setText(sb.toString());
+            }
+
+        } catch (Exception ex) {
+            System.out.println("Notifikasi : " + ex);
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (ps != null) ps.close();
+            } catch (Exception e) {
+                System.out.println("Cleanup error: " + e);
+            }
+        }
+    }//GEN-LAST:event_FisikIGDActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -3240,6 +3328,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.TextBox DiagnosaUtama;
     private widget.TextArea Diet;
     private widget.TextArea Edukasi;
+    private javax.swing.JButton FisikIGD;
     private widget.PanelBiasa FormInput;
     private widget.TextArea HasilLaborat;
     private widget.TextArea JalannyaPenyakit;
@@ -3286,6 +3375,7 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
     private widget.TextBox ProsedurSekunder2;
     private widget.TextBox ProsedurSekunder3;
     private widget.TextBox ProsedurUtama;
+    private javax.swing.JButton RspIGD;
     private widget.ScrollPane Scroll;
     private widget.TextBox TCari;
     private widget.TextBox TNoRM;

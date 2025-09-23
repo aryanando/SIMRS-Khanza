@@ -215,6 +215,9 @@ import surat.SuratTidakHamil;
  *
  * @author dosen
  */
+//add import 
+import laporan.DlgDataHAIs;
+
 public final class DlgIGD extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
@@ -708,7 +711,9 @@ public final class DlgIGD extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        //Addon
+        ppDataHAIs = new javax.swing.JMenuItem();
+        
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnDataRM = new javax.swing.JMenu();
         MnRMIGD = new javax.swing.JMenu();
@@ -3980,6 +3985,24 @@ public final class DlgIGD extends javax.swing.JDialog {
         MenuInputData.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MenuInputData.setName("MenuInputData"); // NOI18N
         MenuInputData.setPreferredSize(new java.awt.Dimension(250, 26));
+        
+//      add
+        ppDataHAIs.setBackground(new java.awt.Color(255, 255, 254));
+        ppDataHAIs.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        ppDataHAIs.setForeground(new java.awt.Color(50, 50, 50));
+        ppDataHAIs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        ppDataHAIs.setText("Data HAIs");
+        ppDataHAIs.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        ppDataHAIs.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        ppDataHAIs.setName("ppDataHAIs"); // NOI18N
+        ppDataHAIs.setPreferredSize(new java.awt.Dimension(225, 26));
+        ppDataHAIs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ppDataHAIsBtnPrintActionPerformed(evt);
+            }
+        });
+        MenuInputData.add(ppDataHAIs);
+//
 
         MnDiagnosa.setBackground(new java.awt.Color(255, 255, 254));
         MnDiagnosa.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -7114,6 +7137,22 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         }
     }//GEN-LAST:event_MnBarcodeActionPerformed
 
+    private void ppDataHAIsBtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ppDataHAIsBtnPrintActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else{
+            DlgDataHAIs hais=new DlgDataHAIs(null,false);
+            hais.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            hais.setLocationRelativeTo(internalFrame1);
+            hais.emptTeks();
+            hais.isCek();
+            hais.setNoRm2(TNoRw.getText(),new Date(),new Date()); 
+            hais.tampil();
+            hais.setVisible(true);
+        } 
+    }//GEN-LAST:event_ppDataHAIsBtnPrintActionPerformed
+    
     private void MnDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnDiagnosaActionPerformed
         if(TPasien.getText().trim().equals("")){
             JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu pasien...!!!");
@@ -11963,6 +12002,9 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             dialog.setVisible(true);
         });
     }
+    
+    //Addon    
+    private javax.swing.JMenuItem ppDataHAIs;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox AsalRujukan;

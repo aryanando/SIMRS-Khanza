@@ -188,7 +188,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         NadiSetelahTransfer.setDocument(new batasInput((int)5).getKata(NadiSetelahTransfer));
         RRSetelahTransfer.setDocument(new batasInput((int)5).getKata(RRSetelahTransfer));
         SuhuSetelahTransfer.setDocument(new batasInput((int)5).getKata(SuhuSetelahTransfer));
-        AdviceDPJP.setDocument(new batasInput((int)200).getKata(AdviceDPJP));
+//        AdviceDPJP.setDocument(new batasInput((int)200).getKata(AdviceDPJP));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
@@ -680,7 +680,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         jLabel11.setBounds(740, 10, 30, 23);
 
         TanggalMasuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalMasuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025 15:42:10" }));
+        TanggalMasuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025 17:58:51" }));
         TanggalMasuk.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalMasuk.setName("TanggalMasuk"); // NOI18N
         TanggalMasuk.setOpaque(false);
@@ -699,7 +699,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         label12.setBounds(201, 40, 55, 23);
 
         TanggalPindah.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalPindah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025 15:42:10" }));
+        TanggalPindah.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025 17:58:51" }));
         TanggalPindah.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TanggalPindah.setName("TanggalPindah"); // NOI18N
         TanggalPindah.setOpaque(false);
@@ -1366,7 +1366,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         scrollPane7.setViewportView(AdviceDPJP);
 
         FormInput.add(scrollPane7);
-        scrollPane7.setBounds(90, 620, 350, 63);
+        scrollPane7.setBounds(90, 620, 770, 63);
 
         jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel54.setText("Advice DPJP :");
@@ -1415,7 +1415,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -1429,7 +1429,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-09-2025" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
