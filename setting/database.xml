@@ -35,13 +35,9 @@
     <entry key="ALARMPERMINTAANRANAP">yes</entry>
     <entry key="MENUTRANSPARAN">yes</entry>
     <entry key="TANGGALMUNDUR">yes</entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	<entry key="TAMPILKANCOPYRESEPDOKTERLAIN">yes</entry>
-=======
->>>>>>> master
-=======
->>>>>>> master
+
     <entry key="URLAPIBPJS">https://apijkn.bpjs-kesehatan.go.id/vclaim-rest/</entry>
     <entry key="SECRETKEYAPIBPJS">J+u9Mj3Ivhgc8yJzqT6UKg==</entry>
     <entry key="CONSIDAPIBPJS">wMcfksgP6nrjrI7NkleTWQ==</entry>
@@ -188,10 +184,6 @@
     <entry key="SFTPMANDIRIPORT">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="SFTPMANDIRIUSER">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="SFTPMANDIRIPAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> master
     <entry key="URLFINGERPRINTBPJS">https://fp.bpjs-kesehatan.go.id/finger-rest/</entry>
 	<entry key="URLAPLIKASIFINGERPRINTBPJS">C:\Program Files (x86)\Aplikasi Sidik Jari BPJS Kesehatan\After.exe</entry>
 	<entry key="USERFINGERPRINTBPJS">DMZQzo44Q5ibqbKTHA49UA==</entry>
@@ -206,13 +198,6 @@
     <entry key="SFTPFILEESIGNUSER">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="SFTPFILEESIGNPAS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
     <entry key="SFTPFILEESIGNFOLDER">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-<<<<<<< HEAD
-	<entry key="HOSTDUTAPARKING">5k7+C7EnUw9nUv2Nix+DBA==</entry>
-    <entry key="DATABASEDUTAPARKING">PvMIHTTN+Nnyzfbt2jiUvg==</entry>
-    <entry key="PORTDUTAPARKING">nioxtijcpDaKSUiUiP5FAg==</entry>
-    <entry key="USERDUTAPARKING">kMR3WfAwUK6MbhCyydxa0g==</entry>
-    <entry key="PASSAPIESIGN">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-=======
     <entry key="URLAPIESIGN">https://esign.jemberkab.go.id/api/sign/pdf</entry>
     <entry key="USERNAMEAPIESIGN">6yTePH8GEKfAhUM7NDvztQ==</entry>
     <entry key="PASSAPIESIGN">44oB160TXymkmgkKCmrabg==</entry>
@@ -229,8 +214,5 @@
     <entry key="DATABASEDUTAPARKING">PvMIHTTN+Nnyzfbt2jiUvg==</entry>
     <entry key="PORTDUTAPARKING">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USERDUTAPARKING">kMR3WfAwUK6MbhCyydxa0g==</entry>
->>>>>>> master
     <entry key="PASDUTAPARKING">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-=======
->>>>>>> master
 </properties>

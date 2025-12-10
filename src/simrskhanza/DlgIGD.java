@@ -5261,6 +5261,29 @@ public final class DlgIGD extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null,"Pasien sedang dalam masa perawatan di kamar inap..!!");
             TNoRM.requestFocus();
         }else{
+            int hit = Sequel.cariInteger(
+                "SELECT COUNT(*) " +
+                "FROM pasien " +
+                "INNER JOIN reg_periksa ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
+                "WHERE reg_periksa.tgl_registrasi BETWEEN DATE_SUB(CURDATE(), INTERVAL 30 DAY) AND CURDATE() " +
+                "AND reg_periksa.kd_pj IN ('BPJ','A07','A11') " +
+                "AND pasien.no_rkm_medis = ?",
+                TNoRM.getText()
+            );
+            if (hit > 0) {
+                int opt = JOptionPane.showConfirmDialog(
+                    null,
+                    "Pasien ada indikasi readmisi (≤30 hari). Apakah lanjut?",
+                    "Konfirmasi Readmisi",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE
+                );
+                if (opt == JOptionPane.NO_OPTION || opt == JOptionPane.CLOSED_OPTION) {
+                    TNoRM.requestFocus();
+                    return; // stop proses jika pilih 'No'
+                }
+                // Jika 'Yes' -> lanjut ke proses registrasi di bawah
+            }
             ceksukses=false;
             switch (TStatus.getText()) {
                 case "Baru":

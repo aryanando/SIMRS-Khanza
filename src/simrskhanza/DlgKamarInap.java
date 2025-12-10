@@ -6134,17 +6134,73 @@ public class DlgKamarInap extends javax.swing.JDialog {
                             kdkamar.requestFocus();
                             break;
                         case "KOSONG":
-                            if(Sequel.menyimpantf("kamar_inap","'"+norawat.getText()+"','"+
-                                    kdkamar.getText()+"','"+TTarif.getText()+"','"+
-                                    diagnosaawal.getText()+"','"+
-                                    diagnosaakhir.getText()+"','"+
-                                    CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+"','"+
-                                    cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','0000-00-00','00:00:00','"+TJmlHari.getText()+"','"+
-                                    ttlbiaya.getText()+"','-'","No.Rawat")==true){
-                                Sequel.mengedit("reg_periksa","no_rawat='"+norawat.getText()+"'","status_lanjut='Ranap'");
-                                Sequel.mengedit("kamar","kd_kamar='"+kdkamar.getText()+"'","status='ISI'");                
-                                emptTeks();  
-                                tampil(); 
+                            PreparedStatement ps = null;
+                            ResultSet rs = null;
+
+                            try {
+                                ps = koneksi.prepareStatement(
+                                    "SELECT " +
+                                    "CASE WHEN triase.no_rawat IS NULL THEN 0 ELSE 1 END AS ada_triase, " +
+                                    "CASE WHEN medis_igd.no_rawat IS NULL THEN 0 ELSE 1 END AS ada_medis_igd, "+ 
+                                    "CASE WHEN perawat_igd.no_rawat IS NULL THEN 0 ELSE 1 END AS ada_perawat_igd, "+ 
+                                    "CASE WHEN transfer.no_rawat IS NULL THEN 0 ELSE 1 END AS ada_transfer_px " +
+                                    "FROM reg_periksa AS reg " +
+                                    "LEFT JOIN data_triase_igd AS triase ON triase.no_rawat = reg.no_rawat " +
+                                    "LEFT JOIN penilaian_medis_igd AS medis_igd ON medis_igd.no_rawat = reg.no_rawat "+ 
+                                    "LEFT JOIN penilaian_awal_keperawatan_igd AS perawat_igd ON perawat_igd.no_rawat = reg.no_rawat "+ 
+                                    "LEFT JOIN transfer_pasien_antar_ruang AS transfer ON transfer.no_rawat = reg.no_rawat " +
+                                    "WHERE reg.no_rawat = ?"
+                                );
+
+                                ps.setString(1, norawat.getText());
+                                rs = ps.executeQuery();
+
+                                if (rs.next()) {
+                                    int adaTriase = rs.getInt("ada_triase");
+                                    int adaMedisIgd = rs.getInt("ada_medis_igd");
+                                    int adaPerawatIgd = rs.getInt("ada_perawat_igd");
+                                    int adaTransferPx = rs.getInt("ada_transfer_px");
+
+                                    // Cek wajib dua-duanya terisi
+                                    if (adaTriase == 1 && adaMedisIgd == 1 && adaPerawatIgd == 1 && adaTransferPx == 1) {
+                                        if(Sequel.menyimpantf("kamar_inap","'"+norawat.getText()+"','"+
+                                                kdkamar.getText()+"','"+TTarif.getText()+"','"+
+                                                diagnosaawal.getText()+"','"+
+                                                diagnosaakhir.getText()+"','"+
+                                                CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+"','"+
+                                                cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+"','0000-00-00','00:00:00','"+TJmlHari.getText()+"','"+
+                                                ttlbiaya.getText()+"','-'","No.Rawat")==true){
+                                            Sequel.mengedit("reg_periksa","no_rawat='"+norawat.getText()+"'","status_lanjut='Ranap'");
+                                            Sequel.mengedit("kamar","kd_kamar='"+kdkamar.getText()+"'","status='ISI'");                
+                                            emptTeks();  
+                                            tampil(); 
+                                        }
+                                    } else {
+                                        // Tampilkan warning sesuai bagian yang kosong
+                                        String pesan = "Data belum lengkap:\n";
+
+                                        if (adaTriase == 0) {
+                                            pesan += "- Triase IGD belum diisi\n";
+                                        }
+                                        if (adaMedisIgd == 0) {
+                                            pesan += "- Penilaian Medis IGD belum diisi\n";
+                                        }
+                                        if (adaPerawatIgd == 0) {
+                                            pesan += "- Penilaian Keperawatan IGD belum diisi\n";
+                                        }
+                                        if (adaTransferPx == 0) {
+                                            pesan += "- Transfer Antar Pasien belum diisi\n";
+                                        }
+
+                                        JOptionPane.showMessageDialog(null, pesan, "Data Tidak Lengkap", JOptionPane.WARNING_MESSAGE);
+                                        return; // stop proses
+                                    }
+                                }
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            } finally {
+//                                System.out.println("Error: " + e);
                             }   
                             break;
                     }
@@ -6156,10 +6212,30 @@ public class DlgKamarInap extends javax.swing.JDialog {
                 }else if(diagnosaakhir.getText().equals("")){
                     Valid.textKosong(diagnosaakhir,"Diagnosa Akhir");
                 }else{
+                    int adaResume = Sequel.cariInteger(
+                        "SELECT CASE WHEN ranap.no_rawat IS NULL THEN 0 ELSE 1 END AS ada_resume " +
+                        "FROM reg_periksa AS reg " +
+                        "LEFT JOIN resume_pasien_ranap AS ranap ON ranap.no_rawat = reg.no_rawat " +
+                        "WHERE reg.no_rawat = ?",
+                        norawat.getText()
+                    );
+
+                    if (adaResume == 0) {
+                        JOptionPane.showMessageDialog(
+                            null,
+                            "Resume pasien rawat inap belum dibuat.\n" +
+                            "Silakan lengkapi resume pasien sebelum memulangkan.",
+                            "Resume Belum Ada",
+                            JOptionPane.WARNING_MESSAGE
+                        );
+                        return; // stop, jangan lanjut pulangkan pasien
+                    }
+
                     if(Sequel.mengedittf("kamar_inap","no_rawat='"+norawat.getText()+"' and kd_kamar='"+kdkamar.getText()+"' and tgl_masuk='"+TIn.getText()+"' and jam_masuk='"+JamMasuk.getText()+"'",
                             "tgl_keluar='"+CmbTahun.getSelectedItem()+"-"+CmbBln.getSelectedItem()+"-"+CmbTgl.getSelectedItem()+
                             "',trf_kamar='"+TTarif.getText()+"',jam_keluar='"+cmbJam.getSelectedItem()+":"+cmbMnt.getSelectedItem()+":"+cmbDtk.getSelectedItem()+
                             "',ttl_biaya='"+ttlbiaya.getText()+"',stts_pulang='"+cmbStatus.getSelectedItem()+"',diagnosa_akhir='"+diagnosaakhir.getText()+"',lama='"+TJmlHari.getText()+"'")==true){
+                        
                         if(tabMode.getRowCount()>1){
                             try {
                                 if(tbKamIn.getValueAt(tbKamIn.getSelectedRow()+1,0).toString().equals("")){
