@@ -365,28 +365,6 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         tbDetailPermintaanResepPulang.setDefaultRenderer(Object.class, new WarnaTable());
         
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        pilihTab();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        pilihTab();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        pilihTab();
-                    }
-                }
-            });
-        }
         
         try {
             aktifkanparsial=koneksiDB.AKTIFKANBILLINGPARSIAL();
@@ -505,6 +483,9 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
             public void windowDeactivated(java.awt.event.WindowEvent evt) {
                 formWindowDeactivated(evt);
             }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
         });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Peresepan Obat Oleh Dokter ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
@@ -527,7 +508,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel20);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-09-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -541,7 +522,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
         panelisi2.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "01-09-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1792,7 +1773,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         resep.MatikanJam();
                         resep.setNoRm(NoRawat,Valid.SetTgl2(TglPeresepan),JamPeresepan.substring(0,2),JamPeresepan.substring(3,5),JamPeresepan.substring(6,8),KodeDokter,DokterPeresep,"ralan");
                         resep.isCek();
-                        resep.tampilobat(NoResep);
+                        resep.tampilobat3(NoResep);
                         TeksKosong();
                         resep.setVisible(true);                         
                     }                    
@@ -1830,7 +1811,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         resep.MatikanJam();
                         resep.setNoRm(NoRawat,Valid.SetTgl2(TglPeresepan),JamPeresepan.substring(0,2),JamPeresepan.substring(3,5),JamPeresepan.substring(6,8),KodeDokter,DokterPeresep,"ranap");
                         resep.isCek();
-                        resep.tampilobat(NoResep);
+                        resep.tampilobat3(NoResep);
                         TeksKosong();
                         resep.setVisible(true);                          
                     }                    
@@ -1865,7 +1846,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         permintaan.setLocationRelativeTo(internalFrame1);
                         permintaan.isCek();
                         permintaan.setNoRm(NoRawat,DTPCari1.getDate()); 
-                        permintaan.tampilObat(NoResep);
+                        permintaan.tampilObat2(NoResep);
                         permintaan.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                         TeksKosong();
@@ -1902,7 +1883,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                         permintaan.setLocationRelativeTo(internalFrame1);
                         permintaan.isCek();
                         permintaan.setNoRm(NoRawat,DTPCari1.getDate()); 
-                        permintaan.tampilObat(NoResep);
+                        permintaan.tampilObat2(NoResep);
                         permintaan.setVisible(true);
                         this.setCursor(Cursor.getDefaultCursor());
                         TeksKosong();
@@ -1928,7 +1909,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
     private void BtnRekapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRekapActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgResepObat resep=new DlgResepObat(null,false);
-        resep.tampil();
+        resep.tampil2();
         resep.emptTeks();
         resep.isCek();
         resep.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
@@ -2335,7 +2316,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             form.setLocationRelativeTo(internalFrame1);
                             form.isCek();
                             form.setNoRm3(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ralan");
-                            form.tampilPO();
+                            form.tampilPO3();
                             form.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
@@ -2366,7 +2347,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             form.setLocationRelativeTo(internalFrame1);
                             form.isCek();
                             form.setNoRm2(NoRawat,DTPCari1.getDate(),DTPCari2.getDate(),"ranap");
-                            form.tampilPO();
+                            form.tampilPO3();
                             form.setVisible(true);
                             this.setCursor(Cursor.getDefaultCursor());
                         }else{
@@ -2421,7 +2402,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             DlgResepPulang reseppulang=new DlgResepPulang(null,false);
                             reseppulang.isCek();
                             reseppulang.setNoRm(NoRawat,NoRM,Pasien,DTPCari1.getDate(),DTPCari2.getDate());
-                            reseppulang.tampil();
+                            reseppulang.tampil2();
                             reseppulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                             reseppulang.setLocationRelativeTo(internalFrame1);
                             reseppulang.setVisible(true);
@@ -2718,7 +2699,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     form.setLocationRelativeTo(internalFrame1);
                     form.emptTeks();
                     form.setNoRm(NoRawat,NoRM,Pasien);
-                    form.tampil();
                     form.setVisible(true);
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -2835,7 +2815,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -2857,7 +2836,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -2877,7 +2855,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -2897,7 +2874,6 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     resep.setLocationRelativeTo(internalFrame1);
                     resep.setNoRm(NoRawat,KodeDokter,DokterPeresep,NoRM+" "+Pasien);
                     resep.isCek();
-                    resep.tampilobat();
                     resep.setVisible(true); 
                     this.setCursor(Cursor.getDefaultCursor());
                 }
@@ -3223,6 +3199,31 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
             }      
         }
     }//GEN-LAST:event_BtnTelaahResepActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        pilihTab();
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        pilihTab();
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        pilihTab();
+                    }
+                }
+            });
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
@@ -3752,7 +3753,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgCariObat dlgobt=new DlgCariObat(null,false);
         dlgobt.setNoRm(NoRawat,NoRM,Pasien,TglPeresepan,JamPeresepan);
         dlgobt.isCek();
-        dlgobt.tampilobat2(NoResep);
+        dlgobt.tampilobat3(NoResep);
         dlgobt.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgobt.setLocationRelativeTo(internalFrame1);
         TeksKosong();
@@ -3788,7 +3789,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgCariObat2 dlgobt2=new DlgCariObat2(null,false);
         dlgobt2.setNoRm(NoRawat,NoRM,Pasien,Valid.SetTgl2(TglPeresepan));
         dlgobt2.isCek();
-        dlgobt2.tampilobat2(NoResep);
+        dlgobt2.tampilobat3(NoResep);
         dlgobt2.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgobt2.setLocationRelativeTo(internalFrame1);
         TeksKosong();
@@ -3810,7 +3811,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgInputStokPasien dlgstok=new DlgInputStokPasien(null,false);
         dlgstok.setNoRm(NoRawat,NoRM+" "+Pasien);
         dlgstok.isCek();
-        dlgstok.tampil2(NoResep);
+        dlgstok.tampil3(NoResep);
         dlgstok.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgstok.setLocationRelativeTo(internalFrame1);
         TeksKosong();
@@ -3832,7 +3833,7 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
         DlgInputResepPulang dlgresepulang=new DlgInputResepPulang(null,false);
         dlgresepulang.setNoRm(NoRawat,NoRM,Pasien,"-",DTPCari1.getSelectedItem().toString(),Sequel.cariIsi("select current_time()"));
         dlgresepulang.isCek();
-        dlgresepulang.tampil2(NoResep);
+        dlgresepulang.tampil3(NoResep);
         dlgresepulang.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         dlgresepulang.setLocationRelativeTo(internalFrame1);
         TeksKosong();
@@ -5630,9 +5631,24 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
 
                 detik = nol_detik + Integer.toString(nilai_detik);
                 if(detik.equals("05")){
-                    resepbaru=0;
                     if(formalarm.contains("ralan")){
                         tampil();
+                    }
+                }else if(detik.equals("15")){
+                    if(formalarm.contains("ranap")){
+                        tampil3();
+                    }
+                }else if(detik.equals("25")){
+                    if(formalarm.contains("ranap")){
+                        tampil5();
+                    }
+                }else if(detik.equals("35")){
+                    if(formalarm.contains("ranap")){
+                        tampil7();
+                    }
+                }else if(detik.equals("45")){
+                    resepbaru=0;
+                    if(formalarm.contains("ralan")){
                         for(i=0;i<tbResepRalan.getRowCount();i++){
                             if(tbResepRalan.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
@@ -5641,21 +5657,16 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     }
 
                     if(formalarm.contains("ranap")){
-                        tampil3();
                         for(i=0;i<tbResepRanap.getRowCount();i++){
                             if(tbResepRanap.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
                             }
                         }
-                        
-                        tampil5();
                         for(i=0;i<tbPermintaanStok.getRowCount();i++){
                             if(tbPermintaanStok.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
                             }
                         }
-                        
-                        tampil7();
                         for(i=0;i<tbPermintaanResepPulang.getRowCount();i++){
                             if(tbPermintaanResepPulang.getValueAt(i,7).toString().equals("Belum Terlayani")){
                                 resepbaru++;
