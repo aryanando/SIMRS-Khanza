@@ -1641,7 +1641,7 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString())){
+                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
@@ -1705,11 +1705,12 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString())){
-                        ganti();
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
-                    }
+//                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString())){
+//                        ganti();
+//                    }else{
+//                        JOptionPane.showMessageDialog(null,"Harus salah satu petugas sesuai user login..!!");
+//                    }
+                    ganti();    
                 }
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
