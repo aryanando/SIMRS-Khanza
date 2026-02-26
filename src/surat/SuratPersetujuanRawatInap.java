@@ -5,6 +5,7 @@
 
 package surat;
 
+import java.awt.event.WindowListener;
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -15,8 +16,8 @@ import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -26,8 +27,13 @@ import java.sql.ResultSet;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.SwingUtilities;
+import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -49,7 +55,9 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private int i=0;
-    private DlgCariPetugas petugas=new DlgCariPetugas(null,false);
+    private DlgCariPetugas petugas;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private volatile boolean ceksukses = false;
     private StringBuilder htmlContent;
     private String finger="",lokasifile="";
     
@@ -123,7 +131,8 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
         
         TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));    
-        NIP.setDocument(new batasInput((byte)20).getKata(NIP));  
+        KdPetugas.setDocument(new batasInput((byte)20).getKata(KdPetugas));  
+        // NIP.setDocument(new batasInput((byte)20).getKata(NIP)); 
         NoSurat.setDocument(new batasInput((byte)20).getKata(NoSurat));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         NamaPJ.setDocument(new batasInput((byte)50).getKata(NamaPJ));
@@ -132,32 +141,8 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         NamaKeluarga.setDocument(new batasInput((int)130).getKata(NamaKeluarga));
         AlamatPj.setDocument(new batasInput((int)100).getKata(AlamatPj));  
         NoTelp.setDocument(new batasInput((byte)30).getKata(NoTelp));     
-//        Pembiayaan.setDocument(new batasInput((byte)100).getKata(Pembiayaan)); 
-//        Catatan.setDocument(new batasInput((byte)250).getKata(Catatan)); 
-        
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        tampil();
-                    }
-                }
-            });
-        }
-        
+        Pembiayaan.setDocument(new batasInput((byte)30).getKata(Pembiayaan));    
+        //Catatan.setDocument(new batasInput((byte)250).getKata(Catatan));
         petugas.addWindowListener(new WindowListener() {
             @Override
             public void windowOpened(WindowEvent e) {}
@@ -165,7 +150,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             public void windowClosing(WindowEvent e) {}
             @Override
             public void windowClosed(WindowEvent e) {
-                if(petugas.getTable().getSelectedRow()!= -1){                   
+                if(petugas.getTable().getSelectedRow()!= -1){                  
                     NIP.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
                     NamaPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
                 }  
@@ -179,8 +164,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             public void windowActivated(WindowEvent e) {}
             @Override
             public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
+        });
         ChkInput.setSelected(false);
         isForm();
         
@@ -265,9 +249,9 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         jLabel17 = new widget.Label();
         LahirPasien = new widget.TextBox();
         jLabel18 = new widget.Label();
-        NIP = new widget.TextBox();
-        NamaPetugas = new widget.TextBox();
-        btnPetugas = new widget.Button();
+        KdPetugas = new widget.TextBox();
+        NmPetugas = new widget.TextBox();
+        BtnPetugas = new widget.Button();
         jLabel16 = new widget.Label();
         Tanggal = new widget.Tanggal();
         jLabel14 = new widget.Label();
@@ -315,10 +299,14 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Persetujuan Rawat Inap ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
-        internalFrame1.setMinimumSize(new java.awt.Dimension(573, 276));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -490,7 +478,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -504,7 +492,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -559,11 +547,11 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 305));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 265));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 250));
+        FormInput.setPreferredSize(new java.awt.Dimension(100, 165));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -601,7 +589,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         jLabel8.setText(":");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(440, 150, 10, 23);
+        jLabel8.setBounds(0, 180, 130, 23);
 
         NamaPJ.setName("NamaPJ"); // NOI18N
         NamaPJ.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -615,7 +603,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         jLabel9.setText("Pendidikan :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(190, 120, 60, 23);
+        jLabel9.setBounds(285, 120, 80, 23);
 
         PendidikanPJ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "TS", "TK", "SD", "SMP", "SMA", "SLTA/SEDERAJAT", "D1", "D2", "D3", "D4", "S1", "S2", "S3", "-" }));
         PendidikanPJ.setName("PendidikanPJ"); // NOI18N
@@ -625,7 +613,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(PendidikanPJ);
-        PendidikanPJ.setBounds(250, 120, 130, 23);
+        PendidikanPJ.setBounds(369, 120, 140, 23);
 
         jLabel10.setText("Nama :");
         jLabel10.setName("jLabel10"); // NOI18N
@@ -645,7 +633,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(Hubungan);
-        Hubungan.setBounds(450, 150, 110, 23);
+        Hubungan.setBounds(134, 180, 110, 23);
 
         AlamatPj.setName("AlamatPj"); // NOI18N
         AlamatPj.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -671,33 +659,33 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         FormInput.add(jLabel18);
         jLabel18.setBounds(170, 40, 55, 23);
 
-        NIP.setEditable(false);
-        NIP.setHighlighter(null);
-        NIP.setName("NIP"); // NOI18N
-        FormInput.add(NIP);
-        NIP.setBounds(229, 40, 100, 23);
+        KdPetugas.setEditable(false);
+        KdPetugas.setHighlighter(null);
+        KdPetugas.setName("KdPetugas"); // NOI18N
+        FormInput.add(KdPetugas);
+        KdPetugas.setBounds(229, 40, 100, 23);
 
-        NamaPetugas.setEditable(false);
-        NamaPetugas.setName("NamaPetugas"); // NOI18N
-        FormInput.add(NamaPetugas);
-        NamaPetugas.setBounds(331, 40, 150, 23);
+        NmPetugas.setEditable(false);
+        NmPetugas.setName("NmPetugas"); // NOI18N
+        FormInput.add(NmPetugas);
+        NmPetugas.setBounds(331, 40, 150, 23);
 
-        btnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        btnPetugas.setMnemonic('2');
-        btnPetugas.setToolTipText("ALt+2");
-        btnPetugas.setName("btnPetugas"); // NOI18N
-        btnPetugas.addActionListener(new java.awt.event.ActionListener() {
+        BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
+        BtnPetugas.setMnemonic('2');
+        BtnPetugas.setToolTipText("ALt+2");
+        BtnPetugas.setName("BtnPetugas"); // NOI18N
+        BtnPetugas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPetugasActionPerformed(evt);
+                BtnPetugasActionPerformed(evt);
             }
         });
-        btnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
+        BtnPetugas.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPetugasKeyPressed(evt);
+                BtnPetugasKeyPressed(evt);
             }
         });
-        FormInput.add(btnPetugas);
-        btnPetugas.setBounds(483, 40, 28, 23);
+        FormInput.add(BtnPetugas);
+        BtnPetugas.setBounds(483, 40, 28, 23);
 
         jLabel16.setText("Tanggal :");
         jLabel16.setName("jLabel16"); // NOI18N
@@ -706,7 +694,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         jLabel16.setBounds(0, 40, 70, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-07-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-02-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -742,7 +730,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         jLabel15.setText("No.KTP/SIM :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(10, 120, 70, 23);
+        jLabel15.setBounds(0, 120, 100, 23);
 
         NoKTP.setName("NoKTP"); // NOI18N
         NoKTP.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -751,7 +739,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoKTP);
-        NoKTP.setBounds(80, 120, 110, 23);
+        NoKTP.setBounds(104, 120, 160, 23);
 
         NoTelp.setName("NoTelp"); // NOI18N
         NoTelp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -760,17 +748,17 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(NoTelp);
-        NoTelp.setBounds(430, 120, 130, 23);
+        NoTelp.setBounds(583, 120, 150, 23);
 
         jLabel20.setText("No.Telp :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(380, 120, 50, 23);
+        jLabel20.setBounds(509, 120, 70, 23);
 
         jLabel22.setText(":");
         jLabel22.setName("jLabel22"); // NOI18N
         FormInput.add(jLabel22);
-        jLabel22.setBounds(640, 120, 10, 23);
+        jLabel22.setBounds(-2, 150, 90, 23);
 
         RuangDipilih.setName("RuangDipilih"); // NOI18N
         RuangDipilih.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -779,18 +767,18 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(RuangDipilih);
-        RuangDipilih.setBounds(660, 120, 90, 23);
+        RuangDipilih.setBounds(92, 150, 230, 23);
 
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel23.setText("Ruang Dipilih");
         jLabel23.setName("jLabel23"); // NOI18N
         FormInput.add(jLabel23);
-        jLabel23.setBounds(580, 120, 80, 23);
+        jLabel23.setBounds(16, 150, 80, 23);
 
         jLabel12.setText("Kelas :");
         jLabel12.setName("jLabel12"); // NOI18N
         FormInput.add(jLabel12);
-        jLabel12.setBounds(0, 150, 50, 23);
+        jLabel12.setBounds(340, 150, 50, 23);
 
         KelasDipilih.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP" }));
         KelasDipilih.setName("KelasDipilih"); // NOI18N
@@ -800,12 +788,12 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(KelasDipilih);
-        KelasDipilih.setBounds(50, 150, 70, 23);
+        KelasDipilih.setBounds(394, 150, 115, 23);
 
         jLabel13.setText("Hak Kelas Pasien :");
         jLabel13.setName("jLabel13"); // NOI18N
         FormInput.add(jLabel13);
-        jLabel13.setBounds(123, 150, 87, 23);
+        jLabel13.setBounds(504, 150, 110, 23);
 
         HakKelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Kelas 1", "Kelas 2", "Kelas 3", "Kelas Utama", "Kelas VIP", "Kelas VVIP", "-" }));
         HakKelas.setName("HakKelas"); // NOI18N
@@ -815,18 +803,18 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(HakKelas);
-        HakKelas.setBounds(210, 150, 115, 23);
+        HakKelas.setBounds(618, 150, 115, 23);
 
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel24.setText("Persetujuan Terhadap");
         jLabel24.setName("jLabel24"); // NOI18N
         FormInput.add(jLabel24);
-        jLabel24.setBounds(330, 150, 110, 23);
+        jLabel24.setBounds(16, 180, 120, 23);
 
         jLabel25.setText("Pembayaran/Pembiayaan Secara :");
         jLabel25.setName("jLabel25"); // NOI18N
         FormInput.add(jLabel25);
-        jLabel25.setBounds(10, 180, 170, 23);
+        jLabel25.setBounds(269, 180, 180, 23);
 
         Pembiayaan.setName("Pembiayaan"); // NOI18N
         Pembiayaan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -835,12 +823,12 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(Pembiayaan);
-        Pembiayaan.setBounds(180, 180, 230, 23);
+        Pembiayaan.setBounds(453, 180, 280, 23);
 
         jLabel26.setText(":");
         jLabel26.setName("jLabel26"); // NOI18N
         FormInput.add(jLabel26);
-        jLabel26.setBounds(0, 220, 190, 23);
+        jLabel26.setBounds(1, 210, 190, 23);
 
         NamaKeluarga.setName("NamaKeluarga"); // NOI18N
         NamaKeluarga.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -849,20 +837,19 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             }
         });
         FormInput.add(NamaKeluarga);
-        NamaKeluarga.setBounds(200, 220, 540, 23);
+        NamaKeluarga.setBounds(195, 210, 538, 23);
 
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel27.setText("Nama & Alamat Keluarga Terdekat");
         jLabel27.setName("jLabel27"); // NOI18N
         FormInput.add(jLabel27);
-        jLabel27.setBounds(20, 220, 180, 23);
+        jLabel27.setBounds(16, 210, 180, 23);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel28.setText("Catan Untuk Pasien :");
         jLabel28.setName("jLabel28"); // NOI18N
         FormInput.add(jLabel28);
         jLabel28.setBounds(420, 180, 110, 23);
-
         Catatan.setName("Catatan"); // NOI18N
         Catatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1004,22 +991,22 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             Valid.textKosong(NoTelp,"Nomor Telp");
         }else if(NoKTP.getText().trim().equals("")){
             Valid.textKosong(NoKTP,"Nomor KTP");
-        }else if(NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(NamaPetugas,"Petugas");
+        }else if(NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(NmPetugas,"Petugas");
         }else if(NoSurat.getText().trim().equals("")){
             Valid.textKosong(NoSurat,"No.Persetujuan");
         }else{
-            if(Sequel.menyimpantf("surat_persetujuan_rawat_inap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",16,new String[]{
+            if(Sequel.menyimpantf("surat_persetujuan_rawat_inap","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",15,new String[]{
                     NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
                     PendidikanPJ.getSelectedItem().toString(),AlamatPj.getText(),NoTelp.getText(),RuangDipilih.getText(),
                     KelasDipilih.getSelectedItem().toString(),Hubungan.getSelectedItem().toString(),HakKelas.getSelectedItem().toString(),
-                    NamaKeluarga.getText(),Pembiayaan.getText(),Catatan.getText(),NIP.getText()
+                    NamaKeluarga.getText(),Pembiayaan.getText(),Catatan.getText(),KdPetugas.getText()
                 })==true){
                 tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
                     Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),PendidikanPJ.getSelectedItem().toString(),
                     AlamatPj.getText(),NoTelp.getText(),RuangDipilih.getText(),KelasDipilih.getSelectedItem().toString(),Hubungan.getSelectedItem().toString(),
-                    HakKelas.getSelectedItem().toString(),NamaKeluarga.getText(),Pembiayaan.getText(),Catatan.getText(),NIP.getText(),NamaPetugas.getText()
+                    HakKelas.getSelectedItem().toString(),NamaKeluarga.getText(),Pembiayaan.getText(),Catatan.getText(),KdPetugas.getText(),NmPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -1052,7 +1039,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString())){
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -1083,8 +1070,8 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             Valid.textKosong(NoTelp,"Nomor Telp");
         }else if(NoKTP.getText().trim().equals("")){
             Valid.textKosong(NoKTP,"Nomor KTP");
-        }else if(NamaPetugas.getText().trim().equals("")){
-            Valid.textKosong(NamaPetugas,"Petugas");
+        }else if(NmPetugas.getText().trim().equals("")){
+            Valid.textKosong(NmPetugas,"Petugas");
         }else if(NoSurat.getText().trim().equals("")){
             Valid.textKosong(NoSurat,"No.Persetujuan");
         }else{
@@ -1092,7 +1079,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(NIP.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -1113,7 +1100,6 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnEditKeyPressed
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        petugas.dispose();
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
@@ -1181,8 +1167,8 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
+                           "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+ 
+                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
                         "</tr>");
                 }
                 LoadHTML.setText(
@@ -1252,7 +1238,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
@@ -1265,13 +1251,13 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        tampil();
+        runBackground(() ->tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            tampil();
             TCari.setText("");
+            runBackground(() ->tampil());
         }else{
             Valid.pindah(evt, BtnCari, TPasien);
         }
@@ -1307,17 +1293,41 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_tbObatKeyReleased
 
-    private void btnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasKeyPressed
+    private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
         Valid.pindah(evt,Tanggal,NamaPJ);
-    }//GEN-LAST:event_btnPetugasKeyPressed
+    }//GEN-LAST:event_BtnPetugasKeyPressed
 
-    private void btnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasActionPerformed
-        petugas.emptTeks();
-        petugas.isCek();
-        petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        petugas.setLocationRelativeTo(internalFrame1);
+    private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
+        if (petugas == null || !petugas.isDisplayable()) {
+            petugas=new DlgCariPetugas(null,false);
+            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            petugas.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if(petugas.getTable().getSelectedRow()!= -1){                   
+                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    }  
+                    BtnPetugas.requestFocus();
+                    petugas=null;
+                }
+            });
+
+            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setLocationRelativeTo(internalFrame1);
+        }
+        if (petugas == null) return;
+        if (!petugas.isVisible()) {
+            petugas.isCek();    
+            petugas.emptTeks();
+        }
+        
+        if (petugas.isVisible()) {
+            petugas.toFront();
+            return;
+        }
         petugas.setVisible(true);
-    }//GEN-LAST:event_btnPetugasActionPerformed
+    }//GEN-LAST:event_BtnPetugasActionPerformed
 
     private void AlamatPjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatPjKeyPressed
         Valid.pindah(evt,NamaPJ,NoKTP);
@@ -1352,7 +1362,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void NoSuratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSuratKeyPressed
-        Valid.pindah(evt,btnPetugas,NamaPJ);
+        Valid.pindah(evt,BtnPetugas,NamaPJ);
     }//GEN-LAST:event_NoSuratKeyPressed
 
     private void NoKTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKTPKeyPressed
@@ -1444,9 +1454,30 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
-    private void CatatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_CatatanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CatatanKeyPressed
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        if(koneksiDB.CARICEPAT().equals("aktif")){
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if(TCari.getText().length()>2){
+                        runBackground(() ->tampil());
+                    }
+                }
+            });
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
     * @param args the command line arguments
@@ -1465,6 +1496,8 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private widget.TextBox Catatan;
+    private widget.Label jLabel28;
     private widget.TextBox AlamatPj;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
@@ -1472,11 +1505,11 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     private widget.Button BtnEdit;
     private widget.Button BtnHapus;
     private widget.Button BtnKeluar;
+    private widget.Button BtnPetugas;
     private widget.Button BtnPrint;
     private widget.Button BtnPrint1;
     private widget.Button BtnRefreshPhoto1;
     private widget.Button BtnSimpan;
-    private widget.TextBox Catatan;
     private widget.CekBox ChkAccor;
     private widget.CekBox ChkInput;
     private widget.Tanggal DTPCari1;
@@ -1487,15 +1520,15 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     private widget.ComboBox HakKelas;
     private widget.ComboBox Hubungan;
     private widget.TextBox JK;
+    private widget.TextBox KdPetugas;
     private widget.ComboBox KelasDipilih;
     private widget.Label LCount;
     private widget.TextBox LahirPasien;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
-    private widget.TextBox NIP;
     private widget.TextBox NamaKeluarga;
     private widget.TextBox NamaPJ;
-    private widget.TextBox NamaPetugas;
+    private widget.TextBox NmPetugas;
     private widget.TextBox NoKTP;
     private widget.TextBox NoSurat;
     private widget.TextBox NoTelp;
@@ -1513,7 +1546,6 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.TextBox Umur;
     private widget.Button btnAmbil;
-    private widget.Button btnPetugas;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
@@ -1533,7 +1565,6 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     private widget.Label jLabel25;
     private widget.Label jLabel26;
     private widget.Label jLabel27;
-    private widget.Label jLabel28;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel6;
@@ -1546,7 +1577,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
 
-    public void tampil() {
+    private void tampil() {
         Valid.tabelKosong(tabMode);
         try{
             if(TCari.getText().trim().equals("")){
@@ -1705,7 +1736,9 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         isRawat();
         ChkInput.setSelected(true);
         isForm();
+        runBackground(() ->tampil());
     }
+    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
@@ -1727,12 +1760,12 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
         BtnEdit.setEnabled(akses.getsurat_persetujuan_rawat_inap());
         BtnPrint.setEnabled(akses.getsurat_persetujuan_rawat_inap()); 
         if(akses.getjml2()>=1){
-            NIP.setEditable(false);
-            btnPetugas.setEnabled(false);
-            NIP.setText(akses.getkode());
-            NamaPetugas.setText(petugas.tampil3(NIP.getText()));
-            if(NamaPetugas.getText().equals("")){
-                NIP.setText("");
+            KdPetugas.setEditable(false);
+            BtnPetugas.setEnabled(false);
+            KdPetugas.setText(akses.getkode());
+            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
+            if(NmPetugas.getText().equals("")){
+                KdPetugas.setText("");
                 JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");
             }
         }            
@@ -1744,7 +1777,7 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
             PendidikanPJ.getSelectedItem().toString(),AlamatPj.getText(),NoTelp.getText(),RuangDipilih.getText(),
             KelasDipilih.getSelectedItem().toString(),Hubungan.getSelectedItem().toString(),HakKelas.getSelectedItem().toString(),
-            NamaKeluarga.getText(),Pembiayaan.getText(),Catatan.getText(),NIP.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+            NamaKeluarga.getText(),Pembiayaan.getText(),Catatan.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
@@ -1766,8 +1799,8 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
             tbObat.setValueAt(NamaKeluarga.getText(),tbObat.getSelectedRow(),17);
             tbObat.setValueAt(Pembiayaan.getText(),tbObat.getSelectedRow(),18);
             tbObat.setValueAt(Catatan.getText(), tbObat.getSelectedRow(), 19);
-            tbObat.setValueAt(NIP.getText(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),21);
             emptTeks();
         }
     }
@@ -1833,6 +1866,38 @@ public final class SuratPersetujuanRawatInap extends javax.swing.JDialog {
                 System.out.println("Notif : "+e);
             }
         }
+    }
+    
+    private void runBackground(Runnable task) {
+        if (ceksukses) return;
+        if (executor.isShutdown() || executor.isTerminated()) return;
+        if (!isDisplayable()) return;
+
+        ceksukses = true;
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+
+        try {
+            executor.submit(() -> {
+                try {
+                    task.run();
+                } finally {
+                    ceksukses = false;
+                    SwingUtilities.invokeLater(() -> {
+                        if (isDisplayable()) {
+                            setCursor(Cursor.getDefaultCursor());
+                        }
+                    });
+                }
+            });
+        } catch (RejectedExecutionException ex) {
+            ceksukses = false;
+        }
+    }
+    
+    @Override
+    public void dispose() {
+        executor.shutdownNow();
+        super.dispose();
     }
 }
 
