@@ -11,6 +11,8 @@
  */
 package simrskhanza;
 
+import java.awt.event.WindowListener;
+
 import rekammedis.RMRiwayatPerawatan;
 import surat.SuratKontrol;
 import keuangan.DlgCariPerawatanRanap;
@@ -878,70 +880,70 @@ public final class DlgRawatInap extends javax.swing.JDialog {
         TAdnexaKiri.setDocument(new batasInput((byte)50).getKata(TAdnexaKiri));
         TCavumDouglas.setDocument(new batasInput((byte)50).getKata(TCavumDouglas));
         
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        if(TabRawat.getSelectedIndex()==0){
-                            tampilDr();
-                        }else if(TabRawat.getSelectedIndex()==1){
-                            tampilPr();
-                        }else if(TabRawat.getSelectedIndex()==2){
-                            tampilDrPr();
-                        }else if(TabRawat.getSelectedIndex()==3){
-                            tampilPemeriksaan();
-                        }else if(TabRawat.getSelectedIndex()==4){
-                            tampilPemeriksaanObstetri();
-                        }else if(TabRawat.getSelectedIndex()==5){
-                            tampilPemeriksaanGinekologi();
-                        }else if(TabRawat.getSelectedIndex()==6){
-                            tampilPemeriksaanSbar();
-                        }
-                    }                        
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        if(TabRawat.getSelectedIndex()==0){
-                            tampilDr();
-                        }else if(TabRawat.getSelectedIndex()==1){
-                            tampilPr();
-                        }else if(TabRawat.getSelectedIndex()==2){
-                            tampilDrPr();
-                        }else if(TabRawat.getSelectedIndex()==3){
-                            tampilPemeriksaan();
-                        }else if(TabRawat.getSelectedIndex()==4){
-                            tampilPemeriksaanObstetri();
-                        }else if(TabRawat.getSelectedIndex()==5){
-                            tampilPemeriksaanGinekologi();
-                        }else if(TabRawat.getSelectedIndex()==6){
-                            tampilPemeriksaanSbar();
-                        }
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        if(TabRawat.getSelectedIndex()==0){
-                            tampilDr();
-                        }else if(TabRawat.getSelectedIndex()==1){
-                            tampilPr();
-                        }else if(TabRawat.getSelectedIndex()==2){
-                            tampilDrPr();
-                        }else if(TabRawat.getSelectedIndex()==3){
-                            tampilPemeriksaan();
-                        }else if(TabRawat.getSelectedIndex()==4){
-                            tampilPemeriksaanObstetri();
-                        }else if(TabRawat.getSelectedIndex()==5){
-                            tampilPemeriksaanGinekologi();
-                        }else if(TabRawat.getSelectedIndex()==6){
-                            tampilPemeriksaanSbar();
-                        }
-                    }
-                }
-            });
-        } 
+//        if(koneksiDB.CARICEPAT().equals("aktif")){
+//            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+//                @Override
+//                public void insertUpdate(DocumentEvent e) {
+//                    if(TCari.getText().length()>2){
+//                        if(TabRawat.getSelectedIndex()==0){
+//                            tampilDr();
+//                        }else if(TabRawat.getSelectedIndex()==1){
+//                            tampilPr();
+//                        }else if(TabRawat.getSelectedIndex()==2){
+//                            tampilDrPr();
+//                        }else if(TabRawat.getSelectedIndex()==3){
+//                            tampilPemeriksaan();
+//                        }else if(TabRawat.getSelectedIndex()==4){
+//                            tampilPemeriksaanObstetri();
+//                        }else if(TabRawat.getSelectedIndex()==5){
+//                            tampilPemeriksaanGinekologi();
+//                        }else if(TabRawat.getSelectedIndex()==6){
+//                            tampilPemeriksaanSbar();
+//                        }
+//                    }                        
+//                }
+//                @Override
+//                public void removeUpdate(DocumentEvent e) {
+//                    if(TCari.getText().length()>2){
+//                        if(TabRawat.getSelectedIndex()==0){
+//                            tampilDr();
+//                        }else if(TabRawat.getSelectedIndex()==1){
+//                            tampilPr();
+//                        }else if(TabRawat.getSelectedIndex()==2){
+//                            tampilDrPr();
+//                        }else if(TabRawat.getSelectedIndex()==3){
+//                            tampilPemeriksaan();
+//                        }else if(TabRawat.getSelectedIndex()==4){
+//                            tampilPemeriksaanObstetri();
+//                        }else if(TabRawat.getSelectedIndex()==5){
+//                            tampilPemeriksaanGinekologi();
+//                        }else if(TabRawat.getSelectedIndex()==6){
+//                            tampilPemeriksaanSbar();
+//                        }
+//                    }
+//                }
+//                @Override
+//                public void changedUpdate(DocumentEvent e) {
+//                    if(TCari.getText().length()>2){
+//                        if(TabRawat.getSelectedIndex()==0){
+//                            tampilDr();
+//                        }else if(TabRawat.getSelectedIndex()==1){
+//                            tampilPr();
+//                        }else if(TabRawat.getSelectedIndex()==2){
+//                            tampilDrPr();
+//                        }else if(TabRawat.getSelectedIndex()==3){
+//                            tampilPemeriksaan();
+//                        }else if(TabRawat.getSelectedIndex()==4){
+//                            tampilPemeriksaanObstetri();
+//                        }else if(TabRawat.getSelectedIndex()==5){
+//                            tampilPemeriksaanGinekologi();
+//                        }else if(TabRawat.getSelectedIndex()==6){
+//                            tampilPemeriksaanSbar();
+//                        }
+//                    }
+//                }
+//            });
+//        } 
                 
 //      Recent Soap
         soapakhir.addWindowListener(new WindowListener() {

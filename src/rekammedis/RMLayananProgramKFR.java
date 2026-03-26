@@ -1889,7 +1889,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                 NoPermintaan.getText(),
                 TNoRw.getText(),
                 Valid.SetTgl(Tanggal.getSelectedItem() + "") + " " + Jam.getSelectedItem() + ":" + Menit.getSelectedItem() + ":" + Detik.getSelectedItem(),
-                NIP.getText(),
+                KdPetugas.getText(),
                 Program.getText(),
                 Reasesmen.getText(),
                 Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + ""),
@@ -1907,8 +1907,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
             tbObat.setValueAt(Diagnosa.getText(), tbObat.getSelectedRow(), 8);
             tbObat.setValueAt(PermintaanTerapi.getText(), tbObat.getSelectedRow(), 9);
             tbObat.setValueAt(Program.getText(), tbObat.getSelectedRow(), 10);
-            tbObat.setValueAt(NIP.getText(), tbObat.getSelectedRow(), 11);
-            tbObat.setValueAt(NamaPetugas.getText(), tbObat.getSelectedRow(), 12);
+            tbObat.setValueAt(KdPetugas.getText(), tbObat.getSelectedRow(), 11);
+            tbObat.setValueAt(NmPetugas.getText(), tbObat.getSelectedRow(), 12);
             tbObat.setValueAt(Reasesmen.getText(), tbObat.getSelectedRow(), 13);
             tbObat.setValueAt(Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + ""), tbObat.getSelectedRow(), 14);
 
@@ -1959,7 +1959,7 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                         NoPermintaan.getText(),
                         TNoRw.getText(),
                         Valid.SetTgl(Tanggal.getSelectedItem() + "") + " " + Jam.getSelectedItem() + ":" + Menit.getSelectedItem() + ":" + Detik.getSelectedItem(),
-                        NIP.getText(),
+                        KdPetugas.getText(),
                         Program.getText(),
                         Reasesmen.getText(), // Assuming this is the input field for reasesmen
 //                      Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + "") // Assuming you have a JDateComboBox named TanggalSelanjutnya
@@ -1979,8 +1979,8 @@ public final class RMLayananProgramKFR extends javax.swing.JDialog {
                     Diagnosa.getText(),
                     PermintaanTerapi.getText(),
                     Program.getText(),
-                    NIP.getText(),
-                    NamaPetugas.getText(),
+                    KdPetugas.getText(),
+                    NmPetugas.getText(),
                     Reasesmen.getText(),
 //                    Valid.SetTgl(Tanggal_Selanjutnya.getSelectedItem() + "")
                     tglSelanjutnya

@@ -13,7 +13,7 @@
 package simrskhanza;
 
 //New
-import permintaan.DlgPermintaanRanap2;
+//import permintaan.DlgPermintaanRanap2;
 import rekammedis.RMDataPartograf;
 //
 import bridging.BPJSCekDataIndukKecelakaan;
