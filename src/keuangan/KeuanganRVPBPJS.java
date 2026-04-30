@@ -10,12 +10,12 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.kodebpjs;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -850,7 +850,12 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 myObj.close();
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
-            } 
+            } finally {
+                if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                response = null;
+                root = null;
+            }
+
             if(koderekening.equals("")){
                 JOptionPane.showMessageDialog(null,"Kode akun bayar tidak ditemukan, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
             }else{
@@ -866,7 +871,7 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                                 tabMode.getValueAt(i,10).toString(),"diverifikasi oleh "+KdPetugas.getText(),tabMode.getValueAt(i,1).toString(),koderekening,Piutang_BPJS_RVP,"0",Diskon_Piutang,"0",Piutang_Tidak_Terbayar
                             })==true){
                                 Sequel.mengedit("piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","status='Lunas'");
-                                Sequel.mengedit("detail_piutang_pasien","no_rawat='"+tabMode.getValueAt(i,1).toString()+"'","sisapiutang=0");
+                                Sequel.queryu2("update detail_piutang_pasien set sisapiutang='0' where no_rawat=? and kd_pj=?",2,new String[]{tabMode.getValueAt(i,1).toString(),kodebpjs.getKodeBPJS()});
 
                                 if(Valid.SetAngka(tabMode.getValueAt(i,11).toString())>=100){
                                     Sequel.queryu("delete from tampjurnal");
@@ -2509,6 +2514,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
         } catch (Exception e) {
         }
         
+        if(kodebpjs.getKodeBPJS().equals("")){
+            kodebpjs.SetKodeBPJS();
+        }
+        
         try {
             ps=koneksi.prepareStatement(
                     "select set_nota.tampilkan_administrasi_di_billingranap,set_nota.tampilkan_ppnobat_ralan,set_nota.tampilkan_ppnobat_ranap from set_nota");
@@ -3058,15 +3067,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
-                                Object[] row = new Object[]{
+                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
+                                publish(new Object[]{
                                     false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                                     rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                                     rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
-                                };
-                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                publish(row);
+                                });
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -3101,15 +3109,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
-                                Object[] row = new Object[]{
+                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
+                                publish(new Object[]{
                                     false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                                     rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                                     rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
-                                };
-                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                publish(row);
+                                });
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -3144,15 +3151,14 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                             rs=ps.executeQuery();
                             while(rs.next()){
                                 cicilan=Sequel.cariIsiAngka("SELECT ifnull(SUM(bayar_piutang.besar_cicilan),0) FROM bayar_piutang where bayar_piutang.no_rawat=?",rs.getString("no_rawat"));
-                                Object[] row = new Object[]{
+                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
+                                publish(new Object[]{
                                     false,rs.getString("no_rawat"),rs.getString("no_sep"),rs.getString("tgl_piutang"),rs.getString("namapasien"),
                                     rs.getDouble("totalpiutang"),rs.getDouble("uangmuka"),cicilan,(rs.getDouble("sisapiutang")-cicilan),
                                     rs.getDouble("tarif"),null,0,0,0,rs.getString("status_lanjut"),rs.getDouble("biaya_reg"),0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
                                     0,0,0,0,0,0,0,0,0,0,0,0,0
-                                };
-                                sisapiutang=sisapiutang+rs.getDouble("sisapiutang")-cicilan;
-                                publish(row);
+                                });
                             }
                         } catch (Exception e) {
                             System.out.println("Notif : "+e);
@@ -5230,6 +5236,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -5250,6 +5258,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     } 
 }

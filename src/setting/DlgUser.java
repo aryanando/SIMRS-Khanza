@@ -283,7 +283,9 @@ public class DlgUser extends javax.swing.JDialog {
                 "[B]Data Verifikasi Pengujian Sampel Lab Kesling","[B]Data Validasi Pengujian Sampel Lab Kesling","[B]Rekap Pelayanan Lab Kesling","[B]Pembayaran Pengujian Sampel Lab Kesling",
                 "[M]Skrining CURB-65","[L]Potensi PRB di VClaim","[L]Riwayat Pelayanan Obat Apotek BPJS","[M]Skrining Gizi Kehamilan","[L]Rekap Peserta PRB Apotek BPJS","[P]Serah Terima Anggota Tubuh/Barang",
                 "[R]Jenis Aktivitas Proyek PCRA","[R]Lokasi & Kelompok Risiko Area PCRA","[R]Kelas Risiko/Kelas Pencegahan PCRA","[R]Tindakan Pengendalian PCRA","[R]Identifikasi Risiko Infeksi PCRA",
-                "[R]Identifikasi Risiko Keselamatan PCRA","[R]Identifikasi Risiko Kebakaran PCRA"
+                "[R]Identifikasi Risiko Keselamatan PCRA","[R]Identifikasi Risiko Kebakaran PCRA","[R]Identifikasi Risiko Utilitas PCRA","[L]Daftar Resep Apotek BPJS","[L]Permintaan Resep Iterasi Apotek BPJS",
+                "[R]Pengkajian Risiko Pra Konstruksi/PCRA","[R]Persyaratan Harus Dipenuhi PCRA","[L]Kirim Q.R. Telaah Farmasi Satu Sehat","[L]Kirim Allergy Intolerance Satu Sehat","[M]Konsultasi Perawat",
+                "[M]Jawaban Konsultasi Perawat","[L]Kirim FHIR Smart Klaim BPJS","[L]Mapping Prosedur Smart Klaim BPJS","[L]Mapping Penyakit Smart Klaim BPJS","[P]Persetujuan Bimbingan Rohani & Mental"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -602,6 +604,8 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -615,7 +619,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1184;i++) {
+        for (i = 0; i < 1197;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3621,6 +3625,45 @@ public class DlgUser extends javax.swing.JDialog {
                 case 1183:
                     column.setPreferredWidth(193);
                     break;
+                case 1184:
+                    column.setPreferredWidth(177);
+                    break;
+                case 1185:
+                    column.setPreferredWidth(147);
+                    break;
+                case 1186:
+                    column.setPreferredWidth(207);
+                    break;
+                case 1187:
+                    column.setPreferredWidth(210);
+                    break;
+                case 1188:
+                    column.setPreferredWidth(187);
+                    break;
+                case 1189:
+                    column.setPreferredWidth(203);
+                    break;
+                case 1190:
+                    column.setPreferredWidth(198);
+                    break;
+                case 1191:
+                    column.setPreferredWidth(117);
+                    break;
+                case 1192:
+                    column.setPreferredWidth(162);
+                    break;
+                case 1193:
+                    column.setPreferredWidth(160);
+                    break;
+                case 1194:
+                    column.setPreferredWidth(195);
+                    break;
+                case 1195:
+                    column.setPreferredWidth(194);
+                    break;
+                case 1196:
+                    column.setPreferredWidth(214);
+                    break;
                 default:
                     column.setPreferredWidth(133);
                     break;
@@ -4051,7 +4094,8 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
+                    "'false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -4081,7 +4125,7 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -5312,7 +5356,20 @@ public class DlgUser extends javax.swing.JDialog {
                     "pcra_icra_tindakan_pengendalian='"+tbUser.getValueAt(i,1180).toString()+"',"+
                     "pcra_icra_identifkasi_risiko_infeksi='"+tbUser.getValueAt(i,1181).toString()+"',"+
                     "pcra_icra_identifkasi_risiko_keselamatan='"+tbUser.getValueAt(i,1182).toString()+"',"+
-                    "pcra_icra_identifkasi_risiko_kebakaran='"+tbUser.getValueAt(i,1183).toString()+"'")==true){
+                    "pcra_icra_identifkasi_risiko_kebakaran='"+tbUser.getValueAt(i,1183).toString()+"',"+
+                    "pcra_icra_identifkasi_risiko_utilitas='"+tbUser.getValueAt(i,1184).toString()+"',"+
+                    "bpjs_daftar_resep_apotek='"+tbUser.getValueAt(i,1185).toString()+"',"+
+                    "daftar_permintaan_resep_iterasi_bpjs='"+tbUser.getValueAt(i,1186).toString()+"',"+
+                    "pcra_icra_pengkajian_risiko_prakonstruksi='"+tbUser.getValueAt(i,1187).toString()+"',"+
+                    "pcra_icra_persyaratan_harus_dipenuhi='"+tbUser.getValueAt(i,1188).toString()+"',"+
+                    "satu_sehat_kirim_questionresponse_telaah_farmasi='"+tbUser.getValueAt(i,1189).toString()+"',"+
+                    "satu_sehat_kirim_allergy_intolerance='"+tbUser.getValueAt(i,1190).toString()+"',"+
+                    "konsultasi_perawat='"+tbUser.getValueAt(i,1191).toString()+"',"+
+                    "jawaban_konsultasi_perawat='"+tbUser.getValueAt(i,1192).toString()+"',"+
+                    "bridging_smart_klaim_bpjs='"+tbUser.getValueAt(i,1193).toString()+"',"+
+                    "mapping_prosedur_smart_klaim_bpjs='"+tbUser.getValueAt(i,1194).toString()+"',"+
+                    "mapping_penyakit_smart_klaim_bpjs='"+tbUser.getValueAt(i,1195).toString()+"',"+
+                    "permintaan_binrohtal='"+tbUser.getValueAt(i,1196).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6780,7 +6837,20 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "pcra_icra_tindakan_pengendalian='"+tbUser.getValueAt(barisdicopy,1180).toString()+"',"+
                                         "pcra_icra_identifkasi_risiko_infeksi='"+tbUser.getValueAt(barisdicopy,1181).toString()+"',"+
                                         "pcra_icra_identifkasi_risiko_keselamatan='"+tbUser.getValueAt(barisdicopy,1182).toString()+"',"+
-                                        "pcra_icra_identifkasi_risiko_kebakaran='"+tbUser.getValueAt(barisdicopy,1183).toString()+"'");
+                                        "pcra_icra_identifkasi_risiko_kebakaran='"+tbUser.getValueAt(barisdicopy,1183).toString()+"',"+
+                                        "pcra_icra_identifkasi_risiko_utilitas='"+tbUser.getValueAt(barisdicopy,1184).toString()+"',"+
+                                        "bpjs_daftar_resep_apotek='"+tbUser.getValueAt(barisdicopy,1185).toString()+"',"+
+                                        "daftar_permintaan_resep_iterasi_bpjs='"+tbUser.getValueAt(barisdicopy,1186).toString()+"',"+
+                                        "pcra_icra_pengkajian_risiko_prakonstruksi='"+tbUser.getValueAt(barisdicopy,1187).toString()+"',"+
+                                        "pcra_icra_persyaratan_harus_dipenuhi='"+tbUser.getValueAt(barisdicopy,1188).toString()+"',"+
+                                        "satu_sehat_kirim_questionresponse_telaah_farmasi='"+tbUser.getValueAt(barisdicopy,1189).toString()+"',"+
+                                        "satu_sehat_kirim_allergy_intolerance='"+tbUser.getValueAt(barisdicopy,1190).toString()+"',"+
+                                        "konsultasi_perawat='"+tbUser.getValueAt(barisdicopy,1191).toString()+"',"+
+                                        "jawaban_konsultasi_perawat='"+tbUser.getValueAt(barisdicopy,1192).toString()+"',"+
+                                        "bridging_smart_klaim_bpjs='"+tbUser.getValueAt(barisdicopy,1193).toString()+"',"+
+                                        "mapping_prosedur_smart_klaim_bpjs='"+tbUser.getValueAt(barisdicopy,1194).toString()+"',"+
+                                        "mapping_penyakit_smart_klaim_bpjs='"+tbUser.getValueAt(barisdicopy,1195).toString()+"',"+
+                                        "permintaan_binrohtal='"+tbUser.getValueAt(barisdicopy,1196).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -7114,7 +7184,10 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "user.pembayaran_pengujian_sampel_lab_kesehatan_lingkungan,user.skrining_curb65,user.bpjs_potensi_prb,user.bpjs_riwayat_pelayanan_obat,user.skrining_gizi_kehamilan,"+
                             "user.bpjs_rekap_peserta_prb_apotek,user.serah_terima_anggota_tubuh_barang,user.pcra_icra_jenis_aktivitas_proyek,user.pcra_icra_lokasi_kelompok_risiko_area,"+
                             "user.pcra_icra_kelas_risiko_pencegahan,user.pcra_icra_tindakan_pengendalian,user.pcra_icra_identifkasi_risiko_infeksi,user.pcra_icra_identifkasi_risiko_keselamatan,"+
-                            "user.pcra_icra_identifkasi_risiko_kebakaran from user order by AES_DECRYPT(user.id_user,'nur')");
+                            "user.pcra_icra_identifkasi_risiko_kebakaran,user.pcra_icra_identifkasi_risiko_utilitas,user.bpjs_daftar_resep_apotek,user.daftar_permintaan_resep_iterasi_bpjs,"+
+                            "user.pcra_icra_pengkajian_risiko_prakonstruksi,user.pcra_icra_persyaratan_harus_dipenuhi,user.satu_sehat_kirim_questionresponse_telaah_farmasi,"+
+                            "user.satu_sehat_kirim_allergy_intolerance,user.konsultasi_perawat,user.jawaban_konsultasi_perawat,user.bridging_smart_klaim_bpjs,user.mapping_prosedur_smart_klaim_bpjs,"+
+                            "user.mapping_penyakit_smart_klaim_bpjs,user.permintaan_binrohtal from user order by AES_DECRYPT(user.id_user,'nur')");
                         try {
                             rs=ps.executeQuery();
                             i=0;
@@ -7130,7 +7203,8 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                     if(rs.getString(1).toLowerCase().contains(TCari.getText().toLowerCase())||
                                             user.toLowerCase().contains(TCari.getText().toLowerCase())||
                                             jabatan.toLowerCase().contains(TCari.getText().toLowerCase())){
-                                        Object[] row = new Object[]{rs.getString(1),
+                                        i++;
+                                        publish(new Object[]{rs.getString(1),
                                            user,jabatan,rs.getString(2),
                                            rs.getBoolean("penyakit"),
                                            rs.getBoolean("obat_penyakit"),
@@ -8311,13 +8385,25 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("pcra_icra_tindakan_pengendalian"),
                                            rs.getBoolean("pcra_icra_identifkasi_risiko_infeksi"),
                                            rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan"),
-                                           rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran")
-                                        };
-                                        i++;
-                                        publish(row);
+                                           rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran"),
+                                           rs.getBoolean("pcra_icra_identifkasi_risiko_utilitas"),
+                                           rs.getBoolean("bpjs_daftar_resep_apotek"),
+                                           rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs"),
+                                           rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi"),
+                                           rs.getBoolean("pcra_icra_persyaratan_harus_dipenuhi"),
+                                           rs.getBoolean("satu_sehat_kirim_questionresponse_telaah_farmasi"),
+                                           rs.getBoolean("satu_sehat_kirim_allergy_intolerance"),
+                                           rs.getBoolean("konsultasi_perawat"),
+                                           rs.getBoolean("jawaban_konsultasi_perawat"),
+                                           rs.getBoolean("bridging_smart_klaim_bpjs"),
+                                           rs.getBoolean("mapping_prosedur_smart_klaim_bpjs"),
+                                           rs.getBoolean("mapping_penyakit_smart_klaim_bpjs"),
+                                           rs.getBoolean("permintaan_binrohtal")
+                                        });
                                     }   
                                 } catch (Exception e) {
-                                    Object[] row = new Object[]{rs.getString(1),
+                                    i++;
+                                    publish(new Object[]{rs.getString(1),
                                        "Turn Out","Jabatan",rs.getString(2),
                                        rs.getBoolean("penyakit"),
                                        rs.getBoolean("obat_penyakit"),
@@ -9498,10 +9584,21 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("pcra_icra_tindakan_pengendalian"),
                                        rs.getBoolean("pcra_icra_identifkasi_risiko_infeksi"),
                                        rs.getBoolean("pcra_icra_identifkasi_risiko_keselamatan"),
-                                       rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran")
-                                    };
-                                    i++;
-                                    publish(row);
+                                       rs.getBoolean("pcra_icra_identifkasi_risiko_kebakaran"),
+                                       rs.getBoolean("pcra_icra_identifkasi_risiko_utilitas"),
+                                       rs.getBoolean("bpjs_daftar_resep_apotek"),
+                                       rs.getBoolean("daftar_permintaan_resep_iterasi_bpjs"),
+                                       rs.getBoolean("pcra_icra_pengkajian_risiko_prakonstruksi"),
+                                       rs.getBoolean("pcra_icra_persyaratan_harus_dipenuhi"),
+                                       rs.getBoolean("satu_sehat_kirim_questionresponse_telaah_farmasi"),
+                                       rs.getBoolean("satu_sehat_kirim_allergy_intolerance"),
+                                       rs.getBoolean("konsultasi_perawat"),
+                                       rs.getBoolean("jawaban_konsultasi_perawat"),
+                                       rs.getBoolean("bridging_smart_klaim_bpjs"),
+                                       rs.getBoolean("mapping_prosedur_smart_klaim_bpjs"),
+                                       rs.getBoolean("mapping_penyakit_smart_klaim_bpjs"),
+                                       rs.getBoolean("permintaan_binrohtal")
+                                    });
                                 }                                             
                              }
                         } catch (Exception e) {
@@ -9551,5 +9648,4 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
             TPass.setText(tbUser.getValueAt(i,3).toString());            
         }
     }
-
 }
