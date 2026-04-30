@@ -2,3 +2,5 @@
 /dist/
 /setting/
 /setting/*
+/nbproject/*
+/nbproject/private/
