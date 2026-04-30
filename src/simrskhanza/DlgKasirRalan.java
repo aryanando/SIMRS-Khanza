@@ -11,6 +11,9 @@
  */
 
 package simrskhanza;
+//bARU
+import rekammedis.RMObservasiPasienDialisis;
+
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekSuplesiJasaRaharja;
 import rekammedis.RMRiwayatPerawatan;
@@ -13535,6 +13538,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }//GEN-LAST:event_MnRiwayatPerawatanICareNoKartuActionPerformed
 
+    
     private void MnPenilaianAwalMedisRalanKulitKelaminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianAwalMedisRalanKulitKelaminActionPerformed
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
@@ -13608,6 +13612,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
             }
         }
     }//GEN-LAST:event_MnRiwayatPerawatanICareNoKartu1ActionPerformed
+
 
     private void MnPenilaianAwalMedisRalanHemodialisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnPenilaianAwalMedisRalanHemodialisaActionPerformed
         if(tabModekasir.getRowCount()==0){
@@ -14933,6 +14938,29 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }
     
+    private void MnObservasiDialisisActionPerformed(java.awt.event.ActionEvent evt) {
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            TCari.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMObservasiPasienDialisis form=new RMObservasiPasienDialisis(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                form.tampil();
+                this.setCursor(Cursor.getDefaultCursor());
+            }
+        }
+    }   
+    
     private void MnCatatanObservasiHemodialisaActionPerformed(java.awt.event.ActionEvent evt) {
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
@@ -15987,6 +16015,12 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Table tbKasirRalan;
     private widget.Table tbKasirRalan2;
     // End of variables declaration//GEN-END:variables
+    
+//  Baru  
+    private javax.swing.JMenuItem MnObservasiDialisis;  
+    private javax.swing.JMenu MnDialisis;
+    
+    
     private javax.swing.JMenuItem MnPenilaianPreInduksi,MnHasilPemeriksaanUSG,MnHasilPemeriksaanUSGUrologi,MnHasilPemeriksaanUSGGynecologi,MnHasilPemeriksaanEKG,MnSudahTerbitSEP,MnPenatalaksanaanTerapiOkupasi,MnHasilPemeriksaanUSGNeonatus,
                                   MnHasilEndoskopiFaringLaring,MnHasilEndoskopiHidung,MnHasilEndoskopiTelinga,MnPenilaianPasienImunitasRendah,MnCatatanKeseimbanganCairan,MnCatatanObservasiCHBP,MnCatatanObservasiInduksiPersalinan,
                                   MnPermintaanKonsultasiMedik,MnDataOperasi,MnDataKonsultasiMedik,MnSkriningMerokokUsiaSekolahRemaja,MnSkriningKekerasanPadaWanita,MnSkriningObesitas,MnSkriningRisikoKankerPayudara,MnSkriningRisikoKankerParu,
@@ -17090,6 +17124,31 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }
     
     private void initKasirRalan() {
+//      Baru
+        MnObservasiDialisis = new javax.swing.JMenuItem();
+        MnObservasiDialisis.setBackground(new java.awt.Color(255, 255, 254));
+        MnObservasiDialisis.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnObservasiDialisis.setForeground(new java.awt.Color(50, 50, 50));
+        MnObservasiDialisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnObservasiDialisis.setText("Observasi Pasien Dialisis");
+        MnObservasiDialisis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnObservasiDialisis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnObservasiDialisis.setName("MnObservasiPasienDialisis");
+        MnObservasiDialisis.setPreferredSize(new java.awt.Dimension(210, 26));
+        MnObservasiDialisis.addActionListener(this::MnObservasiDialisisActionPerformed);
+//        
+//        
+        MnDialisis = new javax.swing.JMenu();
+        MnDialisis.setBackground(new java.awt.Color(255, 255, 254));
+        MnDialisis.setForeground(new java.awt.Color(50, 50, 50));
+        MnDialisis.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnDialisis.setText("Dialisis");
+        MnDialisis.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        MnDialisis.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnDialisis.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnDialisis.setName("MnDialisis"); 
+        MnDialisis.setPreferredSize(new java.awt.Dimension(200, 26));
+        
         MnPenilaianPreInduksi = new javax.swing.JMenuItem();
         MnPenilaianPreInduksi.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianPreInduksi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
@@ -18239,6 +18298,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnDataRM.add(MnGizi);
         MnDataRM.add(MnTransferAntarRuang);
         MnDataRM.add(MnEdukasi);
+        MnDataRM.add(MnDialisis);
         MnDataRM.add(ppResume);
         MnDataRM.add(ppRiwayat);
         MnDataRM.add(ppDeteksiDIniCorona);
@@ -18256,5 +18316,12 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSuratPersetujuan.add(MnPenolakanAnjuranMedis);
         MnSuratPersetujuan.add(MnPersetujuanPemeriksaanHIV);
         MnSuratPersetujuan.add(MnPernyataanMemilihDPJP);
+        
+        MnDialisis.add(MnHemodialisa);
+        MnDialisis.add(MnPenilaianAwalMedisRalanHemodialisa);
+        MnDialisis.add(MnObservasiDialisis);
+        MnDialisis.add(MnCatatanObservasiHemodialisa);
+        MnDialisis.add(MnCatatanCairanHemodialisa);
+        
     }
 }

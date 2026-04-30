@@ -616,6 +616,11 @@ public class DlgPasienMati extends javax.swing.JDialog {
         DTPTglMRS.setDisplayFormat("dd-MM-yyyy");
         DTPTglMRS.setName("DTPTglMRS"); // NOI18N
         DTPTglMRS.setOpaque(false);
+        DTPTglMRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DTPTglMRSActionPerformed(evt);
+            }
+        });
         DTPTglMRS.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 DTPTglMRSKeyPressed(evt);
@@ -1278,6 +1283,10 @@ private void MnCetakSuratMatiActionPerformed(java.awt.event.ActionEvent evt) {//
     private void RuanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RuanganKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_RuanganKeyPressed
+
+    private void DTPTglMRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DTPTglMRSActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DTPTglMRSActionPerformed
 
     /**
     * @param args the command line arguments
