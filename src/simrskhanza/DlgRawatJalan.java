@@ -1242,6 +1242,102 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
                 } 
             }
         });
+
+        //      Recent Soap
+        soapakhir.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(soapakhir.getTable().getSelectedRow()!= -1){   
+                    TKeluhan.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),2).toString());
+                    TPemeriksaan.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),3).toString());
+                    TPenilaian.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),4).toString());
+                    TindakLanjut.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),5).toString());
+                    TInstruksi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),6).toString());
+                    TEvaluasi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),7).toString());
+                    TSuhu.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),9).toString());
+                    TTensi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),10).toString());
+                    TBerat.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),11).toString());
+                    TTinggi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),12).toString());
+                    TRespirasi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),13).toString());
+                    TNadi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),14).toString());
+                    SpO2.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),15).toString());
+                    TGCS.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),16).toString());
+                    TAlergi.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),17).toString());
+                    LingkarPerut.setText(soapakhir.getTable().getValueAt(soapakhir.getTable().getSelectedRow(),18).toString());
+                    TEvaluasi.requestFocus();                    
+                }          
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai2.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgRawatJalan")){
+                    if(pegawai2.getTable().getSelectedRow()!= -1){  
+                        if(TabRawat.getSelectedIndex()==8){
+                        KdPeg2.setText(pegawai2.getTable().getValueAt(pegawai2.getTable().getSelectedRow(),0).toString());
+                        TPegawai2.setText(pegawai2.getTable().getValueAt(pegawai2.getTable().getSelectedRow(),1).toString());
+                        Jabatan1.setText(pegawai2.getTable().getValueAt(pegawai2.getTable().getSelectedRow(),3).toString());
+                        KdPeg2.requestFocus();                    
+                    }   
+                }
+            }
+                
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
+        
+        pegawai2.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {}
+            @Override
+            public void windowClosing(WindowEvent e) {}
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if(akses.getform().equals("DlgRawatJalan")){
+                    if(pegawai2.getTable().getSelectedRow()!= -1){  
+                        if(TabRawat.getSelectedIndex()==9){
+                        KdPeg4.setText(pegawai2.getTable().getValueAt(pegawai2.getTable().getSelectedRow(),0).toString());
+                        TPegawai4.setText(pegawai2.getTable().getValueAt(pegawai2.getTable().getSelectedRow(),1).toString());
+                        Jabatan2.setText(pegawai2.getTable().getValueAt(pegawai2.getTable().getSelectedRow(),3).toString());
+                        KdPeg4.requestFocus();                    
+                    }   
+                }
+            }
+                
+            }
+            @Override
+            public void windowIconified(WindowEvent e) {}
+            @Override
+            public void windowDeiconified(WindowEvent e) {}
+            @Override
+            public void windowActivated(WindowEvent e) {}
+            @Override
+            public void windowDeactivated(WindowEvent e) {}
+        });
         
         ChkInput.setSelected(false);
         isForm(); 
