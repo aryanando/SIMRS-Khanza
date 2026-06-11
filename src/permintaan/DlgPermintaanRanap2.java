@@ -1132,10 +1132,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
         kamar.load();
         kamar.isCek();
         kamar.emptTeks();
-        kamar.tampil();
+        kamar.tampil2();
         kamar.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
         kamar.setLocationRelativeTo(internalFrame1);
-        kamar.setVisible(true);        
+        kamar.setVisible(true);      
     }//GEN-LAST:event_btnKamarActionPerformed
 
     private void DiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaKeyPressed
@@ -1350,7 +1350,6 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 resume.setVisible(true);
                 resume.emptTeks();
                 resume.setNoRm(NoRw.getText(),DTPCari2.getDate());
-                resume.tampil();
                 this.setCursor(Cursor.getDefaultCursor());
             }else{
                 JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data...!!!!");

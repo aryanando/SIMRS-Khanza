@@ -2304,7 +2304,8 @@ public final class RMTransferPasienAntarRuang extends javax.swing.JDialog {
                 "INNER JOIN transfer_pasien_antar_ruang ON reg_periksa.no_rawat = transfer_pasien_antar_ruang.no_rawat " +
                 "INNER JOIN petugas AS petugasmenyerahkan ON transfer_pasien_antar_ruang.nip_menyerahkan = petugasmenyerahkan.nip " +
                 "INNER JOIN petugas AS petugasmenerima ON transfer_pasien_antar_ruang.nip_menerima = petugasmenerima.nip " +
-                "WHERE transfer_pasien_antar_ruang.no_rawat = '" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "' " +
+                "WHERE transfer_pasien_antar_ruang.no_rawat = '" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "' "
+                        + "and transfer_pasien_antar_ruang.tanggal_masuk =  '" + tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() + "' " +
                 "ORDER BY transfer_pasien_antar_ruang.tanggal_pindah",
                 param
             );

@@ -769,7 +769,7 @@ public final class ValidasiSBARRalan extends javax.swing.JDialog {
         }else if(TBackground.getText().equals("")){
             Valid.textKosong(TBackground,"B (BACKGROUND)");
         }else{
-            if(Sequel.menyimpantf("validasi_pemeriksaan_sbar_ralan_ralan","?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",12,new String[]{
+            if(Sequel.menyimpantf("validasi_pemeriksaan_sbar_ralan","?,?,?,?,?,?,?,?,?,?,?,?","No.Rawat",12,new String[]{
                     TNoRw.getText(),TanggalPemeriksaan.getText(),JamPemeriksaan.getText(),TSituation.getText(),TBackground.getText(),TAssesment.getText(),TRecomendation.getText(), 
                     KodeDokter1.getText(),KodeDokter.getText(),tanggalNow.format(new Date()),jamNow.format(new Date()),"Validasi",
                 })==true){

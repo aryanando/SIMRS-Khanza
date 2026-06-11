@@ -36751,13 +36751,13 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                     append("</tr>").
                                                     append("<tr>").
                                                         append("<td align='center'>1.</td>").
-                                                        append("<td>C (Confusion) : Disorientasi / Bingung ?</td>").
+                                                        append("<td>C (Confusion) : Uji mental ≤ nilai 8 atau Uji mental > 8  ? ?</td>").
                                                         append("<td align='center'>").append(rs2.getString("pernyataancurb651")).append("</td>").
                                                         append("<td align='center'>").append(rs2.getString("nilai_curb651")).append("</td>").
                                                     append("</tr>").
                                                     append("<tr>").
                                                         append("<td align='center'>2.</td>").
-                                                        append("<td>U (Urea) : BUN > 20 mg/dL atau Urea > 7 mmol/L ?</td>").
+                                                        append("<td>U (Urea) : Ureum > 40 mg/dL Ureum ≤ 40 mg/dL ?</td>").
                                                         append("<td align='center'>").append(rs2.getString("pernyataancurb652")).append("</td>").
                                                         append("<td align='center'>").append(rs2.getString("nilai_curb652")).append("</td>").
                                                     append("</tr>").

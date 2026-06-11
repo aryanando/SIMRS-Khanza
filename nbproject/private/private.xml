@@ -19,6 +19,30 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/simrskhanza/DlgRawatJalan.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/simrskhanza/DlgKasirRalan.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMTransferPasienAntarRuang.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/fungsi/sekuel.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMSkriningCURB65.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMDataResumePasienRanap.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMEdukasiPasienKeluargaRawatJalan.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/simrskhanza/DlgRawatInap.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/surat/SuratPersetujuanUmum.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/inventory/DlgPeresepanDokter.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/permintaan/DlgPermintaanRanap2.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/simrskhanza/frmUtama.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMDataResumePasien.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/simrskhanza/DlgIGD.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/simrskhanza/SIMRSKhanza.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMPelaksanaanInformasiEdukasiModif.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMDataPartograf.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/simrskhanza/DlgKamarInap.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/RMLayananKedokteranFisikRehabilitasi.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/permintaan/DlgPermintaanRanap.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/rekammedis/ValidasiTBAK.java</file>
+            <file>file:/D:/Project/Java/SIMRS-Khanza/src/inventory/DlgResepObat.java</file>
+        </group>
     </open-files>
 </project-private>

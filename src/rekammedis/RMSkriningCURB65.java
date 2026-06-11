@@ -64,7 +64,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
     private String finger="";
     private StringBuilder htmlContent;
     private String TANGGALMUNDUR = "yes";
-    private DlgCariPegawai pegawai = new DlgCariPegawai(null, false);
+    private DlgCariPegawai pegawai;
 
     /**
      * Creates new form DlgRujuk
@@ -469,7 +469,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -483,7 +483,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -604,7 +604,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-02-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -920,7 +920,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         jSeparator1.setBounds(0, 70, 807, 1);
 
         jLabel110.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel110.setText("C (Confusion) : Disorientasi / Bingung ?");
+        jLabel110.setText("C (Confusion) : Uji mental ≤ nilai 8 atau Uji mental > 8  ?");
         jLabel110.setName("jLabel110"); // NOI18N
         FormInput.add(jLabel110);
         jLabel110.setBounds(62, 90, 450, 23);
@@ -1316,35 +1316,66 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
 //        pegawai.setVisible(true);
     }//GEN-LAST:event_btnPetugasActionPerformed
     private void BtnPetugasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPetugasActionPerformed
-        if (petugas == null || !petugas.isDisplayable()) {
-            petugas=new DlgCariPetugas(null,false);
-            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-            petugas.addWindowListener(new WindowAdapter() {
+//        if (petugas == null || !petugas.isDisplayable()) {
+//            petugas=new DlgCariPetugas(null,false);
+//            petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+//            petugas.addWindowListener(new WindowAdapter() {
+//                @Override
+//                public void windowClosed(WindowEvent e) {
+//                    if(petugas.getTable().getSelectedRow()!= -1){                   
+//                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
+//                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+//                    }  
+//                    BtnPetugas.requestFocus();
+//                    petugas=null;
+//                }
+//            });
+//
+//            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+//            petugas.setLocationRelativeTo(internalFrame1);
+//        }
+//        if (petugas == null) return;
+//        if (!petugas.isVisible()) {
+//            petugas.isCek();    
+//            petugas.emptTeks();
+//        }
+//        
+//        if (petugas.isVisible()) {
+//            petugas.toFront();
+//            return;
+//        }
+//        petugas.setVisible(true);
+        
+        if (pegawai == null || !pegawai.isDisplayable()) {
+            pegawai=new DlgCariPegawai(null,false);
+            pegawai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            pegawai.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    if(petugas.getTable().getSelectedRow()!= -1){                   
-                        KdPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                        NmPetugas.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
+                    if(pegawai.getTable().getSelectedRow()!= -1){                   
+                        KdPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),0).toString());
+                        NmPetugas.setText(pegawai.getTable().getValueAt(pegawai.getTable().getSelectedRow(),1).toString());
                     }  
                     BtnPetugas.requestFocus();
-                    petugas=null;
+                    pegawai=null;
                 }
             });
 
-            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-            petugas.setLocationRelativeTo(internalFrame1);
+            pegawai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            pegawai.setLocationRelativeTo(internalFrame1);
         }
-        if (petugas == null) return;
-        if (!petugas.isVisible()) {
-            petugas.isCek();    
-            petugas.emptTeks();
+        if (pegawai == null) return;
+        if (!pegawai.isVisible()) {
+//            pegawai.isCek();    
+            pegawai.emptTeks();
         }
         
-        if (petugas.isVisible()) {
-            petugas.toFront();
+        if (pegawai.isVisible()) {
+            pegawai.toFront();
             return;
         }
-        petugas.setVisible(true); 
+        pegawai.setVisible(true);
+        
     }//GEN-LAST:event_BtnPetugasActionPerformed
 
     private void BtnPetugasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPetugasKeyPressed
@@ -1730,8 +1761,8 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         BtnEdit.setEnabled(akses.getskrining_curb65());
         BtnPrint.setEnabled(akses.getskrining_curb65()); 
         if(akses.getjml2()>=1){
-            KdPetugas.setEditable(false);
-            BtnPetugas.setEnabled(false);
+//            KdPetugas.setEditable(false);
+//            BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
             NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
             // if(NmPetugas.getText().equals("")){

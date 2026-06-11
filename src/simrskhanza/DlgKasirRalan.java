@@ -13,6 +13,7 @@
 package simrskhanza;
 //bARU
 import rekammedis.RMObservasiPasienDialisis;
+import rekammedis.RMPelaksanaanInformasiEdukasiModif;
 
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekSuplesiJasaRaharja;
@@ -15029,6 +15030,28 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         }
     }
     
+    private void MnPelaksanaanInformasiEdukasiModifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanCekGDSActionPerformed
+        if(tabModekasir.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
+            //TNoReg.requestFocus();
+        }else if(TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            tbKasirRalan.requestFocus();
+        }else{
+            if(tbKasirRalan.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPelaksanaanInformasiEdukasiModif form=new RMPelaksanaanInformasiEdukasiModif(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());  
+            }                
+        }
+    }
+    
     private void MnObservasiDialisisActionPerformed(java.awt.event.ActionEvent evt) {
         if(tabModekasir.getRowCount()==0){
             JOptionPane.showMessageDialog(null,"Maaf, table masih kosong...!!!!");
@@ -16174,7 +16197,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     // End of variables declaration//GEN-END:variables
     
 //  Baru  
-    private javax.swing.JMenuItem MnObservasiDialisis;  
+    private javax.swing.JMenuItem MnObservasiDialisis,MnPelaksanaanInformasiEdukasiModif;  
     private javax.swing.JMenu MnDialisis;
     
     
@@ -17349,6 +17372,18 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnDialisis.setName("MnDialisis"); 
         MnDialisis.setPreferredSize(new java.awt.Dimension(200, 26));
         
+        MnPelaksanaanInformasiEdukasiModif = new javax.swing.JMenuItem();
+        MnPelaksanaanInformasiEdukasiModif.setBackground(new java.awt.Color(255, 255, 254));
+        MnPelaksanaanInformasiEdukasiModif.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPelaksanaanInformasiEdukasiModif.setForeground(new java.awt.Color(50, 50, 50));
+        MnPelaksanaanInformasiEdukasiModif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPelaksanaanInformasiEdukasiModif.setText("Pelaksanaan Kie");
+        MnPelaksanaanInformasiEdukasiModif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPelaksanaanInformasiEdukasiModif.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPelaksanaanInformasiEdukasiModif.setName("MnPelaksanaanInformasiEdukasi");
+        MnPelaksanaanInformasiEdukasiModif.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPelaksanaanInformasiEdukasiModif.addActionListener(this::MnPelaksanaanInformasiEdukasiModifActionPerformed);
+        
         MnPenilaianPreInduksi = new javax.swing.JMenuItem();
         MnPenilaianPreInduksi.setBackground(new java.awt.Color(255, 255, 254));
         MnPenilaianPreInduksi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
@@ -18521,6 +18556,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         
         MnEdukasi.add(MnEdukasiPasienKeluarga);
         MnEdukasi.add(MnPelaksanaanInformasiEdukasi);
+        MnEdukasi.add(MnPelaksanaanInformasiEdukasiModif);
         
         MnRehabMedik.add(MnPenilaianFisioterapi);
         MnRehabMedik.add(MnPenilaianTerapiWicara);

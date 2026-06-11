@@ -11,6 +11,9 @@
  */
 
 package simrskhanza;
+//Baru
+import rekammedis.RMPelaksanaanInformasiEdukasiModif;
+
 import bridging.BPJSCekDataIndukKecelakaan;
 import bridging.BPJSCekSuplesiJasaRaharja;
 import rekammedis.RMRiwayatPerawatan;
@@ -11620,6 +11623,27 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
             }
         }
     }
+    private void MnPelaksanaanInformasiModifEdukasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCatatanCekGDSActionPerformed
+        if(tabMode.getRowCount()==0){
+            JOptionPane.showMessageDialog(null,"Maaf, data registrasi sudah habis...!!!!");
+            TNoRM.requestFocus();
+        }else if(TPasien.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu data pasien dengan menklik data pada table...!!!");
+            tbPetugas.requestFocus();
+        }else{
+            if(tbPetugas.getSelectedRow()!= -1){
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                RMPelaksanaanInformasiEdukasiModif form=new RMPelaksanaanInformasiEdukasiModif(null,false);
+                form.isCek();
+                form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                form.setLocationRelativeTo(internalFrame1);
+                form.setVisible(true);
+                form.emptTeks();
+                form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+                this.setCursor(Cursor.getDefaultCursor());  
+            }
+        }
+    }
     
     private void MnSkriningAnemiaActionPerformed(java.awt.event.ActionEvent evt) {
         if(tabMode.getRowCount()==0){
@@ -12387,7 +12411,7 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
     
     //Addon    
     private javax.swing.JMenuItem ppDataHAIs;
-
+    private javax.swing.JMenuItem MnPelaksanaanInformasiEdukasiModif;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextBox AsalRujukan;
     private widget.Button BtnAll;
@@ -13848,6 +13872,18 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnPelaksanaanInformasiEdukasi.setPreferredSize(new java.awt.Dimension(230, 26));
         MnPelaksanaanInformasiEdukasi.addActionListener(this::MnPelaksanaanInformasiEdukasiActionPerformed);
         
+        MnPelaksanaanInformasiEdukasiModif = new javax.swing.JMenuItem();
+        MnPelaksanaanInformasiEdukasiModif.setBackground(new java.awt.Color(255, 255, 254));
+        MnPelaksanaanInformasiEdukasiModif.setFont(new java.awt.Font("Tahoma", 0, 11));
+        MnPelaksanaanInformasiEdukasiModif.setForeground(new java.awt.Color(50, 50, 50));
+        MnPelaksanaanInformasiEdukasiModif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); 
+        MnPelaksanaanInformasiEdukasiModif.setText("Pelaksanaan Kie");
+        MnPelaksanaanInformasiEdukasiModif.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        MnPelaksanaanInformasiEdukasiModif.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        MnPelaksanaanInformasiEdukasiModif.setName("MnPelaksanaanInformasiEdukasiModif");
+        MnPelaksanaanInformasiEdukasiModif.setPreferredSize(new java.awt.Dimension(230, 26));
+        MnPelaksanaanInformasiEdukasiModif.addActionListener(this::MnPelaksanaanInformasiModifEdukasiActionPerformed);
+        
         MnSkriningAnemia = new javax.swing.JMenuItem();
         MnSkriningAnemia.setBackground(new java.awt.Color(255, 255, 254));
         MnSkriningAnemia.setFont(new java.awt.Font("Tahoma", 0, 11));
@@ -14336,7 +14372,8 @@ private void MnLaporanRekapKunjunganBulananPoliActionPerformed(java.awt.event.Ac
         MnRMSkriningRisikoKanker.add(MnSkriningKankerKolorektal);
         
         MnEdukasi.add(MnEdukasiPasienKeluarga);
-        MnEdukasi.add(MnPelaksanaanInformasiEdukasi);
+//        MnEdukasi.add(MnPelaksanaanInformasiEdukasi);
+//        MnEdukasi.add(MnPelaksanaanInformasiEdukasiModif);
         
         MnTindakan.add(MnDataOperasi);
         

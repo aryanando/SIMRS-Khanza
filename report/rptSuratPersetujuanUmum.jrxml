@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.0.0  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="612" pageHeight="1008" columnWidth="553" leftMargin="39" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7435c0f7-de74-4940-ae33-c2370e46f8e7">
 	<property name="ireport.zoom" value="1.399522140629204"/>
 	<property name="ireport.x" value="0"/>
@@ -1159,6 +1159,108 @@
 				<reportElement x="0" y="48" width="310" height="1" uuid="654e87a7-7c65-42ea-bc16-4ef3650ddab7"/>
 				<graphicElement>
 					<pen lineWidth="2.0" lineStyle="Double"/>
+				</graphicElement>
+			</line>
+		</band>
+		<band height="762">
+			<rectangle>
+				<reportElement x="2" y="20" width="545" height="729" uuid="24b6dcf4-ff78-4b5a-b8ac-7db9846ba720"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="178" y="28" width="206" height="20" uuid="77550b56-2c76-4a0e-a775-462b7000be7f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isItalic="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Hak dan Kewajiban Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="63" width="535" height="506" uuid="cf573b5e-01c6-4ddf-a734-4f9c953f3967"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[1. Memperoleh informasi mengenai tata tertib dan peraturan yang berlaku di RS.
+
+2. Memperoleh informasi tentang hak dan kewajiban pasien.
+
+3. Memperoleh layanan yang manusiawi, adil, jujur dan tanpa diskriminasi.
+
+4. Memperoleh layanan kesehatan yang bermutu sesuai dengan standar profesi dan standar prosedur operasional.
+
+5. Memperoleh layanan yang efektif dan efisien sehingga pasien terhindar dari kerugian fisik dan materi.
+
+6. Mengajukan pengaduan atas kualitas pelayanan yang didapatkan.
+
+7. Memilih dokter dan kelas perawatan sesuai dengan keinginannya dan peraturan yang berlaku di Rumah Sakit.
+
+8. Meminta konsultasi tentang penyakit yang dideritanya kepada dokter lain yang mempunyai Surat Izin Praktik (SIP), baik di dalam maupun di luar RS.
+
+9. Mendapatkan privasi dan kerahasiaan penyakit yang diderita termasuk data-data medisnya.
+
+10. Mendapat informasi yang meliputi diagnosis dan tatacara tindakan medis, tujuan tindakan medis, alternatif tindakan, resiko dan komplikasi yang mungkin terjadi dan prognosis terhadap tindakan yang dilakukan serta perkiraan biaya pengobatan.
+
+11. Memberikan persetujuan atau menolak atas tindakan yang akan dilakukan oleh tenaga kesehatan terhadap penyakit yang dideritanya.
+
+12. Didampingi keluarganya dalam keadaan kritis.
+
+13. Menjalankan ibadah sesuai agama atau kepercayaan yang dianutnya selama hal itu tidak mengganggu pasien lainnya.
+
+14. Memperoleh keamanan dan keselamatan dirinya selama dalam perawatan di Rumah Sakit.
+
+15. Mengajukan usul, saran dan perbaikan atas perlakuan Rumah Sakit terhadap dirinya.
+
+16. Menolak pelayanan bimbingan rohani yang tidak sesuai dengan agama dan kepercayaan yang dianutnya.
+
+17. Menggugat dan/atau menuntut Rumah Sakit apabila Rumah Sakit diduga memberikan pelayanan yang tidak sesuai dengan standar baik secara perdata ataupun pidana dan
+
+18. Mengeluhkan pelayanan Rumah Sakit yang tidak sesuai dengan ketentuan peraturan perundang-undangan.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="164" y="576" width="206" height="20" uuid="d74b382b-d90b-4224-bc6b-ac27500ae453"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true" isItalic="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggung Jawab Pasien]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="6" y="606" width="535" height="139" uuid="c204974f-4088-453b-8256-aadc898d1ca7"/>
+				<textElement textAlignment="Left">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[1. Pasien dan keluarganya bertanggung jawab untuk mentaati segala peraturan dan tata tertib Rumah Sakit.
+
+2. Pasien dan keluarga bertanggung jawab untuk mematuhi segala instruksi dokter dan perawat dalam pengobatannya.
+
+3. Pasien dan keluarga bertanggung jawab memberikan informasi dengan jujur dan selengkapnya tentang penyakit yang diderita kepada dokter yang merawat.
+
+4. Pasien dan keluarga bertanggung jawab untuk melunasi semua pembiayaan atas jasa pelayanan Rumah Sakit/dokter.
+
+5. Pasien dan keluarga bertanggung jawab untuk memenuhi hal-hal yang disepakati/perjanjian yang telah dibuatnya.
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="56" width="545" height="1" uuid="413abe8f-c4c1-456a-b947-03ba61ef6098"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="2" y="573" width="545" height="1" uuid="2f29be5e-618f-48f5-89a1-4f094e554c8e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="3" y="599" width="545" height="1" uuid="aacd8696-cf44-4cd1-a2ef-24c34f6e076e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 		</band>
