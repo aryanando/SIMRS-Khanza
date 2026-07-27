@@ -15,7 +15,7 @@
     }
     
     function getKelasRS() {
-        $kelasRS = "BP";
+        $kelasRS = "DP";
         return $kelasRS;
     }
 

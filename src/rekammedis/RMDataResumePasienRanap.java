@@ -2985,9 +2985,10 @@ public final class RMDataResumePasienRanap extends javax.swing.JDialog {
 
     private void BtnDokter6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokter6ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        RMRiwayatPerawatan resume = new RMRiwayatPerawatan(null, true);
-        resume.setNoRm(TNoRM.getText(), TPasien.getText());
-        resume.setSize(internalFrame1.getWidth(), internalFrame1.getHeight());
+        RMRiwayatPerawatan resume=new RMRiwayatPerawatan(null,true);
+        resume.setNoRawat(TNoRw.getText());
+        resume.setNoRm(TNoRM.getText(),TPasien.getText());
+        resume.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
         resume.setLocationRelativeTo(internalFrame1);
         resume.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
