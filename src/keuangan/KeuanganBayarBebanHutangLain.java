@@ -125,7 +125,7 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
         NoHutang.setDocument(new batasInput((byte)17).getKata(NoHutang));
         Cicilan.setDocument(new batasInput((byte)15).getOnlyAngka(Cicilan));
         Sisa.setDocument(new batasInput((byte)15).getOnlyAngka(Sisa));
-        NoBukti.setDocument(new batasInput((byte)30).getOnlyAngka(NoBukti));
+        NoBukti.setDocument(new batasInput((byte)30).getKata(NoBukti));
         Keterangan.setDocument(new batasInput((byte)100).getKata(Keterangan));
         KdPemberiHutang.setDocument(new batasInput((byte)5).getKata(KdPemberiHutang));
         NoRekening.setDocument(new batasInput((byte)20).getKata(NoRekening));
@@ -822,7 +822,7 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
         }else{         
             if(Sequel.cariInteger("select count(beban_hutang_lain.no_hutang) from beban_hutang_lain where beban_hutang_lain.no_hutang=? and beban_hutang_lain.kode_pemberi_hutang=?",NoHutang.getText(),KdPemberiHutang.getText())>0){
                 sisahutang=(Sequel.cariIsiAngka("SELECT beban_hutang_lain.sisahutang FROM beban_hutang_lain where beban_hutang_lain.no_hutang=?",NoHutang.getText())-Double.parseDouble(Cicilan.getText()));
-                if(sisahutang>0){
+                if(sisahutang>=0){
                     koderekening="";
                     try {
                         myObj = new FileReader("./cache/akunbayarhutang.iyem");
