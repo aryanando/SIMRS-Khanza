@@ -1861,14 +1861,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         + "resep_obat.jam=aturan_pakai.jam and resep_obat.no_rawat=detail_pemberian_obat.no_rawat "
                         + "and resep_obat.tgl_perawatan=detail_pemberian_obat.tgl_perawatan and "
                         + "resep_obat.jam=detail_pemberian_obat.jam and kodesatuan.kode_sat=databarang.kode_sat "
-                                + "LEFT JOIN kamar_inap " +
-                                "    ON kamar_inap.no_rawat = reg_periksa.no_rawat " +
-                                "LEFT JOIN kamar " +
-                                "    ON kamar.kd_kamar = kamar_inap.kd_kamar " +
-                                "LEFT JOIN bangsal " +
-                                "    ON bangsal.kd_bangsal = kamar.kd_bangsal " +
-                                "LEFT JOIN poliklinik " +
-                                "    ON poliklinik.kd_poli = reg_periksa.kd_poli "
+                        + "LEFT JOIN kamar_inap "
+                        + "    ON kamar_inap.no_rawat = reg_periksa.no_rawat "
+                        + "LEFT JOIN kamar "
+                        + "    ON kamar.kd_kamar = kamar_inap.kd_kamar "
+                        + "LEFT JOIN bangsal "
+                        + "    ON bangsal.kd_bangsal = kamar.kd_bangsal "
+                        + "LEFT JOIN poliklinik "
+                        + "    ON poliklinik.kd_poli = reg_periksa.kd_poli "
                         + "where resep_obat.no_resep='" + NoResep.getText() + "' and aturan_pakai.aturan<>''", param);
             }
 
@@ -1888,14 +1888,14 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         + "and resep_obat.no_rawat=obat_racikan.no_rawat and "
                         + "resep_obat.tgl_perawatan=obat_racikan.tgl_perawatan and "
                         + "resep_obat.jam=obat_racikan.jam and resep_obat.no_rawat=obat_racikan.no_rawat "
-                                + " LEFT JOIN kamar_inap " +
-                                "    ON kamar_inap.no_rawat = reg_periksa.no_rawat " +
-                                "LEFT JOIN kamar " +
-                                "    ON kamar.kd_kamar = kamar_inap.kd_kamar " +
-                                "LEFT JOIN bangsal " +
-                                "    ON bangsal.kd_bangsal = kamar.kd_bangsal " +
-                                "LEFT JOIN poliklinik " +
-                                "    ON poliklinik.kd_poli = reg_periksa.kd_poli "
+                        + " LEFT JOIN kamar_inap "
+                        + "    ON kamar_inap.no_rawat = reg_periksa.no_rawat "
+                        + "LEFT JOIN kamar "
+                        + "    ON kamar.kd_kamar = kamar_inap.kd_kamar "
+                        + "LEFT JOIN bangsal "
+                        + "    ON bangsal.kd_bangsal = kamar.kd_bangsal "
+                        + "LEFT JOIN poliklinik "
+                        + "    ON poliklinik.kd_poli = reg_periksa.kd_poli "
                         + "where resep_obat.no_resep='" + NoResep.getText() + "'", param);
             }
             this.setCursor(Cursor.getDefaultCursor());
@@ -2036,6 +2036,65 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("norm", TNoRm.getText());
             param.put("peresep", NmDokter.getText());
             param.put("noresep", NoResep.getText());
+            param.put("tgl_lahir", Sequel.cariIsi("select tgl_lahir from pasien where no_rkm_medis=?", TNoRm.getText()));
+            String sttsLanjut = Sequel.cariIsi(
+                    "SELECT status_lanjut FROM reg_periksa WHERE no_rawat=?",
+                    TNoRw.getText()
+            );
+
+            param.put("lanjut", sttsLanjut);
+
+            String tabel = "Ranap".equalsIgnoreCase(sttsLanjut)
+                    ? "pemeriksaan_ranap"
+                    : "pemeriksaan_ralan";
+
+            param.put("berat",
+                    Sequel.cariIsi(
+                            "SELECT berat FROM " + tabel
+                            + " WHERE no_rawat=? "
+                            + "ORDER BY tgl_perawatan DESC, jam_rawat DESC LIMIT 1",
+                            TNoRw.getText()
+                    )
+            );
+
+            param.put("alergi",
+                    Sequel.cariIsi(
+                            "SELECT alergi FROM " + tabel
+                            + " WHERE no_rawat=? "
+                            + "ORDER BY tgl_perawatan DESC, jam_rawat DESC LIMIT 1",
+                            TNoRw.getText()
+                    )
+            );
+
+            String asal = Sequel.cariIsi(
+                    "SELECT CASE "
+                    + "  WHEN rp.kd_poli <> 'IGDK' THEN pl.nm_poli "
+                    + "  WHEN rp.kd_poli = 'IGDK' AND rp.status_lanjut = 'Ralan' THEN 'IGD' "
+                    + "  WHEN rp.kd_poli = 'IGDK' AND rp.status_lanjut = 'Ranap' THEN b.nm_bangsal "
+                    + "END AS asal "
+                    + "FROM reg_periksa rp "
+                    + "LEFT JOIN poliklinik pl ON pl.kd_poli = rp.kd_poli "
+                    + "LEFT JOIN kamar_inap ki ON ki.no_rawat = rp.no_rawat "
+                    + "LEFT JOIN kamar k ON k.kd_kamar = ki.kd_kamar "
+                    + "LEFT JOIN bangsal b ON b.kd_bangsal = k.kd_bangsal "
+                    + "WHERE rp.no_rawat=? "
+                    + "ORDER BY ki.tgl_masuk DESC LIMIT 1",
+                    TNoRw.getText()
+            );
+
+            param.put("asal", asal);
+            String kodedr = Sequel.cariIsi(
+                    "SELECT kd_dokter FROM reg_periksa WHERE no_rawat=?",
+                    TNoRw.getText()
+            );
+
+            String sip = Sequel.cariIsi(
+                    "SELECT IFNULL(sip, '') FROM sip_dokter WHERE kd_dokter=?",
+                    kodedr
+            );
+
+            param.put("sip", sip == null ? "" : sip);
+
             finger = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", KdDokter.getText());
             param.put("finger", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + NmDokter.getText() + "\nID " + (finger.equals("") ? KdDokter.getText() : finger) + "\n" + DTPBeri.getSelectedItem());
             param.put("jam", cmbJam.getSelectedItem() + ":" + cmbMnt.getSelectedItem() + ":" + cmbDtk.getSelectedItem());
@@ -2419,15 +2478,15 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             param.put("no_rawat", TNoRw.getText());
             param.put("norm", TNoRm.getText());
             param.put("nmpasien", Sequel.cariIsi("select nm_pasien from pasien where no_rkm_medis=?", TNoRm.getText()));
-            
+
             param.put(
-                "tgl",
-                Sequel.cariIsi(
-                    "SELECT DATE_FORMAT(tgl_perawatan,'%d-%m-%Y') FROM resep_obat WHERE no_resep=?",
-                    NoResep.getText()
-                )
+                    "tgl",
+                    Sequel.cariIsi(
+                            "SELECT DATE_FORMAT(tgl_perawatan,'%d-%m-%Y') FROM resep_obat WHERE no_resep=?",
+                            NoResep.getText()
+                    )
             );
-            
+
             ptTelaah = Sequel.cariIsi("select nip from telaah_farmasi where no_resep=?", NoResep.getText());
             nmTelaah = Sequel.cariIsi("select nama from pegawai where nik=?", ptTelaah);
             param.put("namatelaah", nmTelaah);

@@ -1429,7 +1429,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[2]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="465" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="f204ef50-3de7-4566-9779-f13af3f3f36c"/>
+				<reportElement mode="Transparent" x="23" y="465" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="f204ef50-3de7-4566-9779-f13af3f3f36c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1451,7 +1451,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="346" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2e04579c-fea7-46fd-96d4-3ad42e5eaebc"/>
+				<reportElement mode="Transparent" x="23" y="346" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2e04579c-fea7-46fd-96d4-3ad42e5eaebc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1459,7 +1459,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Proses Perawatan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="227" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="aada73be-e99e-47fd-a62e-73833175adb1"/>
+				<reportElement mode="Transparent" x="23" y="227" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="aada73be-e99e-47fd-a62e-73833175adb1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1489,7 +1489,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[8]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="283" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3601dca2-ec71-45a5-bd51-794956906228"/>
+				<reportElement mode="Transparent" x="23" y="283" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3601dca2-ec71-45a5-bd51-794956906228"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1505,7 +1505,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[7]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="405" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="d1fe8c7e-ffb6-41bf-836f-db584b98953a"/>
+				<reportElement mode="Transparent" x="23" y="405" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="d1fe8c7e-ffb6-41bf-836f-db584b98953a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1537,7 +1537,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[5]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="523" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="cd745379-c236-40b9-8bf0-d0b476dcd274"/>
+				<reportElement mode="Transparent" x="23" y="523" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="cd745379-c236-40b9-8bf0-d0b476dcd274"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1551,7 +1551,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="170" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="91630910-a2a0-4cdd-973f-7e66183740a4"/>
+				<reportElement mode="Transparent" x="23" y="170" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="91630910-a2a0-4cdd-973f-7e66183740a4"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1571,7 +1571,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="110" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="8d409813-803e-4999-a6cb-6814e74dfa6e"/>
+				<reportElement mode="Transparent" x="23" y="110" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="8d409813-803e-4999-a6cb-6814e74dfa6e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1639,7 +1639,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="711" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="81942fca-6273-470c-b5de-05e201e3188a"/>
+				<reportElement mode="Transparent" x="23" y="711" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="81942fca-6273-470c-b5de-05e201e3188a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1655,7 +1655,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[9]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="649" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="87fbef26-327a-431a-ab67-a68a9bc7686a"/>
+				<reportElement mode="Transparent" x="23" y="649" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="87fbef26-327a-431a-ab67-a68a9bc7686a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1663,7 +1663,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Diet / Nutrisi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="588" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="7d8b7047-d37a-4071-917d-25bd494234de"/>
+				<reportElement mode="Transparent" x="23" y="588" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="7d8b7047-d37a-4071-917d-25bd494234de"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -1698,7 +1698,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="110" width="91" height="14" uuid="01405499-eb9c-4b91-8247-143f13992414">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1708,7 +1708,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="170" width="91" height="14" uuid="0909c8a0-fca6-403b-81ac-31b1bb7dc9ff">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1718,7 +1718,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="227" width="91" height="14" uuid="39bf4e46-d4ad-4014-90bc-8c78e787b25c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1728,7 +1728,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="283" width="91" height="14" uuid="4b39673f-ec0a-4a0c-98be-36b877acc55d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1738,17 +1738,17 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="346" width="91" height="14" uuid="be470282-d812-488c-9879-d48855425ed2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{proses_perawatan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="157" y="648" width="91" height="14" uuid="4f69be5c-3d02-4322-8392-7edd40c51c72">
+				<reportElement positionType="Float" x="158" y="648" width="91" height="14" uuid="4f69be5c-3d02-4322-8392-7edd40c51c72">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1758,7 +1758,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="523" width="91" height="14" uuid="7f746876-1da9-4a74-ae07-5f5d6e0cf5cf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1768,7 +1768,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="465" width="91" height="14" uuid="5ddf30c6-ff19-4444-91a4-a948e12d1df6">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1778,7 +1778,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="405" width="91" height="14" uuid="6f6d3744-e44f-4de9-95bd-8d1e940c2dee">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1788,7 +1788,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="159" y="588" width="91" height="14" uuid="e1a215f5-3143-496a-97e8-d22e4b93acad">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -1798,7 +1798,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="711" width="91" height="14" uuid="3724cc7f-1958-489b-b193-a6c24a5e3e0a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2448,7 +2448,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_mobilisasi}]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="791">
+		<band height="802">
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="60" width="555" height="1" uuid="f64e24cd-ccc3-4410-adcb-2f2239dd1834"/>
 				<graphicElement>
@@ -2462,20 +2462,20 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="155" y="375" width="91" height="14" uuid="339a4998-f6a4-4821-b752-44668676e335">
+				<reportElement positionType="Float" x="159" y="375" width="91" height="14" uuid="339a4998-f6a4-4821-b752-44668676e335">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{hambatan_pelayanan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="155" y="433" width="91" height="14" uuid="1b063786-21f3-4122-8a5e-6ea66fbc3b05">
+				<reportElement positionType="Float" x="159" y="433" width="91" height="14" uuid="1b063786-21f3-4122-8a5e-6ea66fbc3b05">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2518,7 +2518,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_hambatan_pelayanan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="375" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3197a7eb-f1f3-410b-aaa2-e468485db1c4"/>
+				<reportElement mode="Transparent" x="20" y="375" width="138" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3197a7eb-f1f3-410b-aaa2-e468485db1c4"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2526,7 +2526,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Hambatan Pelayanan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="433" width="210" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fc0acb56-6918-4998-ab0d-f1fd1863fbbe"/>
+				<reportElement mode="Transparent" x="20" y="433" width="130" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fc0acb56-6918-4998-ab0d-f1fd1863fbbe"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2534,10 +2534,11 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Pencegahan Resiko Jatuh]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="160" y="485" width="88" height="102" uuid="8a3ede12-33cf-4d53-88a2-ec3c833ccdbf">
+				<reportElement positionType="Float" x="160" y="485" width="88" height="186" uuid="8a3ede12-33cf-4d53-88a2-ec3c833ccdbf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
+				<textElement textAlignment="Left" verticalAlignment="Top">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2576,7 +2577,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-1" y="1" width="1" height="700" uuid="d11957bf-0930-4980-89d5-7aa4f4b147e9">
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="1" width="1" height="670" uuid="d11957bf-0930-4980-89d5-7aa4f4b147e9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2584,7 +2585,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="554" y="1" width="1" height="700" uuid="46beede5-985c-40d4-a272-8c272f3a3d19"/>
+				<reportElement positionType="FixRelativeToBottom" x="554" y="1" width="1" height="670" uuid="46beede5-985c-40d4-a272-8c272f3a3d19"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
@@ -2636,7 +2637,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="10" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e96e6180-c318-49a1-8c28-dec7e1dbd178"/>
+				<reportElement mode="Transparent" x="23" y="10" width="128" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e96e6180-c318-49a1-8c28-dec7e1dbd178"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2657,7 +2658,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="253" width="91" height="14" uuid="8c70e979-3769-40e8-8272-7d71a2c98bb0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2675,7 +2676,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="70" width="91" height="14" uuid="ff29fd59-e0f5-4872-bcd8-81b8aa3e74cb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2725,7 +2726,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Penundaan Pelayanan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="70" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="59d75a9a-fc2a-4697-b1a6-b8e0377a4b38"/>
+				<reportElement mode="Transparent" x="23" y="70" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="59d75a9a-fc2a-4697-b1a6-b8e0377a4b38"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2786,7 +2787,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="10" width="91" height="14" uuid="ab006ee5-e79a-4e5d-b1db-2195d2d9322c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2836,10 +2837,10 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Pencegahan Komplikasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="155" y="316" width="91" height="14" uuid="0609c0d4-58e2-4354-ad1c-a5350452b291">
+				<reportElement positionType="Float" x="159" y="316" width="91" height="14" uuid="0609c0d4-58e2-4354-ad1c-a5350452b291">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2865,14 +2866,14 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="191" width="91" height="14" uuid="dc4de8ce-b2e7-4326-aac9-d75bd271200b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{manajemen_nyeri}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="191" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9c969b27-188c-4fde-8257-673d0cbdc928"/>
+				<reportElement mode="Transparent" x="23" y="191" width="132" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9c969b27-188c-4fde-8257-673d0cbdc928"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2889,7 +2890,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="158" y="131" width="91" height="14" uuid="eef7c6ee-8c0b-4766-9129-5cbba4093c95">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
@@ -2917,7 +2918,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="253" width="207" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2854ca07-2e51-42e9-8ad1-045840d98704"/>
+				<reportElement mode="Transparent" x="23" y="253" width="132" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2854ca07-2e51-42e9-8ad1-045840d98704"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2950,7 +2951,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_perawatan_luka}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="431" y="1" width="1" height="700" uuid="4379b5a8-3d3a-4e75-82a4-19c4976aa21c">
+				<reportElement positionType="FixRelativeToBottom" x="431" y="1" width="1" height="670" uuid="4379b5a8-3d3a-4e75-82a4-19c4976aa21c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2958,7 +2959,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="349" y="1" width="1" height="700" uuid="3df7dc03-a0cc-4f0a-9a0d-7322dddf216d">
+				<reportElement positionType="FixRelativeToBottom" x="349" y="1" width="1" height="670" uuid="3df7dc03-a0cc-4f0a-9a0d-7322dddf216d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2966,7 +2967,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="250" y="1" width="1" height="700" uuid="84a53d4f-aea6-4afd-8029-e61258c3e97f">
+				<reportElement positionType="FixRelativeToBottom" x="250" y="1" width="1" height="670" uuid="84a53d4f-aea6-4afd-8029-e61258c3e97f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2974,7 +2975,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="157" y="1" width="1" height="700" uuid="4e2f9f1b-07f7-4f77-9019-70a46190e95d">
+				<reportElement positionType="FixRelativeToBottom" x="157" y="1" width="1" height="670" uuid="4e2f9f1b-07f7-4f77-9019-70a46190e95d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2982,7 +2983,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="19" y="1" width="1" height="700" uuid="1f6e7e99-9290-466e-87f7-f2b399bd300c">
+				<reportElement positionType="FixRelativeToBottom" x="19" y="1" width="1" height="670" uuid="1f6e7e99-9290-466e-87f7-f2b399bd300c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -3106,7 +3107,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_lain_lain}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="590" width="555" height="1" uuid="9c1f317d-5800-4601-93b5-4af57a1311fd"/>
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="671" width="555" height="1" uuid="9c1f317d-5800-4601-93b5-4af57a1311fd"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
@@ -3273,87 +3274,10 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{waktu_lain_lain}]]></textFieldExpression>
 			</textField>
-			<componentElement>
-				<reportElement positionType="Float" x="435" y="593" width="116" height="34" isRemoveLineWhenBlank="true" uuid="cbb6a127-2b0a-4e79-adb8-2f39788670de">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
-					<jr:codeExpression><![CDATA[$P{finger_lain_lain}]]></jr:codeExpression>
-				</jr:QRCode>
-			</componentElement>
-			<staticText>
-				<reportElement mode="Transparent" x="20" y="619" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="a413df18-69c1-4a06-91b5-894ac7084503"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Tahoma" size="7" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[Tanggal Edukasi]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="259" y="599" width="75" height="14" uuid="b83797f4-9d33-4e14-a706-cf94b40a9cd2">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{kie_lain_lain1}]]></textFieldExpression>
-			</textField>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="160" y="594" width="88" height="102" uuid="4e68cf02-b696-445c-b806-599d459344d3">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{lain_lain1}]]></textFieldExpression>
-			</textField>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="600" width="66" height="36" uuid="ff826d28-2d16-4c02-90e9-bfc1837043bd">
-					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain1}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="434" y="625" width="118" height="23" uuid="d982841c-d46e-47db-b8e4-5c560e7635b6">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="6"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{nama_lain_lain1}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="0" y="598" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="40998509-cf2c-4682-83fd-79d4452a0aab"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="9" isBold="false"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<text><![CDATA[21]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="633" width="136" height="14" uuid="e50b6fd8-b35a-41df-bf0c-ef25c33ed206">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="7"/>
-					<paragraph lineSpacing="Single"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{waktu_lain_lain1}]]></textFieldExpression>
-			</textField>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-1" y="700" width="555" height="1" uuid="277609a0-ac57-4280-b8ac-7d3ee7846fd2"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
 		</band>
-		<band height="312">
+		<band height="646">
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="435" y="53" width="118" height="23" uuid="b2635bf2-ddfa-45f5-807a-af7b51ac3c9b">
+				<reportElement positionType="Float" x="433" y="258" width="118" height="23" uuid="b2635bf2-ddfa-45f5-807a-af7b51ac3c9b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3363,7 +3287,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_lain_lain2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="21" y="61" width="136" height="14" uuid="04a6effb-1c5b-4deb-ab6e-decf4b4aac36">
+				<reportElement positionType="Float" x="19" y="266" width="136" height="14" uuid="04a6effb-1c5b-4deb-ab6e-decf4b4aac36">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3373,7 +3297,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_lain_lain2}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement positionType="Float" x="436" y="21" width="114" height="32" isRemoveLineWhenBlank="true" uuid="e81d3f5f-a393-4db0-af1d-ef993af4b105">
+				<reportElement positionType="Float" x="434" y="226" width="113" height="31" isRemoveLineWhenBlank="true" uuid="e81d3f5f-a393-4db0-af1d-ef993af4b105">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -3381,24 +3305,25 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</jr:QRCode>
 			</componentElement>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="357" y="28" width="66" height="36" uuid="ee4a0957-c0d8-474d-9583-107f1d8140e5">
+				<reportElement isPrintRepeatedValues="false" x="355" y="233" width="66" height="36" uuid="ee4a0957-c0d8-474d-9583-107f1d8140e5">
 					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain2}.toLowerCase().equals("") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
 			</image>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="161" y="22" width="88" height="102" uuid="34d20277-534c-4cc5-843f-446f26f80065">
+				<reportElement positionType="Float" x="159" y="227" width="88" height="186" uuid="34d20277-534c-4cc5-843f-446f26f80065">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lain_lain2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="21" y="47" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="724c3500-95c4-4fd6-bf0b-1ff5133833f5"/>
+				<reportElement mode="Transparent" x="19" y="252" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="724c3500-95c4-4fd6-bf0b-1ff5133833f5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3406,7 +3331,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="260" y="143" width="75" height="14" uuid="446ce6de-455f-4e19-a99a-a2678ce2408b">
+				<reportElement positionType="Float" x="258" y="431" width="75" height="14" uuid="446ce6de-455f-4e19-a99a-a2678ce2408b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -3416,24 +3341,25 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_lain_lain3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="161" y="138" width="88" height="102" uuid="bc4802b6-8d23-4c5a-ac6c-af06acb5efd3">
+				<reportElement positionType="Float" x="159" y="419" width="88" height="186" uuid="bc4802b6-8d23-4c5a-ac6c-af06acb5efd3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lain_lain3}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="357" y="144" width="66" height="36" uuid="463c810b-a09b-4a67-90b4-9fc50f9c858f">
+				<reportElement isPrintRepeatedValues="false" x="355" y="432" width="66" height="36" uuid="463c810b-a09b-4a67-90b4-9fc50f9c858f">
 					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain3}.toLowerCase().equals("") ? 
   Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
 				</reportElement>
 				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
 			</image>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="435" y="169" width="118" height="23" uuid="3e880833-a229-43ad-87a8-a5a3d387a7c5">
+				<reportElement positionType="Float" x="433" y="457" width="118" height="23" uuid="3e880833-a229-43ad-87a8-a5a3d387a7c5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3443,7 +3369,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_lain_lain3}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="21" y="163" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="6ed10206-1a1f-4e4a-a623-6636c2a1b2fa"/>
+				<reportElement mode="Transparent" x="19" y="451" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="6ed10206-1a1f-4e4a-a623-6636c2a1b2fa"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3451,7 +3377,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="21" y="177" width="136" height="14" uuid="190f78d8-5dcf-4d28-8836-1e417c004e70">
+				<reportElement positionType="Float" x="19" y="465" width="136" height="14" uuid="190f78d8-5dcf-4d28-8836-1e417c004e70">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3461,7 +3387,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_lain_lain3}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement positionType="Float" x="436" y="137" width="113" height="31" isRemoveLineWhenBlank="true" uuid="c248803a-5d3c-4e2d-bcc2-ac8343be19fb">
+				<reportElement positionType="Float" x="434" y="425" width="112" height="30" isRemoveLineWhenBlank="true" uuid="c248803a-5d3c-4e2d-bcc2-ac8343be19fb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -3469,7 +3395,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Transparent" x="1" y="142" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="ca0c1b36-8643-46b6-9955-51db4e966712"/>
+				<reportElement mode="Transparent" x="-1" y="430" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="ca0c1b36-8643-46b6-9955-51db4e966712"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3477,7 +3403,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[23]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="19" y="14" width="1" height="230" uuid="c1de0310-38f7-4501-b75d-3d267d6679d5">
+				<reportElement positionType="FixRelativeToBottom" x="18" y="15" width="1" height="595" uuid="c1de0310-38f7-4501-b75d-3d267d6679d5"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="15" width="1" height="595" uuid="fdba2f3e-0ef5-443e-ac22-7218343c2944">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -3485,71 +3417,55 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="14" width="1" height="230" uuid="fdba2f3e-0ef5-443e-ac22-7218343c2944"/>
+				<reportElement positionType="FixRelativeToBottom" x="250" y="15" width="1" height="595" uuid="1a29d7c9-49fa-440f-be6a-8e21cc71d709"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="251" y="14" width="1" height="230" uuid="1a29d7c9-49fa-440f-be6a-8e21cc71d709">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="FixRelativeToBottom" x="157" y="15" width="1" height="595" uuid="1306f0c3-1a2f-41c2-9d15-4b28fef0362e"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="158" y="14" width="1" height="230" uuid="1306f0c3-1a2f-41c2-9d15-4b28fef0362e">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="FixRelativeToBottom" x="349" y="15" width="1" height="595" uuid="67389395-e728-4cf3-a577-e980aacec57c"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="350" y="14" width="1" height="230" uuid="67389395-e728-4cf3-a577-e980aacec57c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="FixRelativeToBottom" x="431" y="15" width="1" height="595" uuid="321ddea7-4569-4bea-820f-9a4ed9d3cadf"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="432" y="14" width="1" height="230" uuid="321ddea7-4569-4bea-820f-9a4ed9d3cadf">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="FixRelativeToBottom" x="553" y="15" width="1" height="595" uuid="6498a0fb-43a3-4fbe-bfd8-f3b6810a39db"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="554" y="14" width="1" height="230" uuid="6498a0fb-43a3-4fbe-bfd8-f3b6810a39db">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="415" width="555" height="1" uuid="77281db1-a1fa-40bd-aead-4f915404d296"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="1" y="129" width="555" height="1" uuid="77281db1-a1fa-40bd-aead-4f915404d296"/>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="219" width="555" height="1" uuid="42666b11-b584-4941-9b7c-2fa1fa88204a"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="14" width="555" height="1" uuid="42666b11-b584-4941-9b7c-2fa1fa88204a"/>
-				<graphicElement>
-					<pen lineWidth="0.5" lineStyle="Solid"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="244" width="555" height="1" uuid="83b72298-f826-4ba8-9b91-08137b5689ec"/>
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="610" width="555" height="1" uuid="83b72298-f826-4ba8-9b91-08137b5689ec"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="259" y="30" width="75" height="14" uuid="3cd28f63-ca14-4d28-836f-ad5df8813e04">
+				<reportElement positionType="Float" x="257" y="235" width="75" height="14" uuid="3cd28f63-ca14-4d28-836f-ad5df8813e04">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -3559,13 +3475,90 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_lain_lain2}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="29" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="7b5b573d-8864-4546-ab13-c9354f3c4b93"/>
+				<reportElement mode="Transparent" x="-2" y="234" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="7b5b573d-8864-4546-ab13-c9354f3c4b93"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[23]]></text>
 			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="259" y="23" width="75" height="14" uuid="b83797f4-9d33-4e14-a706-cf94b40a9cd2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kie_lain_lain1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="23" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="40998509-cf2c-4682-83fd-79d4452a0aab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="9" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[21]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="434" y="49" width="118" height="23" uuid="d982841c-d46e-47db-b8e4-5c560e7635b6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="6"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nama_lain_lain1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="20" y="57" width="136" height="14" uuid="e50b6fd8-b35a-41df-bf0c-ef25c33ed206">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{waktu_lain_lain1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="160" y="18" width="88" height="186" uuid="4e68cf02-b696-445c-b806-599d459344d3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lain_lain1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="20" y="43" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="a413df18-69c1-4a06-91b5-894ac7084503"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="7" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal Edukasi]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement positionType="Float" x="435" y="17" width="115" height="33" isRemoveLineWhenBlank="true" uuid="cbb6a127-2b0a-4e79-adb8-2f39788670de">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
+					<jr:codeExpression><![CDATA[$P{finger_lain_lain}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="356" y="24" width="66" height="36" uuid="ff826d28-2d16-4c02-90e9-bfc1837043bd">
+					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain1}.toLowerCase().equals("") ? 
+  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="00a428f8-94d3-4c67-86bc-9f5ed75c8a1f"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>

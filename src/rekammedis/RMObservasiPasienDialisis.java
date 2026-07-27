@@ -70,7 +70,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         tabMode = new DefaultTableModelImpl(null, new Object[]{
             "No.Rawat", "No RM", "Nama Pasien", "JK", "Tgl.Lahir", "Tanggal HD", "Kode Dokter", "Nama Dokter", "Sumber Data Pasien", "Kewarganegaraan", "Kesadaran", "GCS", "EWS",
             "TD", "Suhu", "Nadi", "RR", "Skala Nyeri", "Keluhan", "Alergi", "Ada Nyeri?", "Vaskuler", "BB Kering", "BB Sekarang", "Lokasi", "No Mesin", "Dializer", "Ke?", "Dialisat",
-            "Lama HD", "Ultra Goal", "Total", "Bolus Awal", "Kontinyu", "BFR", "HEPARIN", "Obat Selama HD", "Keluhan Post HD", "Sisa Priming", "Transfusi", "Minum", "Jumlah", "TD Post HD",
+            "Lama HD", "Ultra Goal", "Total", "Bolus Awal", "Kontinyu", "BFR", "HEPARIN", "Obat Selama HD", "Tgl Post HD", "Keluhan Post HD", "Sisa Priming", "Transfusi", "Minum", "Jumlah", "TD Post HD",
             "Suhu Post HD", "Nadi Post HD", "RR Post HD", "BB Post HD", "Pendidikan", "Nip", "Nama Petugas", "Diagnosa"
         });
 
@@ -696,6 +696,8 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         TDiagnosa = new widget.TextBox();
         label34 = new widget.Label();
         jLabel89 = new widget.Label();
+        TglPostHD = new widget.Tanggal();
+        jLabel90 = new widget.Label();
         internalFrame3 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbObat = new widget.Table();
@@ -936,7 +938,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         scrollPane3.setBounds(20, 100, 590, 80);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -1121,7 +1123,6 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
 
         TabRawat.setBackground(new java.awt.Color(254, 255, 254));
         TabRawat.setForeground(new java.awt.Color(50, 50, 50));
-        TabRawat.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         TabRawat.setName("TabRawat"); // NOI18N
         TabRawat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1244,7 +1245,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         jLabel11.setBounds(740, 40, 30, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2025 12:11:03" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2026 08:41:50" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -1254,7 +1255,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TglAsuhan);
-        TglAsuhan.setBounds(490, 70, 150, 23);
+        TglAsuhan.setBounds(500, 70, 150, 23);
 
         jSeparator1.setBackground(new java.awt.Color(239, 244, 234));
         jSeparator1.setForeground(new java.awt.Color(239, 244, 234));
@@ -1303,7 +1304,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         jSeparator5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(239, 244, 234)));
         jSeparator5.setName("jSeparator5"); // NOI18N
         FormInput.add(jSeparator5);
-        jSeparator5.setBounds(0, 680, 960, 3);
+        jSeparator5.setBounds(0, 680, 960, 2);
 
         label28.setText("Dokter :");
         label28.setName("label28"); // NOI18N
@@ -1952,7 +1953,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         jLabel85.setText("Cairan yang masuik selama HD :");
         jLabel85.setName("jLabel85"); // NOI18N
         FormInput.add(jLabel85);
-        jLabel85.setBounds(450, 710, 170, 23);
+        jLabel85.setBounds(450, 730, 170, 23);
 
         jLabel86.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel86.setText("Obat yang diberikan selama HD :");
@@ -1968,12 +1969,12 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTD);
-        TTD.setBounds(720, 730, 60, 23);
+        TTD.setBounds(720, 750, 60, 23);
 
         jLabel44.setText("Jumlah :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(450, 820, 90, 23);
+        jLabel44.setBounds(450, 840, 90, 23);
 
         TJumlah.setFocusTraversalPolicyProvider(true);
         TJumlah.setName("TJumlah"); // NOI18N
@@ -1983,28 +1984,28 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TJumlah);
-        TJumlah.setBounds(550, 820, 60, 23);
+        TJumlah.setBounds(550, 840, 60, 23);
 
         jLabel40.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel40.setText("cc");
         jLabel40.setName("jLabel40"); // NOI18N
         FormInput.add(jLabel40);
-        jLabel40.setBounds(620, 820, 30, 23);
+        jLabel40.setBounds(620, 840, 30, 23);
 
         jLabel62.setText("TD :");
         jLabel62.setName("jLabel62"); // NOI18N
         FormInput.add(jLabel62);
-        jLabel62.setBounds(640, 730, 70, 23);
+        jLabel62.setBounds(640, 750, 70, 23);
 
         jLabel63.setText("Tranfusi :");
         jLabel63.setName("jLabel63"); // NOI18N
         FormInput.add(jLabel63);
-        jLabel63.setBounds(450, 760, 90, 23);
+        jLabel63.setBounds(450, 780, 90, 23);
 
         jLabel64.setText("Minum :");
         jLabel64.setName("jLabel64"); // NOI18N
         FormInput.add(jLabel64);
-        jLabel64.setBounds(450, 790, 90, 23);
+        jLabel64.setBounds(450, 810, 90, 23);
 
         TPriming.setFocusTraversalPolicyProvider(true);
         TPriming.setName("TPriming"); // NOI18N
@@ -2014,7 +2015,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TPriming);
-        TPriming.setBounds(550, 730, 60, 23);
+        TPriming.setBounds(550, 750, 60, 23);
 
         TTranfusi.setFocusTraversalPolicyProvider(true);
         TTranfusi.setName("TTranfusi"); // NOI18N
@@ -2024,7 +2025,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TTranfusi);
-        TTranfusi.setBounds(550, 760, 60, 23);
+        TTranfusi.setBounds(550, 780, 60, 23);
 
         TMinum.setFocusTraversalPolicyProvider(true);
         TMinum.setName("TMinum"); // NOI18N
@@ -2034,47 +2035,47 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TMinum);
-        TMinum.setBounds(550, 790, 60, 23);
+        TMinum.setBounds(550, 810, 60, 23);
 
         jLabel45.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel45.setText("cc");
         jLabel45.setName("jLabel45"); // NOI18N
         FormInput.add(jLabel45);
-        jLabel45.setBounds(620, 730, 30, 23);
+        jLabel45.setBounds(620, 750, 30, 23);
 
         jLabel46.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel46.setText("mmHg");
         jLabel46.setName("jLabel46"); // NOI18N
         FormInput.add(jLabel46);
-        jLabel46.setBounds(790, 730, 50, 23);
+        jLabel46.setBounds(790, 750, 50, 23);
 
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel49.setText("cc");
         jLabel49.setName("jLabel49"); // NOI18N
         FormInput.add(jLabel49);
-        jLabel49.setBounds(620, 790, 30, 23);
+        jLabel49.setBounds(620, 810, 30, 23);
 
-        jLabel65.setText("Sisa Priming :");
+        jLabel65.setText("Tanggal :");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
-        jLabel65.setBounds(450, 730, 90, 23);
+        jLabel65.setBounds(450, 700, 90, 23);
 
         jLabel66.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel66.setText("cc");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
-        jLabel66.setBounds(620, 760, 30, 23);
+        jLabel66.setBounds(620, 780, 30, 23);
 
         jLabel67.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel67.setText("Vital Sign :");
         jLabel67.setName("jLabel67"); // NOI18N
         FormInput.add(jLabel67);
-        jLabel67.setBounds(660, 710, 120, 23);
+        jLabel67.setBounds(660, 730, 120, 23);
 
         jLabel53.setText("RR :");
         jLabel53.setName("jLabel53"); // NOI18N
         FormInput.add(jLabel53);
-        jLabel53.setBounds(620, 820, 90, 23);
+        jLabel53.setBounds(620, 840, 90, 23);
 
         TRRPost.setFocusTraversalPolicyProvider(true);
         TRRPost.setName("TRRPost"); // NOI18N
@@ -2084,23 +2085,23 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TRRPost);
-        TRRPost.setBounds(720, 820, 60, 23);
+        TRRPost.setBounds(720, 840, 60, 23);
 
         jLabel68.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel68.setText("x/menit");
         jLabel68.setName("jLabel68"); // NOI18N
         FormInput.add(jLabel68);
-        jLabel68.setBounds(790, 820, 50, 23);
+        jLabel68.setBounds(790, 840, 50, 23);
 
         jLabel69.setText("Suhu :");
         jLabel69.setName("jLabel69"); // NOI18N
         FormInput.add(jLabel69);
-        jLabel69.setBounds(620, 760, 90, 23);
+        jLabel69.setBounds(620, 780, 90, 23);
 
         jLabel70.setText("Nadi :");
         jLabel70.setName("jLabel70"); // NOI18N
         FormInput.add(jLabel70);
-        jLabel70.setBounds(620, 790, 90, 23);
+        jLabel70.setBounds(620, 810, 90, 23);
 
         TSuhuPost.setFocusTraversalPolicyProvider(true);
         TSuhuPost.setName("TSuhuPost"); // NOI18N
@@ -2110,7 +2111,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TSuhuPost);
-        TSuhuPost.setBounds(720, 760, 60, 23);
+        TSuhuPost.setBounds(720, 780, 60, 23);
 
         TNasiPost.setFocusTraversalPolicyProvider(true);
         TNasiPost.setName("TNasiPost"); // NOI18N
@@ -2120,24 +2121,24 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TNasiPost);
-        TNasiPost.setBounds(720, 790, 60, 23);
+        TNasiPost.setBounds(720, 810, 60, 23);
 
         jLabel71.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel71.setText("x/menit");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
-        jLabel71.setBounds(790, 790, 40, 23);
+        jLabel71.setBounds(790, 810, 40, 23);
 
         jLabel72.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel72.setText("°C");
         jLabel72.setName("jLabel72"); // NOI18N
         FormInput.add(jLabel72);
-        jLabel72.setBounds(790, 760, 30, 23);
+        jLabel72.setBounds(790, 780, 30, 23);
 
         jLabel73.setText("BB Post HD:");
         jLabel73.setName("jLabel73"); // NOI18N
         FormInput.add(jLabel73);
-        jLabel73.setBounds(620, 850, 90, 23);
+        jLabel73.setBounds(620, 870, 90, 23);
 
         TBBPost.setFocusTraversalPolicyProvider(true);
         TBBPost.setName("TBBPost"); // NOI18N
@@ -2147,13 +2148,13 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             }
         });
         FormInput.add(TBBPost);
-        TBBPost.setBounds(720, 850, 60, 23);
+        TBBPost.setBounds(720, 870, 60, 23);
 
         jLabel74.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel74.setText("Kg");
         jLabel74.setName("jLabel74"); // NOI18N
         FormInput.add(jLabel74);
-        jLabel74.setBounds(790, 850, 50, 23);
+        jLabel74.setBounds(790, 870, 50, 23);
 
         label15.setText("Perawat :");
         label15.setName("label15"); // NOI18N
@@ -2223,6 +2224,24 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         FormInput.add(jLabel89);
         jLabel89.setBounds(0, 330, 110, 23);
 
+        TglPostHD.setForeground(new java.awt.Color(50, 70, 50));
+        TglPostHD.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-07-2026 07:37:48" }));
+        TglPostHD.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
+        TglPostHD.setName("TglPostHD"); // NOI18N
+        TglPostHD.setOpaque(false);
+        TglPostHD.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TglPostHDKeyPressed(evt);
+            }
+        });
+        FormInput.add(TglPostHD);
+        TglPostHD.setBounds(550, 700, 150, 23);
+
+        jLabel90.setText("Sisa Priming :");
+        jLabel90.setName("jLabel90"); // NOI18N
+        FormInput.add(jLabel90);
+        jLabel90.setBounds(450, 750, 90, 23);
+
         scrollInput.setViewportView(FormInput);
 
         internalFrame2.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -2263,7 +2282,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2025" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -2277,7 +2296,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "02-04-2025" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-07-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -2628,7 +2647,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             param.put("agama", Sequel.cariIsi("select agama from pasien where no_rkm_medis=?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString()));
             param.put("pekerjaan", Sequel.cariIsi("select pekerjaan from pasien where no_rkm_medis=?", tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString()));
             param.put("dpjp", Sequel.cariIsi("select nm_dokter from dokter where kd_dokter=?", tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString()));
-            param.put("namapet", Sequel.cariIsi("SELECT nama FROM petugas WHERE nip = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 48).toString()));
+            param.put("namapet", Sequel.cariIsi("SELECT nama FROM petugas WHERE nip = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 49).toString()));
             param.put("diagnosa", Sequel.cariIsi("SELECT diagnosa FROM observasi_dialisis_pasien WHERE no_rawat = ?", tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString()));
             param.put("kamar", kamar);
             param.put("namakamar", namakamar);
@@ -2665,9 +2684,8 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             param.put("finger", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + namaDr + "\nID " + (finger.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString() : finger) + "\n" + Tanggal.getSelectedItem());
 
             finger2 = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString());
-            namaPt = Sequel.cariIsi("select nama from pegawai where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 48).toString());
-            param.put("finger2", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + namaPt + "\nID " + (finger.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 48).toString() : finger) + "\n" + Tanggal.getSelectedItem());
-
+            namaPt = Sequel.cariIsi("select nama from pegawai where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 49).toString());
+            param.put("finger2", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + namaPt + "\nID " + (finger.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 49).toString() : finger) + "\n" + Tanggal.getSelectedItem());
             Valid.MyReportqry("rptCetakObservasiPasienDislisis.jasper", "report", "::[ Observasi Pasien Hemodialisa ]::",
                     "SELECT reg_periksa.no_rawat, pasien.no_rkm_medis, pasien.nm_pasien, "
                     + "IF(pasien.jk='L','Laki-Laki','Perempuan') AS jk, pasien.tgl_lahir, "
@@ -2685,7 +2703,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
                     + "observasi_dialisis_pasien.ultragoal, observasi_dialisis_pasien.total, "
                     + "observasi_dialisis_pasien.bolusawal, observasi_dialisis_pasien.kontinyu, "
                     + "observasi_dialisis_pasien.bfr, observasi_dialisis_pasien.heparin, "
-                    + "observasi_dialisis_pasien.obat_selama_hd, observasi_dialisis_pasien.keluahan_post_hd, "
+                    + "observasi_dialisis_pasien.obat_selama_hd, observasi_dialisis_pasien.tgl_post_hd, observasi_dialisis_pasien.keluahan_post_hd, "
                     + "observasi_dialisis_pasien.sisa_priming, observasi_dialisis_pasien.transfusi, "
                     + "observasi_dialisis_pasien.minum, observasi_dialisis_pasien.jumlah, "
                     + "observasi_dialisis_pasien.td_pos, observasi_dialisis_pasien.suhu_pos, "
@@ -2697,7 +2715,8 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
                     + "INNER JOIN observasi_dialisis_pasien ON reg_periksa.no_rawat = observasi_dialisis_pasien.no_rawat "
                     + "LEFT JOIN dokter ON observasi_dialisis_pasien.kd_dokter = dokter.kd_dokter "
                     + "LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip "
-                    + "WHERE observasi_dialisis_pasien.tanggal='" + tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() + "'", param);
+                    + "WHERE observasi_dialisis_pasien.no_rawat='" +  tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "'"
+                            + " and observasi_dialisis_pasien.tanggal='" + tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() + "'", param);
         }
     }//GEN-LAST:event_BtnPrint1ActionPerformed
 
@@ -3031,6 +3050,10 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BBKeringActionPerformed
 
+    private void TglPostHDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglPostHDKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TglPostHDKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -3137,6 +3160,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
     private widget.Tanggal Tanggal;
     private widget.Tanggal TglAsuhan;
     private widget.TextBox TglLahir;
+    private widget.Tanggal TglPostHD;
     private widget.TextBox UFG;
     private widget.TextBox UFR;
     private widget.TextBox VP;
@@ -3237,6 +3261,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
     private widget.Label jLabel87;
     private widget.Label jLabel88;
     private widget.Label jLabel89;
+    private widget.Label jLabel90;
     private widget.Label jLabel95;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator12;
@@ -3268,6 +3293,9 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
     public void tampil() {
         Valid.tabelKosong(tabMode);
         try {
+            String tglAwal = Valid.SetTgl(DTPCari1.getSelectedItem().toString());
+            String tglAkhir = Valid.SetTgl(DTPCari2.getSelectedItem().toString());
+
             ps = koneksi.prepareStatement(
                     "SELECT reg_periksa.no_rawat, pasien.no_rkm_medis, pasien.nm_pasien, "
                     + "IF(pasien.jk='L','Laki-Laki','Perempuan') AS jk, pasien.tgl_lahir, "
@@ -3285,7 +3313,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
                     + "observasi_dialisis_pasien.ultragoal, observasi_dialisis_pasien.total, "
                     + "observasi_dialisis_pasien.bolusawal, observasi_dialisis_pasien.kontinyu, "
                     + "observasi_dialisis_pasien.bfr, observasi_dialisis_pasien.heparin, "
-                    + "observasi_dialisis_pasien.obat_selama_hd, observasi_dialisis_pasien.keluahan_post_hd, "
+                    + "observasi_dialisis_pasien.obat_selama_hd, observasi_dialisis_pasien.tgl_post_hd,  observasi_dialisis_pasien.keluahan_post_hd, "
                     + "observasi_dialisis_pasien.sisa_priming, observasi_dialisis_pasien.transfusi, "
                     + "observasi_dialisis_pasien.minum, observasi_dialisis_pasien.jumlah, "
                     + "observasi_dialisis_pasien.td_pos, observasi_dialisis_pasien.suhu_pos, "
@@ -3297,21 +3325,14 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
                     + "INNER JOIN observasi_dialisis_pasien ON reg_periksa.no_rawat = observasi_dialisis_pasien.no_rawat "
                     + "LEFT JOIN dokter ON observasi_dialisis_pasien.kd_dokter = dokter.kd_dokter "
                     + "LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip "
-                    //                    + "WHERE reg_periksa.no_rawat LIKE ? "
-                    //                    + (TCari.getText().trim().equals("") ? "" : "AND (reg_periksa.no_rawat LIKE ? OR pasien.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ?) ")
-                    + "WHERE 1=1 "
+                    + "WHERE DATE(observasi_dialisis_pasien.tanggal) BETWEEN ? AND ? "
                     + (TCari.getText().trim().equals("") ? ""
                     : "AND (reg_periksa.no_rawat LIKE ? OR pasien.no_rkm_medis LIKE ? OR pasien.nm_pasien LIKE ?) ")
                     + "ORDER BY observasi_dialisis_pasien.tanggal");
-//
-//            ps.setString(1, "%" + TCari.getText() + "%");
-//
-//            if (!TCari.getText().equals("")) {
-//                ps.setString(2, "%" + TCari.getText() + "%");
-//                ps.setString(3, "%" + TCari.getText() + "%");
-//                ps.setString(4, "%" + TCari.getText() + "%");
-//            }
+
             int i = 1;
+            ps.setString(i++, tglAwal);
+            ps.setString(i++, tglAkhir);
 
             if (!TCari.getText().trim().equals("")) {
                 ps.setString(i++, "%" + TCari.getText() + "%");
@@ -3335,7 +3356,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
                     rs.getString("ke"), rs.getString("dialisat"), rs.getString("lamahd"),
                     rs.getString("ultragoal"), rs.getString("total"), rs.getString("bolusawal"),
                     rs.getString("kontinyu"), rs.getString("bfr"), rs.getString("heparin"),
-                    rs.getString("obat_selama_hd"), rs.getString("keluahan_post_hd"), rs.getString("sisa_priming"),
+                    rs.getString("obat_selama_hd"), rs.getString("tgl_post_hd"), rs.getString("keluahan_post_hd"), rs.getString("sisa_priming"),
                     rs.getString("transfusi"), rs.getString("minum"), rs.getString("jumlah"),
                     rs.getString("td_pos"), rs.getString("suhu_pos"), rs.getString("nadi_pos"),
                     rs.getString("rr_pos"), rs.getString("bb_pos"), rs.getString("pendidikan"), rs.getString("nip"), namapet, rs.getString("diagnosa")
@@ -3402,6 +3423,10 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
     public void getData() {
         if (tbObat.getSelectedRow() != -1) {
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
+            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
+            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
+            Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 3).toString());
+            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 4).toString());
             Valid.SetTgl2(TglAsuhan, tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
             KdDokter.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString());
             NmPetugas.setText(Sequel.cariIsi("select ifnull(nama,'') from pegawai where nik='" + KdDokter.getText() + "'"));
@@ -3434,19 +3459,20 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
             TFlowRate.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 34).toString());
             cmdHeparin.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 35).toString());
             Obat.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 36).toString());
-            Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 37).toString());
-            TPriming.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 38).toString());
-            TTranfusi.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 39).toString());
-            TMinum.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 40).toString());
-            TJumlah.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 41).toString());
-            TTD.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 42).toString());
-            TSuhuPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 43).toString());
-            TNasiPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 44).toString());
-            TRRPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 45).toString());
-            TBBPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 46).toString());
-            KdPetugas1.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 48).toString());
-            NmPetugas1.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 49).toString());
-            TDiagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 50).toString());
+            Valid.SetTgl2(TglPostHD, tbObat.getValueAt(tbObat.getSelectedRow(), 37).toString()); // BARU
+            Diagnosis.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 38).toString());
+            TPriming.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 39).toString());
+            TTranfusi.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 40).toString());
+            TMinum.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 41).toString());
+            TJumlah.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 42).toString());
+            TTD.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 43).toString());
+            TSuhuPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 44).toString());
+            TNasiPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 45).toString());
+            TRRPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 46).toString());
+            TBBPost.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 47).toString());
+            KdPetugas1.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 49).toString());
+            NmPetugas1.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 50).toString());
+            TDiagnosa.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 51).toString());
             tampilEdukasi();
             tampilEdukasi2();
         }
@@ -3632,11 +3658,38 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
     }
 
     private void tampilEdukasi() {
+//        Valid.tabelKosong(tabModeRiwayatKehamilan);
+//        String query = "SELECT * FROM catatan_observasi_dialisis WHERE no_rawat = ?";
+//
+//        try ( PreparedStatement ps = koneksi.prepareStatement(query)) {
+//            String noRawat = TNoRw.getText().trim();
+//            ps.setString(1, noRawat);
+//
+//            try ( ResultSet rs = ps.executeQuery()) {
+//                while (rs.next()) {
+//                    tabModeRiwayatKehamilan.addRow(new String[]{
+//                        rs.getString(3), rs.getString(2),
+//                        rs.getString(4), rs.getString(5), rs.getString(6),
+//                        rs.getString(7), rs.getString(8), rs.getString(9),
+//                        rs.getString(10), rs.getString(11), rs.getString(12)
+//                    });
+//                }
+//            } catch (Exception e) {
+//                System.out.println("Notif : " + e);
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Notifikasi : " + e);
+//        }
         Valid.tabelKosong(tabModeRiwayatKehamilan);
+        String noRawat = TNoRw.getText().trim();
+
+        if (noRawat.isEmpty()) {
+            return; // hindari query dengan no_rawat kosong
+        }
+
         String query = "SELECT * FROM catatan_observasi_dialisis WHERE no_rawat = ?";
 
         try ( PreparedStatement ps = koneksi.prepareStatement(query)) {
-            String noRawat = TNoRw.getText().trim();
             ps.setString(1, noRawat);
 
             try ( ResultSet rs = ps.executeQuery()) {
@@ -3660,18 +3713,20 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
         Valid.tabelKosong(tabModeRiwayatKehamilan2);
 
         int selectedRow = tbObat.getSelectedRow();
-        if (selectedRow != -1) {
-            TNoRM1.setText(tbObat.getValueAt(selectedRow, 1).toString());
-            TPasien1.setText(tbObat.getValueAt(selectedRow, 2).toString());
-        } else {
+        if (selectedRow == -1) {
             System.out.println("No row selected.");
             return;
         }
 
+        TNoRM1.setText(tbObat.getValueAt(selectedRow, 1).toString());
+        TPasien1.setText(tbObat.getValueAt(selectedRow, 2).toString());
+
+        // Ambil no_rawat langsung dari row yang diklik, bukan dari TNoRw
+        String noRawat = tbObat.getValueAt(selectedRow, 0).toString().trim();
+
         String query = "SELECT * FROM catatan_observasi_dialisis WHERE no_rawat = ?";
 
         try ( PreparedStatement ps = koneksi.prepareStatement(query)) {
-            String noRawat = TNoRw.getText().trim();
             ps.setString(1, noRawat);
 
             try ( ResultSet rs = ps.executeQuery()) {
@@ -3712,9 +3767,8 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        //String selectedDate = Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19);
-        String selectedDate = Valid.SetTgl(TglAsuhan.getSelectedItem() + "");
-        //System.out.println("Tanggal yang dikirim: " + selectedDate);
+        String selectedDate = Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19);
+
         String queryCheck = "SELECT COUNT(*) FROM observasi_dialisis_pasien WHERE no_rawat=? AND tanggal=?";
         int recordCount = 0;
         try {
@@ -3733,9 +3787,9 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
                     "no_rawat=? AND tanggal=?",
                     "no_rawat=?, tanggal=?, kd_dokter=?, sumberdata=?, kewarganegaraan=?, kesadaran=?, gcs=?, ews=?, td=?, suhu=?, nadi=?, rr=?, nyeri=?, keluhan=?, "
                     + "alergi=?, adanyeri=?, vaskuler=?, bbkering=?, bbsekarang=?, lokasi=?, mesin=?, dializer=?, ke=?, dialisat=?, lamahd=?, ultragoal=?, "
-                    + "total=?, bolusawal=?, kontinyu=?, bfr=?, heparin=?, obat_selama_hd=?, keluahan_post_hd=?, sisa_priming=?, transfusi=?, minum=?, "
+                    + "total=?, bolusawal=?, kontinyu=?, bfr=?, heparin=?, obat_selama_hd=?, tgl_post_hd=?, keluahan_post_hd=?, sisa_priming=?, transfusi=?, minum=?, "
                     + "jumlah=?, td_pos=?, suhu_pos=?, nadi_pos=?, rr_pos=?, bb_pos=?, pendidikan=?, diagnosa=?, nip=?",
-                    47,
+                    48,
                     new String[]{
                         TNoRw.getText(),
                         selectedDate,
@@ -3769,6 +3823,7 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
                         TFlowRate.getText(),
                         cmdHeparin.getSelectedItem().toString(),
                         Obat.getText(),
+                        Valid.SetTgl(TglPostHD.getSelectedItem() + "") + " " + TglPostHD.getSelectedItem().toString().substring(11, 19),
                         Diagnosis.getText(),
                         TPriming.getText(),
                         TTranfusi.getText(),
@@ -3802,15 +3857,16 @@ public final class RMObservasiPasienDialisis extends javax.swing.JDialog {
 
     private void simpan() {
         try {
-            if (Sequel.menyimpantf("observasi_dialisis_pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 45, new String[]{
+            if (Sequel.menyimpantf("observasi_dialisis_pasien", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "No.Rawat", 46, new String[]{
                 TNoRw.getText(), Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19),
                 KdDokter.getText(), ChbSumberData.getSelectedItem().toString(), ChbWarganegara.getSelectedItem().toString(), Kesadaran.getSelectedItem().toString(),
                 GCS.getText(), ews.getText(), TD.getText(), Suhu.getText(), Nadi.getText(), RR.getText(), Nyeri.getText(), Keluhan.getText(), cmbRwyAlergi.getSelectedItem().toString(),
                 Alergi.getText(), cmbVaskuler.getSelectedItem().toString(), BBKering.getText(), BBSekarang.getText(), TLokasi.getText(), TNoMesin.getText(), cmbDializer.getSelectedItem().toString(),
                 dializerke.getText(), TDialisat.getText(), TLamaHD.getText(), TUltraGoal.getText(), TTotal.getText(), TBolusAwal.getText(), TKontinyu.getText(), TFlowRate.getText(), cmdHeparin.getSelectedItem().toString(),
-                Obat.getText(), Diagnosis.getText(), TPriming.getText(), TTranfusi.getText(), TMinum.getText(), TJumlah.getText(), TTD.getText(), TSuhuPost.getText(), TNasiPost.getText(), TRRPost.getText(), TBBPost.getText(),
+                Obat.getText(),
+                Valid.SetTgl(TglPostHD.getSelectedItem() + "") + " " + TglPostHD.getSelectedItem().toString().substring(11, 19), // BARU: tgl_post_hd
+                Diagnosis.getText(), TPriming.getText(), TTranfusi.getText(), TMinum.getText(), TJumlah.getText(), TTD.getText(), TSuhuPost.getText(), TNasiPost.getText(), TRRPost.getText(), TBBPost.getText(),
                 TAlamat1.getText(), TDiagnosa.getText(), KdPetugas1.getText()
-
             })) {
                 emptTeks();
                 JOptionPane.showMessageDialog(null, "Data berhasil disimpan!", "Sukses", JOptionPane.INFORMATION_MESSAGE);

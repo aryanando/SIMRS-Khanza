@@ -469,7 +469,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -483,7 +483,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -604,7 +604,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         TPasien.setBounds(336, 10, 285, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-05-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-06-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -926,7 +926,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         jLabel110.setBounds(62, 90, 450, 23);
 
         jLabel111.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel111.setText("U (Urea) : BUN > 20 mg/dL atau Urea > 7 mmol/L ?");
+        jLabel111.setText("U (Urea) : Ureum > 40 mg/dL   Ureum 40 ≤ mg/dL ?");
         jLabel111.setName("jLabel111"); // NOI18N
         FormInput.add(jLabel111);
         jLabel111.setBounds(62, 120, 450, 23);
@@ -1764,7 +1764,7 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
 //            KdPetugas.setEditable(false);
 //            BtnPetugas.setEnabled(false);
             KdPetugas.setText(akses.getkode());
-            NmPetugas.setText(Sequel.CariPetugas(KdPetugas.getText()));
+            NmPetugas.setText(Sequel.CariPegawai(KdPetugas.getText()));
             // if(NmPetugas.getText().equals("")){
             //     KdPetugas.setText("");
             //     JOptionPane.showMessageDialog(null,"User login bukan petugas...!!");

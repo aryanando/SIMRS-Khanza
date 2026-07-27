@@ -104,7 +104,7 @@
        observasi_dialisis_pasien.ultragoal, observasi_dialisis_pasien.total, 
        observasi_dialisis_pasien.bolusawal, observasi_dialisis_pasien.kontinyu, 
        observasi_dialisis_pasien.bfr, observasi_dialisis_pasien.heparin, 
-       observasi_dialisis_pasien.obat_selama_hd, observasi_dialisis_pasien.keluahan_post_hd, 
+       observasi_dialisis_pasien.obat_selama_hd, observasi_dialisis_pasien.tgl_post_hd, observasi_dialisis_pasien.keluahan_post_hd, 
        observasi_dialisis_pasien.sisa_priming, observasi_dialisis_pasien.transfusi, 
        observasi_dialisis_pasien.minum, observasi_dialisis_pasien.jumlah, 
        observasi_dialisis_pasien.td_pos, observasi_dialisis_pasien.suhu_pos, 
@@ -162,10 +162,14 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 	<field name="nadi_pos" class="java.lang.String"/>
 	<field name="rr_pos" class="java.lang.String"/>
 	<field name="bb_pos" class="java.lang.String"/>
+	<field name="tgl_post_hd" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="tgl_post_hd"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="observasi_dialisis_pasien"/>
+	</field>
 	<title>
 		<band height="804">
 			<rectangle>
-				<reportElement x="0" y="50" width="557" height="739" uuid="e033936f-8bc5-4d11-a952-7ce756024bb1"/>
+				<reportElement x="0" y="50" width="557" height="749" uuid="e033936f-8bc5-4d11-a952-7ce756024bb1"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
@@ -275,7 +279,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="320" width="247" height="11" uuid="3f10835f-03d6-40f1-891a-e5b263c49e79">
+				<reportElement x="4" y="327" width="247" height="11" uuid="3f10835f-03d6-40f1-891a-e5b263c49e79">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -286,7 +290,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[DATA ON HD]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="333" width="557" height="1" uuid="82e2fa19-5c73-47df-a7b4-196c74c55d8a">
+				<reportElement x="0" y="340" width="557" height="1" uuid="82e2fa19-5c73-47df-a7b4-196c74c55d8a">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -295,7 +299,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="4" y="335" width="33" height="23" uuid="6ad7743f-1bab-4f1e-83ed-67a5887c56b9">
+				<reportElement x="4" y="342" width="33" height="23" uuid="6ad7743f-1bab-4f1e-83ed-67a5887c56b9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -305,7 +309,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[JAM]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="44" y="335" width="39" height="23" uuid="f9eb2849-4b64-4e62-96b3-ad038f20a217">
+				<reportElement x="44" y="342" width="39" height="23" uuid="f9eb2849-4b64-4e62-96b3-ad038f20a217">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -316,7 +320,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[TD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="85" y="335" width="59" height="23" uuid="f6da6e9e-eeb9-4805-bec8-12a55469d30c">
+				<reportElement x="85" y="342" width="59" height="23" uuid="f6da6e9e-eeb9-4805-bec8-12a55469d30c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -326,7 +330,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[NADI]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="144" y="335" width="38" height="23" uuid="592a7bd5-7316-406e-ab2a-6cd92b6283a0">
+				<reportElement x="144" y="342" width="38" height="23" uuid="592a7bd5-7316-406e-ab2a-6cd92b6283a0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -337,7 +341,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[QB]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="183" y="335" width="37" height="23" uuid="9a132e0a-e0e5-4de2-8e2a-d33c792e7b60">
+				<reportElement x="183" y="342" width="37" height="23" uuid="9a132e0a-e0e5-4de2-8e2a-d33c792e7b60">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -348,7 +352,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[VP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="222" y="335" width="53" height="23" uuid="1be7f584-f44c-453f-8a72-2dad2c230276">
+				<reportElement x="222" y="342" width="53" height="23" uuid="1be7f584-f44c-453f-8a72-2dad2c230276">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -358,7 +362,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[UFG]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="279" y="335" width="51" height="23" uuid="6daee1c9-d9e8-4139-bd2c-2333b8dd7558">
+				<reportElement x="279" y="342" width="51" height="23" uuid="6daee1c9-d9e8-4139-bd2c-2333b8dd7558">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -369,7 +373,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[UF REMOVED]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="359" width="557" height="1" uuid="b80288b4-c64a-4f83-b4a7-33fd6ca6ebb9">
+				<reportElement x="0" y="366" width="557" height="1" uuid="b80288b4-c64a-4f83-b4a7-33fd6ca6ebb9">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -378,7 +382,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="525" width="557" height="1" uuid="641972ee-ef0c-4cac-97f4-accff3e72e92">
+				<reportElement x="0" y="532" width="557" height="1" uuid="641972ee-ef0c-4cac-97f4-accff3e72e92">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -387,17 +391,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="42" y="334" width="1" height="192" uuid="4181bad9-afb4-4249-8030-bce72a8cde95">
-					<property name="com.jaspersoft.studio.unit.x" value="px"/>
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<graphicElement>
-					<pen lineWidth="0.4"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement x="83" y="334" width="1" height="192" uuid="be55e806-cf6d-4315-a89d-21ce214b927d">
+				<reportElement x="42" y="341" width="1" height="192" uuid="4181bad9-afb4-4249-8030-bce72a8cde95">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -407,7 +401,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="143" y="334" width="1" height="192" uuid="b24769bd-e9d3-478f-9ee1-719ea6062a0e">
+				<reportElement x="83" y="341" width="1" height="192" uuid="be55e806-cf6d-4315-a89d-21ce214b927d">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -417,7 +411,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="182" y="334" width="1" height="192" uuid="ee069bac-1119-4e3f-91ff-fa89a2cef104">
+				<reportElement x="143" y="341" width="1" height="192" uuid="b24769bd-e9d3-478f-9ee1-719ea6062a0e">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -427,7 +421,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="221" y="334" width="1" height="192" uuid="813bf6a1-8b62-4f6c-bbed-cd04a8c0ba47">
+				<reportElement x="182" y="341" width="1" height="192" uuid="ee069bac-1119-4e3f-91ff-fa89a2cef104">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -437,7 +431,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="276" y="334" width="1" height="192" uuid="047ec425-323b-4112-828b-e81cf38a7aa7">
+				<reportElement x="221" y="341" width="1" height="192" uuid="813bf6a1-8b62-4f6c-bbed-cd04a8c0ba47">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -447,7 +441,17 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="332" y="334" width="1" height="192" uuid="8b80a63d-f5fa-4136-8b7d-e4287290d90d">
+				<reportElement x="276" y="341" width="1" height="192" uuid="047ec425-323b-4112-828b-e81cf38a7aa7">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.4"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="332" y="341" width="1" height="192" uuid="8b80a63d-f5fa-4136-8b7d-e4287290d90d">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -833,7 +837,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="234" width="67" height="11" uuid="27621ee3-a819-4513-831f-2318fa98ae3b">
+				<reportElement x="3" y="249" width="67" height="11" uuid="27621ee3-a819-4513-831f-2318fa98ae3b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -844,7 +848,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Riwayat Alergi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="234" width="7" height="11" uuid="e53dddb8-fb4a-4bcd-8649-87a17f0d2ca0">
+				<reportElement x="71" y="249" width="7" height="11" uuid="e53dddb8-fb4a-4bcd-8649-87a17f0d2ca0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -854,7 +858,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="245" width="7" height="11" uuid="084d1a7d-8175-4f9d-afe2-e045db9abd2f">
+				<reportElement x="71" y="260" width="7" height="11" uuid="084d1a7d-8175-4f9d-afe2-e045db9abd2f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -864,7 +868,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="245" width="67" height="11" uuid="d117252f-641b-4fcf-b4e8-d07dec8c6f77">
+				<reportElement x="3" y="260" width="67" height="11" uuid="d117252f-641b-4fcf-b4e8-d07dec8c6f77">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -875,7 +879,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Akeses Vaskuler]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="256" width="67" height="11" uuid="abc6ed77-b630-491b-bbd7-1ceae92aecbc">
+				<reportElement x="3" y="271" width="67" height="11" uuid="abc6ed77-b630-491b-bbd7-1ceae92aecbc">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -886,7 +890,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Lokasi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="256" width="7" height="11" uuid="ac8cfca7-0325-4982-84f0-0e1fcc557976">
+				<reportElement x="71" y="271" width="7" height="11" uuid="ac8cfca7-0325-4982-84f0-0e1fcc557976">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -896,7 +900,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="267" width="7" height="11" uuid="a6aba016-4428-4b42-abcf-e1b3d7ee3364">
+				<reportElement x="71" y="282" width="7" height="11" uuid="a6aba016-4428-4b42-abcf-e1b3d7ee3364">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -906,7 +910,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="267" width="67" height="11" uuid="fe981472-5bc2-41b1-987e-30002dda213d">
+				<reportElement x="3" y="282" width="67" height="11" uuid="fe981472-5bc2-41b1-987e-30002dda213d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -917,7 +921,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[No. Mesin]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="278" width="67" height="11" uuid="4341a6ef-0e76-465f-9d03-4183babb7202">
+				<reportElement x="3" y="293" width="67" height="11" uuid="4341a6ef-0e76-465f-9d03-4183babb7202">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -928,7 +932,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Dializer]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="278" width="7" height="11" uuid="fe2d7766-03f1-4195-823c-0c194b4b1f1c">
+				<reportElement x="71" y="293" width="7" height="11" uuid="fe2d7766-03f1-4195-823c-0c194b4b1f1c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -938,7 +942,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="289" width="67" height="11" uuid="92ce0425-090c-41e0-bab9-117cbd5d2d56">
+				<reportElement x="3" y="304" width="67" height="11" uuid="92ce0425-090c-41e0-bab9-117cbd5d2d56">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -949,7 +953,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Dialisat]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="289" width="7" height="11" uuid="9151a0ef-f76f-42ec-abf3-8cf6248ade22">
+				<reportElement x="71" y="304" width="7" height="11" uuid="9151a0ef-f76f-42ec-abf3-8cf6248ade22">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -959,7 +963,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="71" y="300" width="7" height="11" uuid="9b00694e-4007-4e08-b7b9-c26c26011bfa">
+				<reportElement x="71" y="314" width="7" height="11" uuid="9b00694e-4007-4e08-b7b9-c26c26011bfa">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -969,7 +973,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="300" width="67" height="11" uuid="0d4a1b61-aff0-432b-b9e2-623b1058baa0">
+				<reportElement x="3" y="314" width="67" height="11" uuid="0d4a1b61-aff0-432b-b9e2-623b1058baa0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -980,7 +984,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[BB Kering]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="278" width="20" height="11" uuid="c52c2bb1-8504-4b69-a40a-51b897706a2b">
+				<reportElement x="130" y="293" width="20" height="11" uuid="c52c2bb1-8504-4b69-a40a-51b897706a2b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -991,7 +995,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Ke]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="150" y="278" width="7" height="11" uuid="e4d5812b-85b4-4627-85ce-de317ad6c367">
+				<reportElement x="150" y="293" width="7" height="11" uuid="e4d5812b-85b4-4627-85ce-de317ad6c367">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1001,7 +1005,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="198" y="300" width="7" height="11" uuid="add29778-e11c-444c-9c20-d7f15fd9e75e">
+				<reportElement x="198" y="314" width="7" height="11" uuid="add29778-e11c-444c-9c20-d7f15fd9e75e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1011,7 +1015,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="300" width="67" height="11" uuid="0df3e1fc-f256-4991-8e81-fbc95f0fe15b">
+				<reportElement x="130" y="314" width="67" height="11" uuid="0df3e1fc-f256-4991-8e81-fbc95f0fe15b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1022,7 +1026,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[BB Sekarang]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="198" y="234" width="7" height="11" uuid="5da11945-8025-494f-a501-3b8ddfb03c97">
+				<reportElement x="198" y="249" width="7" height="11" uuid="5da11945-8025-494f-a501-3b8ddfb03c97">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1032,7 +1036,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="234" width="67" height="11" uuid="10e055b0-9044-4a46-89c7-6dce4f3f4456">
+				<reportElement x="130" y="249" width="67" height="11" uuid="10e055b0-9044-4a46-89c7-6dce4f3f4456">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1201,7 +1205,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Heparin]]></text>
 			</staticText>
 			<line>
-				<reportElement x="483" y="334" width="1" height="192" uuid="f70cbdf2-da9f-4d26-826a-e89e473859d0">
+				<reportElement x="483" y="341" width="1" height="192" uuid="f70cbdf2-da9f-4d26-826a-e89e473859d0">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -1211,7 +1215,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="333" y="335" width="150" height="23" uuid="59989399-4fc5-4b68-9562-4c2f290dbb6a">
+				<reportElement x="333" y="342" width="150" height="23" uuid="59989399-4fc5-4b68-9562-4c2f290dbb6a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -1222,7 +1226,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[MASALAH/TINDAKAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="484" y="335" width="73" height="23" uuid="bbc70760-cf58-472e-8842-988599af2d2f">
+				<reportElement x="484" y="342" width="73" height="23" uuid="bbc70760-cf58-472e-8842-988599af2d2f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -1244,7 +1248,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[DATA POST HD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="577" width="106" height="11" uuid="7bdb605a-c67a-4c70-b846-6ce83aa253a2">
+				<reportElement x="4" y="588" width="106" height="11" uuid="7bdb605a-c67a-4c70-b846-6ce83aa253a2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1255,7 +1259,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Keluhan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="111" y="544" width="7" height="11" uuid="b522529f-e9a1-41de-8e52-f510a1a9636e">
+				<reportElement x="111" y="555" width="7" height="11" uuid="b522529f-e9a1-41de-8e52-f510a1a9636e">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1265,7 +1269,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="111" y="577" width="7" height="11" uuid="22da9599-360d-4b80-bdfd-29a8c3a6beb0">
+				<reportElement x="111" y="588" width="7" height="11" uuid="22da9599-360d-4b80-bdfd-29a8c3a6beb0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1275,7 +1279,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="544" width="106" height="11" uuid="fe45149a-ceef-472c-83b5-1cf8acea03ce">
+				<reportElement x="4" y="555" width="106" height="11" uuid="fe45149a-ceef-472c-83b5-1cf8acea03ce">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1286,7 +1290,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Obat yang masuk selama HD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="592" width="114" height="11" uuid="6e209d3c-ab69-42d5-b782-1e128a9464f0">
+				<reportElement x="4" y="603" width="114" height="11" uuid="6e209d3c-ab69-42d5-b782-1e128a9464f0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1297,7 +1301,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Cairan yang masuk selama HD]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="638" width="67" height="11" uuid="4a7e1125-6a06-4376-857c-63998f26432f">
+				<reportElement x="4" y="649" width="67" height="11" uuid="4a7e1125-6a06-4376-857c-63998f26432f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1308,7 +1312,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Jumlah]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="72" y="616" width="7" height="11" uuid="c49c080a-a856-4f21-abfa-a521cd390519">
+				<reportElement x="72" y="627" width="7" height="11" uuid="c49c080a-a856-4f21-abfa-a521cd390519">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1318,7 +1322,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="605" width="67" height="11" uuid="e8886585-4c78-4408-ad81-e890c74fe76a">
+				<reportElement x="4" y="616" width="67" height="11" uuid="e8886585-4c78-4408-ad81-e890c74fe76a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1329,7 +1333,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Sisa Priming]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="72" y="638" width="7" height="11" uuid="5a663006-dfa6-4003-9def-602a2d41f609">
+				<reportElement x="72" y="649" width="7" height="11" uuid="5a663006-dfa6-4003-9def-602a2d41f609">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1339,7 +1343,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="627" width="67" height="11" uuid="ffc3bdd2-2ebb-45e6-8296-d8f4c27c9dd8">
+				<reportElement x="4" y="638" width="67" height="11" uuid="ffc3bdd2-2ebb-45e6-8296-d8f4c27c9dd8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1350,7 +1354,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Minum]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="72" y="605" width="7" height="11" uuid="321dec34-7212-4708-80ad-ee73a8a48d83">
+				<reportElement x="72" y="616" width="7" height="11" uuid="321dec34-7212-4708-80ad-ee73a8a48d83">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1360,7 +1364,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="72" y="627" width="7" height="11" uuid="9743b79b-bf83-4083-a222-362126f575c0">
+				<reportElement x="72" y="638" width="7" height="11" uuid="9743b79b-bf83-4083-a222-362126f575c0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1370,7 +1374,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="616" width="67" height="11" uuid="6c1fb64f-3877-41a7-9ed9-f32d3c8b3abc">
+				<reportElement x="4" y="627" width="67" height="11" uuid="6c1fb64f-3877-41a7-9ed9-f32d3c8b3abc">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1381,7 +1385,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Transfusi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="4" y="652" width="126" height="11" uuid="e5c632ce-b949-4dfa-8783-cbb1019be27f">
+				<reportElement x="4" y="663" width="126" height="11" uuid="e5c632ce-b949-4dfa-8783-cbb1019be27f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1392,7 +1396,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Petugas yang melakukan fungsi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="130" y="652" width="7" height="11" uuid="6e026866-c671-4e20-bab5-43c6ef50d0e5">
+				<reportElement x="130" y="663" width="7" height="11" uuid="6e026866-c671-4e20-bab5-43c6ef50d0e5">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1402,7 +1406,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="303" y="592" width="7" height="11" uuid="1736d663-6d92-4bdf-998f-29e668aebad5">
+				<reportElement x="303" y="603" width="7" height="11" uuid="1736d663-6d92-4bdf-998f-29e668aebad5">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1412,7 +1416,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="275" y="592" width="28" height="11" uuid="f155fa75-e6f5-46b3-973d-2501d622a43f">
+				<reportElement x="275" y="603" width="28" height="11" uuid="f155fa75-e6f5-46b3-973d-2501d622a43f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -1422,7 +1426,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[TTV]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="29" y="681" width="133" height="11" uuid="25b8d1c2-63fb-41ce-8305-9c6869734436">
+				<reportElement x="29" y="692" width="133" height="11" uuid="25b8d1c2-63fb-41ce-8305-9c6869734436">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1433,7 +1437,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Verifikasi DPJP]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="392" y="681" width="133" height="11" uuid="8a884941-a4f8-444c-9d78-eb866b474997">
+				<reportElement x="392" y="692" width="133" height="11" uuid="8a884941-a4f8-444c-9d78-eb866b474997">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1598,70 +1602,70 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{kewarganegaraan}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="235" width="50" height="10" uuid="7da6a611-3608-4c45-91b6-7fb8b56ff8ee"/>
+				<reportElement x="79" y="250" width="50" height="10" uuid="7da6a611-3608-4c45-91b6-7fb8b56ff8ee"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{alergi}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="205" y="235" width="74" height="10" uuid="81d44cb0-5cd2-4080-aa91-a2a43ba1ea4c"/>
+				<reportElement x="205" y="250" width="74" height="10" uuid="81d44cb0-5cd2-4080-aa91-a2a43ba1ea4c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{adanyeri}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="246" width="100" height="10" uuid="2e2c13ed-0371-4c03-b5bb-79d32a83c1fc"/>
+				<reportElement x="79" y="261" width="100" height="10" uuid="2e2c13ed-0371-4c03-b5bb-79d32a83c1fc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{vaskuler}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="257" width="100" height="10" uuid="8304f41d-9827-4f33-8cf1-dcc718010d4d"/>
+				<reportElement x="79" y="272" width="100" height="10" uuid="8304f41d-9827-4f33-8cf1-dcc718010d4d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lokasi}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="268" width="100" height="10" uuid="4da44f18-cf2a-412e-80cf-e76f61c35063"/>
+				<reportElement x="79" y="283" width="100" height="10" uuid="4da44f18-cf2a-412e-80cf-e76f61c35063"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mesin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="278" width="50" height="10" uuid="1b9dbb1a-e583-409e-a071-c9781a99bfd9"/>
+				<reportElement x="79" y="293" width="50" height="10" uuid="1b9dbb1a-e583-409e-a071-c9781a99bfd9"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dializer}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="157" y="278" width="100" height="10" uuid="41935921-c41b-48c5-8a1a-a8555f7c9324"/>
+				<reportElement x="157" y="293" width="100" height="10" uuid="41935921-c41b-48c5-8a1a-a8555f7c9324"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ke}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="289" width="100" height="10" uuid="d6b3d6b4-72d9-42c7-8009-d7c20cfec011"/>
+				<reportElement x="79" y="304" width="100" height="10" uuid="d6b3d6b4-72d9-42c7-8009-d7c20cfec011"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dialisat}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="300" width="50" height="10" uuid="142cacd1-eb28-443c-b9f1-8ed7d35041af"/>
+				<reportElement x="79" y="315" width="50" height="10" uuid="142cacd1-eb28-443c-b9f1-8ed7d35041af"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bbkering}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="205" y="300" width="76" height="10" uuid="e2dba3a7-0c7a-4811-895f-614bce3ebf25"/>
+				<reportElement x="205" y="315" width="76" height="10" uuid="e2dba3a7-0c7a-4811-895f-614bce3ebf25"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -1731,77 +1735,77 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<textFieldExpression><![CDATA[$F{heparin}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="118" y="544" width="428" height="30" uuid="bdc6c04b-7802-49f2-8420-360299692e65"/>
+				<reportElement x="118" y="555" width="428" height="30" uuid="bdc6c04b-7802-49f2-8420-360299692e65"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{obat_selama_hd}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="118" y="577" width="428" height="11" uuid="1104e442-9b87-4db2-8981-18aed18a8c6a"/>
+				<reportElement x="118" y="588" width="428" height="11" uuid="1104e442-9b87-4db2-8981-18aed18a8c6a"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{keluahan_post_hd}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="605" width="100" height="11" uuid="ba5fc8d2-0108-44e6-b240-db63a29d6c4c"/>
+				<reportElement x="79" y="616" width="100" height="11" uuid="ba5fc8d2-0108-44e6-b240-db63a29d6c4c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{sisa_priming}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="616" width="100" height="11" uuid="1e6e89fd-38ee-48fa-a98f-85e11ba43c4a"/>
+				<reportElement x="79" y="627" width="100" height="11" uuid="1e6e89fd-38ee-48fa-a98f-85e11ba43c4a"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{transfusi}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="627" width="100" height="11" uuid="b112ea44-41e1-4ec4-97c6-a615575eb970"/>
+				<reportElement x="79" y="638" width="100" height="11" uuid="b112ea44-41e1-4ec4-97c6-a615575eb970"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{minum}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="79" y="638" width="100" height="11" uuid="8c9b8605-437d-44c0-92a6-280f621b3b81"/>
+				<reportElement x="79" y="649" width="100" height="11" uuid="8c9b8605-437d-44c0-92a6-280f621b3b81"/>
 				<textElement>
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="592" width="116" height="11" uuid="393c97d4-6b04-48a9-82b9-25399067645e"/>
+				<reportElement x="310" y="603" width="116" height="11" uuid="393c97d4-6b04-48a9-82b9-25399067645e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["TD : "+$F{td_pos}+" mmHg"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="605" width="123" height="13" uuid="e0859b04-c379-484b-9b0a-3b89a9916704"/>
+				<reportElement x="310" y="616" width="123" height="13" uuid="e0859b04-c379-484b-9b0a-3b89a9916704"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Suhu : "+$F{suhu_pos}+" °C"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="620" width="136" height="13" uuid="0c5ee15a-5bba-4864-95aa-961d2104d28b"/>
+				<reportElement x="310" y="631" width="136" height="13" uuid="0c5ee15a-5bba-4864-95aa-961d2104d28b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Nadi : "+$F{nadi_pos}+" x/menit"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="635" width="139" height="14" uuid="901c77dd-91ca-4b15-a8e3-2b3f4716cefc"/>
+				<reportElement x="310" y="646" width="139" height="14" uuid="901c77dd-91ca-4b15-a8e3-2b3f4716cefc"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["RR : "+$F{rr_pos}+" x/menit"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="310" y="652" width="138" height="10" uuid="186ee3c6-94fb-4c80-b8ec-6310f43c9fd3"/>
+				<reportElement x="310" y="663" width="138" height="10" uuid="186ee3c6-94fb-4c80-b8ec-6310f43c9fd3"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -1822,7 +1826,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<textFieldExpression><![CDATA[$P{dpjp}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="370" y="750" width="184" height="30" uuid="b7d15bf7-1edb-45d1-9b15-2714d9733ad7"/>
+				<reportElement x="370" y="761" width="184" height="30" uuid="b7d15bf7-1edb-45d1-9b15-2714d9733ad7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -1867,336 +1871,336 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<textFieldExpression><![CDATA[$P{agama}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="361" width="34" height="28" uuid="5f7dcc1a-96de-48e4-9040-45b8e8aea5b3"/>
+				<reportElement x="4" y="368" width="34" height="28" uuid="5f7dcc1a-96de-48e4-9040-45b8e8aea5b3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jam1} != null ? $P{jam1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="43" y="361" width="40" height="28" uuid="066c9c9a-344f-469e-8a80-f3ef1f8b25f0"/>
+				<reportElement x="43" y="368" width="40" height="28" uuid="066c9c9a-344f-469e-8a80-f3ef1f8b25f0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{td1} != null ? $P{td1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="85" y="361" width="58" height="28" uuid="916fc201-3f4f-4c17-954e-6db681b2a858"/>
+				<reportElement x="85" y="368" width="58" height="28" uuid="916fc201-3f4f-4c17-954e-6db681b2a858"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nadi1} != null ? $P{nadi1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="143" y="361" width="39" height="28" uuid="b3da59af-36e8-40e4-80fe-a2bd14585883"/>
+				<reportElement x="143" y="368" width="39" height="28" uuid="b3da59af-36e8-40e4-80fe-a2bd14585883"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{qb1} != null ? $P{qb1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="182" y="361" width="40" height="28" uuid="06c9cd51-d39c-472a-a62e-20b7562594e7"/>
+				<reportElement x="182" y="368" width="40" height="28" uuid="06c9cd51-d39c-472a-a62e-20b7562594e7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vp1} != null ? $P{vp1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="361" width="53" height="28" uuid="a8749347-ca9c-49e7-ad9f-a6562057b5ea"/>
+				<reportElement x="222" y="368" width="53" height="28" uuid="a8749347-ca9c-49e7-ad9f-a6562057b5ea"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufg1} != null ? $P{ufg1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="277" y="361" width="53" height="28" uuid="193e8beb-6314-453d-8295-edbbbc2c0857"/>
+				<reportElement x="277" y="368" width="53" height="28" uuid="193e8beb-6314-453d-8295-edbbbc2c0857"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufr1} != null ? $P{ufr1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="360" width="150" height="29" uuid="d48f9f62-d854-4008-98fe-fe5a9aa27b6d"/>
+				<reportElement x="333" y="367" width="150" height="29" uuid="d48f9f62-d854-4008-98fe-fe5a9aa27b6d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{masalah1} != null ? $P{masalah1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="390" width="34" height="20" uuid="973e0ff6-6f13-4ff0-8743-3837e10d5c71"/>
+				<reportElement x="4" y="397" width="34" height="20" uuid="973e0ff6-6f13-4ff0-8743-3837e10d5c71"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jam2} != null ? $P{jam2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="43" y="390" width="40" height="20" uuid="d7c2d890-94a8-44f5-b67d-2ca97440d34b"/>
+				<reportElement x="43" y="397" width="40" height="20" uuid="d7c2d890-94a8-44f5-b67d-2ca97440d34b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{td2} != null ? $P{td2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="85" y="390" width="59" height="20" uuid="bb5609c9-8f2d-4d63-8c61-2a3da4922f46"/>
+				<reportElement x="85" y="397" width="59" height="20" uuid="bb5609c9-8f2d-4d63-8c61-2a3da4922f46"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nadi2} != null ? $P{nadi2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="144" y="390" width="38" height="20" uuid="97e7502e-1937-4aeb-9209-eacbe166376f"/>
+				<reportElement x="144" y="397" width="38" height="20" uuid="97e7502e-1937-4aeb-9209-eacbe166376f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{qb2} != null ? $P{qb2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="182" y="390" width="38" height="20" uuid="6c352357-b279-43ee-a09f-bebd6d180ef3"/>
+				<reportElement x="182" y="397" width="38" height="20" uuid="6c352357-b279-43ee-a09f-bebd6d180ef3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vp2} != null ? $P{vp2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="390" width="54" height="20" uuid="8612d11f-40b6-4f34-923f-3a4e25279331"/>
+				<reportElement x="222" y="397" width="54" height="20" uuid="8612d11f-40b6-4f34-923f-3a4e25279331"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufg2} != null ? $P{ufg2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="277" y="390" width="56" height="20" uuid="c60c7728-3b3b-42fd-8e70-20785b9a2731"/>
+				<reportElement x="277" y="397" width="56" height="20" uuid="c60c7728-3b3b-42fd-8e70-20785b9a2731"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufr2} != null ? $P{ufr2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="390" width="150" height="20" uuid="8169e5d8-df36-4de2-97d6-feea65f25778"/>
+				<reportElement x="333" y="397" width="150" height="20" uuid="8169e5d8-df36-4de2-97d6-feea65f25778"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{masalah2} != null ? $P{masalah2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="412" width="34" height="20" uuid="76f8e36f-603c-4a9f-980a-6bb8956f9232"/>
+				<reportElement x="4" y="419" width="34" height="20" uuid="76f8e36f-603c-4a9f-980a-6bb8956f9232"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jam3} != null ? $P{jam3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="45" y="412" width="39" height="20" uuid="8264b8f3-010c-4bd2-adc4-5eb0e57e9221"/>
+				<reportElement x="45" y="419" width="39" height="20" uuid="8264b8f3-010c-4bd2-adc4-5eb0e57e9221"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{td3} != null ? $P{td3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="85" y="412" width="59" height="20" uuid="83f9e64d-16fc-4c0e-b56b-62c9a61ae35e"/>
+				<reportElement x="85" y="419" width="59" height="20" uuid="83f9e64d-16fc-4c0e-b56b-62c9a61ae35e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nadi3} != null ? $P{nadi3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="144" y="412" width="38" height="20" uuid="cf13b7f7-d187-4dcd-bff0-6da0284014bc"/>
+				<reportElement x="144" y="419" width="38" height="20" uuid="cf13b7f7-d187-4dcd-bff0-6da0284014bc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{qb3} != null ? $P{qb3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="183" y="412" width="39" height="20" uuid="816bb55f-1efb-4c97-97d5-4513d4c17ed0"/>
+				<reportElement x="183" y="419" width="39" height="20" uuid="816bb55f-1efb-4c97-97d5-4513d4c17ed0"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vp3} != null ? $P{vp3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="412" width="54" height="20" uuid="ca08a278-26a3-491c-9c53-a63d7cab1a3e"/>
+				<reportElement x="222" y="419" width="54" height="20" uuid="ca08a278-26a3-491c-9c53-a63d7cab1a3e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufg3} != null ? $P{ufg3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="277" y="412" width="55" height="20" uuid="42c1e0c6-2556-4057-af97-583bac23427a"/>
+				<reportElement x="277" y="419" width="55" height="20" uuid="42c1e0c6-2556-4057-af97-583bac23427a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufr3} != null ? $P{ufr3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="412" width="151" height="20" uuid="0431867f-64d2-475c-980f-2b0a0d0adfcf"/>
+				<reportElement x="333" y="419" width="151" height="20" uuid="0431867f-64d2-475c-980f-2b0a0d0adfcf"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{masalah3} != null ? $P{masalah3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="435" width="34" height="25" uuid="bca6ce6c-ce20-485a-8098-91c063e0edb2"/>
+				<reportElement x="4" y="442" width="34" height="25" uuid="bca6ce6c-ce20-485a-8098-91c063e0edb2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jam4} != null ? $P{jam4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="45" y="435" width="38" height="25" uuid="aeba03d7-62b3-4f5a-889c-76a0a341637f"/>
+				<reportElement x="45" y="442" width="38" height="25" uuid="aeba03d7-62b3-4f5a-889c-76a0a341637f"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{td4} != null ? $P{td4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="85" y="435" width="58" height="25" uuid="4e93c34a-2d18-4af0-a729-973e8ccc6e19"/>
+				<reportElement x="85" y="442" width="58" height="25" uuid="4e93c34a-2d18-4af0-a729-973e8ccc6e19"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nadi4} != null ? $P{nadi4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="144" y="435" width="38" height="25" uuid="49b0cf05-00f7-44f9-947a-695c5c2388db"/>
+				<reportElement x="144" y="442" width="38" height="25" uuid="49b0cf05-00f7-44f9-947a-695c5c2388db"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{qb4} != null ? $P{qb4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="183" y="435" width="39" height="25" uuid="fdb6bf27-2eec-4706-af0d-f4f629e9bec1"/>
+				<reportElement x="183" y="442" width="39" height="25" uuid="fdb6bf27-2eec-4706-af0d-f4f629e9bec1"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vp4} != null ? $P{vp4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="435" width="53" height="25" uuid="42780f25-f5ed-4f20-ae6b-cfbed1ec4da9"/>
+				<reportElement x="222" y="442" width="53" height="25" uuid="42780f25-f5ed-4f20-ae6b-cfbed1ec4da9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufg4} != null ? $P{ufg4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="276" y="435" width="56" height="25" uuid="2f244bde-f9c4-4a19-b97b-c92ed4d899fd"/>
+				<reportElement x="276" y="442" width="56" height="25" uuid="2f244bde-f9c4-4a19-b97b-c92ed4d899fd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufr4} != null ? $P{ufr4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="435" width="150" height="25" uuid="59904389-b6c1-4a4f-817f-70dc2d0ebc9d"/>
+				<reportElement x="333" y="442" width="150" height="25" uuid="59904389-b6c1-4a4f-817f-70dc2d0ebc9d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{masalah4} != null ? $P{masalah4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="463" width="34" height="27" uuid="3a4133fd-1ef5-4b5f-b001-83d9df2ad1d8"/>
+				<reportElement x="4" y="470" width="34" height="27" uuid="3a4133fd-1ef5-4b5f-b001-83d9df2ad1d8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jam5} != null ? $P{jam5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="45" y="463" width="38" height="27" uuid="b445ebb2-3a3b-4fc3-bd04-c69b7d9a7ec9"/>
+				<reportElement x="45" y="470" width="38" height="27" uuid="b445ebb2-3a3b-4fc3-bd04-c69b7d9a7ec9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{td5} != null ? $P{td5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="83" y="463" width="61" height="27" uuid="b0fc59e9-1ce8-4983-85f6-500ac5ad7143"/>
+				<reportElement x="83" y="470" width="61" height="27" uuid="b0fc59e9-1ce8-4983-85f6-500ac5ad7143"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nadi5} != null ? $P{nadi5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="144" y="463" width="38" height="27" uuid="66fbc777-7665-4325-a77c-c7835c387dfc"/>
+				<reportElement x="144" y="470" width="38" height="27" uuid="66fbc777-7665-4325-a77c-c7835c387dfc"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{qb5} != null ? $P{qb5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="183" y="463" width="39" height="27" uuid="2a045645-5a3c-4182-8008-b5059f5ec800"/>
+				<reportElement x="183" y="470" width="39" height="27" uuid="2a045645-5a3c-4182-8008-b5059f5ec800"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vp5} != null ? $P{vp5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="463" width="55" height="27" uuid="693eb666-5051-423c-b52a-3678244110b9"/>
+				<reportElement x="222" y="470" width="55" height="27" uuid="693eb666-5051-423c-b52a-3678244110b9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufg5} != null ? $P{ufg5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="277" y="463" width="55" height="27" uuid="a7ed664b-99ba-4a54-8957-2e35793e3668"/>
+				<reportElement x="277" y="470" width="55" height="27" uuid="a7ed664b-99ba-4a54-8957-2e35793e3668"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufr5} != null ? $P{ufr5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="463" width="150" height="27" uuid="03ad85f4-58ab-4f1b-a605-b03ef14bfeaa"/>
+				<reportElement x="333" y="470" width="150" height="27" uuid="03ad85f4-58ab-4f1b-a605-b03ef14bfeaa"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{masalah5} != null ? $P{masalah5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="493" width="34" height="27" uuid="6e76a24f-ebeb-4706-beef-7624432c8a42"/>
+				<reportElement x="4" y="500" width="34" height="27" uuid="6e76a24f-ebeb-4706-beef-7624432c8a42"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{jam6} != null ? $P{jam6} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="42" y="493" width="42" height="27" uuid="e18954b2-79e2-4c6c-93f6-572df2a40227"/>
+				<reportElement x="42" y="500" width="42" height="27" uuid="e18954b2-79e2-4c6c-93f6-572df2a40227"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{td6} != null ? $P{td6} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="83" y="493" width="61" height="27" uuid="2a3da0d2-99dc-40aa-a71f-40386b3d7de8"/>
+				<reportElement x="83" y="500" width="61" height="27" uuid="2a3da0d2-99dc-40aa-a71f-40386b3d7de8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nadi6} != null ? $P{nadi6} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="143" y="494" width="40" height="26" uuid="e2f7aa7e-9f83-4a0c-91b9-0550a5d8a920"/>
+				<reportElement x="143" y="501" width="40" height="26" uuid="e2f7aa7e-9f83-4a0c-91b9-0550a5d8a920"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{qb6} != null ? $P{qb6} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="183" y="494" width="38" height="26" uuid="2588680d-508d-41e8-b711-56fc1cb8cb91"/>
+				<reportElement x="183" y="501" width="38" height="26" uuid="2588680d-508d-41e8-b711-56fc1cb8cb91"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{vp6} != null ? $P{vp6} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="494" width="54" height="26" uuid="c77a6565-4ea1-4539-b8fa-56140dddfb7d"/>
+				<reportElement x="222" y="501" width="54" height="26" uuid="c77a6565-4ea1-4539-b8fa-56140dddfb7d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufg6} != null ? $P{ufg6} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="276" y="494" width="56" height="26" uuid="dafed334-3e1e-4b71-915a-8ee30ec61687"/>
+				<reportElement x="276" y="501" width="56" height="26" uuid="dafed334-3e1e-4b71-915a-8ee30ec61687"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ufr6} != null ? $P{ufr6} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="333" y="494" width="150" height="26" uuid="fbe32191-a396-4734-9105-b0241800557e"/>
+				<reportElement x="333" y="501" width="150" height="26" uuid="fbe32191-a396-4734-9105-b0241800557e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -2221,49 +2225,49 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<textFieldExpression><![CDATA[$P{diagnosa}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="137" y="652" width="166" height="10" uuid="71ba083b-175a-44d0-9ae3-7fb961879491"/>
+				<reportElement x="137" y="663" width="166" height="10" uuid="71ba083b-175a-44d0-9ae3-7fb961879491"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{namapet}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="484" y="360" width="72" height="30" uuid="89f99719-73ae-499f-be7e-924bc2267824"/>
+				<reportElement x="484" y="367" width="72" height="30" uuid="89f99719-73ae-499f-be7e-924bc2267824"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nama_petugas1} != null ? $P{nama_petugas1} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="483" y="390" width="74" height="20" uuid="70575e34-3ce4-45e8-9e6e-6e57bb4b3c62"/>
+				<reportElement x="483" y="397" width="74" height="20" uuid="70575e34-3ce4-45e8-9e6e-6e57bb4b3c62"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nama_petugas2} != null ? $P{nama_petugas2} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="483" y="412" width="74" height="20" uuid="f653db5d-a22f-4228-a695-e8610251d3ce"/>
+				<reportElement x="483" y="419" width="74" height="20" uuid="f653db5d-a22f-4228-a695-e8610251d3ce"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nama_petugas3} != null ? $P{nama_petugas3} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="483" y="435" width="74" height="24" uuid="41b724dd-c3a3-428a-8923-61d795815f37"/>
+				<reportElement x="483" y="442" width="74" height="24" uuid="41b724dd-c3a3-428a-8923-61d795815f37"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nama_petugas4} != null ? $P{nama_petugas4} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="484" y="463" width="74" height="26" uuid="0a9ed64c-eb34-47e2-b6ed-81b7a30dad59"/>
+				<reportElement x="484" y="470" width="74" height="26" uuid="0a9ed64c-eb34-47e2-b6ed-81b7a30dad59"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{nama_petugas5} != null ? $P{nama_petugas5} : ""]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="484" y="494" width="74" height="26" uuid="76270d0a-afa3-4b9e-ac93-3145ae286ba3"/>
+				<reportElement x="484" y="501" width="74" height="26" uuid="76270d0a-afa3-4b9e-ac93-3145ae286ba3"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
@@ -2281,7 +2285,7 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				<text><![CDATA[Email : batubhayangkara@gmail.com]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="25" y="692" width="137" height="57" isRemoveLineWhenBlank="true" uuid="3c7453b1-bb85-40f3-be30-1b4a4f93def3">
+				<reportElement x="25" y="703" width="137" height="57" isRemoveLineWhenBlank="true" uuid="3c7453b1-bb85-40f3-be30-1b4a4f93def3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -2289,13 +2293,49 @@ LEFT JOIN petugas ON observasi_dialisis_pasien.nip = petugas.nip]]>
 				</jr:QRCode>
 			</componentElement>
 			<componentElement>
-				<reportElement x="390" y="692" width="136" height="56" isRemoveLineWhenBlank="true" uuid="2707b199-c598-4106-8ec6-e336d2d3e09a">
+				<reportElement x="390" y="703" width="136" height="56" isRemoveLineWhenBlank="true" uuid="2707b199-c598-4106-8ec6-e336d2d3e09a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger2}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
+			<staticText>
+				<reportElement x="260" y="543" width="72" height="11" uuid="e57577ce-3bb0-4f81-b5e2-818f6fdf2585">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal Post HD]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="333" y="543" width="183" height="11" uuid="8c3225f7-5e06-4dac-a06a-a21c8525af16"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tgl_post_hd}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="234" width="72" height="11" uuid="2ea619ee-f233-41ef-aa43-94829f2b35df">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[Tanggal Pre HD]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="76" y="234" width="183" height="11" uuid="8257e3e4-029e-434d-a594-0c2ca5164573"/>
+				<textElement>
+					<font fontName="Tahoma" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 </jasperReport>
