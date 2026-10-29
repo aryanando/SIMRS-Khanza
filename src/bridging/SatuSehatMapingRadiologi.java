@@ -2,8 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bridging;
+
 import fungsi.WarnaTable;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
@@ -21,12 +21,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.JPopupMenu;
+import javax.swing.JMenuItem;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -37,76 +47,235 @@ import keuangan.DlgJnsPerawatanRadiologi;
  * @author dosen
  */
 public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
-    private final DefaultTableModel tabMode;
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
-    private Connection koneksi=koneksiDB.condb();
-    private PreparedStatement ps;
-    private ResultSet rs;    
-    private int i=0;
-    private final ExecutorService executor = Executors.newSingleThreadExecutor();
-    private volatile boolean ceksukses = false;
 
-    /** Creates new form DlgJnsPerawatanRalan
+    private final DefaultTableModel tabMode;
+    private sekuel Sequel = new sekuel();
+    private validasi Valid = new validasi();
+    private Connection koneksi = koneksiDB.condb();
+    private PreparedStatement ps;
+    private ResultSet rs;
+    private int i = 0;
+    private DlgJnsPerawatanRadiologi pemeriksaan = new DlgJnsPerawatanRadiologi(null, false);
+    private JPopupMenu popupSNOMED = new JPopupMenu();
+    private JPopupMenu popupLOINC = new JPopupMenu();
+    private Timer timerSNOMED, timerLOINC;
+    private boolean isSelecting = false;
+    private String lastSelectedName = "", lastSelectedSample = "";
+    private final ExecutorService executor = Executors.newFixedThreadPool(1);
+
+    /**
+     * Creates new form DlgJnsPerawatanRalan
+     *
      * @param parent
-     * @param modal */
+     * @param modal
+     */
     public SatuSehatMapingRadiologi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(8,1);
-        setSize(628,674);
+        this.setLocation(8, 1);
+        setSize(628, 674);
 
-        tabMode=new DefaultTableModel(null,new Object[]{
-                "Periksa Code","Pemeriksaan System","Kode Periksa","Nama Pemeriksaan","Pemeriksaan Display",
-                "Sampel Code","Sampel System","Sampel Display"
-            }){
-             @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+        tabMode = new DefaultTableModel(null, new Object[]{
+            "Periksa Code", "Pemeriksaan System", "Kode Periksa", "Nama Pemeriksaan", "Pemeriksaan Display",
+            "Sampel Code", "Sampel System", "Sampel Display"
+        }) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
         };
         tbJnsPerawatan.setModel(tabMode);
 
-        tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbJnsPerawatan.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbJnsPerawatan.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 8; i++) {
             TableColumn column = tbJnsPerawatan.getColumnModel().getColumn(i);
-            if(i==0){
+            if (i == 0) {
                 column.setPreferredWidth(80);
-            }else if(i==1){
+            } else if (i == 1) {
                 column.setPreferredWidth(200);
-            }else if(i==2){
+            } else if (i == 2) {
                 column.setPreferredWidth(85);
-            }else if(i==3){
+            } else if (i == 3) {
                 column.setPreferredWidth(200);
-            }else if(i==4){
+            } else if (i == 4) {
                 column.setPreferredWidth(200);
-            }else if(i==5){
+            } else if (i == 5) {
                 column.setPreferredWidth(85);
-            }else if(i==6){
+            } else if (i == 6) {
                 column.setPreferredWidth(200);
-            }else if(i==7){
+            } else if (i == 7) {
                 column.setPreferredWidth(200);
             }
         }
         tbJnsPerawatan.setDefaultRenderer(Object.class, new WarnaTable());
 
-        KodePemeriksaan.setDocument(new batasInput((byte)15).getKata(KodePemeriksaan)); 
-        Code.setDocument(new batasInput((byte)15).getKata(Code)); 
-        RadiologiSystem.setDocument(new batasInput((byte)100).getKata(RadiologiSystem)); 
-        Display.setDocument(new batasInput((byte)80).getKata(Display)); 
-        SampelCode.setDocument(new batasInput((byte)15).getKata(SampelCode)); 
-        SampelRadiologiSystem.setDocument(new batasInput((byte)100).getKata(SampelRadiologiSystem)); 
-        SampelDisplay.setDocument(new batasInput((byte)80).getKata(SampelDisplay)); 
-        TCari.setDocument(new batasInput((byte)100).getKata(TCari)); 
-        
+        KodePemeriksaan.setDocument(new batasInput((byte) 15).getKata(KodePemeriksaan));
+        Code.setDocument(new batasInput((byte) 15).getKata(Code));
+        RadiologiSystem.setDocument(new batasInput((byte) 100).getKata(RadiologiSystem));
+        Display.setDocument(new batasInput((byte) 80).getKata(Display));
+        SampelCode.setDocument(new batasInput((byte) 15).getKata(SampelCode));
+        SampelRadiologiSystem.setDocument(new batasInput((byte) 100).getKata(SampelRadiologiSystem));
+        SampelDisplay.setDocument(new batasInput((byte) 80).getKata(SampelDisplay));
+        TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
+
+        if (koneksiDB.CARICEPAT().equals("aktif")) {
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    if (TCari.getText().length() > 2) {
+                        tampil();
+                    }
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    if (TCari.getText().length() > 2) {
+                        tampil();
+                    }
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    if (TCari.getText().length() > 2) {
+                        tampil();
+                    }
+                }
+            });
+        }
+
+        pemeriksaan.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (pemeriksaan.getTable().getSelectedRow() != -1) {
+                    KodePemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(), 1).toString());
+                    NamaPemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(), 2).toString());
+                }
+                btnBarang.requestFocus();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+            }
+        });
+
+        pemeriksaan.getTable().addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+                    pemeriksaan.dispose();
+                }
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+            }
+        });
+
+        timerSNOMED = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (Display.getText().length() > 2) {
+                    runBackground(() -> cariSNOMED());
+                } else {
+                    popupSNOMED.setVisible(false);
+                }
+            }
+        });
+        timerSNOMED.setRepeats(false);
+
+        Display.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if (!isSelecting) {
+                    timerSNOMED.restart();
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if (!isSelecting) {
+                    timerSNOMED.restart();
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if (!isSelecting) {
+                    timerSNOMED.restart();
+                }
+            }
+        });
+
+        timerLOINC = new Timer(500, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (SampelDisplay.getText().length() > 2) {
+                    runBackground(() -> cariLOINC());
+                } else {
+                    popupLOINC.setVisible(false);
+                }
+            }
+        });
+        timerLOINC.setRepeats(false);
+
+        SampelDisplay.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                if (!isSelecting) {
+                    timerLOINC.restart();
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                if (!isSelecting) {
+                    timerLOINC.restart();
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                if (!isSelecting) {
+                    timerLOINC.restart();
+                }
+            }
+        });
+
         ChkInput.setSelected(false);
         isForm();
     }
 
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -148,7 +317,6 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         SampelDisplay = new widget.TextBox();
         jLabel5 = new widget.Label();
         SampelRadiologiSystem = new widget.TextBox();
-        BtnSnomed = new widget.Button();
 
         NamaPemeriksaan.setEditable(false);
         NamaPemeriksaan.setHighlighter(null);
@@ -157,11 +325,6 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Mapping Tindakan Radiologi Satu Sehat ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
@@ -406,13 +569,13 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         jLabel4.setText("Periksa System :");
         jLabel4.setName("jLabel4"); // NOI18N
         FormInput.add(jLabel4);
-        jLabel4.setBounds(395, 10, 100, 23);
+        jLabel4.setBounds(365, 10, 100, 23);
 
         KodePemeriksaan.setEditable(false);
         KodePemeriksaan.setHighlighter(null);
         KodePemeriksaan.setName("KodePemeriksaan"); // NOI18N
         FormInput.add(KodePemeriksaan);
-        KodePemeriksaan.setBounds(241, 10, 110, 23);
+        KodePemeriksaan.setBounds(211, 10, 110, 23);
 
         btnBarang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         btnBarang.setMnemonic('1');
@@ -429,7 +592,7 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(btnBarang);
-        btnBarang.setBounds(353, 10, 28, 23);
+        btnBarang.setBounds(323, 10, 28, 23);
 
         Code.setHighlighter(null);
         Code.setName("Code"); // NOI18N
@@ -469,7 +632,7 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
             }
         });
         FormInput.add(RadiologiSystem);
-        RadiologiSystem.setBounds(499, 10, 225, 23);
+        RadiologiSystem.setBounds(469, 10, 255, 23);
 
         jLabel11.setText("Sampel Code :");
         jLabel11.setName("jLabel11"); // NOI18N
@@ -516,23 +679,6 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         FormInput.add(SampelRadiologiSystem);
         SampelRadiologiSystem.setBounds(409, 70, 315, 23);
 
-        BtnSnomed.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnSnomed.setMnemonic('1');
-        BtnSnomed.setToolTipText("Alt+1");
-        BtnSnomed.setName("BtnSnomed"); // NOI18N
-        BtnSnomed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSnomedActionPerformed(evt);
-            }
-        });
-        BtnSnomed.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnSnomedKeyPressed(evt);
-            }
-        });
-        FormInput.add(BtnSnomed);
-        BtnSnomed.setBounds(211, 10, 28, 23);
-
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
         internalFrame1.add(PanelInput, java.awt.BorderLayout.PAGE_START);
@@ -543,44 +689,8 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBarangActionPerformed
-        DlgJnsPerawatanRadiologi pemeriksaan=new DlgJnsPerawatanRadiologi(null,false);
-        pemeriksaan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(pemeriksaan.getTable().getSelectedRow()!= -1){                    
-                    KodePemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),1).toString());
-                    NamaPemeriksaan.setText(pemeriksaan.getTable().getValueAt(pemeriksaan.getTable().getSelectedRow(),2).toString());
-                }
-                btnBarang.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
-        pemeriksaan.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    pemeriksaan.dispose();
-                }  
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
         pemeriksaan.isCek();
-        pemeriksaan.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+        pemeriksaan.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
         pemeriksaan.setLocationRelativeTo(internalFrame1);
         pemeriksaan.setVisible(true);
 }//GEN-LAST:event_btnBarangActionPerformed
@@ -590,37 +700,39 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
 }//GEN-LAST:event_btnBarangKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(Code.getText().trim().equals("")){
-            Valid.textKosong(Code,"Periksa Code");
-        }else if(RadiologiSystem.getText().trim().equals("")){
-            Valid.textKosong(RadiologiSystem,"Pemeriksaan System");
-        }else if(NamaPemeriksaan.getText().trim().equals("")){
-            Valid.textKosong(NamaPemeriksaan,"Nama Pemeriksaan");
-        }else if(Display.getText().trim().equals("")){
-            Valid.textKosong(Display,"Pemeriksaan Display");
-        }else if(SampelCode.getText().trim().equals("")){
-            Valid.textKosong(SampelCode,"Sampel Code");
-        }else if(SampelRadiologiSystem.getText().trim().equals("")){
-            Valid.textKosong(SampelRadiologiSystem,"Sampel System");
-        }else if(SampelDisplay.getText().trim().equals("")){
-            Valid.textKosong(SampelDisplay,"Sampel Display");
-        }else{
-            if(Sequel.menyimpantf("satu_sehat_mapping_radiologi","?,?,?,?,?,?,?","Mapping Tindakan Radiologi",7,new String[]{
-                KodePemeriksaan.getText(),Code.getText(),RadiologiSystem.getText(),Display.getText(),SampelCode.getText(),SampelRadiologiSystem.getText(),SampelDisplay.getText()
-            })==true){
+        if (Code.getText().trim().equals("")) {
+            Valid.textKosong(Code, "Periksa Code");
+        } else if (RadiologiSystem.getText().trim().equals("")) {
+            Valid.textKosong(RadiologiSystem, "Pemeriksaan System");
+        } else if (NamaPemeriksaan.getText().trim().equals("")) {
+            Valid.textKosong(NamaPemeriksaan, "Nama Pemeriksaan");
+        } else if (Display.getText().trim().equals("")) {
+            Valid.textKosong(Display, "Pemeriksaan Display");
+        } else if (SampelCode.getText().trim().equals("")) {
+            Valid.textKosong(SampelCode, "Sampel Code");
+        } else if (SampelRadiologiSystem.getText().trim().equals("")) {
+            Valid.textKosong(SampelRadiologiSystem, "Sampel System");
+        } else if (SampelDisplay.getText().trim().equals("")) {
+            Valid.textKosong(SampelDisplay, "Sampel Display");
+        } else {
+            if (Sequel.menyimpantf("satu_sehat_mapping_radiologi", "?,?,?,?,?,?,?", "Mapping Tindakan Radiologi", 7, new String[]{
+                KodePemeriksaan.getText(), Code.getText(), RadiologiSystem.getText(), Display.getText(), SampelCode.getText(), SampelRadiologiSystem.getText(), SampelDisplay.getText()
+            }) == true) {
                 tabMode.addRow(new Object[]{
-                    Code.getText(),RadiologiSystem.getText(),KodePemeriksaan.getText(),NamaPemeriksaan.getText(),Display.getText(),SampelCode.getText(),SampelRadiologiSystem.getText(),SampelDisplay.getText()
+                    Code.getText(), RadiologiSystem.getText(), KodePemeriksaan.getText(), NamaPemeriksaan.getText(), Display.getText(), SampelCode.getText(), SampelRadiologiSystem.getText(), SampelDisplay.getText()
                 });
                 emptTeks();
-                LCount.setText(""+tabMode.getRowCount());
-            }                
+                LCount.setText("" + tabMode.getRowCount());
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnSimpanActionPerformed(null);
-        }else{Valid.pindah(evt,SampelDisplay, BtnBatal);}
+        } else {
+            Valid.pindah(evt, SampelDisplay, BtnBatal);
+        }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
@@ -628,65 +740,67 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             emptTeks();
-        }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
+        } else {
+            Valid.pindah(evt, BtnSimpan, BtnHapus);
+        }
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(Valid.hapusTabletf(tabMode,KodePemeriksaan,"satu_sehat_mapping_radiologi","kd_jenis_prw")==true){
+        if (Valid.hapusTabletf(tabMode, KodePemeriksaan, "satu_sehat_mapping_radiologi", "kd_jenis_prw") == true) {
             tabMode.removeRow(tbJnsPerawatan.getSelectedRow());
             emptTeks();
-            LCount.setText(""+tabMode.getRowCount());
+            LCount.setText("" + tabMode.getRowCount());
         }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnHapusActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnBatal, BtnEdit);
         }
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(Code.getText().trim().equals("")){
-            Valid.textKosong(Code,"Periksa Code");
-        }else if(RadiologiSystem.getText().trim().equals("")){
-            Valid.textKosong(RadiologiSystem,"Pemeriksaan System");
-        }else if(NamaPemeriksaan.getText().trim().equals("")){
-            Valid.textKosong(NamaPemeriksaan,"Nama Pemeriksaan");
-        }else if(Display.getText().trim().equals("")){
-            Valid.textKosong(Display,"Pemeriksaan Display");
-        }else if(SampelCode.getText().trim().equals("")){
-            Valid.textKosong(SampelCode,"Sampel Code");
-        }else if(SampelRadiologiSystem.getText().trim().equals("")){
-            Valid.textKosong(SampelRadiologiSystem,"Sampel System");
-        }else if(SampelDisplay.getText().trim().equals("")){
-            Valid.textKosong(SampelDisplay,"Sampel Display");
-        }else{
-            if(tbJnsPerawatan.getSelectedRow()>-1){
-                if(Sequel.mengedittf("satu_sehat_mapping_radiologi","kd_jenis_prw=?","kd_jenis_prw=?,code=?,system=?,display=?,sampel_code=?,sampel_system=?,sampel_display=?",8,new String[]{
-                        KodePemeriksaan.getText(),Code.getText(),RadiologiSystem.getText(),Display.getText(),SampelCode.getText(),SampelRadiologiSystem.getText(),SampelDisplay.getText(),tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString()
-                    })==true){
-                    tabMode.setValueAt(Code.getText(),tbJnsPerawatan.getSelectedRow(),0);
-                    tabMode.setValueAt(RadiologiSystem.getText(),tbJnsPerawatan.getSelectedRow(),1);
-                    tabMode.setValueAt(KodePemeriksaan.getText(),tbJnsPerawatan.getSelectedRow(),2);
-                    tabMode.setValueAt(NamaPemeriksaan.getText(),tbJnsPerawatan.getSelectedRow(),3);
-                    tabMode.setValueAt(Display.getText(),tbJnsPerawatan.getSelectedRow(),4);
-                    tabMode.setValueAt(SampelCode.getText(),tbJnsPerawatan.getSelectedRow(),5);
-                    tabMode.setValueAt(SampelRadiologiSystem.getText(),tbJnsPerawatan.getSelectedRow(),6);
-                    tabMode.setValueAt(SampelDisplay.getText(),tbJnsPerawatan.getSelectedRow(),7);
+        if (Code.getText().trim().equals("")) {
+            Valid.textKosong(Code, "Periksa Code");
+        } else if (RadiologiSystem.getText().trim().equals("")) {
+            Valid.textKosong(RadiologiSystem, "Pemeriksaan System");
+        } else if (NamaPemeriksaan.getText().trim().equals("")) {
+            Valid.textKosong(NamaPemeriksaan, "Nama Pemeriksaan");
+        } else if (Display.getText().trim().equals("")) {
+            Valid.textKosong(Display, "Pemeriksaan Display");
+        } else if (SampelCode.getText().trim().equals("")) {
+            Valid.textKosong(SampelCode, "Sampel Code");
+        } else if (SampelRadiologiSystem.getText().trim().equals("")) {
+            Valid.textKosong(SampelRadiologiSystem, "Sampel System");
+        } else if (SampelDisplay.getText().trim().equals("")) {
+            Valid.textKosong(SampelDisplay, "Sampel Display");
+        } else {
+            if (tbJnsPerawatan.getSelectedRow() > -1) {
+                if (Sequel.mengedittf("satu_sehat_mapping_radiologi", "kd_jenis_prw=?", "kd_jenis_prw=?,code=?,system=?,display=?,sampel_code=?,sampel_system=?,sampel_display=?", 8, new String[]{
+                    KodePemeriksaan.getText(), Code.getText(), RadiologiSystem.getText(), Display.getText(), SampelCode.getText(), SampelRadiologiSystem.getText(), SampelDisplay.getText(), tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 2).toString()
+                }) == true) {
+                    tabMode.setValueAt(Code.getText(), tbJnsPerawatan.getSelectedRow(), 0);
+                    tabMode.setValueAt(RadiologiSystem.getText(), tbJnsPerawatan.getSelectedRow(), 1);
+                    tabMode.setValueAt(KodePemeriksaan.getText(), tbJnsPerawatan.getSelectedRow(), 2);
+                    tabMode.setValueAt(NamaPemeriksaan.getText(), tbJnsPerawatan.getSelectedRow(), 3);
+                    tabMode.setValueAt(Display.getText(), tbJnsPerawatan.getSelectedRow(), 4);
+                    tabMode.setValueAt(SampelCode.getText(), tbJnsPerawatan.getSelectedRow(), 5);
+                    tabMode.setValueAt(SampelRadiologiSystem.getText(), tbJnsPerawatan.getSelectedRow(), 6);
+                    tabMode.setValueAt(SampelDisplay.getText(), tbJnsPerawatan.getSelectedRow(), 7);
                     emptTeks();
                 }
-            }                
+            }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnEditActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnHapus, BtnPrint);
         }
 }//GEN-LAST:event_BtnEditKeyPressed
@@ -696,77 +810,79 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             dispose();
-        }else{Valid.pindah(evt,BtnEdit,TCari);}
+        } else {
+            Valid.pindah(evt, BtnEdit, TCari);
+        }
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){            
-                Map<String, Object> param = new HashMap<>();    
-                param.put("namars",akses.getnamars());
-                param.put("alamatrs",akses.getalamatrs());
-                param.put("kotars",akses.getkabupatenrs());
-                param.put("propinsirs",akses.getpropinsirs());
-                param.put("kontakrs",akses.getkontakrs());
-                param.put("emailrs",akses.getemailrs());   
-                param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-                param.put("parameter","%"+TCari.getText().trim()+"%");
-                Valid.MyReport("rptMapingPemeriksaanRadiologiSatuSehat.jasper","report","::[ Mapping Pemeriksaan Radiologi Satu Sehat Kemenkes ]::",param);            
+        } else if (tabMode.getRowCount() != 0) {
+            Map<String, Object> param = new HashMap<>();
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
+            param.put("parameter", "%" + TCari.getText().trim() + "%");
+            Valid.MyReport("rptMapingPemeriksaanRadiologiSatuSehat.jasper", "report", "::[ Mapping Pemeriksaan Radiologi Satu Sehat Kemenkes ]::", param);
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrintActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnEdit, BtnKeluar);
         }
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             BtnCariActionPerformed(null);
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             BtnCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
             BtnKeluar.requestFocus();
         }
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        runBackground(() ->tampil());
+        tampil();
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnCariActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        runBackground(() ->tampil());
+        tampil();
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             TCari.setText("");
-            runBackground(() ->tampil());
-        }else{
+            tampil();
+        } else {
             Valid.pindah(evt, BtnPrint, BtnKeluar);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void tbJnsPerawatanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbJnsPerawatanMouseClicked
-        if(tabMode.getRowCount()!=0){
+        if (tabMode.getRowCount() != 0) {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
@@ -775,8 +891,8 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
 }//GEN-LAST:event_tbJnsPerawatanMouseClicked
 
     private void tbJnsPerawatanKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbJnsPerawatanKeyReleased
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+        if (tabMode.getRowCount() != 0) {
+            if ((evt.getKeyCode() == KeyEvent.VK_ENTER) || (evt.getKeyCode() == KeyEvent.VK_UP) || (evt.getKeyCode() == KeyEvent.VK_DOWN)) {
                 try {
                     getData();
                 } catch (java.lang.NullPointerException e) {
@@ -813,81 +929,9 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
         Valid.pindah(evt, SampelCode, SampelDisplay);
     }//GEN-LAST:event_SampelRadiologiSystemKeyPressed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
-                    }
-                }
-            });
-        }
-    }//GEN-LAST:event_formWindowOpened
-
-    private void BtnSnomedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSnomedActionPerformed
-        SatuSehatReferensiSnomed referensi=new SatuSehatReferensiSnomed(null,false);
-        referensi.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {}
-            @Override
-            public void windowClosing(WindowEvent e) {}
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if(referensi.getTable().getSelectedRow()!= -1){                    
-                    Code.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),0).toString());
-                    Display.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),1).toString());
-                    RadiologiSystem.setText(referensi.getTable().getValueAt(referensi.getTable().getSelectedRow(),2).toString());
-                }
-                btnBarang.requestFocus();
-            }
-            @Override
-            public void windowIconified(WindowEvent e) {}
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-            @Override
-            public void windowActivated(WindowEvent e) {}
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-        }); 
-        
-        referensi.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {}
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if(e.getKeyCode()==KeyEvent.VK_SPACE){
-                    referensi.dispose();
-                }  
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {}
-        });
-        referensi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
-        referensi.setLocationRelativeTo(internalFrame1);
-        referensi.setVisible(true);
-    }//GEN-LAST:event_BtnSnomedActionPerformed
-
-    private void BtnSnomedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSnomedKeyPressed
-        Valid.pindah(evt, RadiologiSystem, Display);
-    }//GEN-LAST:event_BtnSnomedKeyPressed
-
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             SatuSehatMapingRadiologi dialog = new SatuSehatMapingRadiologi(new javax.swing.JFrame(), true);
@@ -910,7 +954,6 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
     private widget.Button BtnKeluar;
     private widget.Button BtnPrint;
     private widget.Button BtnSimpan;
-    private widget.Button BtnSnomed;
     private widget.CekBox ChkInput;
     private widget.TextBox Code;
     private widget.TextBox Display;
@@ -943,41 +986,41 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{
-           ps=koneksi.prepareStatement(
-                   "select satu_sehat_mapping_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,"+
-                   "satu_sehat_mapping_radiologi.display,satu_sehat_mapping_radiologi.sampel_code,satu_sehat_mapping_radiologi.sampel_system,satu_sehat_mapping_radiologi.sampel_display "+
-                   "from satu_sehat_mapping_radiologi inner join jns_perawatan_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "+
-                   (TCari.getText().equals("")?"":"where satu_sehat_mapping_radiologi.kd_jenis_prw like ? or jns_perawatan_radiologi.nm_perawatan like ? or "+
-                   "satu_sehat_mapping_radiologi.code like ? or satu_sehat_mapping_radiologi.display like ? ")+
-                   " order by satu_sehat_mapping_radiologi.code");
+        try {
+            ps = koneksi.prepareStatement(
+                    "select satu_sehat_mapping_radiologi.kd_jenis_prw,jns_perawatan_radiologi.nm_perawatan,satu_sehat_mapping_radiologi.code,satu_sehat_mapping_radiologi.system,"
+                    + "satu_sehat_mapping_radiologi.display,satu_sehat_mapping_radiologi.sampel_code,satu_sehat_mapping_radiologi.sampel_system,satu_sehat_mapping_radiologi.sampel_display "
+                    + "from satu_sehat_mapping_radiologi inner join jns_perawatan_radiologi on satu_sehat_mapping_radiologi.kd_jenis_prw=jns_perawatan_radiologi.kd_jenis_prw "
+                    + (TCari.getText().equals("") ? "" : "where satu_sehat_mapping_radiologi.kd_jenis_prw like ? or jns_perawatan_radiologi.nm_perawatan like ? or "
+                    + "satu_sehat_mapping_radiologi.code like ? or satu_sehat_mapping_radiologi.display like ? ")
+                    + " order by satu_sehat_mapping_radiologi.code");
             try {
-                if(!TCari.getText().equals("")){
-                    ps.setString(1,"%"+TCari.getText()+"%");
-                    ps.setString(2,"%"+TCari.getText()+"%");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
+                if (!TCari.getText().equals("")) {
+                    ps.setString(1, "%" + TCari.getText() + "%");
+                    ps.setString(2, "%" + TCari.getText() + "%");
+                    ps.setString(3, "%" + TCari.getText() + "%");
+                    ps.setString(4, "%" + TCari.getText() + "%");
                 }
-                rs=ps.executeQuery();
-                while(rs.next()){
+                rs = ps.executeQuery();
+                while (rs.next()) {
                     tabMode.addRow(new Object[]{
-                        rs.getString("code"),rs.getString("system"),rs.getString("kd_jenis_prw"),rs.getString("nm_perawatan"),rs.getString("display"),rs.getString("sampel_code"),rs.getString("sampel_system"),rs.getString("sampel_display")
+                        rs.getString("code"), rs.getString("system"), rs.getString("kd_jenis_prw"), rs.getString("nm_perawatan"), rs.getString("display"), rs.getString("sampel_code"), rs.getString("sampel_system"), rs.getString("sampel_display")
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif Ketersediaan : "+e);
-            } finally{
-                if(rs!=null){
+                System.out.println("Notif Ketersediaan : " + e);
+            } finally {
+                if (rs != null) {
                     rs.close();
                 }
-                if(ps!=null){
+                if (ps != null) {
                     ps.close();
                 }
             }
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        LCount.setText("" + tabMode.getRowCount());
     }
 
     public void emptTeks() {
@@ -995,29 +1038,29 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
     }
 
     private void getData() {
-       if(tbJnsPerawatan.getSelectedRow()!= -1){
-           Code.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),0).toString());
-           RadiologiSystem.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),1).toString());
-           KodePemeriksaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),2).toString());
-           NamaPemeriksaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),3).toString());
-           Display.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),4).toString());
-           SampelCode.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),5).toString());
-           SampelRadiologiSystem.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),6).toString());
-           SampelDisplay.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(),7).toString());
+        if (tbJnsPerawatan.getSelectedRow() != -1) {
+            Code.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 0).toString());
+            RadiologiSystem.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 1).toString());
+            KodePemeriksaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 2).toString());
+            NamaPemeriksaan.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 3).toString());
+            Display.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 4).toString());
+            SampelCode.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 5).toString());
+            SampelRadiologiSystem.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 6).toString());
+            SampelDisplay.setText(tbJnsPerawatan.getValueAt(tbJnsPerawatan.getSelectedRow(), 7).toString());
         }
     }
-    
-    public void isCek(){
+
+    public void isCek() {
         BtnSimpan.setEnabled(akses.getsatu_sehat_mapping_radiologi());
         BtnHapus.setEnabled(akses.getsatu_sehat_mapping_radiologi());
         BtnEdit.setEnabled(akses.getsatu_sehat_mapping_radiologi());
         BtnPrint.setEnabled(akses.getsatu_sehat_mapping_radiologi());
     }
-    
-    public JTable getTable(){
+
+    public JTable getTable() {
         return tbJnsPerawatan;
-    }  
-    
+    }
+
     private void isForm() {
         if (ChkInput.isSelected() == true) {
             ChkInput.setVisible(false);
@@ -1031,36 +1074,285 @@ public final class SatuSehatMapingRadiologi extends javax.swing.JDialog {
             ChkInput.setVisible(true);
         }
     }
-    
-    private void runBackground(Runnable task) {
-        if (ceksukses) return;
-        if (executor.isShutdown() || executor.isTerminated()) return;
-        if (!isDisplayable()) return;
 
-        ceksukses = true;
-        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+    private void runBackground(Runnable task) {
+        executor.submit(() -> {
+            try {
+                task.run();
+            } catch (Exception e) {
+                System.out.println("Background Task Error: " + e.getMessage());
+            }
+        });
+    }
+
+//    private void cariSNOMED() {
+//        if (isSelecting) return;
+//        String keyword = Display.getText().trim();
+//        if (keyword.isEmpty() || keyword.equals(lastSelectedName)) return;
+//
+//        SwingUtilities.invokeLater(() -> {
+//            popupSNOMED.removeAll();
+//            JMenuItem loading = new JMenuItem("Searching SNOMED...");
+//            loading.setEnabled(false);
+//            popupSNOMED.add(loading);
+//            popupSNOMED.show(Display, 0, Display.getHeight());
+//        });
+//
+//        try {
+//            ApiSatuSehat api = new ApiSatuSehat();
+//            HttpHeaders headers = new HttpHeaders();
+//            headers.setAccept(java.util.Collections.singletonList(MediaType.APPLICATION_JSON));
+//            headers.add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+//            HttpEntity<String> entity = new HttpEntity<>(headers);
+//
+//            String url = "https://browser.ihtsdotools.org/snowstorm/snomed-ct/MAIN/concepts?term=" + keyword.replaceAll(" ", "%20") + "&activeFilter=true&limit=20";
+//            
+//            System.out.println("Sending request to SNOMED: " + url);
+//            ObjectMapper mapper = new ObjectMapper();
+//            String responseBody = api.getRest().exchange(url, HttpMethod.GET, entity, String.class).getBody();
+//            System.out.println("SNOMED RAW RESPONSE: " + (responseBody.length() > 500 ? responseBody.substring(0, 500) : responseBody));
+//            
+//            JsonNode root = mapper.readTree(responseBody);
+//            JsonNode items = root.path("items");
+//
+//            java.util.List<JsonNode> resultList = new java.util.ArrayList<>();
+//            if (items.isArray()) {
+//                for (JsonNode item : items) {
+//                    resultList.add(item);
+//                }
+//            }
+//
+//            System.out.println("SNOMED CT - Found: " + resultList.size() + " items for '" + keyword + "'");
+//
+//            if (!resultList.isEmpty()) {
+//                SwingUtilities.invokeLater(() -> {
+//                    popupSNOMED.removeAll();
+//                    for (JsonNode item : resultList) {
+//                        String code = item.path("conceptId").asText();
+//                        String term = item.path("pt").path("term").asText();
+//                        if (term.isEmpty()) term = item.path("fsn").path("term").asText();
+//                        
+//                        final String finalTerm = term;
+//                        JMenuItem menu = new JMenuItem(term + " (" + code + ")");
+//                        menu.addActionListener(new ActionListener() {
+//                            @Override
+//                            public void actionPerformed(ActionEvent e) {
+//                                timerSNOMED.stop();
+//                                isSelecting = true;
+//                                lastSelectedName = finalTerm;
+//                                
+//                                Code.setText(code);
+//                                RadiologiSystem.setText("http://snomed.info/sct");
+//                                Display.setText(finalTerm);
+//                                
+//                                isSelecting = false;
+//                                popupSNOMED.setVisible(false);
+//                            }
+//                        });
+//                        popupSNOMED.add(menu);
+//                    }
+//                    popupSNOMED.revalidate();
+//                    popupSNOMED.repaint();
+//                    popupSNOMED.pack();
+//                    if (!popupSNOMED.isVisible()) popupSNOMED.show(Display, 0, Display.getHeight());
+//                    Display.requestFocus();
+//                });
+//            } else {
+//                SwingUtilities.invokeLater(() -> popupSNOMED.setVisible(false));
+//            }
+//        } catch (Exception ex) {
+//            System.out.println("SNOMED Search Error: " + ex.getMessage());
+//            SwingUtilities.invokeLater(() -> popupSNOMED.setVisible(false));
+//        }
+//    }
+    private void cariSNOMED() {
+        if (isSelecting) {
+            return;
+        }
+        String keyword = Display.getText().trim();
+        if (keyword.isEmpty() || keyword.equals(lastSelectedName)) {
+            return;
+        }
+
+        SwingUtilities.invokeLater(() -> {
+            popupSNOMED.removeAll();
+            JMenuItem loading = new JMenuItem("Searching SNOMED...");
+            loading.setEnabled(false);
+            popupSNOMED.add(loading);
+            popupSNOMED.show(Display, 0, Display.getHeight());
+        });
 
         try {
-            executor.submit(() -> {
-                try {
-                    task.run();
-                } finally {
-                    ceksukses = false;
-                    SwingUtilities.invokeLater(() -> {
-                        if (isDisplayable()) {
-                            setCursor(Cursor.getDefaultCursor());
-                        }
-                    });
+            ApiSatuSehat api = new ApiSatuSehat();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setAccept(java.util.Collections.singletonList(MediaType.APPLICATION_JSON));
+            headers.add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+
+            String url = "https://snowstorm.ihtsdotools.org/fhir/ValueSet/$expand?url=http://snomed.info/sct?fhir_vs&filter="
+                    + keyword.replaceAll(" ", "%20") + "&count=20";
+
+            System.out.println("Sending request to SNOMED: " + url);
+            ObjectMapper mapper = new ObjectMapper();
+            String responseBody = api.getRest().exchange(url, HttpMethod.GET, entity, String.class).getBody();
+            System.out.println("SNOMED RAW RESPONSE: " + (responseBody.length() > 500 ? responseBody.substring(0, 500) : responseBody));
+
+            JsonNode root = mapper.readTree(responseBody);
+            JsonNode items = root.path("expansion").path("contains");
+
+            java.util.List<JsonNode> resultList = new java.util.ArrayList<>();
+            if (items.isArray()) {
+                for (JsonNode item : items) {
+                    resultList.add(item);
                 }
-            });
-        } catch (RejectedExecutionException ex) {
-            ceksukses = false;
+            }
+
+            System.out.println("SNOMED CT - Found: " + resultList.size() + " items for '" + keyword + "'");
+
+            if (!resultList.isEmpty()) {
+                SwingUtilities.invokeLater(() -> {
+                    popupSNOMED.removeAll();
+                    for (JsonNode item : resultList) {
+                        String code = item.path("code").asText();
+                        String term = item.path("display").asText();
+
+                        final String finalTerm = term;
+                        JMenuItem menu = new JMenuItem(term + " (" + code + ")");
+                        menu.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                timerSNOMED.stop();
+                                isSelecting = true;
+                                lastSelectedName = finalTerm;
+
+                                Code.setText(code);
+                                RadiologiSystem.setText("http://snomed.info/sct");
+                                Display.setText(finalTerm);
+
+                                isSelecting = false;
+                                popupSNOMED.setVisible(false);
+                            }
+                        });
+                        popupSNOMED.add(menu);
+                    }
+                    popupSNOMED.revalidate();
+                    popupSNOMED.repaint();
+                    popupSNOMED.pack();
+                    if (!popupSNOMED.isVisible()) {
+                        popupSNOMED.show(Display, 0, Display.getHeight());
+                    }
+                    Display.requestFocus();
+                });
+            } else {
+                SwingUtilities.invokeLater(() -> popupSNOMED.setVisible(false));
+            }
+        } catch (Exception ex) {
+            System.out.println("SNOMED Search Error: " + ex.getMessage());
+            SwingUtilities.invokeLater(() -> popupSNOMED.setVisible(false));
         }
     }
-    
-    @Override
-    public void dispose() {
-        executor.shutdownNow();
-        super.dispose();
+
+    private void cariLOINC() {
+        if (isSelecting) {
+            return;
+        }
+        String keyword = SampelDisplay.getText().trim();
+        if (keyword.isEmpty() || keyword.equals(lastSelectedSample)) {
+            return;
+        }
+
+        SwingUtilities.invokeLater(() -> {
+            popupLOINC.removeAll();
+            JMenuItem loading = new JMenuItem("Searching LOINC...");
+            loading.setEnabled(false);
+            popupLOINC.add(loading);
+            popupLOINC.show(SampelDisplay, 0, SampelDisplay.getHeight());
+        });
+
+        try {
+            ApiSatuSehat api = new ApiSatuSehat();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setAccept(java.util.Collections.singletonList(MediaType.APPLICATION_JSON));
+            headers.add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36");
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+
+            // Using NLM LOINC API with broad matching
+            String url = "https://clinicaltables.nlm.nih.gov/api/loinc_items/v3/search?terms=" + keyword.replaceAll(" ", "%20") + "&maxList=20&df=NAME,LONG_COMMON_NAME,SHORTNAME";
+
+            System.out.println("Sending request to LOINC: " + url);
+            ObjectMapper mapper = new ObjectMapper();
+            String responseBody = api.getRest().exchange(url, HttpMethod.GET, entity, String.class).getBody();
+            JsonNode root = mapper.readTree(responseBody);
+
+            // NLM structure is [total, codes, null, names]
+            JsonNode codes = root.get(1);
+            JsonNode names = root.get(3);
+
+            java.util.List<Map<String, String>> resultList = new java.util.ArrayList<>();
+            if (codes != null && codes.isArray()) {
+                for (int j = 0; j < codes.size(); j++) {
+                    Map<String, String> item = new HashMap<>();
+                    item.put("code", codes.get(j).asText());
+
+                    // NLM returns fields in the order requested in 'df'
+                    // df=NAME,LONG_COMMON_NAME,SHORTNAME
+                    JsonNode row = names.get(j);
+                    String formalName = row.get(0).asText();
+                    String commonName = row.get(1).asText();
+
+                    // Prefer Common Name, but show both if available
+                    String fullDisplay = commonName;
+                    if (!formalName.isEmpty() && !formalName.equals(commonName)) {
+                        fullDisplay += " | " + formalName;
+                    }
+
+                    item.put("display", fullDisplay);
+                    resultList.add(item);
+                }
+            }
+
+            System.out.println("LOINC - Found: " + resultList.size() + " items for '" + keyword + "'");
+
+            if (!resultList.isEmpty()) {
+                SwingUtilities.invokeLater(() -> {
+                    popupLOINC.removeAll();
+                    for (Map<String, String> item : resultList) {
+                        String code = item.get("code");
+                        String term = item.get("display");
+
+                        final String finalTerm = term;
+                        JMenuItem menu = new JMenuItem(term + " (" + code + ")");
+                        menu.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                timerLOINC.stop();
+                                isSelecting = true;
+                                lastSelectedSample = finalTerm;
+
+                                SampelCode.setText(code);
+                                SampelRadiologiSystem.setText("http://loinc.org");
+                                SampelDisplay.setText(finalTerm);
+
+                                isSelecting = false;
+                                popupLOINC.setVisible(false);
+                            }
+                        });
+                        popupLOINC.add(menu);
+                    }
+                    popupLOINC.revalidate();
+                    popupLOINC.repaint();
+                    popupLOINC.pack();
+                    if (!popupLOINC.isVisible()) {
+                        popupLOINC.show(SampelDisplay, 0, SampelDisplay.getHeight());
+                    }
+                    SampelDisplay.requestFocus();
+                });
+            } else {
+                SwingUtilities.invokeLater(() -> popupLOINC.setVisible(false));
+            }
+        } catch (Exception ex) {
+            System.out.println("LOINC Search Error: " + ex.getMessage());
+            SwingUtilities.invokeLater(() -> popupLOINC.setVisible(false));
+        }
     }
 }

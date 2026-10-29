@@ -99,7 +99,6 @@
                   <Color PropertyName="color" blue="eb" green="f5" red="f0" type="rgb"/>
                 </LineBorder>
               </Border>
-              <Font PropertyName="font" name="Tahoma" size="11" style="0"/>
               <Color PropertyName="color" blue="32" green="32" red="32" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -351,7 +350,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-02-2026"/>
+                        <StringItem index="0" value="21-10-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -379,7 +378,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="1">
-                        <StringItem index="0" value="06-02-2026"/>
+                        <StringItem index="0" value="21-10-2026"/>
                       </StringArray>
                     </Property>
                     <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -641,7 +640,7 @@
                         </Property>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                           <StringArray count="1">
-                            <StringItem index="0" value="06-02-2026 13:41:03"/>
+                            <StringItem index="0" value="21-10-2026 17:22:50"/>
                           </StringArray>
                         </Property>
                         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -1045,7 +1044,7 @@
                     </Component>
                     <Component class="widget.Label" name="jLabel71">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="SBP &gt; 08 mmHg Atau 20 mmHg Di Atas SBP Pasien :"/>
+                        <Property name="text" type="java.lang.String" value="SBP &gt; 80 mmHg Atau 20 mmHg Di Atas SBP Pasien :"/>
                         <Property name="name" type="java.lang.String" value="jLabel71" noResource="true"/>
                       </Properties>
                       <Constraints>

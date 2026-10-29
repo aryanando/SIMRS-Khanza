@@ -41,6 +41,7 @@ import rekammedis.RMRiwayatPerawatan;
 import simrskhanza.DlgCariBangsal;
 import simrskhanza.DlgCariPoli;
 import simrskhanza.DlgInputResepPulang;
+import fungsi.WarnaTableResepObat;
 
 public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private final DefaultTableModel tabMode,tabMode2,tabMode3,tabMode4,tabMode5,tabMode6,tabMode7,tabMode8;
@@ -68,7 +69,7 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
     private int jmlparsial=0,nilai_detik,resepbaru=0,i=0,baris=0;
     private BackgroundMusic music;
     private boolean aktif=false,semua,ceksukses=false;
-    
+    private WarnaTableResepObat warnaresep = new WarnaTableResepObat();
     /** Creates new form 
      * @param parent
      * @param modal */
@@ -127,7 +128,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 column.setPreferredWidth(90);
             }
         }
-        tbResepRalan.setDefaultRenderer(Object.class, new WarnaTable());
+//        tbResepRalan.setDefaultRenderer(Object.class, new WarnaTable());
+        tbResepRalan.setDefaultRenderer(Object.class, warnaresep);
         
         tabMode2=new DefaultTableModel(null,new Object[]{
                 "No.Resep","Tgl.Resep","Poli/Unit","Status","Pasien","Dokter Peresep"
@@ -204,8 +206,8 @@ public class DlgDaftarPermintaanResep extends javax.swing.JDialog {
                 column.setPreferredWidth(70);
             }
         }
-        tbResepRanap.setDefaultRenderer(Object.class, new WarnaTable());
-        
+//        tbResepRanap.setDefaultRenderer(Object.class, new WarnaTable());
+        tbResepRanap.setDefaultRenderer(Object.class, warnaresep);
         tabMode4=new DefaultTableModel(null,new Object[]{
                 "No.Resep","Tgl.Resep","Ruang/Kamar","Status","Pasien","Dokter Peresep"
             }){

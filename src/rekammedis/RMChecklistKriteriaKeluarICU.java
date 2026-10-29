@@ -71,7 +71,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","Tidak Lagi Memerlukan Perawatan ICU","Kondisi Pasien Yang Menyebabkan Pasien Dirawat Di ICU Telah Teratasi",
             "Pasien Dalam Keadaan Terminal Yang Dengan Terapi Tidak Memberikan Hasil Yang Bermakna","Pasien Meninggal","Pasien Membutuhkan Alat / Prosedur Yang Tidak Tersedia",
-            "Keluarga Menghendaki Pasien Dipindahkan","Nadi > 60 Atau < 100 x/menit","SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien","MAP > 60 mmHg","DBP < 120 mmHg",
+            "Keluarga Menghendaki Pasien Dipindahkan","Nadi > 60 Atau < 100 x/menit","SBP > 80 mmHg Atau 20 mmHg Di Atas SBP Pasien","MAP > 60 mmHg","DBP < 120 mmHg",
             "RR > 12 Sampai < 25 x/menit","NIP/Kode Dokter","DPJP/Dokter Jaga/ICU"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -787,7 +787,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
         FormInput.add(jLabel69);
         jLabel69.setBounds(446, 140, 260, 23);
 
-        jLabel71.setText("SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien :");
+        jLabel71.setText("SBP > 80 mmHg Atau 20 mmHg Di Atas SBP Pasien :");
         jLabel71.setName("jLabel71"); // NOI18N
         FormInput.add(jLabel71);
         jLabel71.setBounds(386, 170, 320, 23);
@@ -1001,7 +1001,7 @@ public final class RMChecklistKriteriaKeluarICU extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Membutuhkan Alat / Prosedur Yang Tidak Tersedia</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keluarga Menghendaki Pasien Dipindahkan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi > 60 Atau < 100 x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP > 08 mmHg Atau 20 mmHg Di Atas SBP Pasien</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP > 80 mmHg Atau 20 mmHg Di Atas SBP Pasien</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP > 60 mmHg</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP < 120 mmHg</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>RR > 12 Sampai < 25 x/menit</b></td>"+

@@ -37159,9 +37159,9 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             if(chkSkriningCRUB65.isSelected()==true){
                 try {
                     rs2=koneksi.prepareStatement(
-                        "select skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"+
+                        "select skrining_curb65.nip,pegawai.nama,skrining_curb65.tanggal,skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"+
                         "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan "+
-                        "from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "+
+                        "from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on skrining_curb65.nip=pegawai.nik "+
                         "where skrining_curb65.no_rawat='"+norawat+"'").executeQuery();
                     if(rs2.next()){
                         htmlContent.append("<tr class='isi'>").

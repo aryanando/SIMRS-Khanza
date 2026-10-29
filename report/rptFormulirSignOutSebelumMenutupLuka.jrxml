@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0f505995-42c1-4cc5-b34d-0896041d3a11">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
@@ -169,11 +169,27 @@
 		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
+	<field name="kasa_preop" class="java.lang.String"/>
+	<field name="kasa_tambahan" class="java.lang.String"/>
+	<field name="kasa_kotor" class="java.lang.String"/>
+	<field name="kasa_sisa" class="java.lang.String"/>
+	<field name="instrument_preop" class="java.lang.String"/>
+	<field name="instrument_tambahan" class="java.lang.String"/>
+	<field name="instrument_kotor" class="java.lang.String"/>
+	<field name="instrument_sisa" class="java.lang.String"/>
+	<field name="jarum_preop" class="java.lang.String"/>
+	<field name="jarum_tambahan" class="java.lang.String"/>
+	<field name="jarum_kotor" class="java.lang.String"/>
+	<field name="jarum_sisa" class="java.lang.String"/>
+	<field name="bigkasa_preop" class="java.lang.String"/>
+	<field name="bigkasa_tambahan" class="java.lang.String"/>
+	<field name="bigkasa_kotor" class="java.lang.String"/>
+	<field name="bigkasa_sisa" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="400" splitType="Stretch">
+		<band height="500" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
 				<reportElement x="0" y="54" width="552" height="23" uuid="ac6b5ade-def5-4da3-a9ec-6b5ba71a59b8"/>
@@ -219,12 +235,6 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="83" width="552" height="1" uuid="b051233e-5001-4c74-8ced-5f8ee0c151dd"/>
-				<graphicElement>
-					<pen lineWidth="1.0"/>
-				</graphicElement>
-			</line>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="274" y="90" width="106" height="14" uuid="2968fada-116f-49a6-96b7-f62bfc77c5ec">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -268,9 +278,7 @@
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="83" width="1" height="317" uuid="9dc6fc44-0a20-46c2-a659-b10fd68cf311">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="0" y="48" width="1" height="452" uuid="9dc6fc44-0a20-46c2-a659-b10fd68cf311"/>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
@@ -748,13 +756,221 @@
 				<textFieldExpression><![CDATA[$F{perhatian_utama_fase_pemulihan}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="552" y="83" width="1" height="317" uuid="3b2dd214-76d6-4da3-ad8a-3736a17b3b91">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
+				<reportElement x="554" y="48" width="1" height="452" uuid="3b2dd214-76d6-4da3-ad8a-3736a17b3b91"/>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="318" y="455" width="110" height="20" uuid="88502c0e-a52e-4579-9d08-0e065a644d84"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bigkasa_kotor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="318" y="395" width="110" height="20" uuid="9cd01c3b-6433-4b18-a7ab-2902b7976088"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kasa_kotor}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="318" y="415" width="110" height="20" uuid="48122a7b-3bc3-4523-b9b2-26b205a53884"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{instrument_kotor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="375" width="88" height="20" backcolor="#E6E6E6" uuid="e50afb21-8988-47e7-9750-fc1a34c0edf3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="455" width="110" height="20" uuid="ed5c49c7-e7ef-4818-ab21-6c17e0d7e426"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bigkasa_preop}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="428" y="435" width="110" height="20" uuid="4f10deb0-c9e1-417d-83d9-84a7e182834f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{jarum_sisa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="455" width="88" height="20" uuid="a2b28f5b-f3d4-42a5-ad3e-3bd75bcb05d9"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Bigkasa]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="208" y="415" width="110" height="20" uuid="eb837a57-3350-4f77-825c-ad8217ac7412"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{instrument_tambahan}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="395" width="110" height="20" uuid="e50eb38e-9a47-4188-ace6-5a253458a63f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kasa_preop}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="395" width="88" height="20" uuid="6039910a-b321-4cc9-b337-52623de70ea3"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Kasa / depper]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="98" y="375" width="110" height="20" backcolor="#E6E6E6" uuid="823ecc72-2952-4728-8e77-41d539645e2a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Pre Op]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="428" y="455" width="110" height="20" uuid="11b032b1-1c6b-4bc6-8adb-3cb62117e82a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bigkasa_sisa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="415" width="110" height="20" uuid="048b6c32-eb0c-4055-a1e8-13c8b03fcc2f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{instrument_preop}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="428" y="395" width="110" height="20" uuid="1b97832f-8ab0-4ee9-b790-2bcde729bbca"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kasa_sisa}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="318" y="375" width="110" height="20" backcolor="#E6E6E6" uuid="cbe67a52-fe8b-4fb7-b8f1-25eb5d1362f4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kotor]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="208" y="435" width="110" height="20" uuid="cf68fb24-9fd2-4b97-bd73-175aecf59bb0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{jarum_tambahan}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="428" y="415" width="110" height="20" uuid="2ba61c9d-806b-4f72-ba5b-3b977f99dd56"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{instrument_sisa}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="318" y="435" width="110" height="20" uuid="0918ca7c-02fc-47e3-a41f-85ba20b02480"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{jarum_kotor}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="208" y="375" width="110" height="20" backcolor="#E6E6E6" uuid="a1c3bc4e-ed68-43f0-a711-8862f66de544"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tambahan]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="208" y="395" width="110" height="20" uuid="311f6eec-1b16-4ca5-a716-56a70a3d53ea"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{kasa_tambahan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="428" y="375" width="110" height="20" backcolor="#E6E6E6" uuid="2ff8541a-28bd-4b8d-b29a-bb4cc7aa8f23"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sisa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="415" width="88" height="20" uuid="b3b394cc-195e-4f45-a619-926076740b6a"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Instrument]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="208" y="455" width="110" height="20" uuid="ce7c64f8-fbc4-46b0-a1bd-0e48e95b59ab"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{bigkasa_tambahan}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="98" y="435" width="110" height="20" uuid="f7af3365-b469-4fee-8204-f579b6f8d5a8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{jarum_preop}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="435" width="88" height="20" uuid="1108c898-1551-468b-9496-67a1f7c490b5"/>
+				<box leftPadding="4">
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Jarum]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -764,10 +980,10 @@
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<summary>
-		<band height="334" splitType="Stretch">
+		<band height="144" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<staticText>
-				<reportElement x="320" y="184" width="220" height="14" uuid="c1fbf8b7-e738-49a7-95b4-a424b7f1e65c"/>
+				<reportElement x="176" y="29" width="167" height="14" uuid="c1fbf8b7-e738-49a7-95b4-a424b7f1e65c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -775,7 +991,7 @@
 				<text><![CDATA[Dokter Anestesi]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="320" y="198" width="216" height="72" isRemoveLineWhenBlank="true" uuid="2e125df9-83d7-4563-b5cf-20b2194a8e5c">
+				<reportElement x="176" y="43" width="156" height="65" isRemoveLineWhenBlank="true" uuid="2e125df9-83d7-4563-b5cf-20b2194a8e5c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -783,7 +999,7 @@
 				</jr:QRCode>
 			</componentElement>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="320" y="276" width="220" height="15" uuid="6ea48481-f15a-4169-9e1b-675850c6d206"/>
+				<reportElement stretchType="RelativeToBandHeight" x="176" y="109" width="167" height="15" uuid="6ea48481-f15a-4169-9e1b-675850c6d206"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -791,21 +1007,21 @@
 				<textFieldExpression><![CDATA[$F{dokteranestesi}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="315" width="552" height="1" uuid="b35d09e2-735e-423d-bb20-89032a3d3310"/>
-				<graphicElement>
-					<pen lineWidth="1.0"/>
-				</graphicElement>
-			</line>
-			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="1" height="315" uuid="6dd99e86-2f0c-4195-9bbe-d796439d5a5c">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<reportElement x="1" y="143" width="553" height="1" uuid="b35d09e2-735e-423d-bb20-89032a3d3310">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<graphicElement>
 					<pen lineWidth="1.0"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="552" y="0" width="1" height="315" uuid="508f344a-6103-4529-a89d-40f04154497f">
+				<reportElement x="0" y="0" width="1" height="144" uuid="6dd99e86-2f0c-4195-9bbe-d796439d5a5c"/>
+				<graphicElement>
+					<pen lineWidth="1.0"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="554" y="0" width="1" height="144" uuid="508f344a-6103-4529-a89d-40f04154497f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -813,7 +1029,7 @@
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="26" y="276" width="214" height="15" uuid="748a4e32-2eb5-4dfa-8893-653e1b4e280a"/>
+				<reportElement stretchType="RelativeToBandHeight" x="10" y="109" width="159" height="15" uuid="748a4e32-2eb5-4dfa-8893-653e1b4e280a"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -821,7 +1037,7 @@
 				<textFieldExpression><![CDATA[$F{nama}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="26" y="184" width="214" height="14" uuid="b43eb9c9-93da-4181-ac89-be5e26ea44ca"/>
+				<reportElement x="10" y="29" width="159" height="14" uuid="b43eb9c9-93da-4181-ac89-be5e26ea44ca"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -829,7 +1045,7 @@
 				<text><![CDATA[Perawat Kamar Operasi]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement x="26" y="198" width="211" height="73" isRemoveLineWhenBlank="true" uuid="ccc94b4d-1d5a-4071-85da-9ef669c25e24">
+				<reportElement x="10" y="43" width="150" height="67" isRemoveLineWhenBlank="true" uuid="ccc94b4d-1d5a-4071-85da-9ef669c25e24">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -837,7 +1053,7 @@
 				</jr:QRCode>
 			</componentElement>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToBandHeight" x="145" y="123" width="220" height="15" uuid="a00991f9-f1c2-40c7-bcc8-c8869ae3b4fd"/>
+				<reportElement stretchType="RelativeToBandHeight" x="363" y="109" width="182" height="15" uuid="a00991f9-f1c2-40c7-bcc8-c8869ae3b4fd"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -845,7 +1061,7 @@
 				<textFieldExpression><![CDATA[$F{dokterbedah}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="145" y="45" width="216" height="72" isRemoveLineWhenBlank="true" uuid="48e0e440-816b-419d-9df6-12cbafb63677">
+				<reportElement x="363" y="43" width="173" height="67" isRemoveLineWhenBlank="true" uuid="48e0e440-816b-419d-9df6-12cbafb63677">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -853,7 +1069,7 @@
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement x="145" y="31" width="220" height="14" uuid="bd2189f1-e5d5-4d56-802a-37c05fa31518"/>
+				<reportElement x="363" y="29" width="182" height="14" uuid="bd2189f1-e5d5-4d56-802a-37c05fa31518"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font fontName="Tahoma" size="10"/>
 					<paragraph lineSpacing="Single"/>
@@ -861,7 +1077,7 @@
 				<text><![CDATA[Dokter Bedah]]></text>
 			</staticText>
 			<textField pattern="dd MMMM, yyyy">
-				<reportElement x="145" y="20" width="220" height="11" uuid="46ed1978-54a1-41b7-9bbe-c4c652aa008d"/>
+				<reportElement x="363" y="18" width="182" height="11" uuid="46ed1978-54a1-41b7-9bbe-c4c652aa008d"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>

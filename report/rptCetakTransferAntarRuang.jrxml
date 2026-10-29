@@ -30,6 +30,7 @@
 	<parameter name="masalah" class="java.lang.String"/>
 	<parameter name="finger" class="java.lang.String"/>
 	<parameter name="finger2" class="java.lang.String"/>
+	<parameter name="tanggalmasuk" class="java.lang.String"/>
 	<queryString language="SQL">
 		<![CDATA[SELECT 
 	            reg_periksa.no_rawat,
@@ -70,6 +71,11 @@
 	            transfer_pasien_antar_ruang.rr_sesudah_transfer,
 	            transfer_pasien_antar_ruang.suhu_sesudah_transfer,
 				transfer_pasien_antar_ruang.advice_dpjp,
+
+	            IFNULL(NULLIF(IF(reg_periksa.kd_poli = 'IGDK',
+	                penilaian_awal_keperawatan_igd.jenis_pelayanan,
+	                penilaian_awal_keperawatan_ralan.jenis_pelayanan), ''), ' ') AS jenis_pelayanan,
+
 	            transfer_pasien_antar_ruang.nip_menyerahkan,
 	            petugasmenyerahkan.nama AS petugasmenyerahkan,
 	            transfer_pasien_antar_ruang.nip_menerima,
@@ -85,9 +91,14 @@
 	            petugas AS petugasmenyerahkan ON transfer_pasien_antar_ruang.nip_menyerahkan = petugasmenyerahkan.nip
 	        INNER JOIN 
 	            petugas AS petugasmenerima ON transfer_pasien_antar_ruang.nip_menerima = petugasmenerima.nip
+	        LEFT JOIN 
+	            penilaian_awal_keperawatan_igd ON reg_periksa.no_rawat = penilaian_awal_keperawatan_igd.no_rawat
+	        LEFT JOIN 
+	            penilaian_awal_keperawatan_ralan ON reg_periksa.no_rawat = penilaian_awal_keperawatan_ralan.no_rawat
 	
 	        WHERE 
 	            transfer_pasien_antar_ruang.no_rawat = $P{norawat}
+	            AND transfer_pasien_antar_ruang.tanggal_masuk = $P{tanggalmasuk}
 	        ORDER BY 
 	            transfer_pasien_antar_ruang.tanggal_pindah]]>
 	</queryString>
@@ -101,6 +112,7 @@
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
+	<field name="jenis_pelayanan" class="java.lang.String"/>
 	<field name="nm_pasien" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="nm_pasien"/>
 		<property name="com.jaspersoft.studio.field.label" value="nm_pasien"/>
@@ -533,7 +545,7 @@
 					<font fontName="Tahoma" size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Pindah : "+ $F{tanggal_masuk}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Pindah : "+ $F{tanggal_pindah}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="3" y="134" width="342" height="11" uuid="51b3f760-79b1-40d5-b42a-6b9feadb0a33">
@@ -1349,6 +1361,16 @@
 					<font fontName="Tahoma" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{advice_dpjp}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy HH:mm:ss">
+				<reportElement mode="Opaque" x="440" y="10" width="114" height="24" backcolor="#F0F0DC" uuid="6590d10f-3c2a-4f7d-9ec3-5ec6a860d95f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_pelayanan}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

@@ -7137,7 +7137,8 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
-        if(tbObat.getSelectedRow()>-1){
+       if(tbObat.getSelectedRow()>-1){
+            String norawat=tbObat.getValueAt(tbObat.getSelectedRow(),0).toString();
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
             param.put("alamatrs",akses.getalamatrs());
@@ -7147,8 +7148,20 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             param.put("emailrs",akses.getemailrs());
             param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
             param.put("nyeri",Sequel.cariGambar("select gambar.nyeri from gambar"));
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),91).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),92).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),91).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()));
+ 
+            // TTD elektronik: 2 petugas (nip1, nip2) + 1 dokter (kd_dokter), diambil langsung dari tabel penilaian
+            String tgl=Sequel.cariIsi("select penilaian_awal_keperawatan_ranap_bayi.tanggal from penilaian_awal_keperawatan_ranap_bayi where penilaian_awal_keperawatan_ranap_bayi.no_rawat=?",norawat);
+            String nip1=Sequel.cariIsi("select penilaian_awal_keperawatan_ranap_bayi.nip1 from penilaian_awal_keperawatan_ranap_bayi where penilaian_awal_keperawatan_ranap_bayi.no_rawat=?",norawat);
+            String nip2=Sequel.cariIsi("select penilaian_awal_keperawatan_ranap_bayi.nip2 from penilaian_awal_keperawatan_ranap_bayi where penilaian_awal_keperawatan_ranap_bayi.no_rawat=?",norawat);
+            String kddokter=Sequel.cariIsi("select penilaian_awal_keperawatan_ranap_bayi.kd_dokter from penilaian_awal_keperawatan_ranap_bayi where penilaian_awal_keperawatan_ranap_bayi.no_rawat=?",norawat);
+            String nmperawat1=Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nip1);
+            String nmperawat2=Sequel.cariIsi("select petugas.nama from petugas where petugas.nip=?",nip2);
+            String nmdokter=Sequel.cariIsi("select dokter.nm_dokter from dokter where dokter.kd_dokter=?",kddokter);
+            String tglttd=tgl.equals("")?"":Valid.SetTgl3(tgl);
+            param.put("finger",buatTtdRanapAnak(nmperawat1,nip1,tglttd));
+            param.put("finger2",buatTtdRanapAnak(nmperawat2,nip2,tglttd));
+            param.put("finger3",buatTtdRanapAnak(nmdokter,kddokter,tglttd));
+ 
             try {
                 masalahkeperawatan="";
                 ps2=koneksi.prepareStatement(
@@ -7156,7 +7169,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                     "inner join penilaian_awal_keperawatan_ranap_bayi_masalah on penilaian_awal_keperawatan_ranap_bayi_masalah.kode_masalah=master_masalah_keperawatan_anak.kode_masalah "+
                     "where penilaian_awal_keperawatan_ranap_bayi_masalah.no_rawat=? order by penilaian_awal_keperawatan_ranap_bayi_masalah.kode_masalah");
                 try {
-                    ps2.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    ps2.setString(1,norawat);
                     rs2=ps2.executeQuery();
                     while(rs2.next()){
                         masalahkeperawatan=rs2.getString("nama_masalah")+", "+masalahkeperawatan;
@@ -7182,7 +7195,7 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                     "inner join penilaian_awal_keperawatan_ranap_bayi_rencana on penilaian_awal_keperawatan_ranap_bayi_rencana.kode_rencana=master_rencana_keperawatan_anak.kode_rencana "+
                     "where penilaian_awal_keperawatan_ranap_bayi_rencana.no_rawat=? order by penilaian_awal_keperawatan_ranap_bayi_rencana.kode_rencana");
                 try {
-                    ps2.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
+                    ps2.setString(1,norawat);
                     rs2=ps2.executeQuery();
                     while(rs2.next()){
                         masalahkeperawatan=rs2.getString("rencana_keperawatan")+", "+masalahkeperawatan;
@@ -7226,29 +7239,16 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
                 System.out.println("Notif : "+e);
             }
             param.put("imunisasi",masalahkeperawatan);
-            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRalanAnak.jasper","report","::[ Laporan Pengkajian Awal Keperawatan Ralan Bayi/Anak ]::",
-                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,penilaian_awal_keperawatan_ranap_bayi.tanggal,"+
-                "penilaian_awal_keperawatan_ranap_bayi.informasi,penilaian_awal_keperawatan_ranap_bayi.td,penilaian_awal_keperawatan_ranap_bayi.nadi,penilaian_awal_keperawatan_ranap_bayi.rr,penilaian_awal_keperawatan_ranap_bayi.suhu,penilaian_awal_keperawatan_ranap_bayi.gcs,"+
-                "penilaian_awal_keperawatan_ranap_bayi.bb,penilaian_awal_keperawatan_ranap_bayi.tb,penilaian_awal_keperawatan_ranap_bayi.lp,penilaian_awal_keperawatan_ranap_bayi.lk,penilaian_awal_keperawatan_ranap_bayi.ld,penilaian_awal_keperawatan_ranap_bayi.keluhan_utama,"+
-                "penilaian_awal_keperawatan_ranap_bayi.rpd,penilaian_awal_keperawatan_ranap_bayi.rpk,penilaian_awal_keperawatan_ranap_bayi.rpo,penilaian_awal_keperawatan_ranap_bayi.alergi,penilaian_awal_keperawatan_ranap_bayi.anakke,penilaian_awal_keperawatan_ranap_bayi.darisaudara,"+
-                "penilaian_awal_keperawatan_ranap_bayi.caralahir,penilaian_awal_keperawatan_ranap_bayi.ket_caralahir,penilaian_awal_keperawatan_ranap_bayi.umurkelahiran,penilaian_awal_keperawatan_ranap_bayi.kelainanbawaan,penilaian_awal_keperawatan_ranap_bayi.ket_kelainan_bawaan,"+
-                "penilaian_awal_keperawatan_ranap_bayi.usiatengkurap,penilaian_awal_keperawatan_ranap_bayi.usiaduduk,penilaian_awal_keperawatan_ranap_bayi.usiaberdiri,penilaian_awal_keperawatan_ranap_bayi.usiagigipertama,penilaian_awal_keperawatan_ranap_bayi.usiaberjalan,"+
-                "penilaian_awal_keperawatan_ranap_bayi.usiabicara,penilaian_awal_keperawatan_ranap_bayi.usiamembaca,penilaian_awal_keperawatan_ranap_bayi.usiamenulis,penilaian_awal_keperawatan_ranap_bayi.gangguanemosi,penilaian_awal_keperawatan_ranap_bayi.alat_bantu,"+
-                "penilaian_awal_keperawatan_ranap_bayi.ket_bantu,penilaian_awal_keperawatan_ranap_bayi.prothesa,penilaian_awal_keperawatan_ranap_bayi.ket_pro,penilaian_awal_keperawatan_ranap_bayi.adl,penilaian_awal_keperawatan_ranap_bayi.status_psiko,"+
-                "penilaian_awal_keperawatan_ranap_bayi.ket_psiko,penilaian_awal_keperawatan_ranap_bayi.hub_keluarga,penilaian_awal_keperawatan_ranap_bayi.pengasuh,penilaian_awal_keperawatan_ranap_bayi.ket_pengasuh,penilaian_awal_keperawatan_ranap_bayi.ekonomi,"+
-                "penilaian_awal_keperawatan_ranap_bayi.budaya,penilaian_awal_keperawatan_ranap_bayi.ket_budaya,penilaian_awal_keperawatan_ranap_bayi.edukasi,penilaian_awal_keperawatan_ranap_bayi.ket_edukasi,penilaian_awal_keperawatan_ranap_bayi.berjalan_a,"+
-                "penilaian_awal_keperawatan_ranap_bayi.berjalan_b,penilaian_awal_keperawatan_ranap_bayi.berjalan_c,penilaian_awal_keperawatan_ranap_bayi.hasil,penilaian_awal_keperawatan_ranap_bayi.lapor,penilaian_awal_keperawatan_ranap_bayi.ket_lapor,"+
-                "penilaian_awal_keperawatan_ranap_bayi.sg1,penilaian_awal_keperawatan_ranap_bayi.nilai1,penilaian_awal_keperawatan_ranap_bayi.sg2,penilaian_awal_keperawatan_ranap_bayi.nilai2,penilaian_awal_keperawatan_ranap_bayi.sg3,penilaian_awal_keperawatan_ranap_bayi.nilai3,"+
-                "penilaian_awal_keperawatan_ranap_bayi.sg4,penilaian_awal_keperawatan_ranap_bayi.nilai4,penilaian_awal_keperawatan_ranap_bayi.total_hasil,penilaian_awal_keperawatan_ranap_bayi.wajah,penilaian_awal_keperawatan_ranap_bayi.nilaiwajah,penilaian_awal_keperawatan_ranap_bayi.kaki,"+
-                "penilaian_awal_keperawatan_ranap_bayi.nilaikaki,penilaian_awal_keperawatan_ranap_bayi.aktifitas,penilaian_awal_keperawatan_ranap_bayi.nilaiaktifitas,penilaian_awal_keperawatan_ranap_bayi.menangis,penilaian_awal_keperawatan_ranap_bayi.nilaimenangis,"+
-                "penilaian_awal_keperawatan_ranap_bayi.bersuara,penilaian_awal_keperawatan_ranap_bayi.nilaibersuara,penilaian_awal_keperawatan_ranap_bayi.hasilnyeri,penilaian_awal_keperawatan_ranap_bayi.nyeri,penilaian_awal_keperawatan_ranap_bayi.lokasi,"+
-                "penilaian_awal_keperawatan_ranap_bayi.durasi,penilaian_awal_keperawatan_ranap_bayi.frekuensi,penilaian_awal_keperawatan_ranap_bayi.nyeri_hilang,penilaian_awal_keperawatan_ranap_bayi.ket_nyeri,penilaian_awal_keperawatan_ranap_bayi.pada_dokter,"+
-                "penilaian_awal_keperawatan_ranap_bayi.ket_dokter,penilaian_awal_keperawatan_ranap_bayi.rencana,penilaian_awal_keperawatan_ranap_bayi.nip,petugas.nama "+
+            Valid.MyReportqry("rptCetakPenilaianAwalKeperawatanRanapAnak.jasper","report","::[ Laporan Pengkajian Awal Keperawatan Ranap Bayi/Anak ]::",
+                "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,pasien.agama,bahasa_pasien.nama_bahasa,cacat_fisik.nama_cacat,"+
+                "penilaian_awal_keperawatan_ranap_bayi.*,p1.nama as nama_perawat1,p2.nama as nama_perawat2,dokter.nm_dokter "+
                 "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                 "inner join penilaian_awal_keperawatan_ranap_bayi on reg_periksa.no_rawat=penilaian_awal_keperawatan_ranap_bayi.no_rawat "+
-                "inner join petugas on penilaian_awal_keperawatan_ranap_bayi.nip=petugas.nip "+
+                "inner join petugas p1 on penilaian_awal_keperawatan_ranap_bayi.nip1=p1.nip "+
+                "inner join petugas p2 on penilaian_awal_keperawatan_ranap_bayi.nip2=p2.nip "+
+                "inner join dokter on penilaian_awal_keperawatan_ranap_bayi.kd_dokter=dokter.kd_dokter "+
                 "inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien "+
-                "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                "inner join cacat_fisik on cacat_fisik.id=pasien.cacat_fisik where reg_periksa.no_rawat='"+norawat+"'",param);
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
         }
@@ -9183,6 +9183,12 @@ public final class RMPenilaianAwalKeperawatanRanapBayiAnak extends javax.swing.J
             NilaiResikoTotal.setText("0");
             KeteranganTingkatRisiko.setText("Risiko Rendah 7 - 11");
         }
+    }
+        private String buatTtdRanapAnak(String nama,String id,String tgl){
+        String hash=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",id);
+        return "Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+
+               "\nDitandatangani secara elektronik oleh "+nama+
+               "\nID "+(hash.equals("")?id:hash)+"\n"+tgl;
     }
     
     private void tampilImunisasi() {

@@ -88,94 +88,199 @@
 	<parameter name="waktu_lain_lain1" class="java.lang.String"/>
 	<parameter name="waktu_lain_lain2" class="java.lang.String"/>
 	<parameter name="waktu_lain_lain3" class="java.lang.String"/>
+	<parameter name="photo_diagnosis" class="java.lang.String"/>
+	<parameter name="nama_penerima_diagnosis" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_diagnosis" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_diagnosis" class="java.lang.String"/>
+	<parameter name="photo_tanda" class="java.lang.String"/>
+	<parameter name="nama_penerima_tanda" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_tanda" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_tanda" class="java.lang.String"/>
+	<parameter name="photo_renmedis" class="java.lang.String"/>
+	<parameter name="nama_penerima_renmedis" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_renmedis" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_renmedis" class="java.lang.String"/>
+	<parameter name="photo_pengobatan" class="java.lang.String"/>
+	<parameter name="nama_penerima_pengobatan" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_pengobatan" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_pengobatan" class="java.lang.String"/>
+	<parameter name="photo_proses" class="java.lang.String"/>
+	<parameter name="nama_penerima_proses" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_proses" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_proses" class="java.lang.String"/>
+	<parameter name="photo_altpengobatan" class="java.lang.String"/>
+	<parameter name="nama_penerima_altpengobatan" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_altpengobatan" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_altpengobatan" class="java.lang.String"/>
+	<parameter name="photo_carapenggunaan" class="java.lang.String"/>
+	<parameter name="nama_penerima_carapenggunaan" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_carapenggunaan" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_carapenggunaan" class="java.lang.String"/>
+	<parameter name="photo_dosis" class="java.lang.String"/>
+	<parameter name="nama_penerima_dosis" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_dosis" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_dosis" class="java.lang.String"/>
+	<parameter name="photo_efek" class="java.lang.String"/>
+	<parameter name="nama_penerima_efek" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_efek" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_efek" class="java.lang.String"/>
+	<parameter name="photo_diet" class="java.lang.String"/>
+	<parameter name="nama_penerima_diet" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_diet" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_diet" class="java.lang.String"/>
+	<parameter name="photo_mobilisasi" class="java.lang.String"/>
+	<parameter name="nama_penerima_mobilisasi" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_mobilisasi" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_mobilisasi" class="java.lang.String"/>
+	<parameter name="photo_perawatanluka" class="java.lang.String"/>
+	<parameter name="nama_penerima_perawatanluka" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_perawatanluka" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_perawatanluka" class="java.lang.String"/>
+	<parameter name="photo_alatmedis" class="java.lang.String"/>
+	<parameter name="nama_penerima_alatmedis" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_alatmedis" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_alatmedis" class="java.lang.String"/>
+	<parameter name="photo_komplikasi" class="java.lang.String"/>
+	<parameter name="nama_penerima_komplikasi" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_komplikasi" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_komplikasi" class="java.lang.String"/>
+	<parameter name="photo_nyeri" class="java.lang.String"/>
+	<parameter name="nama_penerima_nyeri" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_nyeri" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_nyeri" class="java.lang.String"/>
+	<parameter name="photo_kebersihan" class="java.lang.String"/>
+	<parameter name="nama_penerima_kebersihan" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_kebersihan" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_kebersihan" class="java.lang.String"/>
+	<parameter name="photo_penundaan" class="java.lang.String"/>
+	<parameter name="nama_penerima_penundaan" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_penundaan" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_penundaan" class="java.lang.String"/>
+	<parameter name="photo_hambatan" class="java.lang.String"/>
+	<parameter name="nama_penerima_hambatan" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_hambatan" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_hambatan" class="java.lang.String"/>
+	<parameter name="photo_resikojatuh" class="java.lang.String"/>
+	<parameter name="nama_penerima_resikojatuh" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_resikojatuh" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_resikojatuh" class="java.lang.String"/>
+	<parameter name="photo_lainlain" class="java.lang.String"/>
+	<parameter name="nama_penerima_lainlain" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_lainlain" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_lainlain" class="java.lang.String"/>
+	<parameter name="photo_lainlain1" class="java.lang.String"/>
+	<parameter name="nama_penerima_lainlain1" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_lainlain1" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_lainlain1" class="java.lang.String"/>
+	<parameter name="photo_lainlain2" class="java.lang.String"/>
+	<parameter name="nama_penerima_lainlain2" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_lainlain2" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_lainlain2" class="java.lang.String"/>
+	<parameter name="photo_lainlain3" class="java.lang.String"/>
+	<parameter name="nama_penerima_lainlain3" class="java.lang.String"/>
+	<parameter name="hubungan_keluarga_lainlain3" class="java.lang.String"/>
+	<parameter name="keterangan_hubungan_lainlain3" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,edukasi_pasien_keluarga_rj.tanggal,
-                    edukasi_pasien_keluarga_rj.bicara,edukasi_pasien_keluarga_rj.keterangan_bicara,bahasa_pasien.nama_bahasa,edukasi_pasien_keluarga_rj.bahasa_sehari,
-                    edukasi_pasien_keluarga_rj.perlu_penerjemah,edukasi_pasien_keluarga_rj.keterangan_penerjemah,edukasi_pasien_keluarga_rj.bahasa_isyarat,
-                    edukasi_pasien_keluarga_rj.cara_belajar,edukasi_pasien_keluarga_rj.hambatan_belajar,edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar,
-                    edukasi_pasien_keluarga_rj.kemampuan_belajar,edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar,pasien.pnd,
-                    edukasi_pasien_keluarga_rj.penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,edukasi_pasien_keluarga_rj.keputusan_memilih_layanan,
-                    edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi,
-                    edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan,
-                    edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi,
-                    edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan,edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,
-                    edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan,edukasi_pasien_keluarga_rj.nip,
-                    petugas.nama,pelaksanaan_kie.tanggal AS tanggal_kie,pelaksanaan_kie.nik,
-                    pelaksanaan_kie.diagnosis_penyakit,pelaksanaan_kie.kie_diagnosis_penyakit,
-                    pelaksanaan_kie.tanda_gejala_penyakit,
-                    pelaksanaan_kie.kie_tanda_gejala_penyakit,pelaksanaan_kie.ren_tindakan_medis,
-                    pelaksanaan_kie.kie_ren_tindakan_medis,pelaksanaan_kie.pengobatan_diberikan,
-                    pelaksanaan_kie.kie_pengobatan_diberikan,pelaksanaan_kie.proses_perawatan,
-                    pelaksanaan_kie.kie_proses_perawatan,pelaksanaan_kie.alternatif_pengobatan,
-                    pelaksanaan_kie.kie_alternatif_pengobatan,pelaksanaan_kie.cara_penggunaan_obat,
-                    pelaksanaan_kie.kie_cara_penggunaan_obat,pelaksanaan_kie.dosis_jadwal_obat,
-                    pelaksanaan_kie.kie_dosis_jadwal_obat,pelaksanaan_kie.efek_samping_obat,
-                    pelaksanaan_kie.kie_efek_samping_obat,pelaksanaan_kie.diet_nutrisi,pelaksanaan_kie.kie_diet_nutrisi,pelaksanaan_kie.aktivitas_mobilisasi,pelaksanaan_kie.kie_aktivitas_mobilisasi,pelaksanaan_kie.perawatan_luka,pelaksanaan_kie.kie_perawatan_luka,pelaksanaan_kie.penggunaan_alat_medis,pelaksanaan_kie.kie_penggunaan_alat_medis,pelaksanaan_kie.pencegahan_komplikasi,pelaksanaan_kie.kie_pencegahan_komplikasi,pelaksanaan_kie.manajemen_nyeri,pelaksanaan_kie.kie_manajemen_nyeri,pelaksanaan_kie.kebersihan_diri,pelaksanaan_kie.kie_kebersihan_diri,pelaksanaan_kie.penundaan_pelayanan,pelaksanaan_kie.kie_penundaan_pelayanan,pelaksanaan_kie.hambatan_pelayanan,pelaksanaan_kie.kie_hambatan_pelayanan,pelaksanaan_kie.pencegahan_resiko_jatuh,pelaksanaan_kie.kie_pencegahan_resiko_jatuh,
-                    IF(bukti_pelaksanaan_kie.photo IS NULL,NULL,concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',bukti_pelaksanaan_kie.photo)) as photo,
-                    pelaksanaan_kie.nip_diagnosa,
-    pg1.nama AS petugas_diagnosa,
-    pelaksanaan_kie.nip_tanda,
-    pg2.nama AS petugas_tanda,
-    pelaksanaan_kie.nip_ren_medis,
-    pg3.nama AS petugas_ren_medis,
-    pelaksanaan_kie.nip_pengobatan,
-    pg4.nama AS petugas_pengobatan,
-    pelaksanaan_kie.nip_proses_rawat,
-    pg5.nama AS petugas_proses_rawat,
-    pelaksanaan_kie.nip_alt_pengobatan,
-    pg6.nama AS petugas_alt_pengobatan,
-    pelaksanaan_kie.nip_cara_penggunaan,
-    pg7.nama AS petugas_cara_penggunaan,
-    pelaksanaan_kie.nip_dosis,
-    pg8.nama AS petugas_dosis,
-    pelaksanaan_kie.nip_efek,
-    pg9.nama AS petugas_efek,
-    pelaksanaan_kie.nip_diet,
-    pg10.nama AS petugas_diet,
-    pelaksanaan_kie.nip_mobilisasi,
-    pg11.nama AS petugas_mobilisasi,
-    pelaksanaan_kie.nip_perawatan_luka,
-    pg12.nama AS petugas_perawatan_luka,
-    pelaksanaan_kie.nip_penggunaan_alat_medis,
-    pg13.nama AS petugas_penggunaan_alat,
-    pelaksanaan_kie.nip_pencegahan_komplikasi,
-    pg14.nama AS petugas_pencegahan_komplikasi,
-    pelaksanaan_kie.nip_manajemen_nyeri,
-    pg15.nama AS petugas_manajemen_nyeri,
-    pelaksanaan_kie.nip_kebersihan,
-    pg16.nama AS petugas_kebersihan,
-    pelaksanaan_kie.nip_penundaan,
-    pg17.nama AS petugas_penundaan,
-    pelaksanaan_kie.nip_hambatan,
-    pg18.nama AS petugas_hambatan,
-    pelaksanaan_kie.nip_resiko_jatuh,
-    pg19.nama AS petugas_resiko_jatuh,
-    pelaksanaan_kie.lain_lain,
-    pelaksanaan_kie.kie_lain_lain,
-    pelaksanaan_kie.nip_lain_lain,
-    pg20.nama AS petugas_lain_lain
-                    
-                    from edukasi_pasien_keluarga_rj inner join reg_periksa on edukasi_pasien_keluarga_rj.no_rawat=reg_periksa.no_rawat 
-                    inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
-                    inner join bahasa_pasien on bahasa_pasien.id=pasien.bahasa_pasien 
-                    inner join petugas on edukasi_pasien_keluarga_rj.nip=petugas.nip
-                    Left JOIN pelaksanaan_kie ON edukasi_pasien_keluarga_rj.no_rawat = pelaksanaan_kie.no_rawat 
-                    AND edukasi_pasien_keluarga_rj.tanggal = pelaksanaan_kie.tanggal
-                    LEFT JOIN (
-					    SELECT no_rawat, tanggal, photo 
-					    FROM bukti_pelaksanaan_kie 
-					    GROUP BY no_rawat, tanggal
-					) bukti_pelaksanaan_kie ON bukti_pelaksanaan_kie.no_rawat = pelaksanaan_kie.no_rawat 
-					AND bukti_pelaksanaan_kie.tanggal = pelaksanaan_kie.tanggal
-                    LEFT JOIN pegawai pg1  ON pg1.nik = pelaksanaan_kie.nip_diagnosa
-LEFT JOIN pegawai pg2  ON pg2.nik = pelaksanaan_kie.nip_tanda
-LEFT JOIN pegawai pg3  ON pg3.nik = pelaksanaan_kie.nip_ren_medis
-LEFT JOIN pegawai pg4  ON pg4.nik = pelaksanaan_kie.nip_pengobatan
-LEFT JOIN pegawai pg5  ON pg5.nik = pelaksanaan_kie.nip_proses_rawat
-LEFT JOIN pegawai pg6  ON pg6.nik = pelaksanaan_kie.nip_alt_pengobatan
-LEFT JOIN pegawai pg7  ON pg7.nik = pelaksanaan_kie.nip_cara_penggunaan
-LEFT JOIN pegawai pg8  ON pg8.nik = pelaksanaan_kie.nip_dosis
-LEFT JOIN pegawai pg9  ON pg9.nik = pelaksanaan_kie.nip_efek
+		<![CDATA[SELECT reg_periksa.no_rawat, pasien.no_rkm_medis, pasien.nm_pasien, pasien.jk, pasien.tgl_lahir,
+    edukasi_pasien_keluarga_rj.tanggal, edukasi_pasien_keluarga_rj.bicara, edukasi_pasien_keluarga_rj.keterangan_bicara,
+    bahasa_pasien.nama_bahasa, edukasi_pasien_keluarga_rj.bahasa_sehari, edukasi_pasien_keluarga_rj.perlu_penerjemah,
+    edukasi_pasien_keluarga_rj.keterangan_penerjemah, edukasi_pasien_keluarga_rj.bahasa_isyarat,
+    edukasi_pasien_keluarga_rj.cara_belajar, edukasi_pasien_keluarga_rj.hambatan_belajar,
+    edukasi_pasien_keluarga_rj.keterangan_hambatan_belajar, edukasi_pasien_keluarga_rj.kemampuan_belajar,
+    edukasi_pasien_keluarga_rj.keterangan_kemampuan_belajar, pasien.pnd,
+    edukasi_pasien_keluarga_rj.penyakitnya_merupakan, edukasi_pasien_keluarga_rj.keterangan_penyakitnya_merupakan,
+    edukasi_pasien_keluarga_rj.keputusan_memilih_layanan, edukasi_pasien_keluarga_rj.keterangan_keputusan_memilih_layanan,
+    edukasi_pasien_keluarga_rj.keyakinan_terhadap_terapi, edukasi_pasien_keluarga_rj.keterangan_keyakinan_terhadap_terapi,
+    edukasi_pasien_keluarga_rj.aspek_keyakinan_dipertimbangkan, edukasi_pasien_keluarga_rj.keterangan_aspek_keyakinan_dipertimbangkan,
+    edukasi_pasien_keluarga_rj.kesediaan_menerima_informasi, edukasi_pasien_keluarga_rj.topik_edukasi_penyakit,
+    edukasi_pasien_keluarga_rj.topik_edukasi_rencana_tindakan, edukasi_pasien_keluarga_rj.topik_edukasi_pengobatan,
+    edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan, edukasi_pasien_keluarga_rj.nip, petugas.nama,
+    pelaksanaan_kie.tanggal AS tanggal_kie,# pelaksanaan_kie.,
+
+    pelaksanaan_kie.diagnosis_penyakit, pelaksanaan_kie.kie_diagnosis_penyakit,
+    pelaksanaan_kie.tanda_gejala_penyakit, pelaksanaan_kie.kie_tanda_gejala_penyakit,
+    pelaksanaan_kie.ren_tindakan_medis, pelaksanaan_kie.kie_ren_tindakan_medis,
+    pelaksanaan_kie.pengobatan_diberikan, pelaksanaan_kie.kie_pengobatan_diberikan,
+    pelaksanaan_kie.proses_perawatan, pelaksanaan_kie.kie_proses_perawatan,
+    pelaksanaan_kie.alternatif_pengobatan, pelaksanaan_kie.kie_alternatif_pengobatan,
+    pelaksanaan_kie.cara_penggunaan_obat, pelaksanaan_kie.kie_cara_penggunaan_obat,
+    pelaksanaan_kie.dosis_jadwal_obat, pelaksanaan_kie.kie_dosis_jadwal_obat,
+    pelaksanaan_kie.efek_samping_obat, pelaksanaan_kie.kie_efek_samping_obat,
+    pelaksanaan_kie.diet_nutrisi, pelaksanaan_kie.kie_diet_nutrisi,
+    pelaksanaan_kie.aktivitas_mobilisasi, pelaksanaan_kie.kie_aktivitas_mobilisasi,
+    pelaksanaan_kie.perawatan_luka, pelaksanaan_kie.kie_perawatan_luka,
+    pelaksanaan_kie.penggunaan_alat_medis, pelaksanaan_kie.kie_penggunaan_alat_medis,
+    pelaksanaan_kie.pencegahan_komplikasi, pelaksanaan_kie.kie_pencegahan_komplikasi,
+    pelaksanaan_kie.manajemen_nyeri, pelaksanaan_kie.kie_manajemen_nyeri,
+    pelaksanaan_kie.kebersihan_diri, pelaksanaan_kie.kie_kebersihan_diri,
+    pelaksanaan_kie.penundaan_pelayanan, pelaksanaan_kie.kie_penundaan_pelayanan,
+    pelaksanaan_kie.hambatan_pelayanan, pelaksanaan_kie.kie_hambatan_pelayanan,
+    pelaksanaan_kie.pencegahan_resiko_jatuh, pelaksanaan_kie.kie_pencegahan_resiko_jatuh,
+
+    pelaksanaan_kie.nip_diagnosa, pg1.nama AS petugas_diagnosa,
+    pelaksanaan_kie.nip_tanda, pg2.nama AS petugas_tanda,
+    pelaksanaan_kie.nip_ren_medis, pg3.nama AS petugas_ren_medis,
+    pelaksanaan_kie.nip_pengobatan, pg4.nama AS petugas_pengobatan,
+    pelaksanaan_kie.nip_proses_rawat, pg5.nama AS petugas_proses_rawat,
+    pelaksanaan_kie.nip_alt_pengobatan, pg6.nama AS petugas_alt_pengobatan,
+    pelaksanaan_kie.nip_cara_penggunaan, pg7.nama AS petugas_cara_penggunaan,
+    pelaksanaan_kie.nip_dosis, pg8.nama AS petugas_dosis,
+    pelaksanaan_kie.nip_efek, pg9.nama AS petugas_efek,
+    pelaksanaan_kie.nip_diet, pg10.nama AS petugas_diet,
+    pelaksanaan_kie.nip_mobilisasi, pg11.nama AS petugas_mobilisasi,
+    pelaksanaan_kie.nip_perawatan_luka, pg12.nama AS petugas_perawatan_luka,
+    pelaksanaan_kie.nip_penggunaan_alat_medis, pg13.nama AS petugas_penggunaan_alat,
+    pelaksanaan_kie.nip_pencegahan_komplikasi, pg14.nama AS petugas_pencegahan_komplikasi,
+    pelaksanaan_kie.nip_manajemen_nyeri, pg15.nama AS petugas_manajemen_nyeri,
+    pelaksanaan_kie.nip_kebersihan, pg16.nama AS petugas_kebersihan,
+    pelaksanaan_kie.nip_penundaan, pg17.nama AS petugas_penundaan,
+    pelaksanaan_kie.nip_hambatan, pg18.nama AS petugas_hambatan,
+    pelaksanaan_kie.nip_resiko_jatuh, pg19.nama AS petugas_resiko_jatuh,
+    pelaksanaan_kie.lain_lain, pelaksanaan_kie.kie_lain_lain, pelaksanaan_kie.nip_lain_lain, pg20.nama AS petugas_lain_lain,
+    pelaksanaan_kie.lain_lain1, pelaksanaan_kie.kie_lain_lain1, pelaksanaan_kie.nip_lain_lain1, pg21.nama AS petugas_lain_lain1,
+    pelaksanaan_kie.lain_lain2, pelaksanaan_kie.kie_lain_lain2, pelaksanaan_kie.nip_lain_lain2, pg22.nama AS petugas_lain_lain2,
+    pelaksanaan_kie.lain_lain3, pelaksanaan_kie.kie_lain_lain3, pelaksanaan_kie.nip_lain_lain3, pg23.nama AS petugas_lain_lain3,
+
+    IF(b1.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b1.photo))  AS photo_diagnosis,      b1.nama_penerima  AS nama_penerima_diagnosis,      b1.hubungan_keluarga  AS hubungan_diagnosis,      b1.keterangan_hubungan  AS keterangan_hubungan_diagnosis,
+    IF(b2.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b2.photo))  AS photo_tanda,          b2.nama_penerima  AS nama_penerima_tanda,          b2.hubungan_keluarga  AS hubungan_tanda,          b2.keterangan_hubungan  AS keterangan_hubungan_tanda,
+    IF(b3.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b3.photo))  AS photo_renmedis,       b3.nama_penerima  AS nama_penerima_renmedis,       b3.hubungan_keluarga  AS hubungan_renmedis,       b3.keterangan_hubungan  AS keterangan_hubungan_renmedis,
+    IF(b4.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b4.photo))  AS photo_pengobatan,     b4.nama_penerima  AS nama_penerima_pengobatan,     b4.hubungan_keluarga  AS hubungan_pengobatan,     b4.keterangan_hubungan  AS keterangan_hubungan_pengobatan,
+    IF(b5.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b5.photo))  AS photo_proses,        b5.nama_penerima  AS nama_penerima_proses,        b5.hubungan_keluarga  AS hubungan_proses,        b5.keterangan_hubungan  AS keterangan_hubungan_proses,
+    IF(b6.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b6.photo))  AS photo_altpengobatan,  b6.nama_penerima  AS nama_penerima_altpengobatan,  b6.hubungan_keluarga  AS hubungan_altpengobatan,  b6.keterangan_hubungan  AS keterangan_hubungan_altpengobatan,
+    IF(b7.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b7.photo))  AS photo_carapenggunaan, b7.nama_penerima  AS nama_penerima_carapenggunaan, b7.hubungan_keluarga  AS hubungan_carapenggunaan, b7.keterangan_hubungan  AS keterangan_hubungan_carapenggunaan,
+    IF(b8.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b8.photo))  AS photo_dosis,         b8.nama_penerima  AS nama_penerima_dosis,         b8.hubungan_keluarga  AS hubungan_dosis,         b8.keterangan_hubungan  AS keterangan_hubungan_dosis,
+    IF(b9.photo  IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b9.photo))  AS photo_efek,          b9.nama_penerima  AS nama_penerima_efek,          b9.hubungan_keluarga  AS hubungan_efek,          b9.keterangan_hubungan  AS keterangan_hubungan_efek,
+    IF(b10.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b10.photo)) AS photo_diet,          b10.nama_penerima AS nama_penerima_diet,          b10.hubungan_keluarga AS hubungan_diet,          b10.keterangan_hubungan AS keterangan_hubungan_diet,
+    IF(b11.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b11.photo)) AS photo_mobilisasi,    b11.nama_penerima AS nama_penerima_mobilisasi,    b11.hubungan_keluarga AS hubungan_mobilisasi,    b11.keterangan_hubungan AS keterangan_hubungan_mobilisasi,
+    IF(b12.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b12.photo)) AS photo_perawatanluka, b12.nama_penerima AS nama_penerima_perawatanluka, b12.hubungan_keluarga AS hubungan_perawatanluka, b12.keterangan_hubungan AS keterangan_hubungan_perawatanluka,
+    IF(b13.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b13.photo)) AS photo_alatmedis,     b13.nama_penerima AS nama_penerima_alatmedis,     b13.hubungan_keluarga AS hubungan_alatmedis,     b13.keterangan_hubungan AS keterangan_hubungan_alatmedis,
+    IF(b14.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b14.photo)) AS photo_komplikasi,    b14.nama_penerima AS nama_penerima_komplikasi,    b14.hubungan_keluarga AS hubungan_komplikasi,    b14.keterangan_hubungan AS keterangan_hubungan_komplikasi,
+    IF(b15.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b15.photo)) AS photo_nyeri,         b15.nama_penerima AS nama_penerima_nyeri,         b15.hubungan_keluarga AS hubungan_nyeri,         b15.keterangan_hubungan AS keterangan_hubungan_nyeri,
+    IF(b16.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b16.photo)) AS photo_kebersihan,    b16.nama_penerima AS nama_penerima_kebersihan,    b16.hubungan_keluarga AS hubungan_kebersihan,    b16.keterangan_hubungan AS keterangan_hubungan_kebersihan,
+    IF(b17.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b17.photo)) AS photo_penundaan,     b17.nama_penerima AS nama_penerima_penundaan,     b17.hubungan_keluarga AS hubungan_penundaan,     b17.keterangan_hubungan AS keterangan_hubungan_penundaan,
+    IF(b18.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b18.photo)) AS photo_hambatan,      b18.nama_penerima AS nama_penerima_hambatan,      b18.hubungan_keluarga AS hubungan_hambatan,      b18.keterangan_hubungan AS keterangan_hubungan_hambatan,
+    IF(b19.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b19.photo)) AS photo_resikojatuh,   b19.nama_penerima AS nama_penerima_resikojatuh,   b19.hubungan_keluarga AS hubungan_resikojatuh,   b19.keterangan_hubungan AS keterangan_hubungan_resikojatuh,
+    IF(b20.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b20.photo)) AS photo_lainlain,      b20.nama_penerima AS nama_penerima_lainlain,      b20.hubungan_keluarga AS hubungan_lainlain,      b20.keterangan_hubungan AS keterangan_hubungan_lainlain,
+    IF(b21.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b21.photo)) AS photo_lainlain1,     b21.nama_penerima AS nama_penerima_lainlain1,     b21.hubungan_keluarga AS hubungan_lainlain1,     b21.keterangan_hubungan AS keterangan_hubungan_lainlain1,
+    IF(b22.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b22.photo)) AS photo_lainlain2,     b22.nama_penerima AS nama_penerima_lainlain2,     b22.hubungan_keluarga AS hubungan_lainlain2,     b22.keterangan_hubungan AS keterangan_hubungan_lainlain2,
+    IF(b23.photo IS NULL,NULL,CONCAT('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/pelaksanaankie/',b23.photo)) AS photo_lainlain3,     b23.nama_penerima AS nama_penerima_lainlain3,     b23.hubungan_keluarga AS hubungan_lainlain3,     b23.keterangan_hubungan AS keterangan_hubungan_lainlain3
+
+FROM edukasi_pasien_keluarga_rj
+INNER JOIN reg_periksa ON edukasi_pasien_keluarga_rj.no_rawat = reg_periksa.no_rawat
+INNER JOIN pasien ON reg_periksa.no_rkm_medis = pasien.no_rkm_medis
+INNER JOIN bahasa_pasien ON bahasa_pasien.id = pasien.bahasa_pasien
+INNER JOIN petugas ON edukasi_pasien_keluarga_rj.nip = petugas.nip
+LEFT JOIN pelaksanaan_kie ON edukasi_pasien_keluarga_rj.no_rawat = pelaksanaan_kie.no_rawat
+                          AND edukasi_pasien_keluarga_rj.tanggal = pelaksanaan_kie.tanggal
+LEFT JOIN pegawai pg1  ON pg1.nik  = pelaksanaan_kie.nip_diagnosa
+LEFT JOIN pegawai pg2  ON pg2.nik  = pelaksanaan_kie.nip_tanda
+LEFT JOIN pegawai pg3  ON pg3.nik  = pelaksanaan_kie.nip_ren_medis
+LEFT JOIN pegawai pg4  ON pg4.nik  = pelaksanaan_kie.nip_pengobatan
+LEFT JOIN pegawai pg5  ON pg5.nik  = pelaksanaan_kie.nip_proses_rawat
+LEFT JOIN pegawai pg6  ON pg6.nik  = pelaksanaan_kie.nip_alt_pengobatan
+LEFT JOIN pegawai pg7  ON pg7.nik  = pelaksanaan_kie.nip_cara_penggunaan
+LEFT JOIN pegawai pg8  ON pg8.nik  = pelaksanaan_kie.nip_dosis
+LEFT JOIN pegawai pg9  ON pg9.nik  = pelaksanaan_kie.nip_efek
 LEFT JOIN pegawai pg10 ON pg10.nik = pelaksanaan_kie.nip_diet
 LEFT JOIN pegawai pg11 ON pg11.nik = pelaksanaan_kie.nip_mobilisasi
 LEFT JOIN pegawai pg12 ON pg12.nik = pelaksanaan_kie.nip_perawatan_luka
@@ -187,6 +292,34 @@ LEFT JOIN pegawai pg17 ON pg17.nik = pelaksanaan_kie.nip_penundaan
 LEFT JOIN pegawai pg18 ON pg18.nik = pelaksanaan_kie.nip_hambatan
 LEFT JOIN pegawai pg19 ON pg19.nik = pelaksanaan_kie.nip_resiko_jatuh
 LEFT JOIN pegawai pg20 ON pg20.nik = pelaksanaan_kie.nip_lain_lain
+LEFT JOIN pegawai pg21 ON pg21.nik = pelaksanaan_kie.nip_lain_lain1
+LEFT JOIN pegawai pg22 ON pg22.nik = pelaksanaan_kie.nip_lain_lain2
+LEFT JOIN pegawai pg23 ON pg23.nik = pelaksanaan_kie.nip_lain_lain3
+
+LEFT JOIN bukti_pelaksanaan_kie b1  ON b1.no_rawat  = pelaksanaan_kie.no_rawat AND b1.tanggal  = pelaksanaan_kie.tanggal AND b1.kode_edukasi  = 'diagnosis_penyakit'
+LEFT JOIN bukti_pelaksanaan_kie b2  ON b2.no_rawat  = pelaksanaan_kie.no_rawat AND b2.tanggal  = pelaksanaan_kie.tanggal AND b2.kode_edukasi  = 'tanda_gejala_penyakit'
+LEFT JOIN bukti_pelaksanaan_kie b3  ON b3.no_rawat  = pelaksanaan_kie.no_rawat AND b3.tanggal  = pelaksanaan_kie.tanggal AND b3.kode_edukasi  = 'ren_tindakan_medis'
+LEFT JOIN bukti_pelaksanaan_kie b4  ON b4.no_rawat  = pelaksanaan_kie.no_rawat AND b4.tanggal  = pelaksanaan_kie.tanggal AND b4.kode_edukasi  = 'pengobatan_diberikan'
+LEFT JOIN bukti_pelaksanaan_kie b5  ON b5.no_rawat  = pelaksanaan_kie.no_rawat AND b5.tanggal  = pelaksanaan_kie.tanggal AND b5.kode_edukasi  = 'proses_perawatan'
+LEFT JOIN bukti_pelaksanaan_kie b6  ON b6.no_rawat  = pelaksanaan_kie.no_rawat AND b6.tanggal  = pelaksanaan_kie.tanggal AND b6.kode_edukasi  = 'alternatif_pengobatan'
+LEFT JOIN bukti_pelaksanaan_kie b7  ON b7.no_rawat  = pelaksanaan_kie.no_rawat AND b7.tanggal  = pelaksanaan_kie.tanggal AND b7.kode_edukasi  = 'cara_penggunaan_obat'
+LEFT JOIN bukti_pelaksanaan_kie b8  ON b8.no_rawat  = pelaksanaan_kie.no_rawat AND b8.tanggal  = pelaksanaan_kie.tanggal AND b8.kode_edukasi  = 'dosis_jadwal_obat'
+LEFT JOIN bukti_pelaksanaan_kie b9  ON b9.no_rawat  = pelaksanaan_kie.no_rawat AND b9.tanggal  = pelaksanaan_kie.tanggal AND b9.kode_edukasi  = 'efek_samping_obat'
+LEFT JOIN bukti_pelaksanaan_kie b10 ON b10.no_rawat = pelaksanaan_kie.no_rawat AND b10.tanggal = pelaksanaan_kie.tanggal AND b10.kode_edukasi = 'diet_nutrisi'
+LEFT JOIN bukti_pelaksanaan_kie b11 ON b11.no_rawat = pelaksanaan_kie.no_rawat AND b11.tanggal = pelaksanaan_kie.tanggal AND b11.kode_edukasi = 'aktivitas_mobilisasi'
+LEFT JOIN bukti_pelaksanaan_kie b12 ON b12.no_rawat = pelaksanaan_kie.no_rawat AND b12.tanggal = pelaksanaan_kie.tanggal AND b12.kode_edukasi = 'perawatan_luka'
+LEFT JOIN bukti_pelaksanaan_kie b13 ON b13.no_rawat = pelaksanaan_kie.no_rawat AND b13.tanggal = pelaksanaan_kie.tanggal AND b13.kode_edukasi = 'penggunaan_alat_medis'
+LEFT JOIN bukti_pelaksanaan_kie b14 ON b14.no_rawat = pelaksanaan_kie.no_rawat AND b14.tanggal = pelaksanaan_kie.tanggal AND b14.kode_edukasi = 'pencegahan_komplikasi'
+LEFT JOIN bukti_pelaksanaan_kie b15 ON b15.no_rawat = pelaksanaan_kie.no_rawat AND b15.tanggal = pelaksanaan_kie.tanggal AND b15.kode_edukasi = 'manajemen_nyeri'
+LEFT JOIN bukti_pelaksanaan_kie b16 ON b16.no_rawat = pelaksanaan_kie.no_rawat AND b16.tanggal = pelaksanaan_kie.tanggal AND b16.kode_edukasi = 'kebersihan_diri'
+LEFT JOIN bukti_pelaksanaan_kie b17 ON b17.no_rawat = pelaksanaan_kie.no_rawat AND b17.tanggal = pelaksanaan_kie.tanggal AND b17.kode_edukasi = 'penundaan_pelayanan'
+LEFT JOIN bukti_pelaksanaan_kie b18 ON b18.no_rawat = pelaksanaan_kie.no_rawat AND b18.tanggal = pelaksanaan_kie.tanggal AND b18.kode_edukasi = 'hambatan_pelayanan'
+LEFT JOIN bukti_pelaksanaan_kie b19 ON b19.no_rawat = pelaksanaan_kie.no_rawat AND b19.tanggal = pelaksanaan_kie.tanggal AND b19.kode_edukasi = 'pencegahan_resiko_jatuh'
+LEFT JOIN bukti_pelaksanaan_kie b20 ON b20.no_rawat = pelaksanaan_kie.no_rawat AND b20.tanggal = pelaksanaan_kie.tanggal AND b20.kode_edukasi = 'lain_lain'
+LEFT JOIN bukti_pelaksanaan_kie b21 ON b21.no_rawat = pelaksanaan_kie.no_rawat AND b21.tanggal = pelaksanaan_kie.tanggal AND b21.kode_edukasi = 'lain_lain1'
+LEFT JOIN bukti_pelaksanaan_kie b22 ON b22.no_rawat = pelaksanaan_kie.no_rawat AND b22.tanggal = pelaksanaan_kie.tanggal AND b22.kode_edukasi = 'lain_lain2'
+LEFT JOIN bukti_pelaksanaan_kie b23 ON b23.no_rawat = pelaksanaan_kie.no_rawat AND b23.tanggal = pelaksanaan_kie.tanggal AND b23.kode_edukasi = 'lain_lain3'
+
 WHERE reg_periksa.no_rawat=$P{norawat} 
 and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 	</queryString>
@@ -542,10 +675,6 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 		<property name="com.jaspersoft.studio.field.label" value="kie_pencegahan_resiko_jatuh"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pelaksanaan_kie"/>
 	</field>
-	<field name="photo" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="photo"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="bukti_pelaksanaan_kie"/>
-	</field>
 	<field name="lain_lain" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="lain_lain"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pelaksanaan_kie"/>
@@ -592,7 +721,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<text><![CDATA[FORMULIR EDUKASI PASIEN DAN KELUARGA TERINTEGRASI RAWAT JALAN]]></text>
+				<text><![CDATA[FORMULIR EDUKASI PASIEN DAN KELUARGA TERINTEGRASI]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="5" y="77" width="54" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="b2cdf71f-db7d-4272-8d62-f12f21abeefc"/>
@@ -1943,67 +2072,40 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="101" width="66" height="36" uuid="6cbf08e0-ec04-4195-9c88-2b62fccae304">
-					<printWhenExpression><![CDATA[(!$P{waktu_diagnosa}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="101" width="66" height="36" uuid="6cbf08e0-ec04-4195-9c88-2b62fccae304"/>
+				<imageExpression><![CDATA[$P{photo_diagnosis}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="168" width="66" height="36" uuid="3280765f-75f7-4e83-b209-4afad8490b88">
-					<printWhenExpression><![CDATA[(!$P{waktu_tanda}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="162" width="66" height="36" uuid="3280765f-75f7-4e83-b209-4afad8490b88"/>
+				<imageExpression><![CDATA[$P{photo_tanda}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="222" width="66" height="36" uuid="271abde5-ffe8-4f4a-9a79-c29fdc36cddc">
-					<printWhenExpression><![CDATA[(!$P{waktu_ren_medis}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="221" width="66" height="36" uuid="271abde5-ffe8-4f4a-9a79-c29fdc36cddc"/>
+				<imageExpression><![CDATA[$P{photo_renmedis}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="281" width="66" height="36" uuid="ee05c346-7016-418c-a163-793339c07c6a">
-					<printWhenExpression><![CDATA[(!$P{waktu_pengobatan}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="277" width="66" height="36" uuid="ee05c346-7016-418c-a163-793339c07c6a"/>
+				<imageExpression><![CDATA[$P{photo_pengobatan}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="341" width="66" height="36" uuid="a058b2b9-4ca8-42b4-a8fe-ebaeb2ebaf86">
-					<printWhenExpression><![CDATA[(!$P{waktu_proses_rawat}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="339" width="66" height="36" uuid="a058b2b9-4ca8-42b4-a8fe-ebaeb2ebaf86"/>
+				<imageExpression><![CDATA[$P{photo_proses}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="401" width="66" height="36" uuid="4a892dee-5177-4d3a-86ca-89b67d20dc79">
-					<printWhenExpression><![CDATA[(!$P{waktu_alt_pengobatan}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="398" width="66" height="36" uuid="4a892dee-5177-4d3a-86ca-89b67d20dc79"/>
+				<imageExpression><![CDATA[$P{photo_altpengobatan}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="461" width="66" height="36" uuid="e20a7c38-2a54-483e-a800-d59d72e09405">
-					<printWhenExpression><![CDATA[(!$P{waktu_cara_penggunaan}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="459" width="66" height="36" uuid="e20a7c38-2a54-483e-a800-d59d72e09405"/>
+				<imageExpression><![CDATA[$P{photo_carapenggunaan}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="517" width="66" height="36" uuid="1fed93df-de22-4e15-980c-5069143f85fa">
-					<printWhenExpression><![CDATA[(!$P{waktu_dosis}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="355" y="516" width="66" height="36" uuid="1fed93df-de22-4e15-980c-5069143f85fa"/>
+				<imageExpression><![CDATA[$P{photo_dosis}]]></imageExpression>
 			</image>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="585" width="66" height="36" uuid="c5ff6a7c-c1bc-4d9d-ad65-57fc80231d15">
-					<printWhenExpression><![CDATA[(!$P{waktu_efek}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="581" width="66" height="36" uuid="c5ff6a7c-c1bc-4d9d-ad65-57fc80231d15"/>
+				<imageExpression><![CDATA[$P{photo_efek}]]></imageExpression>
 			</image>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="514" width="555" height="1" uuid="e8dd63a3-1223-4437-be2f-93654ce56e5a"/>
@@ -2036,22 +2138,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="647" width="66" height="36" uuid="91b4f87b-e559-42f5-be84-456d61fe7812">
-					<printWhenExpression><![CDATA[(!$P{waktu_diet}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="707" width="66" height="36" uuid="6f9caca1-f74e-4d72-a484-46cd69eb5469">
-					<printWhenExpression><![CDATA[(!$P{waktu_mobilisasi}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
+				<reportElement isPrintRepeatedValues="false" x="356" y="641" width="66" height="36" uuid="91b4f87b-e559-42f5-be84-456d61fe7812"/>
+				<imageExpression><![CDATA[$P{photo_diet}]]></imageExpression>
 			</image>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="278" width="120" height="34" isRemoveLineWhenBlank="true" uuid="3ea92fb3-355b-421a-b925-90f6c7fe41dc">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_pengobatan} != null && !$P{nama_pengobatan}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_pengobatan}]]></jr:codeExpression>
@@ -2060,6 +2153,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="220" width="120" height="34" isRemoveLineWhenBlank="true" uuid="f8fae8c5-dd47-42c6-b6ba-d8bf213f9700">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_ren_medis} != null && !$P{nama_ren_medis}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_ren_medis}]]></jr:codeExpression>
@@ -2068,6 +2162,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="459" width="120" height="34" isRemoveLineWhenBlank="true" uuid="0c1f834d-807d-449a-a1db-69678e4c7c52">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_cara_penggunaan} != null && !$P{nama_cara_penggunaan}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_cara_penggunaan}]]></jr:codeExpression>
@@ -2076,6 +2171,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="398" width="120" height="34" isRemoveLineWhenBlank="true" uuid="a5a967e1-8ab8-48a9-a0ad-9e958d91d35c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_alt_pengobatan} != null && !$P{nama_alt_pengobatan}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_alt_pengobatan}]]></jr:codeExpression>
@@ -2084,6 +2180,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="339" width="120" height="34" isRemoveLineWhenBlank="true" uuid="738831b4-63e9-46ee-8057-bbf2e93bf0e7">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_proses_rawat} != null && !$P{nama_proses_rawat}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_proses_rawat}]]></jr:codeExpression>
@@ -2092,6 +2189,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="517" width="120" height="34" isRemoveLineWhenBlank="true" uuid="b26fe7f3-a5b1-4d7b-ae70-78e6427adfa9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_dosis} != null && !$P{nama_dosis}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_dosis}]]></jr:codeExpression>
@@ -2100,6 +2198,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="704" width="120" height="34" isRemoveLineWhenBlank="true" uuid="4b8b5aee-0111-4850-8ecf-c5374015a5e1">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_mobilisasi} != null && !$P{nama_mobilisasi}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_diagnosa}]]></jr:codeExpression>
@@ -2108,6 +2207,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="643" width="120" height="34" isRemoveLineWhenBlank="true" uuid="c0ed65b6-40e2-4cdc-9482-3ddf7ea24183">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_diet} != null && !$P{nama_diet}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_diagnosa}]]></jr:codeExpression>
@@ -2116,6 +2216,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="433" y="582" width="120" height="34" isRemoveLineWhenBlank="true" uuid="c071fad1-763b-4c95-8ac2-26cf0b0efb43">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_efek} != null && !$P{nama_efek}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_efek}]]></jr:codeExpression>
@@ -2125,6 +2226,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="433" y="101" width="121" height="34" isRemoveLineWhenBlank="true" uuid="6e9fe848-5a6b-4eb4-97c5-450f0011377d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_diagnosa} != null && !$P{nama_diagnosa}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_diagnosa}]]></jr:codeExpression>
@@ -2134,6 +2236,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<reportElement positionType="Float" x="431" y="162" width="122" height="34" isRemoveLineWhenBlank="true" uuid="beac15b4-a3c7-4be4-a737-9bc51cafbf05">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_tanda} != null && !$P{nama_tanda}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_tanda}]]></jr:codeExpression>
@@ -2447,22 +2550,136 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{waktu_mobilisasi}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="356" y="703" width="66" height="36" uuid="77a890d8-a121-4d6d-823d-4b3ec767241b"/>
+				<imageExpression><![CDATA[$P{photo_mobilisasi}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="137" width="78" height="23" uuid="fa644091-56fc-478c-810d-8f60cabe8fff">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_diagnosis}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_diagnosis}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="198" width="78" height="20" uuid="dd58c72f-80ee-4afb-8c03-2f93ef2be6f3">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_tanda}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_tanda}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="257" width="78" height="18" uuid="c50c152b-3e09-465e-ad59-cd6a800cce12">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_renmedis}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_renmedis}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="318" width="78" height="18" uuid="371ec77c-9e16-42d8-970c-4f335f98c0fe">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_pengobatan}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_pengobatan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="375" width="78" height="20" uuid="0bda9436-7f38-4e88-b2ac-b51747227d29">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_proses}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_proses}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="435" width="78" height="18" uuid="ea0d8fb9-7d4e-4de2-9628-8d0596e1d842">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_altpengobatan}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_altpengobatan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="495" width="78" height="18" uuid="b621055a-2767-4f82-bee7-55c9f1b54e31">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_carapenggunaan}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_carapenggunaan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="678" width="78" height="18" uuid="ff589d86-05a1-4805-9d4d-b15b9904410d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_diet}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_diet}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="350" y="740" width="78" height="18" uuid="266ad01c-7ac1-4123-af26-c7cded829e1d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_mobilisasi}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_mobilisasi}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="554" width="78" height="18" uuid="9bf6dac2-4cbe-43ad-b401-1e692814ccd6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_dosis}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_dosis}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="619" width="78" height="18" uuid="a0f46972-e757-4422-a18c-d99710c410a2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_efek}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_efek}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="802">
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="60" width="555" height="1" uuid="f64e24cd-ccc3-4410-adcb-2f2239dd1834"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="74" width="555" height="1" uuid="f64e24cd-ccc3-4410-adcb-2f2239dd1834"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-1" y="1" width="555" height="1" uuid="47f0e421-af4e-463b-9453-edb4d6ab3287"/>
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="9" width="555" height="1" uuid="47f0e421-af4e-463b-9453-edb4d6ab3287"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="159" y="375" width="91" height="14" uuid="339a4998-f6a4-4821-b752-44668676e335">
+				<reportElement positionType="Float" x="158" y="436" width="91" height="14" uuid="339a4998-f6a4-4821-b752-44668676e335">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -2472,7 +2689,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{hambatan_pelayanan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="159" y="433" width="91" height="14" uuid="1b063786-21f3-4122-8a5e-6ea66fbc3b05">
+				<reportElement positionType="Float" x="160" y="497" width="91" height="14" uuid="1b063786-21f3-4122-8a5e-6ea66fbc3b05">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -2482,7 +2699,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{pencegahan_resiko_jatuh}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="432" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="735ca50f-3575-4dd3-b504-c7a65885fb9b"/>
+				<reportElement mode="Transparent" x="1" y="496" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="735ca50f-3575-4dd3-b504-c7a65885fb9b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2490,7 +2707,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[19]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="374" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fd5b7386-1489-4cb2-917a-2a7cbcfba539"/>
+				<reportElement mode="Transparent" x="-1" y="435" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fd5b7386-1489-4cb2-917a-2a7cbcfba539"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2498,7 +2715,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[18]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="256" y="433" width="75" height="14" uuid="f2b26348-a3de-4cc0-b3ed-141e55e5b9ba">
+				<reportElement positionType="Float" x="257" y="497" width="75" height="14" uuid="f2b26348-a3de-4cc0-b3ed-141e55e5b9ba">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2508,7 +2725,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_pencegahan_resiko_jatuh}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="256" y="375" width="75" height="14" uuid="df5704b6-4480-408c-a1d9-eab9cf215534">
+				<reportElement positionType="Float" x="255" y="436" width="75" height="14" uuid="df5704b6-4480-408c-a1d9-eab9cf215534">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2518,7 +2735,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_hambatan_pelayanan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="375" width="138" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3197a7eb-f1f3-410b-aaa2-e468485db1c4"/>
+				<reportElement mode="Transparent" x="19" y="436" width="138" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3197a7eb-f1f3-410b-aaa2-e468485db1c4"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2526,7 +2743,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Hambatan Pelayanan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="433" width="130" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fc0acb56-6918-4998-ab0d-f1fd1863fbbe"/>
+				<reportElement mode="Transparent" x="21" y="497" width="130" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fc0acb56-6918-4998-ab0d-f1fd1863fbbe"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2534,18 +2751,18 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Pencegahan Resiko Jatuh]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="160" y="485" width="88" height="186" uuid="8a3ede12-33cf-4d53-88a2-ec3c833ccdbf">
+				<reportElement positionType="Float" x="160" y="566" width="88" height="160" uuid="8a3ede12-33cf-4d53-88a2-ec3c833ccdbf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top">
-					<font fontName="Tahoma" size="9"/>
+					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lain_lain}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="21" y="490" width="134" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="1de101d2-9e9d-4afd-904e-d156a49bf0b1"/>
+				<reportElement mode="Transparent" x="21" y="567" width="134" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="1de101d2-9e9d-4afd-904e-d156a49bf0b1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2553,7 +2770,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Lain Lain]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="489" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="da9a81e4-811b-4ee8-9574-327cae1e117c"/>
+				<reportElement mode="Transparent" x="0" y="566" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="da9a81e4-811b-4ee8-9574-327cae1e117c"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2561,7 +2778,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[20]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="259" y="490" width="75" height="14" uuid="0ad9fd65-07f0-4203-81fc-ec69e01f6a01">
+				<reportElement positionType="Float" x="259" y="567" width="75" height="14" uuid="0ad9fd65-07f0-4203-81fc-ec69e01f6a01">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2571,13 +2788,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_lain_lain}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="120" width="555" height="1" uuid="b3eb4aca-958b-409e-a330-e712c9d6e833"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="143" width="555" height="1" uuid="b3eb4aca-958b-409e-a330-e712c9d6e833"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-1" y="1" width="1" height="670" uuid="d11957bf-0930-4980-89d5-7aa4f4b147e9">
+				<reportElement positionType="FixRelativeToBottom" x="-1" y="10" width="1" height="720" uuid="d11957bf-0930-4980-89d5-7aa4f4b147e9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2585,59 +2802,41 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="554" y="1" width="1" height="670" uuid="46beede5-985c-40d4-a272-8c272f3a3d19"/>
+				<reportElement positionType="FixRelativeToBottom" x="554" y="10" width="1" height="720" uuid="46beede5-985c-40d4-a272-8c272f3a3d19"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="357" y="376" width="66" height="36" uuid="987ddd89-dade-465a-9e02-cf3a3a350ff0">
-					<printWhenExpression><![CDATA[(!$P{waktu_hambatan}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="491" width="66" height="36" uuid="434f06c7-9945-436c-9366-cf629d0ce115">
-					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="431" width="66" height="36" uuid="2eb232ed-274f-40a3-8467-d50287a651dc">
-					<printWhenExpression><![CDATA[(!$P{waktu_resiko_jatuh}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<componentElement>
-				<reportElement positionType="Float" x="435" y="484" width="116" height="34" isRemoveLineWhenBlank="true" uuid="a58c167c-2959-415e-912e-db77aafb44ca">
+				<reportElement positionType="Float" x="435" y="561" width="112" height="30" isRemoveLineWhenBlank="true" uuid="a58c167c-2959-415e-912e-db77aafb44ca">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_lain_lain} != null && !$P{nama_lain_lain}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_lain_lain}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<componentElement>
-				<reportElement positionType="Float" x="436" y="370" width="115" height="34" isRemoveLineWhenBlank="true" uuid="dbf30647-e1dd-4648-8b4e-b63bc55820d4">
+				<reportElement positionType="Float" x="435" y="431" width="111" height="30" isRemoveLineWhenBlank="true" uuid="dbf30647-e1dd-4648-8b4e-b63bc55820d4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_hambatan} != null && !$P{nama_hambatan}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_hambatan}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<componentElement>
-				<reportElement positionType="Float" x="435" y="426" width="117" height="34" isRemoveLineWhenBlank="true" uuid="11b1d7be-5e20-49a2-9d2c-3388a51228d7">
+				<reportElement positionType="Float" x="436" y="490" width="113" height="30" isRemoveLineWhenBlank="true" uuid="11b1d7be-5e20-49a2-9d2c-3388a51228d7">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_resiko_jatuh} != null && !$P{nama_resiko_jatuh}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_resiko_jatuh}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="10" width="128" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e96e6180-c318-49a1-8c28-dec7e1dbd178"/>
+				<reportElement mode="Transparent" x="23" y="21" width="128" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e96e6180-c318-49a1-8c28-dec7e1dbd178"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2645,7 +2844,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Perawatan Luka]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="259" y="316" width="75" height="14" uuid="0d624998-53c9-4ae4-bf1d-92a269f83564">
+				<reportElement positionType="Float" x="260" y="371" width="75" height="14" uuid="0d624998-53c9-4ae4-bf1d-92a269f83564">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2655,7 +2854,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_penundaan_pelayanan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="158" y="253" width="91" height="14" uuid="8c70e979-3769-40e8-8272-7d71a2c98bb0">
+				<reportElement positionType="Float" x="158" y="304" width="91" height="14" uuid="8c70e979-3769-40e8-8272-7d71a2c98bb0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -2665,7 +2864,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kebersihan_diri}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="70" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="edab35b5-57da-4a85-b500-0ba20518a5c2"/>
+				<reportElement mode="Transparent" x="0" y="93" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="edab35b5-57da-4a85-b500-0ba20518a5c2"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2673,7 +2872,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[13]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="158" y="70" width="91" height="14" uuid="ff29fd59-e0f5-4872-bcd8-81b8aa3e74cb">
+				<reportElement positionType="Float" x="158" y="93" width="91" height="14" uuid="ff29fd59-e0f5-4872-bcd8-81b8aa3e74cb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -2683,7 +2882,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{penggunaan_alat_medis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="262" y="253" width="75" height="14" uuid="7d3cf79b-92b4-4759-be3a-46a243bdcc50">
+				<reportElement positionType="Float" x="262" y="304" width="75" height="14" uuid="7d3cf79b-92b4-4759-be3a-46a243bdcc50">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2693,22 +2892,15 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_kebersihan_diri}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="253" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="78d54b23-413b-4819-91f5-a12ac1b17ea5"/>
+				<reportElement mode="Transparent" x="0" y="304" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="78d54b23-413b-4819-91f5-a12ac1b17ea5"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[16]]></text>
 			</staticText>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="359" y="9" width="66" height="36" uuid="7a37a7a2-84dc-4215-83a8-4cac773a9b7d">
-					<printWhenExpression><![CDATA[(!$P{waktu_perawatan_luka}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="262" y="131" width="75" height="14" uuid="2387996f-358f-40fd-913c-855c667d19bf">
+				<reportElement positionType="Float" x="262" y="161" width="75" height="14" uuid="2387996f-358f-40fd-913c-855c667d19bf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2718,7 +2910,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_pencegahan_komplikasi}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="316" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="c4ac2657-9979-4cd2-ac3d-77dc81f4824b"/>
+				<reportElement mode="Transparent" x="21" y="371" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="c4ac2657-9979-4cd2-ac3d-77dc81f4824b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2726,7 +2918,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Penundaan Pelayanan]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="70" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="59d75a9a-fc2a-4697-b1a6-b8e0377a4b38"/>
+				<reportElement mode="Transparent" x="23" y="93" width="133" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="59d75a9a-fc2a-4697-b1a6-b8e0377a4b38"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2734,23 +2926,17 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Penggunaan Alat Medis]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement positionType="Float" x="433" y="121" width="119" height="34" isRemoveLineWhenBlank="true" uuid="cd94b2b6-1cfe-49f5-abc6-5b83d53127ce">
+				<reportElement positionType="Float" x="433" y="151" width="116" height="31" isRemoveLineWhenBlank="true" uuid="cd94b2b6-1cfe-49f5-abc6-5b83d53127ce">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_pencegahan_komplikasi} != null && !$P{nama_pencegahan_komplikasi}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_pencegahan_komplikasi}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="254" width="66" height="36" uuid="0f9fe83d-d5aa-4a9f-85ec-94c725c7a6fc">
-					<printWhenExpression><![CDATA[(!$P{waktu_kebersihan}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="262" y="70" width="75" height="14" uuid="5662b9c3-c09b-41d7-acf0-08bd8da3eb5b">
+				<reportElement positionType="Float" x="262" y="93" width="75" height="14" uuid="5662b9c3-c09b-41d7-acf0-08bd8da3eb5b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2760,7 +2946,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_penggunaan_alat_medis}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="262" y="10" width="75" height="14" uuid="a02ba10b-cf97-4caf-a892-82b07824813c">
+				<reportElement positionType="Float" x="262" y="21" width="75" height="14" uuid="a02ba10b-cf97-4caf-a892-82b07824813c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2770,13 +2956,15 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_perawatan_luka}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement positionType="Float" x="435" y="63" width="117" height="34" isRemoveLineWhenBlank="true" uuid="59528f36-4b9d-4833-876e-cab6dfa68f7a"/>
+				<reportElement positionType="Float" x="435" y="86" width="114" height="31" isRemoveLineWhenBlank="true" uuid="59528f36-4b9d-4833-876e-cab6dfa68f7a">
+					<printWhenExpression><![CDATA[$P{nama_penggunaan_alat} != null && !$P{nama_penggunaan_alat}.equals("-")]]></printWhenExpression>
+				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_penggunaan_alat}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="316" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="731caf20-1c24-4fc1-ba72-167ca5b36c9b"/>
+				<reportElement mode="Transparent" x="1" y="371" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="731caf20-1c24-4fc1-ba72-167ca5b36c9b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2784,7 +2972,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[17]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="158" y="10" width="91" height="14" uuid="ab006ee5-e79a-4e5d-b1db-2195d2d9322c">
+				<reportElement positionType="Float" x="158" y="21" width="91" height="14" uuid="ab006ee5-e79a-4e5d-b1db-2195d2d9322c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -2794,7 +2982,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{perawatan_luka}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="262" y="191" width="75" height="14" uuid="3857923c-abba-4d34-a775-1621a1651987">
+				<reportElement positionType="Float" x="262" y="233" width="75" height="14" uuid="3857923c-abba-4d34-a775-1621a1651987">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -2804,15 +2992,16 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_manajemen_nyeri}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement positionType="Float" x="435" y="246" width="116" height="34" isRemoveLineWhenBlank="true" uuid="5a337d97-ecbe-4a89-866a-01b7ab673a02">
+				<reportElement positionType="Float" x="435" y="297" width="112" height="30" isRemoveLineWhenBlank="true" uuid="5a337d97-ecbe-4a89-866a-01b7ab673a02">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_kebersihan} != null && !$P{nama_kebersihan}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_kebersihan}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="191" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e2ed6c59-a246-48bb-ad9a-b1f13ceaa39d"/>
+				<reportElement mode="Transparent" x="0" y="233" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="e2ed6c59-a246-48bb-ad9a-b1f13ceaa39d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2820,16 +3009,17 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[15]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement positionType="Float" x="436" y="5" width="115" height="34" isRemoveLineWhenBlank="true" uuid="a0f7bbbb-847c-45ca-914b-9c4fd9a1269d">
+				<reportElement positionType="Float" x="436" y="16" width="112" height="31" isRemoveLineWhenBlank="true" uuid="a0f7bbbb-847c-45ca-914b-9c4fd9a1269d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_perawatan_luka} != null && !$P{nama_perawatan_luka}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_diagnosa}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="131" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2ea5185a-a608-4ee1-bb10-3af21580580f"/>
+				<reportElement mode="Transparent" x="23" y="161" width="263" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2ea5185a-a608-4ee1-bb10-3af21580580f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2837,7 +3027,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Pencegahan Komplikasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="159" y="316" width="91" height="14" uuid="0609c0d4-58e2-4354-ad1c-a5350452b291">
+				<reportElement positionType="Float" x="158" y="371" width="91" height="14" uuid="0609c0d4-58e2-4354-ad1c-a5350452b291">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -2847,15 +3037,16 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{penundaan_pelayanan}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement positionType="Float" x="435" y="310" width="117" height="34" isRemoveLineWhenBlank="true" uuid="cdcf7c30-c46f-462f-b1d9-6f062eb6a219">
+				<reportElement positionType="Float" x="436" y="365" width="113" height="30" isRemoveLineWhenBlank="true" uuid="cdcf7c30-c46f-462f-b1d9-6f062eb6a219">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_penundaan} != null && !$P{nama_penundaan}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_penundaan}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="10" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9618589c-be16-4230-9f8e-9c7295391c17"/>
+				<reportElement mode="Transparent" x="0" y="21" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9618589c-be16-4230-9f8e-9c7295391c17"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2863,7 +3054,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[12]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="158" y="191" width="91" height="14" uuid="dc4de8ce-b2e7-4326-aac9-d75bd271200b">
+				<reportElement positionType="Float" x="158" y="233" width="91" height="14" uuid="dc4de8ce-b2e7-4326-aac9-d75bd271200b">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -2873,7 +3064,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{manajemen_nyeri}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="191" width="132" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9c969b27-188c-4fde-8257-673d0cbdc928"/>
+				<reportElement mode="Transparent" x="23" y="233" width="132" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9c969b27-188c-4fde-8257-673d0cbdc928"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2881,13 +3072,15 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Manajemen Nyeri]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement positionType="Float" x="435" y="184" width="116" height="34" isRemoveLineWhenBlank="true" uuid="fc3986e9-c521-4e0c-b237-9106601cca5f"/>
+				<reportElement positionType="Float" x="435" y="226" width="112" height="30" isRemoveLineWhenBlank="true" uuid="fc3986e9-c521-4e0c-b237-9106601cca5f">
+					<printWhenExpression><![CDATA[$P{nama_manajemen_nyeri} != null && !$P{nama_manajemen_nyeri}.equals("-")]]></printWhenExpression>
+				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_manajemen_nyeri}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="158" y="131" width="91" height="14" uuid="eef7c6ee-8c0b-4766-9129-5cbba4093c95">
+				<reportElement positionType="Float" x="158" y="161" width="91" height="14" uuid="eef7c6ee-8c0b-4766-9129-5cbba4093c95">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -2896,29 +3089,8 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pencegahan_komplikasi}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="358" y="69" width="66" height="36" uuid="da394706-cef4-4b55-8490-6a5ea43583ef">
-					<printWhenExpression><![CDATA[(!$P{waktu_penggunaan_alat}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="358" y="125" width="66" height="36" uuid="6e1b5ee9-9346-43e2-a230-8477fecab713">
-					<printWhenExpression><![CDATA[(!$P{nama_pencegahan_komplikasi}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="358" y="189" width="66" height="36" uuid="bbf72922-b68f-4407-bdd3-4a5760c391a2">
-					<printWhenExpression><![CDATA[(!$P{waktu_manajemen_nyeri}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<staticText>
-				<reportElement mode="Transparent" x="23" y="253" width="132" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2854ca07-2e51-42e9-8ad1-045840d98704"/>
+				<reportElement mode="Transparent" x="23" y="304" width="132" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="2854ca07-2e51-42e9-8ad1-045840d98704"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -2926,22 +3098,15 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Kebersihan Diri / Hand Hygiene]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="0" y="131" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="8b4a9ae8-a8ce-4795-bcb7-ff4665051f2b"/>
+				<reportElement mode="Transparent" x="0" y="161" width="19" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="8b4a9ae8-a8ce-4795-bcb7-ff4665051f2b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="9" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[14]]></text>
 			</staticText>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="316" width="66" height="36" uuid="525626ba-9e68-48fa-8b5e-f2ca2b779698">
-					<printWhenExpression><![CDATA[(!$P{waktu_penundaan}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="434" y="36" width="118" height="23" uuid="c66efb9f-6d28-48fe-a7ad-0944d56f49db">
+				<reportElement positionType="Float" x="434" y="47" width="118" height="23" uuid="c66efb9f-6d28-48fe-a7ad-0944d56f49db">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -2951,7 +3116,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_perawatan_luka}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="431" y="1" width="1" height="670" uuid="4379b5a8-3d3a-4e75-82a4-19c4976aa21c">
+				<reportElement positionType="FixRelativeToBottom" x="431" y="10" width="1" height="720" uuid="4379b5a8-3d3a-4e75-82a4-19c4976aa21c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2959,7 +3124,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="349" y="1" width="1" height="670" uuid="3df7dc03-a0cc-4f0a-9a0d-7322dddf216d">
+				<reportElement positionType="FixRelativeToBottom" x="349" y="10" width="1" height="720" uuid="3df7dc03-a0cc-4f0a-9a0d-7322dddf216d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2967,7 +3132,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="250" y="1" width="1" height="670" uuid="84a53d4f-aea6-4afd-8029-e61258c3e97f">
+				<reportElement positionType="FixRelativeToBottom" x="250" y="10" width="1" height="720" uuid="84a53d4f-aea6-4afd-8029-e61258c3e97f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2975,7 +3140,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="157" y="1" width="1" height="670" uuid="4e2f9f1b-07f7-4f77-9019-70a46190e95d">
+				<reportElement positionType="FixRelativeToBottom" x="157" y="10" width="1" height="720" uuid="4e2f9f1b-07f7-4f77-9019-70a46190e95d">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2983,7 +3148,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="19" y="1" width="1" height="670" uuid="1f6e7e99-9290-466e-87f7-f2b399bd300c">
+				<reportElement positionType="FixRelativeToBottom" x="19" y="10" width="1" height="720" uuid="1f6e7e99-9290-466e-87f7-f2b399bd300c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -2991,7 +3156,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="436" y="95" width="118" height="23" uuid="7512e3bf-1683-4986-94f2-2d989db55688">
+				<reportElement positionType="Float" x="436" y="118" width="118" height="23" uuid="7512e3bf-1683-4986-94f2-2d989db55688">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3001,7 +3166,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_penggunaan_alat}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="436" y="158" width="118" height="23" uuid="bcec7815-601e-45ed-bd87-49c3ea8eb49f">
+				<reportElement positionType="Float" x="436" y="188" width="118" height="23" uuid="bcec7815-601e-45ed-bd87-49c3ea8eb49f">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3011,13 +3176,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_pencegahan_komplikasi}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="181" width="555" height="1" uuid="226216ba-68b5-4ef9-b4b9-cd767fdf3703"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="219" width="555" height="1" uuid="226216ba-68b5-4ef9-b4b9-cd767fdf3703"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="436" y="220" width="118" height="23" uuid="7c2722d8-a8a8-4263-afc7-83c2f8817f57">
+				<reportElement positionType="Float" x="436" y="262" width="118" height="23" uuid="7c2722d8-a8a8-4263-afc7-83c2f8817f57">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3027,13 +3192,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_manajemen_nyeri}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-1" y="243" width="555" height="1" uuid="0b70d666-f9a5-4c01-9221-046b36b388c1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="290" width="555" height="1" uuid="0b70d666-f9a5-4c01-9221-046b36b388c1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="434" y="282" width="118" height="23" uuid="34ca115c-9735-482a-ac94-19dfa40d26f1">
+				<reportElement positionType="Float" x="434" y="333" width="118" height="23" uuid="34ca115c-9735-482a-ac94-19dfa40d26f1">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3043,13 +3208,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_kebersihan}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="307" width="555" height="1" uuid="e3d1f3fc-6d0b-47b4-baec-247ed5b51e7a"/>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="360" width="555" height="1" uuid="e3d1f3fc-6d0b-47b4-baec-247ed5b51e7a"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="435" y="343" width="118" height="23" uuid="f74d8b40-e925-438a-ab88-c79a117bf7ad">
+				<reportElement positionType="Float" x="436" y="398" width="118" height="23" uuid="f74d8b40-e925-438a-ab88-c79a117bf7ad">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3059,13 +3224,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_penundaan}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="367" width="555" height="1" uuid="8b1b67f4-580c-4f72-b6e7-3d01e021b35c"/>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="425" width="555" height="1" uuid="8b1b67f4-580c-4f72-b6e7-3d01e021b35c"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="434" y="398" width="118" height="23" uuid="0c7729fb-7b1c-44d5-a7cd-359486aae2a3">
+				<reportElement positionType="Float" x="433" y="459" width="118" height="23" uuid="0c7729fb-7b1c-44d5-a7cd-359486aae2a3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3075,13 +3240,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_hambatan}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-1" y="423" width="555" height="1" uuid="0e08933d-5b08-458e-b11e-a8ac7774c08a"/>
+				<reportElement positionType="FixRelativeToBottom" x="-2" y="487" width="555" height="1" uuid="0e08933d-5b08-458e-b11e-a8ac7774c08a"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="434" y="457" width="118" height="23" uuid="aa1268b5-c9f3-4ede-830b-31f8dd62f69e">
+				<reportElement positionType="Float" x="435" y="521" width="118" height="23" uuid="aa1268b5-c9f3-4ede-830b-31f8dd62f69e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3091,13 +3256,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_resiko_jatuh}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="481" width="555" height="1" uuid="473a2ce6-02e1-4b9f-8942-0c701b77b3e1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="555" width="555" height="1" uuid="473a2ce6-02e1-4b9f-8942-0c701b77b3e1"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="434" y="516" width="118" height="23" uuid="fcb0faaf-563e-4e8e-a7f2-3b0f143633fb">
+				<reportElement positionType="Float" x="434" y="593" width="118" height="23" uuid="fcb0faaf-563e-4e8e-a7f2-3b0f143633fb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3107,13 +3272,13 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{nama_lain_lain}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="-1" y="671" width="555" height="1" uuid="9c1f317d-5800-4601-93b5-4af57a1311fd"/>
+				<reportElement positionType="FixRelativeToBottom" x="1" y="730" width="555" height="1" uuid="9c1f317d-5800-4601-93b5-4af57a1311fd"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="47" width="136" height="14" uuid="b36d5fd9-0043-4b74-90f1-6afeccb384eb">
+				<reportElement positionType="Float" x="20" y="58" width="136" height="14" uuid="b36d5fd9-0043-4b74-90f1-6afeccb384eb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3123,7 +3288,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_perawatan_luka}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="33" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="bca03dd9-625d-4f13-985b-fb9cfd1a503d"/>
+				<reportElement mode="Transparent" x="20" y="44" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="bca03dd9-625d-4f13-985b-fb9cfd1a503d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3131,7 +3296,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="106" width="136" height="14" uuid="fd13b4a2-489f-40de-a97f-fb441b174a75">
+				<reportElement positionType="Float" x="20" y="129" width="136" height="14" uuid="fd13b4a2-489f-40de-a97f-fb441b174a75">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3141,7 +3306,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_penggunaan_alat}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="92" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="bf330e49-999c-4ee7-bec8-ed486e76d7e5"/>
+				<reportElement mode="Transparent" x="20" y="115" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="bf330e49-999c-4ee7-bec8-ed486e76d7e5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3149,7 +3314,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="167" width="136" height="14" uuid="04bd819d-76cb-4725-a0fe-7d0de3264751">
+				<reportElement positionType="Float" x="20" y="197" width="136" height="14" uuid="04bd819d-76cb-4725-a0fe-7d0de3264751">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3159,7 +3324,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_pencegahan_komplikasi}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="153" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="caf3c030-74ed-4992-84da-c3a3b3802050"/>
+				<reportElement mode="Transparent" x="20" y="183" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="caf3c030-74ed-4992-84da-c3a3b3802050"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3167,7 +3332,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="215" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fb768024-7a6d-42fc-8e08-29951d887df7"/>
+				<reportElement mode="Transparent" x="20" y="257" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="fb768024-7a6d-42fc-8e08-29951d887df7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3175,7 +3340,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="229" width="136" height="14" uuid="94535649-3759-47d0-bd00-651fd092a359">
+				<reportElement positionType="Float" x="20" y="271" width="136" height="14" uuid="94535649-3759-47d0-bd00-651fd092a359">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3185,7 +3350,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_manajemen_nyeri}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="279" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="082255c8-2468-406e-b9f8-aed6218fec41"/>
+				<reportElement mode="Transparent" x="20" y="330" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="082255c8-2468-406e-b9f8-aed6218fec41"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3193,7 +3358,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="293" width="136" height="14" uuid="cb5fc148-b201-4196-9e4c-98440e00eab8">
+				<reportElement positionType="Float" x="20" y="344" width="136" height="14" uuid="cb5fc148-b201-4196-9e4c-98440e00eab8">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3203,7 +3368,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_kebersihan}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="353" width="136" height="14" uuid="42c290d4-7b58-482c-849c-9de455ce200d">
+				<reportElement positionType="Float" x="21" y="408" width="136" height="14" uuid="42c290d4-7b58-482c-849c-9de455ce200d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3213,7 +3378,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_penundaan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="339" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="24371e81-2572-4ead-a7cb-df51c9ceedb1"/>
+				<reportElement mode="Transparent" x="21" y="394" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="24371e81-2572-4ead-a7cb-df51c9ceedb1"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3221,7 +3386,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="409" width="136" height="14" uuid="f04d2490-c5e9-49d6-b9c5-1a99fbb373d1">
+				<reportElement positionType="Float" x="19" y="470" width="136" height="14" uuid="f04d2490-c5e9-49d6-b9c5-1a99fbb373d1">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3231,7 +3396,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_hambatan}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="395" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9778a730-2c8a-4bb2-bc21-2517f04d1b15"/>
+				<reportElement mode="Transparent" x="19" y="456" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="9778a730-2c8a-4bb2-bc21-2517f04d1b15"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3239,7 +3404,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="19" y="453" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3eef01d7-10ee-4082-9f4b-9ba136592b3b"/>
+				<reportElement mode="Transparent" x="20" y="517" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="3eef01d7-10ee-4082-9f4b-9ba136592b3b"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3247,7 +3412,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="19" y="467" width="136" height="14" uuid="0cf39753-a50b-4ca6-aa85-be97265fbe9c">
+				<reportElement positionType="Float" x="20" y="531" width="136" height="14" uuid="0cf39753-a50b-4ca6-aa85-be97265fbe9c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3257,7 +3422,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$P{waktu_resiko_jatuh}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="20" y="510" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="cfbcd2ba-37d9-49c9-96c2-0a50cb270e6c"/>
+				<reportElement mode="Transparent" x="20" y="587" width="81" height="14" forecolor="#000000" backcolor="#F0F0DC" uuid="cfbcd2ba-37d9-49c9-96c2-0a50cb270e6c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Tahoma" size="7" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
@@ -3265,7 +3430,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<text><![CDATA[Tanggal Edukasi]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="20" y="524" width="136" height="14" uuid="1f8fc4b3-7b18-4609-a1ca-f7786638852e">
+				<reportElement positionType="Float" x="20" y="601" width="136" height="14" uuid="1f8fc4b3-7b18-4609-a1ca-f7786638852e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -3273,6 +3438,132 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{waktu_lain_lain}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="152" width="66" height="36" uuid="ef8be71a-a6ec-4982-bc49-56c314448791"/>
+				<imageExpression><![CDATA[$P{photo_komplikasi}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="85" width="66" height="36" uuid="3908f436-f6be-4829-a532-6f146351c0bd"/>
+				<imageExpression><![CDATA[$P{photo_alatmedis}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="14" width="66" height="36" uuid="a3436b35-6c79-40eb-91ea-b4321793f5f2"/>
+				<imageExpression><![CDATA[$P{photo_perawatanluka}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="225" width="66" height="36" uuid="a10e6949-5082-45ab-a169-db8c52d84e68"/>
+				<imageExpression><![CDATA[$P{photo_nyeri}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="296" width="66" height="36" uuid="00c644a6-56bf-4b0b-a6b7-d4482141d703"/>
+				<imageExpression><![CDATA[$P{photo_kebersihan}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="358" y="364" width="66" height="36" uuid="674b1964-b823-457f-bb0f-bf34ea2d0720"/>
+				<imageExpression><![CDATA[$P{photo_penundaan}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="356" y="430" width="66" height="36" uuid="a10dfa97-855e-4aff-b6dc-937f292ab348"/>
+				<imageExpression><![CDATA[$P{photo_hambatan}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="490" width="66" height="36" uuid="55c3b049-c38f-4e2d-a87f-c96e25e1cbf3"/>
+				<imageExpression><![CDATA[$P{photo_resikojatuh}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="558" width="66" height="36" uuid="7842a62c-542e-4a15-9acb-a5df8e8c7853"/>
+				<imageExpression><![CDATA[$P{photo_lainlain}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="52" width="78" height="18" uuid="938db51a-6639-438a-8619-cc075f355cb6">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_perawatanluka}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_perawatanluka}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="123" width="78" height="18" uuid="0d602fe6-5df2-4805-a10c-5a59cc07f524">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_alatmedis}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_alatmedis}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="192" width="78" height="18" uuid="e81f3f61-02f9-40ad-98d7-fab694e95c8e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_komplikasi}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_komplikasi}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="264" width="78" height="18" uuid="50e91255-c8b7-4671-acaa-4606c73acbb9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_nyeri}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_nyeri}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="332" width="78" height="18" uuid="ae966bb6-8b35-4996-8f6b-c6dd891b450c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_kebersihan}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_kebersihan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="400" width="78" height="18" uuid="1a3e27ec-3591-469a-b520-6b42f2f9c51a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_penundaan}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_penundaan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="597" width="78" height="18" uuid="ebbd295e-a725-416b-b00c-dd7ca670015f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_lainlain}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_lainlain}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="528" width="78" height="18" uuid="60524052-d15d-471a-a434-603d27c5deff">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_resikojatuh}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_resikojatuh}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="466" width="78" height="18" uuid="c3b1138c-64ee-4a61-ab17-427b46ef49ef">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_hambatan}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_hambatan}]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="646">
@@ -3299,25 +3590,19 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="434" y="226" width="113" height="31" isRemoveLineWhenBlank="true" uuid="e81d3f5f-a393-4db0-af1d-ef993af4b105">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_lain_lain2} != null && !$P{nama_lain_lain2}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_lain_lain}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="355" y="233" width="66" height="36" uuid="ee4a0957-c0d8-474d-9583-107f1d8140e5">
-					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain2}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="159" y="227" width="88" height="186" uuid="34d20277-534c-4cc5-843f-446f26f80065">
+				<reportElement positionType="Float" x="159" y="227" width="88" height="172" uuid="34d20277-534c-4cc5-843f-446f26f80065">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top">
-					<font fontName="Tahoma" size="8"/>
+					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lain_lain2}]]></textFieldExpression>
@@ -3341,23 +3626,16 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				<textFieldExpression><![CDATA[$F{kie_lain_lain3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement positionType="Float" x="159" y="419" width="88" height="186" uuid="bc4802b6-8d23-4c5a-ac6c-af06acb5efd3">
+				<reportElement positionType="Float" x="159" y="419" width="88" height="172" uuid="bc4802b6-8d23-4c5a-ac6c-af06acb5efd3">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top">
-					<font fontName="Tahoma" size="8"/>
+					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lain_lain3}]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="355" y="432" width="66" height="36" uuid="463c810b-a09b-4a67-90b4-9fc50f9c858f">
-					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain3}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<textField isStretchWithOverflow="true">
 				<reportElement positionType="Float" x="433" y="457" width="118" height="23" uuid="3e880833-a229-43ad-87a8-a5a3d387a7c5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -3389,6 +3667,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="434" y="425" width="112" height="30" isRemoveLineWhenBlank="true" uuid="c248803a-5d3c-4e2d-bcc2-ac8343be19fb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_lain_lain3} != null && !$P{nama_lain_lain3}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_lain_lain}]]></jr:codeExpression>
@@ -3525,7 +3804,7 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Top">
-					<font fontName="Tahoma" size="8"/>
+					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{lain_lain1}]]></textFieldExpression>
@@ -3541,24 +3820,60 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 			<componentElement>
 				<reportElement positionType="Float" x="435" y="17" width="115" height="33" isRemoveLineWhenBlank="true" uuid="cbb6a127-2b0a-4e79-adb8-2f39788670de">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$P{nama_lain_lain1} != null && !$P{nama_lain_lain1}.equals("-")]]></printWhenExpression>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
 					<jr:codeExpression><![CDATA[$P{finger_lain_lain}]]></jr:codeExpression>
 				</jr:QRCode>
 			</componentElement>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="356" y="24" width="66" height="36" uuid="ff826d28-2d16-4c02-90e9-bfc1837043bd">
-					<printWhenExpression><![CDATA[(!$P{waktu_lain_lain1}.toLowerCase().equals("") ? 
-  Boolean.TRUE:Boolean.FALSE)]]></printWhenExpression>
-				</reportElement>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<line>
 				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="00a428f8-94d3-4c67-86bc-9f5ed75c8a1f"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineStyle="Solid"/>
 				</graphicElement>
 			</line>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="356" y="419" width="66" height="36" uuid="4e2cca36-9e70-4b28-acb0-790baae04538"/>
+				<imageExpression><![CDATA[$P{photo_lainlain3}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="222" width="66" height="36" uuid="720a61f2-7ea4-452c-8bd1-71355fc0e639"/>
+				<imageExpression><![CDATA[$P{photo_lainlain2}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="357" y="18" width="66" height="36" uuid="1a6e1dc9-5a7d-4225-8b80-c96ee7a95581"/>
+				<imageExpression><![CDATA[$P{photo_lainlain1}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="262" width="78" height="18" uuid="ec299a65-5e61-44d9-be2b-14a902676932">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_lainlain2}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_lainlain2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="351" y="55" width="78" height="18" uuid="a11a70c2-e063-4768-9769-dafc2867ca63">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_lainlain1}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_lainlain1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="352" y="457" width="78" height="18" uuid="bb55fd13-2985-4c2a-a8c9-96fbba37ca8e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="5"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Nama Penerima : "+$P{nama_penerima_diagnosis}+"\nHubungan Keluarga : " + $P{hubungan_keluarga_diagnosis}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
@@ -3575,10 +3890,6 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{kotars}+", "+new SimpleDateFormat("dd MMMM yyyy", new java.util.Locale("id")).format(new Date())]]></textFieldExpression>
 			</textField>
-			<image>
-				<reportElement isPrintRepeatedValues="false" x="354" y="30" width="202" height="72" uuid="377bc092-27bd-4b81-9c50-4b68febf720b"/>
-				<imageExpression><![CDATA[$F{photo}]]></imageExpression>
-			</image>
 			<staticText>
 				<reportElement positionType="Float" x="345" y="16" width="210" height="14" uuid="d90bf72a-9d22-4d7e-a9f6-db9be558423d"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
@@ -3597,6 +3908,10 @@ and edukasi_pasien_keluarga_rj.tanggal = $P{tgl_param}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
 			</textField>
+			<image>
+				<reportElement isPrintRepeatedValues="false" x="352" y="30" width="202" height="72" uuid="0c639c66-d566-42ca-9d8d-108787a35d37"/>
+				<imageExpression><![CDATA[$P{photo_lainlain}]]></imageExpression>
+			</image>
 		</band>
 	</summary>
 </jasperReport>

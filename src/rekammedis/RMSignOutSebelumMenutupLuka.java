@@ -2,8 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package rekammedis;
 
 import fungsi.WarnaTable;
@@ -43,136 +41,219 @@ import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 import kepegawaian.DlgCariPetugas;
 
-
 /**
  *
  * @author perpustakaan
  */
 public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
+
     private final DefaultTableModel tabMode;
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
+    private Connection koneksi = koneksiDB.condb();
+    private sekuel Sequel = new sekuel();
+    private validasi Valid = new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;  
+    private int i = 0;
     private DlgCariPetugas petugas;
     private DlgCariDokter dokter;
-    private String finger="",finger2="",finger3="";
+    private String finger = "", finger2 = "", finger3 = "";
     private StringBuilder htmlContent;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
-    /** Creates new form DlgRujuk
+
+    /**
+     * Creates new form DlgRujuk
+     *
      * @param parent
-     * @param modal */
+     * @param modal
+     */
     public RMSignOutSebelumMenutupLuka(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(8,1);
-        setSize(628,674);
+        this.setLocation(8, 1);
+        setSize(628, 674);
 
-        tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Tanggal","SN/CN","Tindakan","Kode Dokter Bedah","Nama Dokter Bedah",
-            "Kode Dokter Anest","Nama Dokter Anestesi","Verbal Tindakan","Verbal Kasa","Verbal Instrumen","Verbal Alat Tajam","Kelengkapan Spesimen Label",
-            "Kelengkapan Spesimen Formulir","P.K.Dokter Bedah","P.K.Dokter Anestesi","P.K.Perawat OK","Perhatian Utama Fase Pemulihan",
-            "NIP OK","Petugas Ruang OK"
-        }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+//        tabMode = new DefaultTableModel(null, new Object[]{
+//            "No.Rawat", "No.RM", "Nama Pasien", "Tgl.Lahir", "J.K.", "Tanggal", "SN/CN", "Tindakan", "Kode Dokter Bedah", "Nama Dokter Bedah",
+//            "Kode Dokter Anest", "Nama Dokter Anestesi", "Verbal Tindakan", "Verbal Kasa", "Verbal Instrumen", "Verbal Alat Tajam", "Kelengkapan Spesimen Label",
+//            "Kelengkapan Spesimen Formulir", "P.K.Dokter Bedah", "P.K.Dokter Anestesi", "P.K.Perawat OK", "Perhatian Utama Fase Pemulihan",
+//            "NIP OK", "Petugas Ruang OK"
+//        }) {
+//            @Override
+//            public boolean isCellEditable(int rowIndex, int colIndex) {
+//                return false;
+//            }
+//        };
+//        tbObat.setModel(tabMode);
+//
+//        //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
+//        tbObat.setPreferredScrollableViewportSize(new Dimension(500, 500));
+//        tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+//
+//        for (i = 0; i < 24; i++) {
+//            TableColumn column = tbObat.getColumnModel().getColumn(i);
+//            if (i == 0) {
+//                column.setPreferredWidth(105);
+//            } else if (i == 1) {
+//                column.setPreferredWidth(70);
+//            } else if (i == 2) {
+//                column.setPreferredWidth(150);
+//            } else if (i == 3) {
+//                column.setPreferredWidth(65);
+//            } else if (i == 4) {
+//                column.setPreferredWidth(25);
+//            } else if (i == 5) {
+//                column.setPreferredWidth(115);
+//            } else if (i == 6) {
+//                column.setPreferredWidth(90);
+//            } else if (i == 7) {
+//                column.setPreferredWidth(160);
+//            } else if (i == 8) {
+//                column.setPreferredWidth(100);
+//            } else if (i == 9) {
+//                column.setPreferredWidth(160);
+//            } else if (i == 10) {
+//                column.setPreferredWidth(100);
+//            } else if (i == 11) {
+//                column.setPreferredWidth(150);
+//            } else if (i == 12) {
+//                column.setPreferredWidth(87);
+//            } else if (i == 13) {
+//                column.setPreferredWidth(67);
+//            } else if (i == 14) {
+//                column.setPreferredWidth(94);
+//            } else if (i == 15) {
+//                column.setPreferredWidth(96);
+//            } else if (i == 16) {
+//                column.setPreferredWidth(167);
+//            } else if (i == 17) {
+//                column.setPreferredWidth(167);
+//            } else if (i == 18) {
+//                column.setPreferredWidth(91);
+//            } else if (i == 19) {
+//                column.setPreferredWidth(103);
+//            } else if (i == 20) {
+//                column.setPreferredWidth(84);
+//            } else if (i == 21) {
+//                column.setPreferredWidth(200);
+//            } else if (i == 22) {
+//                column.setPreferredWidth(90);
+//            } else if (i == 23) {
+//                column.setPreferredWidth(150);
+//            }
+//        }
+//        tbObat.setDefaultRenderer(Object.class, new WarnaTable());
+        tabMode = new DefaultTableModel(null, new Object[]{
+            "No.Rawat", "No.RM", "Nama Pasien", "Tgl.Lahir", "J.K.", "Tanggal", "SN/CN", "Tindakan", "Kode Dokter Bedah", "Nama Dokter Bedah",
+            "Kode Dokter Anest", "Nama Dokter Anestesi", "Verbal Tindakan", "Verbal Kasa", "Verbal Instrumen", "Verbal Alat Tajam", "Kelengkapan Spesimen Label",
+            "Kelengkapan Spesimen Formulir", "P.K.Dokter Bedah", "P.K.Dokter Anestesi", "P.K.Perawat OK",
+            "Kasa Preop", "Kasa Tambahan", "Kasa Kotor", "Kasa Sisa",
+            "Instrumen Preop", "Instrumen Tambahan", "Instrumen Kotor", "Instrumen Sisa",
+            "Jarum Preop", "Jarum Tambahan", "Jarum Kotor", "Jarum Sisa",
+            "Big Kasa Preop", "Big Kasa Tambahan", "Big Kasa Kotor", "Big Kasa Sisa",
+            "Perhatian Utama Fase Pemulihan",
+            "NIP OK", "Petugas Ruang OK"
+        }) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
         };
         tbObat.setModel(tabMode);
 
         //tbObat.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbObat.getBackground()));
-        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObat.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 24; i++) {
+        for (i = 0; i < 40; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
-            if(i==0){
+            if (i == 0) {
                 column.setPreferredWidth(105);
-            }else if(i==1){
+            } else if (i == 1) {
                 column.setPreferredWidth(70);
-            }else if(i==2){
+            } else if (i == 2) {
                 column.setPreferredWidth(150);
-            }else if(i==3){
+            } else if (i == 3) {
                 column.setPreferredWidth(65);
-            }else if(i==4){
+            } else if (i == 4) {
                 column.setPreferredWidth(25);
-            }else if(i==5){
+            } else if (i == 5) {
                 column.setPreferredWidth(115);
-            }else if(i==6){
+            } else if (i == 6) {
                 column.setPreferredWidth(90);
-            }else if(i==7){
+            } else if (i == 7) {
                 column.setPreferredWidth(160);
-            }else if(i==8){
+            } else if (i == 8) {
                 column.setPreferredWidth(100);
-            }else if(i==9){
+            } else if (i == 9) {
                 column.setPreferredWidth(160);
-            }else if(i==10){
+            } else if (i == 10) {
                 column.setPreferredWidth(100);
-            }else if(i==11){
+            } else if (i == 11) {
                 column.setPreferredWidth(150);
-            }else if(i==12){
+            } else if (i == 12) {
                 column.setPreferredWidth(87);
-            }else if(i==13){
+            } else if (i == 13) {
                 column.setPreferredWidth(67);
-            }else if(i==14){
+            } else if (i == 14) {
                 column.setPreferredWidth(94);
-            }else if(i==15){
+            } else if (i == 15) {
                 column.setPreferredWidth(96);
-            }else if(i==16){
+            } else if (i == 16) {
                 column.setPreferredWidth(167);
-            }else if(i==17){
+            } else if (i == 17) {
                 column.setPreferredWidth(167);
-            }else if(i==18){
+            } else if (i == 18) {
                 column.setPreferredWidth(91);
-            }else if(i==19){
+            } else if (i == 19) {
                 column.setPreferredWidth(103);
-            }else if(i==20){
+            } else if (i == 20) {
                 column.setPreferredWidth(84);
-            }else if(i==21){
-                column.setPreferredWidth(200);
-            }else if(i==22){
-                column.setPreferredWidth(90);
-            }else if(i==23){
-                column.setPreferredWidth(150);
+            } else if (i >= 21 && i <= 36) {
+                column.setPreferredWidth(95);   // kolom kasa, instrumen, jarum, big kasa
+            } else if (i == 37) {
+                column.setPreferredWidth(200);  // Perhatian Utama Fase Pemulihan
+            } else if (i == 38) {
+                column.setPreferredWidth(90);   // NIP OK
+            } else if (i == 39) {
+                column.setPreferredWidth(150);  // Petugas Ruang OK
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
 
-        TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        SNCN.setDocument(new batasInput((byte)25).getKata(SNCN));
-        Tindakan.setDocument(new batasInput((byte)50).getKata(Tindakan));
-        PerhatianUtamaFasePemulihan.setDocument(new batasInput((byte)100).getKata(PerhatianUtamaFasePemulihan));
-        
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        
+        TNoRw.setDocument(new batasInput((byte) 17).getKata(TNoRw));
+        SNCN.setDocument(new batasInput((byte) 25).getKata(SNCN));
+        Tindakan.setDocument(new batasInput((byte) 50).getKata(Tindakan));
+        PerhatianUtamaFasePemulihan.setDocument(new batasInput((byte) 100).getKata(PerhatianUtamaFasePemulihan));
+
+        TCari.setDocument(new batasInput((int) 100).getKata(TCari));
+
         ChkInput.setSelected(false);
         isForm();
-        
+
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                + ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"
+                + ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                + ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                + ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"
+                + ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"
+                + ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"
+                + ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"
+                + ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
     }
 
-
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -262,6 +343,8 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         jLabel57 = new widget.Label();
         jLabel58 = new widget.Label();
         PerhatianUtamaFasePemulihan = new widget.TextBox();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
@@ -980,6 +1063,25 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         FormInput.add(PerhatianUtamaFasePemulihan);
         PerhatianUtamaFasePemulihan.setBounds(213, 270, 576, 23);
 
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Kasa / depper", null, null, null, null},
+                {"Instrument",    null, null, null, null},
+                {"Jarum",         null, null, null, null},
+                {"Bigkasa",       null, null, null, null}
+            },
+            new String [] {
+                "", "Pro Op", "Tambahan", "Kotor", "Sisa"
+            }
+        ));
+        jTable1.setName("jTable1"); // NOI18N
+        jScrollPane1.setViewportView(jTable1);
+
+        FormInput.add(jScrollPane1);
+        jScrollPane1.setBounds(820, 100, 380, 90);
+
         scrollInput.setViewportView(FormInput);
 
         PanelInput.add(scrollInput, java.awt.BorderLayout.CENTER);
@@ -992,119 +1094,172 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             isRawat();
             isPsien();
-        }else{            
+        } else {
             //Valid.pindah(evt,TCari,Tanggal);
         }
 }//GEN-LAST:event_TNoRwKeyPressed
 
     private void TPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPasienKeyPressed
-        Valid.pindah(evt,TCari,BtnSimpan);
+        Valid.pindah(evt, TCari, BtnSimpan);
 }//GEN-LAST:event_TPasienKeyPressed
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
-        }else if(KodeDokterBedah.getText().trim().equals("")||NamaDokterBedah.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"Dokter Bedah");
-        }else if(KodeDokterAnestesi.getText().trim().equals("")||NamaDokterAnestesi.getText().trim().equals("")){
-            Valid.textKosong(KodeDokterAnestesi,"Dokter Anestesi");
-        }else if(Tindakan.getText().trim().equals("")){
-            Valid.textKosong(Tindakan,"Tindakan");
-        }else if(SNCN.getText().trim().equals("")){
-            Valid.textKosong(SNCN,"SN/CN");
-        }else{
-            if(Sequel.menyimpantf("signout_sebelum_menutup_luka","?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?","Data",17,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),SNCN.getText(),Tindakan.getText(),
-                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),VerbalTindakan.getSelectedItem().toString(),VerbalKasa.getSelectedItem().toString(), 
-                VerbalInstrumen.getSelectedItem().toString(),VerbalAlatTajam.getSelectedItem().toString(),KelengkapanSpesimenLabel.getSelectedItem().toString(), 
-                KelengkapanSpesimenFormulir.getSelectedItem().toString(),PeninjauanKembaliDokterBedah.getSelectedItem().toString(),PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(), 
-                PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(),PerhatianUtamaFasePemulihan.getText(),KdPetugasOK.getText()
-            })==true){
-                runBackground(() ->tampil());
+        if (TNoRw.getText().trim().equals("") || TPasien.getText().trim().equals("")) {
+            Valid.textKosong(TNoRw, "pasien");
+        } else if (KodeDokterBedah.getText().trim().equals("") || NamaDokterBedah.getText().trim().equals("")) {
+            Valid.textKosong(btnDokterBedah, "Dokter Bedah");
+        } else if (KodeDokterAnestesi.getText().trim().equals("") || NamaDokterAnestesi.getText().trim().equals("")) {
+            Valid.textKosong(KodeDokterAnestesi, "Dokter Anestesi");
+        } else if (Tindakan.getText().trim().equals("")) {
+            Valid.textKosong(Tindakan, "Tindakan");
+        } else if (SNCN.getText().trim().equals("")) {
+            Valid.textKosong(SNCN, "SN/CN");
+        } else {
+//            if (Sequel.menyimpantf("signout_sebelum_menutup_luka", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 17, new String[]{
+//                TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + "") + " " + Tanggal.getSelectedItem().toString().substring(11, 19), SNCN.getText(), Tindakan.getText(),
+//                KodeDokterBedah.getText(), KodeDokterAnestesi.getText(), VerbalTindakan.getSelectedItem().toString(), VerbalKasa.getSelectedItem().toString(),
+//                VerbalInstrumen.getSelectedItem().toString(), VerbalAlatTajam.getSelectedItem().toString(), KelengkapanSpesimenLabel.getSelectedItem().toString(),
+//                KelengkapanSpesimenFormulir.getSelectedItem().toString(), PeninjauanKembaliDokterBedah.getSelectedItem().toString(), PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(),
+//                PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(), PerhatianUtamaFasePemulihan.getText(), KdPetugasOK.getText()
+//            }) == true) 
+            commitTabel(); // pastikan sel jTable1 yang masih diedit ikut terbaca
+
+            if (Sequel.menyimpantf("signout_sebelum_menutup_luka", "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?", "Data", 33, new String[]{
+                TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + "") + " " + Tanggal.getSelectedItem().toString().substring(11, 19), SNCN.getText(), Tindakan.getText(),
+                KodeDokterBedah.getText(), KodeDokterAnestesi.getText(), VerbalTindakan.getSelectedItem().toString(), VerbalKasa.getSelectedItem().toString(),
+                VerbalInstrumen.getSelectedItem().toString(), VerbalAlatTajam.getSelectedItem().toString(), KelengkapanSpesimenLabel.getSelectedItem().toString(),
+                KelengkapanSpesimenFormulir.getSelectedItem().toString(), PeninjauanKembaliDokterBedah.getSelectedItem().toString(), PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(),
+                PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(),
+                // Kasa (baris 0)
+                sel(0, 1), sel(0, 2), sel(0, 3), sel(0, 4),
+                // Instrumen (baris 1)
+                sel(1, 1), sel(1, 2), sel(1, 3), sel(1, 4),
+                // Jarum (baris 2)
+                sel(2, 1), sel(2, 2), sel(2, 3), sel(2, 4),
+                // Big Kasa (baris 3)
+                sel(3, 1), sel(3, 2), sel(3, 3), sel(3, 4),
+                PerhatianUtamaFasePemulihan.getText(), KdPetugasOK.getText()
+            }) == true) {
+                runBackground(() -> tampil());
                 emptTeks();
-            } 
+            }
         }
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnSimpanActionPerformed(null);
-        }else{
-            Valid.pindah(evt,btnPetugasOK,BtnBatal);
+        } else {
+            Valid.pindah(evt, btnPetugasOK, BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         ChkInput.setSelected(true);
-        isForm(); 
+        isForm();
         emptTeks();
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             emptTeks();
-        }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
+        } else {
+            Valid.pindah(evt, BtnSimpan, BtnHapus);
+        }
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbObat.getSelectedRow()>-1){
-            if(akses.getkode().equals("Admin Utama")){
+//        if (tbObat.getSelectedRow() > -1) {
+//            if (akses.getkode().equals("Admin Utama")) {
+//                hapus();
+//            } else {
+//                if (akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 8).toString()) || akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 10).toString()) || akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 22).toString())) {
+//                    hapus();
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "User Login harus Petugas OK/Dokter Anestesi..!!");
+//                }
+//            }
+//        } else {
+//            JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
+//        }
+
+        if (tbObat.getSelectedRow() > -1) {
+            if (akses.getkode().equals("Admin Utama")) {
                 hapus();
-            }else {
-                if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
+            } else {
+                int row = tbObat.getSelectedRow();
+                if (akses.getkode().equals(tbObat.getValueAt(row, 8).toString())
+                        || akses.getkode().equals(tbObat.getValueAt(row, 10).toString())
+                        || akses.getkode().equals(tbObat.getValueAt(row, 38).toString())) {
                     hapus();
-                }else{
-                    JOptionPane.showMessageDialog(null,"User Login harus Petugas OK/Dokter Anestesi..!!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "User Login harus Petugas OK/Dokter Anestesi..!!");
                 }
             }
-        }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-        }   
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
+        }
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnHapusActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnBatal, BtnEdit);
         }
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"pasien");
-        }else if(KodeDokterBedah.getText().trim().equals("")||NamaDokterBedah.getText().trim().equals("")){
-            Valid.textKosong(btnDokterBedah,"Dokter Bedah");
-        }else if(KodeDokterAnestesi.getText().trim().equals("")||NamaDokterAnestesi.getText().trim().equals("")){
-            Valid.textKosong(KodeDokterAnestesi,"Dokter Anestesi");
-        }else if(Tindakan.getText().trim().equals("")){
-            Valid.textKosong(Tindakan,"Tindakan");
-        }else if(SNCN.getText().trim().equals("")){
-            Valid.textKosong(SNCN,"SN/CN");
-        }else{  
-            if(tbObat.getSelectedRow()>-1){
-                if(akses.getkode().equals("Admin Utama")){
+        if (TNoRw.getText().trim().equals("") || TPasien.getText().trim().equals("")) {
+            Valid.textKosong(TNoRw, "pasien");
+        } else if (KodeDokterBedah.getText().trim().equals("") || NamaDokterBedah.getText().trim().equals("")) {
+            Valid.textKosong(btnDokterBedah, "Dokter Bedah");
+        } else if (KodeDokterAnestesi.getText().trim().equals("") || NamaDokterAnestesi.getText().trim().equals("")) {
+            Valid.textKosong(KodeDokterAnestesi, "Dokter Anestesi");
+        } else if (Tindakan.getText().trim().equals("")) {
+            Valid.textKosong(Tindakan, "Tindakan");
+        } else if (SNCN.getText().trim().equals("")) {
+            Valid.textKosong(SNCN, "SN/CN");
+        } else {
+//            if (tbObat.getSelectedRow() > -1) {
+//                if (akses.getkode().equals("Admin Utama")) {
+//                    ganti();
+//                } else {
+//                    if (akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 8).toString()) || akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 10).toString()) || akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 22).toString())) {
+//                        ganti();
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "User Login harus Petugas OK/Dokter Anestesi..!!");
+//                    }
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
+//            }
+            if (tbObat.getSelectedRow() > -1) {
+                if (akses.getkode().equals("Admin Utama")) {
                     ganti();
-                }else {
-                    if(akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString())||akses.getkode().equals(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString())){
+                } else {
+                    int row = tbObat.getSelectedRow();
+                    if (akses.getkode().equals(tbObat.getValueAt(row, 8).toString())
+                            || akses.getkode().equals(tbObat.getValueAt(row, 10).toString())
+                            || akses.getkode().equals(tbObat.getValueAt(row, 38).toString())) {
                         ganti();
-                    }else{
-                        JOptionPane.showMessageDialog(null,"User Login harus Petugas OK/Dokter Anestesi..!!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "User Login harus Petugas OK/Dokter Anestesi..!!");
                     }
                 }
-            }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnEditActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnHapus, BtnPrint);
         }
 }//GEN-LAST:event_BtnEditKeyPressed
@@ -1114,223 +1269,225 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnKeluarActionPerformed(null);
-        }else{Valid.pindah(evt,BtnEdit,TCari);}
+        } else {
+            Valid.pindah(evt, BtnEdit, TCari);
+        }
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            try{
-                if(TCari.getText().trim().equals("")){
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
-                        "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
-                        "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
-                        "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
-                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
-                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
-                        "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
-                        "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
-                        "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
-                        "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
-                        "where signout_sebelum_menutup_luka.tanggal between ? and ? order by signout_sebelum_menutup_luka.tanggal ");
-                }else{
-                    ps=koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
-                        "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                        "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
-                        "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
-                        "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
-                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
-                        "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
-                        "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
-                        "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                        "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
-                        "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
-                        "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
-                        "where signout_sebelum_menutup_luka.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                        "pasien.nm_pasien like ? or dokterbedah.nm_dokter like ? or dokteranestesi.nm_dokter like ? or petugas.nama like ?) "+
-                        "order by signout_sebelum_menutup_luka.tanggal ");
+        } else if (tabMode.getRowCount() != 0) {
+            try {
+                if (TCari.getText().trim().equals("")) {
+                    ps = koneksi.prepareStatement(
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"
+                            + "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"
+                            + "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"
+                            + "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"
+                            + "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"
+                            + "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"
+                            + "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"
+                            + "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "
+                            + "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                            + "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "
+                            + "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "
+                            + "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "
+                            + "where signout_sebelum_menutup_luka.tanggal between ? and ? order by signout_sebelum_menutup_luka.tanggal ");
+                } else {
+                    ps = koneksi.prepareStatement(
+                            "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"
+                            + "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"
+                            + "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"
+                            + "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"
+                            + "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"
+                            + "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"
+                            + "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"
+                            + "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "
+                            + "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                            + "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "
+                            + "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "
+                            + "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "
+                            + "where signout_sebelum_menutup_luka.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "
+                            + "pasien.nm_pasien like ? or dokterbedah.nm_dokter like ? or dokteranestesi.nm_dokter like ? or petugas.nama like ?) "
+                            + "order by signout_sebelum_menutup_luka.tanggal ");
                 }
 
                 try {
-                    if(TCari.getText().trim().equals("")){
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    }else{
-                        ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                        ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                        ps.setString(3,"%"+TCari.getText()+"%");
-                        ps.setString(4,"%"+TCari.getText()+"%");
-                        ps.setString(5,"%"+TCari.getText()+"%");
-                        ps.setString(6,"%"+TCari.getText()+"%");
-                        ps.setString(7,"%"+TCari.getText()+"%");
-                        ps.setString(8,"%"+TCari.getText()+"%");
+                    if (TCari.getText().trim().equals("")) {
+                        ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+                        ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                    } else {
+                        ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+                        ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                        ps.setString(3, "%" + TCari.getText() + "%");
+                        ps.setString(4, "%" + TCari.getText() + "%");
+                        ps.setString(5, "%" + TCari.getText() + "%");
+                        ps.setString(6, "%" + TCari.getText() + "%");
+                        ps.setString(7, "%" + TCari.getText() + "%");
+                        ps.setString(8, "%" + TCari.getText() + "%");
                     }
-                    rs=ps.executeQuery();
+                    rs = ps.executeQuery();
                     htmlContent = new StringBuilder();
-                    htmlContent.append(                             
-                        "<tr class='isi'>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SN/CN</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Anest</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Tindakan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Kasa</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Instrumen</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Alat Tajam</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelengkapan Spesimen Label</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelengkapan Spesimen Formulir</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Dokter Bedah</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Dokter Anestesi</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Perawat OK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Perhatian Utama Fase Pemulihan</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP OK</b></td>"+
-                            "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruang OK</b></td>"+
-                        "</tr>"
+                    htmlContent.append(
+                            "<tr class='isi'>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>SN/CN</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tindakan</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Bedah</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Bedah</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter Anest</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Dokter Anestesi</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Tindakan</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Kasa</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Instrumen</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Verbal Alat Tajam</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelengkapan Spesimen Label</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kelengkapan Spesimen Formulir</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Dokter Bedah</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Dokter Anestesi</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>P.K.Perawat OK</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Perhatian Utama Fase Pemulihan</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>NIP OK</b></td>"
+                            + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Petugas Ruang OK</b></td>"
+                            + "</tr>"
                     );
-                    while(rs.next()){
+                    while (rs.next()) {
                         htmlContent.append(
-                            "<tr class='isi'>"+
-                               "<td valign='top'>"+rs.getString("no_rawat")+"</td>"+
-                               "<td valign='top'>"+rs.getString("no_rkm_medis")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nm_pasien")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tgl_lahir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("jk")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tanggal")+"</td>"+
-                               "<td valign='top'>"+rs.getString("sncn")+"</td>"+
-                               "<td valign='top'>"+rs.getString("tindakan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kd_dokter_bedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dokterbedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kd_dokter_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("dokteranestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("verbal_tindakan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("verbal_kelengkapan_kasa")+"</td>"+
-                               "<td valign='top'>"+rs.getString("verbal_instrumen")+"</td>"+
-                               "<td valign='top'>"+rs.getString("verbal_alat_tajam")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kelengkapan_specimen_label")+"</td>"+
-                               "<td valign='top'>"+rs.getString("kelengkapan_specimen_formulir")+"</td>"+
-                               "<td valign='top'>"+rs.getString("peninjauan_kegiatan_dokter_bedah")+"</td>"+
-                               "<td valign='top'>"+rs.getString("peninjauan_kegiatan_dokter_anestesi")+"</td>"+
-                               "<td valign='top'>"+rs.getString("peninjauan_kegiatan_perawat_kamar_ok")+"</td>"+
-                               "<td valign='top'>"+rs.getString("perhatian_utama_fase_pemulihan")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nip_perawat_ok")+"</td>"+
-                               "<td valign='top'>"+rs.getString("nama")+"</td>"+
-                            "</tr>");
+                                "<tr class='isi'>"
+                                + "<td valign='top'>" + rs.getString("no_rawat") + "</td>"
+                                + "<td valign='top'>" + rs.getString("no_rkm_medis") + "</td>"
+                                + "<td valign='top'>" + rs.getString("nm_pasien") + "</td>"
+                                + "<td valign='top'>" + rs.getString("tgl_lahir") + "</td>"
+                                + "<td valign='top'>" + rs.getString("jk") + "</td>"
+                                + "<td valign='top'>" + rs.getString("tanggal") + "</td>"
+                                + "<td valign='top'>" + rs.getString("sncn") + "</td>"
+                                + "<td valign='top'>" + rs.getString("tindakan") + "</td>"
+                                + "<td valign='top'>" + rs.getString("kd_dokter_bedah") + "</td>"
+                                + "<td valign='top'>" + rs.getString("dokterbedah") + "</td>"
+                                + "<td valign='top'>" + rs.getString("kd_dokter_anestesi") + "</td>"
+                                + "<td valign='top'>" + rs.getString("dokteranestesi") + "</td>"
+                                + "<td valign='top'>" + rs.getString("verbal_tindakan") + "</td>"
+                                + "<td valign='top'>" + rs.getString("verbal_kelengkapan_kasa") + "</td>"
+                                + "<td valign='top'>" + rs.getString("verbal_instrumen") + "</td>"
+                                + "<td valign='top'>" + rs.getString("verbal_alat_tajam") + "</td>"
+                                + "<td valign='top'>" + rs.getString("kelengkapan_specimen_label") + "</td>"
+                                + "<td valign='top'>" + rs.getString("kelengkapan_specimen_formulir") + "</td>"
+                                + "<td valign='top'>" + rs.getString("peninjauan_kegiatan_dokter_bedah") + "</td>"
+                                + "<td valign='top'>" + rs.getString("peninjauan_kegiatan_dokter_anestesi") + "</td>"
+                                + "<td valign='top'>" + rs.getString("peninjauan_kegiatan_perawat_kamar_ok") + "</td>"
+                                + "<td valign='top'>" + rs.getString("perhatian_utama_fase_pemulihan") + "</td>"
+                                + "<td valign='top'>" + rs.getString("nip_perawat_ok") + "</td>"
+                                + "<td valign='top'>" + rs.getString("nama") + "</td>"
+                                + "</tr>");
                     }
                     LoadHTML.setText(
-                        "<html>"+
-                          "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                           htmlContent.toString()+
-                          "</table>"+
-                        "</html>"
+                            "<html>"
+                            + "<table width='2200px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"
+                            + htmlContent.toString()
+                            + "</table>"
+                            + "</html>"
                     );
 
-                    File g = new File("file2.css");            
+                    File g = new File("file2.css");
                     BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                     bg.write(
-                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                        ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                        ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                        ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                        ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                        ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                        ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                            ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                            + ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"
+                            + ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                            + ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                            + ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"
+                            + ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"
+                            + ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"
+                            + ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"
+                            + ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
                     );
                     bg.close();
 
-                    File f = new File("DataSignOutSebelumMenutupLuka.html");            
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                    bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                                "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                                "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                    "<tr class='isi2'>"+
-                                        "<td valign='top' align='center'>"+
-                                            "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                            akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                            akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                            "<font size='2' face='Tahoma'>DATA SIGN-OUT SEBELUM MENUTUP LUKA/MENINGGALKAN KAMAR OPERASI<br><br></font>"+        
-                                        "</td>"+
-                                   "</tr>"+
-                                "</table>")
+                    File f = new File("DataSignOutSebelumMenutupLuka.html");
+                    BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+                    bw.write(LoadHTML.getText().replaceAll("<head>", "<head>"
+                            + "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"
+                            + "<table width='2200px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                            + "<tr class='isi2'>"
+                            + "<td valign='top' align='center'>"
+                            + "<font size='4' face='Tahoma'>" + akses.getnamars() + "</font><br>"
+                            + akses.getalamatrs() + ", " + akses.getkabupatenrs() + ", " + akses.getpropinsirs() + "<br>"
+                            + akses.getkontakrs() + ", E-mail : " + akses.getemailrs() + "<br><br>"
+                            + "<font size='2' face='Tahoma'>DATA SIGN-OUT SEBELUM MENUTUP LUKA/MENINGGALKAN KAMAR OPERASI<br><br></font>"
+                            + "</td>"
+                            + "</tr>"
+                            + "</table>")
                     );
-                    bw.close();                         
+                    bw.close();
                     Desktop.getDesktop().browse(f.toURI());
                 } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
+                    System.out.println("Notif : " + e);
+                } finally {
+                    if (rs != null) {
                         rs.close();
                     }
-                    if(ps!=null){
+                    if (ps != null) {
                         ps.close();
                     }
                 }
 
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrintActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnEdit, BtnKeluar);
         }
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             BtnCariActionPerformed(null);
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             BtnCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
             BtnKeluar.requestFocus();
         }
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        runBackground(() ->tampil());
+        runBackground(() -> tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnCariActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        runBackground(() ->tampil());
+        runBackground(() -> tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
-            runBackground(() ->tampil());
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
+            runBackground(() -> tampil());
             TCari.setText("");
-        }else{
+        } else {
             Valid.pindah(evt, BtnCari, TPasien);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
@@ -1340,7 +1497,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
 }//GEN-LAST:event_TNoRMKeyPressed
 
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
-        if(tabMode.getRowCount()!=0){
+        if (tabMode.getRowCount() != 0) {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
@@ -1349,8 +1506,8 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatMouseClicked
 
     private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+        if (tabMode.getRowCount() != 0) {
+            if ((evt.getKeyCode() == KeyEvent.VK_ENTER) || (evt.getKeyCode() == KeyEvent.VK_UP) || (evt.getKeyCode() == KeyEvent.VK_DOWN)) {
                 try {
                     getData();
                 } catch (java.lang.NullPointerException e) {
@@ -1360,35 +1517,79 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
 }//GEN-LAST:event_tbObatKeyPressed
 
     private void MnSignOutSebelumMenutupLukaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSignOutSebelumMenutupLukaActionPerformed
-        if(tbObat.getSelectedRow()>-1){
+//        if (tbObat.getSelectedRow() > -1) {
+//            Map<String, Object> param = new HashMap<>();
+//            param.put("namars", akses.getnamars());
+//            param.put("alamatrs", akses.getalamatrs());
+//            param.put("kotars", akses.getkabupatenrs());
+//            param.put("propinsirs", akses.getpropinsirs());
+//            param.put("kontakrs", akses.getkontakrs());
+//            param.put("emailrs", akses.getemailrs());
+//            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
+//            finger = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 22).toString());
+//            param.put("finger", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(tbObat.getSelectedRow(), 23).toString() + "\nID " + (finger.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 22).toString() : finger) + "\n" + Tanggal.getSelectedItem());
+//            finger2 = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 10).toString());
+//            param.put("finger2", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(tbObat.getSelectedRow(), 11).toString() + "\nID " + (finger2.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 10).toString() : finger2) + "\n" + Tanggal.getSelectedItem());
+//            finger3 = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 8).toString());
+//            param.put("finger3", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(tbObat.getSelectedRow(), 9).toString() + "\nID " + (finger3.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 8).toString() : finger3) + "\n" + Tanggal.getSelectedItem());
+//            Valid.MyReportqry("rptFormulirSignOutSebelumMenutupLuka.jasper", "report", "::[ Formulir Sign-Out Sebelum Menutup Luka ]::",
+//                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"
+//                    + "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"
+//                    + "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"
+//                    + "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"
+//                    + "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"
+//                    + "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"
+//                    + "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"
+//                    + "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "
+//                    + "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+//                    + "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "
+//                    + "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "
+//                    + "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok  "
+//                    + "where signout_sebelum_menutup_luka.no_rawat='" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "' and signout_sebelum_menutup_luka.tanggal='" + tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() + "' ", param);
+//        }
+        if (tbObat.getSelectedRow() > -1) {
+            int baris = tbObat.getSelectedRow();
+
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),23).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),22).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            finger2=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            param.put("finger2","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()+"\nID "+(finger2.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),10).toString():finger2)+"\n"+Tanggal.getSelectedItem()); 
-            finger3=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            param.put("finger3","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()+"\nID "+(finger3.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),8).toString():finger3)+"\n"+Tanggal.getSelectedItem());
-            Valid.MyReportqry("rptFormulirSignOutSebelumMenutupLuka.jasper","report","::[ Formulir Sign-Out Sebelum Menutup Luka ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
-                    "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
-                    "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
-                    "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
-                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
-                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
-                    "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
-                    "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
-                    "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
-                    "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok  "+
-                    "where signout_sebelum_menutup_luka.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and signout_sebelum_menutup_luka.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
+
+            // Perawat OK (NIP index 38, nama index 39)
+            finger = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(baris, 38).toString());
+            param.put("finger", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(baris, 39).toString() + "\nID " + (finger.equals("") ? tbObat.getValueAt(baris, 38).toString() : finger) + "\n" + Tanggal.getSelectedItem());
+
+            // Dokter anestesi (kode index 10, nama index 11)
+            finger2 = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(baris, 10).toString());
+            param.put("finger2", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(baris, 11).toString() + "\nID " + (finger2.equals("") ? tbObat.getValueAt(baris, 10).toString() : finger2) + "\n" + Tanggal.getSelectedItem());
+
+            // Dokter bedah (kode index 8, nama index 9)
+            finger3 = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(baris, 8).toString());
+            param.put("finger3", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(baris, 9).toString() + "\nID " + (finger3.equals("") ? tbObat.getValueAt(baris, 8).toString() : finger3) + "\n" + Tanggal.getSelectedItem());
+
+            Valid.MyReportqry("rptFormulirSignOutSebelumMenutupLuka.jasper", "report", "::[ Formulir Sign-Out Sebelum Menutup Luka ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"
+                    + "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"
+                    + "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"
+                    + "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"
+                    + "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"
+                    + "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"
+                    + "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,"
+                    + "signout_sebelum_menutup_luka.kasa_preop,signout_sebelum_menutup_luka.kasa_tambahan,signout_sebelum_menutup_luka.kasa_kotor,signout_sebelum_menutup_luka.kasa_sisa,"
+                    + "signout_sebelum_menutup_luka.instrument_preop,signout_sebelum_menutup_luka.instrument_tambahan,signout_sebelum_menutup_luka.instrument_kotor,signout_sebelum_menutup_luka.instrument_sisa,"
+                    + "signout_sebelum_menutup_luka.jarum_preop,signout_sebelum_menutup_luka.jarum_tambahan,signout_sebelum_menutup_luka.jarum_kotor,signout_sebelum_menutup_luka.jarum_sisa,"
+                    + "signout_sebelum_menutup_luka.bigkasa_preop,signout_sebelum_menutup_luka.bigkasa_tambahan,signout_sebelum_menutup_luka.bigkasa_kotor,signout_sebelum_menutup_luka.bigkasa_sisa,"
+                    + "signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"
+                    + "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "
+                    + "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                    + "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "
+                    + "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "
+                    + "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok  "
+                    + "where signout_sebelum_menutup_luka.no_rawat='" + tbObat.getValueAt(baris, 0).toString() + "' and signout_sebelum_menutup_luka.tanggal='" + tbObat.getValueAt(baris, 5).toString() + "' ", param);
         }
     }//GEN-LAST:event_MnSignOutSebelumMenutupLukaActionPerformed
 
@@ -1397,28 +1598,30 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }//GEN-LAST:event_ChkInputActionPerformed
 
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-       // Valid.pindah(evt,Rencana,Informasi);
+        // Valid.pindah(evt,Rencana,Informasi);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void btnDokterBedahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterBedahActionPerformed
         if (dokter == null || !dokter.isDisplayable()) {
-            dokter=new DlgCariDokter(null,false);
+            dokter = new DlgCariDokter(null, false);
             dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             dokter.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    if(dokter.getTable().getSelectedRow()!= -1){        
-                         KodeDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                         NamaDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    }  
+                    if (dokter.getTable().getSelectedRow() != -1) {
+                        KodeDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString());
+                        NamaDokterBedah.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+                    }
                     btnDokterBedah.requestFocus();
-                    dokter=null;
+                    dokter = null;
                 }
             });
-            dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             dokter.setLocationRelativeTo(internalFrame1);
-        }   
-        if (dokter == null) return;
+        }
+        if (dokter == null) {
+            return;
+        }
         dokter.isCek();
         if (dokter.isVisible()) {
             dokter.toFront();
@@ -1428,28 +1631,30 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDokterBedahActionPerformed
 
     private void btnDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterBedahKeyPressed
-        Valid.pindah(evt,Tindakan,btnDokterAnestesi);
+        Valid.pindah(evt, Tindakan, btnDokterAnestesi);
     }//GEN-LAST:event_btnDokterBedahKeyPressed
 
     private void btnDokterAnestesiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterAnestesiActionPerformed
         if (dokter == null || !dokter.isDisplayable()) {
-            dokter=new DlgCariDokter(null,false);
+            dokter = new DlgCariDokter(null, false);
             dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             dokter.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    if(dokter.getTable().getSelectedRow()!= -1){        
-                         KodeDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                         NamaDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    }  
+                    if (dokter.getTable().getSelectedRow() != -1) {
+                        KodeDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString());
+                        NamaDokterAnestesi.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+                    }
                     btnDokterAnestesi.requestFocus();
-                    dokter=null;
+                    dokter = null;
                 }
             });
-            dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             dokter.setLocationRelativeTo(internalFrame1);
-        }   
-        if (dokter == null) return;
+        }
+        if (dokter == null) {
+            return;
+        }
         dokter.isCek();
         if (dokter.isVisible()) {
             dokter.toFront();
@@ -1459,112 +1664,116 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDokterAnestesiActionPerformed
 
     private void btnDokterAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterAnestesiKeyPressed
-        Valid.pindah(evt,btnDokterBedah,VerbalTindakan);
+        Valid.pindah(evt, btnDokterBedah, VerbalTindakan);
     }//GEN-LAST:event_btnDokterAnestesiKeyPressed
 
     private void btnPetugasOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPetugasOKActionPerformed
         if (petugas == null || !petugas.isDisplayable()) {
-            petugas=new DlgCariPetugas(null,false);
+            petugas = new DlgCariPetugas(null, false);
             petugas.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             petugas.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    if(petugas.getTable().getSelectedRow()!= -1){                   
-                        KdPetugasOK.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),0).toString());
-                        NmPetugasOK.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(),1).toString());
-                    }  
+                    if (petugas.getTable().getSelectedRow() != -1) {
+                        KdPetugasOK.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(), 0).toString());
+                        NmPetugasOK.setText(petugas.getTable().getValueAt(petugas.getTable().getSelectedRow(), 1).toString());
+                    }
                     btnPetugasOK.requestFocus();
-                    petugas=null;
+                    petugas = null;
                 }
             });
 
-            petugas.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            petugas.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             petugas.setLocationRelativeTo(internalFrame1);
         }
-        if (petugas == null) return;
+        if (petugas == null) {
+            return;
+        }
         if (!petugas.isVisible()) {
-            petugas.isCek();    
+            petugas.isCek();
             petugas.emptTeks();
         }
-        
+
         if (petugas.isVisible()) {
             petugas.toFront();
             return;
         }
-        petugas.setVisible(true); 
+        petugas.setVisible(true);
     }//GEN-LAST:event_btnPetugasOKActionPerformed
 
     private void btnPetugasOKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPetugasOKKeyPressed
-        Valid.pindah(evt,PerhatianUtamaFasePemulihan,BtnSimpan);
+        Valid.pindah(evt, PerhatianUtamaFasePemulihan, BtnSimpan);
     }//GEN-LAST:event_btnPetugasOKKeyPressed
 
     private void SNCNKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SNCNKeyPressed
-        Valid.pindah(evt,Tanggal,Tindakan);
+        Valid.pindah(evt, Tanggal, Tindakan);
     }//GEN-LAST:event_SNCNKeyPressed
 
     private void TindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TindakanKeyPressed
-        Valid.pindah(evt,SNCN,btnDokterBedah);
+        Valid.pindah(evt, SNCN, btnDokterBedah);
     }//GEN-LAST:event_TindakanKeyPressed
 
     private void VerbalTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalTindakanKeyPressed
-        Valid.pindah(evt,btnDokterAnestesi,VerbalKasa);
+        Valid.pindah(evt, btnDokterAnestesi, VerbalKasa);
     }//GEN-LAST:event_VerbalTindakanKeyPressed
 
     private void VerbalKasaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalKasaKeyPressed
-        Valid.pindah(evt,VerbalTindakan,VerbalInstrumen);
+        Valid.pindah(evt, VerbalTindakan, VerbalInstrumen);
     }//GEN-LAST:event_VerbalKasaKeyPressed
 
     private void VerbalInstrumenKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalInstrumenKeyPressed
-        Valid.pindah(evt,VerbalTindakan,VerbalAlatTajam);
+        Valid.pindah(evt, VerbalTindakan, VerbalAlatTajam);
     }//GEN-LAST:event_VerbalInstrumenKeyPressed
 
     private void VerbalAlatTajamKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VerbalAlatTajamKeyPressed
-        Valid.pindah(evt,VerbalInstrumen,KelengkapanSpesimenLabel);
+        Valid.pindah(evt, VerbalInstrumen, KelengkapanSpesimenLabel);
     }//GEN-LAST:event_VerbalAlatTajamKeyPressed
 
     private void KelengkapanSpesimenLabelKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanSpesimenLabelKeyPressed
-        Valid.pindah(evt,VerbalAlatTajam,KelengkapanSpesimenFormulir);
+        Valid.pindah(evt, VerbalAlatTajam, KelengkapanSpesimenFormulir);
     }//GEN-LAST:event_KelengkapanSpesimenLabelKeyPressed
 
     private void KelengkapanSpesimenFormulirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanSpesimenFormulirKeyPressed
-        Valid.pindah(evt,KelengkapanSpesimenLabel,PeninjauanKembaliDokterBedah);
+        Valid.pindah(evt, KelengkapanSpesimenLabel, PeninjauanKembaliDokterBedah);
     }//GEN-LAST:event_KelengkapanSpesimenFormulirKeyPressed
 
     private void PeninjauanKembaliDokterBedahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliDokterBedahKeyPressed
-        Valid.pindah(evt,KelengkapanSpesimenFormulir,PeninjauanKembaliDokterAnestesi);
+        Valid.pindah(evt, KelengkapanSpesimenFormulir, PeninjauanKembaliDokterAnestesi);
     }//GEN-LAST:event_PeninjauanKembaliDokterBedahKeyPressed
 
     private void PeninjauanKembaliDokterAnestesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliDokterAnestesiKeyPressed
-        Valid.pindah(evt,PeninjauanKembaliDokterBedah,PeninjauanKembaliPerawatKamarOK);
+        Valid.pindah(evt, PeninjauanKembaliDokterBedah, PeninjauanKembaliPerawatKamarOK);
     }//GEN-LAST:event_PeninjauanKembaliDokterAnestesiKeyPressed
 
     private void PeninjauanKembaliPerawatKamarOKKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PeninjauanKembaliPerawatKamarOKKeyPressed
-        Valid.pindah(evt,PeninjauanKembaliDokterAnestesi,PerhatianUtamaFasePemulihan);
+        Valid.pindah(evt, PeninjauanKembaliDokterAnestesi, PerhatianUtamaFasePemulihan);
     }//GEN-LAST:event_PeninjauanKembaliPerawatKamarOKKeyPressed
 
     private void PerhatianUtamaFasePemulihanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PerhatianUtamaFasePemulihanKeyPressed
-        Valid.pindah(evt,PeninjauanKembaliPerawatKamarOK,btnPetugasOK);
+        Valid.pindah(evt, PeninjauanKembaliPerawatKamarOK, btnPetugasOK);
     }//GEN-LAST:event_PerhatianUtamaFasePemulihanKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+        if (koneksiDB.CARICEPAT().equals("aktif")) {
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                    if (TCari.getText().length() > 2) {
+                        runBackground(() -> tampil());
                     }
                 }
+
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                    if (TCari.getText().length() > 2) {
+                        runBackground(() -> tampil());
                     }
                 }
+
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                    if (TCari.getText().length() > 2) {
+                        runBackground(() -> tampil());
                     }
                 }
             });
@@ -1572,8 +1781,8 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             RMSignOutSebelumMenutupLuka dialog = new RMSignOutSebelumMenutupLuka(new javax.swing.JFrame(), true);
@@ -1664,96 +1873,228 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JTable jTable1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private widget.ScrollPane scrollInput;
     private widget.Table tbObat;
     // End of variables declaration//GEN-END:variables
-    
+
+//    private void tampil() {
+//        Valid.tabelKosong(tabMode);
+//        try {
+//            if (TCari.getText().trim().equals("")) {
+//                ps = koneksi.prepareStatement(
+//                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"
+//                        + "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"
+//                        + "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"
+//                        + "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"
+//                        + "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"
+//                        + "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"
+//                        + "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"
+//                        + "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "
+//                        + "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+//                        + "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "
+//                        + "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "
+//                        + "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "
+//                        + "where signout_sebelum_menutup_luka.tanggal between ? and ? order by signout_sebelum_menutup_luka.tanggal ");
+//            } else {
+//                ps = koneksi.prepareStatement(
+//                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"
+//                        + "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"
+//                        + "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"
+//                        + "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"
+//                        + "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"
+//                        + "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"
+//                        + "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"
+//                        + "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "
+//                        + "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+//                        + "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "
+//                        + "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "
+//                        + "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "
+//                        + "where signout_sebelum_menutup_luka.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "
+//                        + "pasien.nm_pasien like ? or dokterbedah.nm_dokter like ? or dokteranestesi.nm_dokter like ? or petugas.nama like ?) "
+//                        + "order by signout_sebelum_menutup_luka.tanggal ");
+//            }
+//
+//            try {
+//                if (TCari.getText().trim().equals("")) {
+//                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+//                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+//                } else {
+//                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+//                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+//                    ps.setString(3, "%" + TCari.getText() + "%");
+//                    ps.setString(4, "%" + TCari.getText() + "%");
+//                    ps.setString(5, "%" + TCari.getText() + "%");
+//                    ps.setString(6, "%" + TCari.getText() + "%");
+//                    ps.setString(7, "%" + TCari.getText() + "%");
+//                    ps.setString(8, "%" + TCari.getText() + "%");
+//                }
+//
+//                rs = ps.executeQuery();
+//                while (rs.next()) {
+//                    tabMode.addRow(new Object[]{
+//                        rs.getString("no_rawat"), rs.getString("no_rkm_medis"), rs.getString("nm_pasien"), rs.getDate("tgl_lahir"), rs.getString("jk"),
+//                        rs.getString("tanggal"), rs.getString("sncn"), rs.getString("tindakan"), rs.getString("kd_dokter_bedah"), rs.getString("dokterbedah"),
+//                        rs.getString("kd_dokter_anestesi"), rs.getString("dokteranestesi"), rs.getString("verbal_tindakan"), rs.getString("verbal_kelengkapan_kasa"),
+//                        rs.getString("verbal_instrumen"), rs.getString("verbal_alat_tajam"), rs.getString("kelengkapan_specimen_label"),
+//                        rs.getString("kelengkapan_specimen_formulir"), rs.getString("peninjauan_kegiatan_dokter_bedah"), rs.getString("peninjauan_kegiatan_dokter_anestesi"),
+//                        rs.getString("peninjauan_kegiatan_perawat_kamar_ok"), rs.getString("perhatian_utama_fase_pemulihan"), rs.getString("nip_perawat_ok"),
+//                        rs.getString("nama")
+//                    });
+//                }
+//            } catch (Exception e) {
+//                System.out.println("Notif : " + e);
+//            } finally {
+//                if (rs != null) {
+//                    rs.close();
+//                }
+//                if (ps != null) {
+//                    ps.close();
+//                }
+//            }
+//        } catch (Exception e) {
+//            System.out.println("Notifikasi : " + e);
+//        }
+//        LCount.setText("" + tabMode.getRowCount());
+//    }
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{
-            if(TCari.getText().trim().equals("")){
-                ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
-                    "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
-                    "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
-                    "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
-                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
-                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
-                    "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
-                    "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
-                    "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
-                    "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
-                    "where signout_sebelum_menutup_luka.tanggal between ? and ? order by signout_sebelum_menutup_luka.tanggal ");
-            }else{
-                ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"+
-                    "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"+
-                    "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"+
-                    "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"+
-                    "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"+
-                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"+
-                    "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"+
-                    "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "+
-                    "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "+
-                    "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "+
-                    "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok "+
-                    "where signout_sebelum_menutup_luka.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "+
-                    "pasien.nm_pasien like ? or dokterbedah.nm_dokter like ? or dokteranestesi.nm_dokter like ? or petugas.nama like ?) "+
-                    "order by signout_sebelum_menutup_luka.tanggal ");
+        try {
+            String kolom = "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,signout_sebelum_menutup_luka.tanggal,"
+                    + "signout_sebelum_menutup_luka.sncn,signout_sebelum_menutup_luka.tindakan,signout_sebelum_menutup_luka.kd_dokter_bedah,dokterbedah.nm_dokter as dokterbedah,"
+                    + "signout_sebelum_menutup_luka.kd_dokter_anestesi,dokteranestesi.nm_dokter as dokteranestesi,signout_sebelum_menutup_luka.verbal_tindakan,"
+                    + "signout_sebelum_menutup_luka.verbal_kelengkapan_kasa,signout_sebelum_menutup_luka.verbal_instrumen,signout_sebelum_menutup_luka.verbal_alat_tajam,"
+                    + "signout_sebelum_menutup_luka.kelengkapan_specimen_label,signout_sebelum_menutup_luka.kelengkapan_specimen_formulir,"
+                    + "signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_bedah,signout_sebelum_menutup_luka.peninjauan_kegiatan_dokter_anestesi,"
+                    + "signout_sebelum_menutup_luka.peninjauan_kegiatan_perawat_kamar_ok,"
+                    + "signout_sebelum_menutup_luka.kasa_preop,signout_sebelum_menutup_luka.kasa_tambahan,signout_sebelum_menutup_luka.kasa_kotor,signout_sebelum_menutup_luka.kasa_sisa,"
+                    + "signout_sebelum_menutup_luka.instrument_preop,signout_sebelum_menutup_luka.instrument_tambahan,signout_sebelum_menutup_luka.instrument_kotor,signout_sebelum_menutup_luka.instrument_sisa,"
+                    + "signout_sebelum_menutup_luka.jarum_preop,signout_sebelum_menutup_luka.jarum_tambahan,signout_sebelum_menutup_luka.jarum_kotor,signout_sebelum_menutup_luka.jarum_sisa,"
+                    + "signout_sebelum_menutup_luka.bigkasa_preop,signout_sebelum_menutup_luka.bigkasa_tambahan,signout_sebelum_menutup_luka.bigkasa_kotor,signout_sebelum_menutup_luka.bigkasa_sisa,"
+                    + "signout_sebelum_menutup_luka.perhatian_utama_fase_pemulihan,"
+                    + "signout_sebelum_menutup_luka.nip_perawat_ok,petugas.nama from signout_sebelum_menutup_luka inner join reg_periksa "
+                    + "on signout_sebelum_menutup_luka.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                    + "inner join dokter as dokterbedah on dokterbedah.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_bedah "
+                    + "inner join dokter as dokteranestesi on dokteranestesi.kd_dokter=signout_sebelum_menutup_luka.kd_dokter_anestesi "
+                    + "inner join petugas on petugas.nip=signout_sebelum_menutup_luka.nip_perawat_ok ";
+
+            if (TCari.getText().trim().equals("")) {
+                ps = koneksi.prepareStatement(kolom
+                        + "where signout_sebelum_menutup_luka.tanggal between ? and ? order by signout_sebelum_menutup_luka.tanggal ");
+            } else {
+                ps = koneksi.prepareStatement(kolom
+                        + "where signout_sebelum_menutup_luka.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "
+                        + "pasien.nm_pasien like ? or dokterbedah.nm_dokter like ? or dokteranestesi.nm_dokter like ? or petugas.nama like ?) "
+                        + "order by signout_sebelum_menutup_luka.tanggal ");
             }
-                
+
             try {
-                if(TCari.getText().trim().equals("")){
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                }else{
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+TCari.getText()+"%");
-                    ps.setString(8,"%"+TCari.getText()+"%");
+                if (TCari.getText().trim().equals("")) {
+                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                } else {
+                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                    ps.setString(3, "%" + TCari.getText() + "%");
+                    ps.setString(4, "%" + TCari.getText() + "%");
+                    ps.setString(5, "%" + TCari.getText() + "%");
+                    ps.setString(6, "%" + TCari.getText() + "%");
+                    ps.setString(7, "%" + TCari.getText() + "%");
+                    ps.setString(8, "%" + TCari.getText() + "%");
                 }
-                    
-                rs=ps.executeQuery();
-                while(rs.next()){
+
+                rs = ps.executeQuery();
+                while (rs.next()) {
                     tabMode.addRow(new Object[]{
-                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),
-                        rs.getString("tanggal"),rs.getString("sncn"),rs.getString("tindakan"),rs.getString("kd_dokter_bedah"),rs.getString("dokterbedah"),
-                        rs.getString("kd_dokter_anestesi"),rs.getString("dokteranestesi"),rs.getString("verbal_tindakan"),rs.getString("verbal_kelengkapan_kasa"),
-                        rs.getString("verbal_instrumen"),rs.getString("verbal_alat_tajam"),rs.getString("kelengkapan_specimen_label"),
-                        rs.getString("kelengkapan_specimen_formulir"),rs.getString("peninjauan_kegiatan_dokter_bedah"),rs.getString("peninjauan_kegiatan_dokter_anestesi"),
-                        rs.getString("peninjauan_kegiatan_perawat_kamar_ok"),rs.getString("perhatian_utama_fase_pemulihan"),rs.getString("nip_perawat_ok"),
+                        rs.getString("no_rawat"), rs.getString("no_rkm_medis"), rs.getString("nm_pasien"), rs.getDate("tgl_lahir"), rs.getString("jk"),
+                        rs.getString("tanggal"), rs.getString("sncn"), rs.getString("tindakan"), rs.getString("kd_dokter_bedah"), rs.getString("dokterbedah"),
+                        rs.getString("kd_dokter_anestesi"), rs.getString("dokteranestesi"), rs.getString("verbal_tindakan"), rs.getString("verbal_kelengkapan_kasa"),
+                        rs.getString("verbal_instrumen"), rs.getString("verbal_alat_tajam"), rs.getString("kelengkapan_specimen_label"),
+                        rs.getString("kelengkapan_specimen_formulir"), rs.getString("peninjauan_kegiatan_dokter_bedah"), rs.getString("peninjauan_kegiatan_dokter_anestesi"),
+                        rs.getString("peninjauan_kegiatan_perawat_kamar_ok"),
+                        // Kasa (index 21-24)
+                        rs.getString("kasa_preop"), rs.getString("kasa_tambahan"), rs.getString("kasa_kotor"), rs.getString("kasa_sisa"),
+                        // Instrumen (index 25-28)
+                        rs.getString("instrument_preop"), rs.getString("instrument_tambahan"), rs.getString("instrument_kotor"), rs.getString("instrument_sisa"),
+                        // Jarum (index 29-32)
+                        rs.getString("jarum_preop"), rs.getString("jarum_tambahan"), rs.getString("jarum_kotor"), rs.getString("jarum_sisa"),
+                        // Big Kasa (index 33-36)
+                        rs.getString("bigkasa_preop"), rs.getString("bigkasa_tambahan"), rs.getString("bigkasa_kotor"), rs.getString("bigkasa_sisa"),
+                        rs.getString("perhatian_utama_fase_pemulihan"), rs.getString("nip_perawat_ok"),
                         rs.getString("nama")
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
+                System.out.println("Notif : " + e);
+            } finally {
+                if (rs != null) {
                     rs.close();
                 }
-                if(ps!=null){
+                if (ps != null) {
                     ps.close();
                 }
             }
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        LCount.setText("" + tabMode.getRowCount());
     }
-    
+
+//    public void emptTeks() {
+//        SNCN.setText("");
+//        Tindakan.setText("");
+//        KodeDokterBedah.setText("");
+//        NamaDokterBedah.setText("");
+//        KodeDokterAnestesi.setText("");
+//        NamaDokterAnestesi.setText("");
+//        Tanggal.setDate(new Date());
+//        VerbalTindakan.setSelectedIndex(0);
+//        VerbalKasa.setSelectedIndex(0);
+//        VerbalInstrumen.setSelectedIndex(0);
+//        VerbalAlatTajam.setSelectedIndex(0);
+//        KelengkapanSpesimenLabel.setSelectedIndex(0);
+//        KelengkapanSpesimenFormulir.setSelectedIndex(0);
+//        PeninjauanKembaliDokterBedah.setSelectedIndex(0);
+//        PeninjauanKembaliDokterAnestesi.setSelectedIndex(0);
+//        PeninjauanKembaliPerawatKamarOK.setSelectedIndex(0);
+//        PerhatianUtamaFasePemulihan.setText("");
+//        SNCN.requestFocus();
+//    }
+//
+//    private void getData() {
+//        if (tbObat.getSelectedRow() != -1) {
+//            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
+//            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
+//            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
+//            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 3).toString());
+//            SNCN.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString());
+//            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 7).toString());
+//            KodeDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 8).toString());
+//            NamaDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 9).toString());
+//            KodeDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 10).toString());
+//            NamaDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 11).toString());
+//            VerbalTindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 12).toString());
+//            VerbalKasa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 13).toString());
+//            VerbalInstrumen.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 14).toString());
+//            VerbalAlatTajam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 15).toString());
+//            KelengkapanSpesimenLabel.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 16).toString());
+//            KelengkapanSpesimenFormulir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 17).toString());
+//            PeninjauanKembaliDokterBedah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 18).toString());
+//            PeninjauanKembaliDokterAnestesi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 19).toString());
+//            PeninjauanKembaliPerawatKamarOK.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 20).toString());
+//            PerhatianUtamaFasePemulihan.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 21).toString());
+//            KdPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 22).toString());
+//            NmPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 23).toString());
+//            Valid.SetTgl2(Tanggal, tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
+//        }
+//    }
     public void emptTeks() {
         SNCN.setText("");
         Tindakan.setText("");
@@ -1772,61 +2113,75 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         PeninjauanKembaliDokterAnestesi.setSelectedIndex(0);
         PeninjauanKembaliPerawatKamarOK.setSelectedIndex(0);
         PerhatianUtamaFasePemulihan.setText("");
+        resetTabel(); // kembalikan isi jTable1 (kasa, instrumen, jarum, big kasa) ke "-"
         SNCN.requestFocus();
-    } 
+    }
 
     private void getData() {
-        if(tbObat.getSelectedRow()!= -1){
-            TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-            TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(),1).toString());
-            TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
-            TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
-            SNCN.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            Tindakan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            KodeDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
-            NamaDokterBedah.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
-            KodeDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
-            NamaDokterAnestesi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
-            VerbalTindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
-            VerbalKasa.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
-            VerbalInstrumen.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
-            VerbalAlatTajam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
-            KelengkapanSpesimenLabel.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-            KelengkapanSpesimenFormulir.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
-            PeninjauanKembaliDokterBedah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
-            PeninjauanKembaliDokterAnestesi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
-            PeninjauanKembaliPerawatKamarOK.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
-            PerhatianUtamaFasePemulihan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
-            KdPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
-            NmPetugasOK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
-            Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
+        if (tbObat.getSelectedRow() != -1) {
+            int baris = tbObat.getSelectedRow();
+
+            TNoRw.setText(tbObat.getValueAt(baris, 0).toString());
+            TNoRM.setText(tbObat.getValueAt(baris, 1).toString());
+            TPasien.setText(tbObat.getValueAt(baris, 2).toString());
+            TglLahir.setText(tbObat.getValueAt(baris, 3).toString());
+            SNCN.setText(tbObat.getValueAt(baris, 6).toString());
+            Tindakan.setText(tbObat.getValueAt(baris, 7).toString());
+            KodeDokterBedah.setText(tbObat.getValueAt(baris, 8).toString());
+            NamaDokterBedah.setText(tbObat.getValueAt(baris, 9).toString());
+            KodeDokterAnestesi.setText(tbObat.getValueAt(baris, 10).toString());
+            NamaDokterAnestesi.setText(tbObat.getValueAt(baris, 11).toString());
+            VerbalTindakan.setSelectedItem(tbObat.getValueAt(baris, 12).toString());
+            VerbalKasa.setSelectedItem(tbObat.getValueAt(baris, 13).toString());
+            VerbalInstrumen.setSelectedItem(tbObat.getValueAt(baris, 14).toString());
+            VerbalAlatTajam.setSelectedItem(tbObat.getValueAt(baris, 15).toString());
+            KelengkapanSpesimenLabel.setSelectedItem(tbObat.getValueAt(baris, 16).toString());
+            KelengkapanSpesimenFormulir.setSelectedItem(tbObat.getValueAt(baris, 17).toString());
+            PeninjauanKembaliDokterBedah.setSelectedItem(tbObat.getValueAt(baris, 18).toString());
+            PeninjauanKembaliDokterAnestesi.setSelectedItem(tbObat.getValueAt(baris, 19).toString());
+            PeninjauanKembaliPerawatKamarOK.setSelectedItem(tbObat.getValueAt(baris, 20).toString());
+
+            // Isi jTable1 dari tbObat kolom 21-36
+            // baris 0 = Kasa (21-24), 1 = Instrumen (25-28), 2 = Jarum (29-32), 3 = Big Kasa (33-36)
+            for (int r = 0; r < 4; r++) {
+                for (int c = 0; c < 4; c++) {
+                    Object v = tbObat.getValueAt(baris, 21 + (r * 4) + c);
+                    jTable1.setValueAt(v == null ? "-" : v.toString(), r, c + 1);
+                }
+            }
+
+            PerhatianUtamaFasePemulihan.setText(tbObat.getValueAt(baris, 37).toString());
+            KdPetugasOK.setText(tbObat.getValueAt(baris, 38).toString());
+            NmPetugasOK.setText(tbObat.getValueAt(baris, 39).toString());
+            Valid.SetTgl2(Tanggal, tbObat.getValueAt(baris, 5).toString());
         }
     }
+
     private void isRawat() {
-         Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='"+TNoRw.getText()+"' ",TNoRM);
+        Sequel.cariIsi("select reg_periksa.no_rkm_medis from reg_periksa where reg_periksa.no_rawat='" + TNoRw.getText() + "' ", TNoRM);
     }
 
     private void isPsien() {
-        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='"+TNoRM.getText()+"' ",TPasien);
-        Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ",TglLahir,TNoRM.getText());
+        Sequel.cariIsi("select pasien.nm_pasien from pasien where pasien.no_rkm_medis='" + TNoRM.getText() + "' ", TPasien);
+        Sequel.cariIsi("select DATE_FORMAT(pasien.tgl_lahir,'%d-%m-%Y') from pasien where pasien.no_rkm_medis=? ", TglLahir, TNoRM.getText());
     }
-    
+
     public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
+        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='" + norwt + "'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
         isPsien();
         ChkInput.setSelected(true);
         isForm();
-        runBackground(() ->tampil());
+        runBackground(() -> tampil());
     }
-    
-    public void setNoRm(String norwt, Date tgl2,String KodeDokter,String NamaDokter,String Operasi) {
+
+    public void setNoRm(String norwt, Date tgl2, String KodeDokter, String NamaDokter, String Operasi) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='"+norwt+"'", DTPCari1);
+        Sequel.cariIsi("select reg_periksa.tgl_registrasi from reg_periksa where reg_periksa.no_rawat='" + norwt + "'", DTPCari1);
         DTPCari2.setDate(tgl2);
         isRawat();
         isPsien();
@@ -1835,70 +2190,142 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
         KodeDokterBedah.setText(KodeDokter);
         NamaDokterBedah.setText(NamaDokter);
         Tindakan.setText(Operasi);
-        runBackground(() ->tampil());
+        runBackground(() -> tampil());
     }
-    
-    private void isForm(){
-        if(ChkInput.isSelected()==true){
-            if(internalFrame1.getHeight()>538){
+
+    private void isForm() {
+        if (ChkInput.isSelected() == true) {
+            if (internalFrame1.getHeight() > 538) {
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,366));
-                FormInput.setVisible(true);      
+                PanelInput.setPreferredSize(new Dimension(WIDTH, 366));
+                FormInput.setVisible(true);
                 ChkInput.setVisible(true);
-            }else{
+            } else {
                 ChkInput.setVisible(false);
-                PanelInput.setPreferredSize(new Dimension(WIDTH,internalFrame1.getHeight()-175));
-                FormInput.setVisible(true);      
+                PanelInput.setPreferredSize(new Dimension(WIDTH, internalFrame1.getHeight() - 175));
+                FormInput.setVisible(true);
                 ChkInput.setVisible(true);
             }
-        }else if(ChkInput.isSelected()==false){           
-            ChkInput.setVisible(false);            
-            PanelInput.setPreferredSize(new Dimension(WIDTH,20));
-            FormInput.setVisible(false);      
+        } else if (ChkInput.isSelected() == false) {
+            ChkInput.setVisible(false);
+            PanelInput.setPreferredSize(new Dimension(WIDTH, 20));
+            FormInput.setVisible(false);
             ChkInput.setVisible(true);
         }
     }
-    
-    public void isCek(){
+
+    public void isCek() {
         BtnSimpan.setEnabled(akses.getsignout_sebelum_menutup_luka());
         BtnHapus.setEnabled(akses.getsignout_sebelum_menutup_luka());
         BtnEdit.setEnabled(akses.getsignout_sebelum_menutup_luka());
-        BtnPrint.setEnabled(akses.getsignout_sebelum_menutup_luka()); 
+        BtnPrint.setEnabled(akses.getsignout_sebelum_menutup_luka());
     }
 
+//    private void ganti() {
+//        Sequel.mengedit("signout_sebelum_menutup_luka", "no_rawat=? and tanggal=?", "no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,"
+//                + "verbal_tindakan=?,verbal_kelengkapan_kasa=?,verbal_instrumen=?,verbal_alat_tajam=?,kelengkapan_specimen_label=?,kelengkapan_specimen_formulir=?,"
+//                + "peninjauan_kegiatan_dokter_bedah=?,peninjauan_kegiatan_dokter_anestesi=?,peninjauan_kegiatan_perawat_kamar_ok=?,perhatian_utama_fase_pemulihan=?,"
+//                + "nip_perawat_ok=?", 19, new String[]{
+//                    TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + "") + " " + Tanggal.getSelectedItem().toString().substring(11, 19), SNCN.getText(), Tindakan.getText(),
+//                    KodeDokterBedah.getText(), KodeDokterAnestesi.getText(), VerbalTindakan.getSelectedItem().toString(), VerbalKasa.getSelectedItem().toString(),
+//                    VerbalInstrumen.getSelectedItem().toString(), VerbalAlatTajam.getSelectedItem().toString(), KelengkapanSpesimenLabel.getSelectedItem().toString(),
+//                    KelengkapanSpesimenFormulir.getSelectedItem().toString(), PeninjauanKembaliDokterBedah.getSelectedItem().toString(), PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(),
+//                    PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(), PerhatianUtamaFasePemulihan.getText(), KdPetugasOK.getText(),
+//                    tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString(), tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()
+//                });
+//
+//        if (tabMode.getRowCount() != 0) {
+//            runBackground(() -> tampil());
+//        }
+//        emptTeks();
+//    }
     private void ganti() {
-        Sequel.mengedit("signout_sebelum_menutup_luka","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,"+
-                "verbal_tindakan=?,verbal_kelengkapan_kasa=?,verbal_instrumen=?,verbal_alat_tajam=?,kelengkapan_specimen_label=?,kelengkapan_specimen_formulir=?,"+
-                "peninjauan_kegiatan_dokter_bedah=?,peninjauan_kegiatan_dokter_anestesi=?,peninjauan_kegiatan_perawat_kamar_ok=?,perhatian_utama_fase_pemulihan=?,"+
-                "nip_perawat_ok=?",19,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),SNCN.getText(),Tindakan.getText(),
-                KodeDokterBedah.getText(),KodeDokterAnestesi.getText(),VerbalTindakan.getSelectedItem().toString(),VerbalKasa.getSelectedItem().toString(), 
-                VerbalInstrumen.getSelectedItem().toString(),VerbalAlatTajam.getSelectedItem().toString(),KelengkapanSpesimenLabel.getSelectedItem().toString(), 
-                KelengkapanSpesimenFormulir.getSelectedItem().toString(),PeninjauanKembaliDokterBedah.getSelectedItem().toString(),PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(), 
-                PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(),PerhatianUtamaFasePemulihan.getText(),KdPetugasOK.getText(),
-                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-        });
-            
-        if(tabMode.getRowCount()!=0){runBackground(() ->tampil());}
+        commitTabel(); // pastikan sel jTable1 yang masih diedit ikut terbaca
+
+        Sequel.mengedit("signout_sebelum_menutup_luka", "no_rawat=? and tanggal=?", "no_rawat=?,tanggal=?,sncn=?,tindakan=?,kd_dokter_bedah=?,kd_dokter_anestesi=?,"
+                + "verbal_tindakan=?,verbal_kelengkapan_kasa=?,verbal_instrumen=?,verbal_alat_tajam=?,kelengkapan_specimen_label=?,kelengkapan_specimen_formulir=?,"
+                + "peninjauan_kegiatan_dokter_bedah=?,peninjauan_kegiatan_dokter_anestesi=?,peninjauan_kegiatan_perawat_kamar_ok=?,"
+                + "kasa_preop=?,kasa_tambahan=?,kasa_kotor=?,kasa_sisa=?,"
+                + "instrument_preop=?,instrument_tambahan=?,instrument_kotor=?,instrument_sisa=?,"
+                + "jarum_preop=?,jarum_tambahan=?,jarum_kotor=?,jarum_sisa=?,"
+                + "bigkasa_preop=?,bigkasa_tambahan=?,bigkasa_kotor=?,bigkasa_sisa=?,"
+                + "perhatian_utama_fase_pemulihan=?,nip_perawat_ok=?", 35, new String[]{
+                    TNoRw.getText(), Valid.SetTgl(Tanggal.getSelectedItem() + "") + " " + Tanggal.getSelectedItem().toString().substring(11, 19), SNCN.getText(), Tindakan.getText(),
+                    KodeDokterBedah.getText(), KodeDokterAnestesi.getText(), VerbalTindakan.getSelectedItem().toString(), VerbalKasa.getSelectedItem().toString(),
+                    VerbalInstrumen.getSelectedItem().toString(), VerbalAlatTajam.getSelectedItem().toString(), KelengkapanSpesimenLabel.getSelectedItem().toString(),
+                    KelengkapanSpesimenFormulir.getSelectedItem().toString(), PeninjauanKembaliDokterBedah.getSelectedItem().toString(), PeninjauanKembaliDokterAnestesi.getSelectedItem().toString(),
+                    PeninjauanKembaliPerawatKamarOK.getSelectedItem().toString(),
+                    // Kasa (baris 0)
+                    sel(0, 1), sel(0, 2), sel(0, 3), sel(0, 4),
+                    // Instrumen (baris 1)
+                    sel(1, 1), sel(1, 2), sel(1, 3), sel(1, 4),
+                    // Jarum (baris 2)
+                    sel(2, 1), sel(2, 2), sel(2, 3), sel(2, 4),
+                    // Big Kasa (baris 3)
+                    sel(3, 1), sel(3, 2), sel(3, 3), sel(3, 4),
+                    PerhatianUtamaFasePemulihan.getText(), KdPetugasOK.getText(),
+                    // WHERE: no_rawat dan tanggal dari baris yang dipilih (kolom 0 dan 5 tidak bergeser)
+                    tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString(), tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()
+                });
+
+        if (tabMode.getRowCount() != 0) {
+            runBackground(() -> tampil());
+        }
         emptTeks();
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from signout_sebelum_menutup_luka where no_rawat=? and tanggal=?",2,new String[]{
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
-        })==true){
+        if (Sequel.queryu2tf("delete from signout_sebelum_menutup_luka where no_rawat=? and tanggal=?", 2, new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString(), tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()
+        }) == true) {
             tabMode.removeRow(tbObat.getSelectedRow());
-            LCount.setText(""+tabMode.getRowCount());
+            LCount.setText("" + tabMode.getRowCount());
             emptTeks();
-        }else{
-            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
         }
     }
-    
+
+    private String isi(String s) {
+        return (s == null || s.trim().isEmpty()) ? "-" : s.trim();
+    }
+    // Read one cell from jTable1; empty or null becomes "-"
+
+    private String sel(int row, int col) {
+        Object v = jTable1.getValueAt(row, col);
+        if (v == null) {
+            return "-";
+        }
+        String s = v.toString().trim();
+        return s.isEmpty() ? "-" : s;
+    }
+
+// Commit a cell that is still being edited, otherwise its value is not read yet
+    private void commitTabel() {
+        if (jTable1.isEditing()) {
+            jTable1.getCellEditor().stopCellEditing();
+        }
+    }
+
+// Clear the input table
+    private void resetTabel() {
+        for (int r = 0; r < jTable1.getRowCount(); r++) {
+            for (int c = 1; c < jTable1.getColumnCount(); c++) {
+                jTable1.setValueAt("-", r, c);
+            }
+        }
+    }
+
     private void runBackground(Runnable task) {
-        if (ceksukses) return;
-        if (executor.isShutdown() || executor.isTerminated()) return;
-        if (!isDisplayable()) return;
+        if (ceksukses) {
+            return;
+        }
+        if (executor.isShutdown() || executor.isTerminated()) {
+            return;
+        }
+        if (!isDisplayable()) {
+            return;
+        }
 
         ceksukses = true;
         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1920,7 +2347,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
             ceksukses = false;
         }
     }
-    
+
     @Override
     public void dispose() {
         executor.shutdownNow();

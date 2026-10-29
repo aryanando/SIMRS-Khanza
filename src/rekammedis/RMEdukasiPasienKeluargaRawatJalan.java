@@ -1806,44 +1806,75 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
             finger = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 32).toString());
             param.put("finger", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(tbObat.getSelectedRow(), 33).toString() + "\nID " + (finger.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 32).toString() : finger) + "\n" + Tanggal.getSelectedItem());
 
-//            fingerPg[0] = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 32).toString());
             param.put("norawat", tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
             param.put("tgl_param", tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
-// --- 1. Data definition: {arrayIndex, nipColumn, namaColumn, paramKey, waktuColumn} ------
-            Object[][] pgMeta = {
-                {1, "nip_diagnosa", "petugas_diagnosa", "finger_diagnosa", "waktu_diagnosis"},
-                {2, "nip_tanda", "petugas_tanda", "finger_tanda", "waktu_tanda"},
-                {3, "nip_ren_medis", "petugas_ren_medis", "finger_ren_medis", "waktu_ren_medis"},
-                {4, "nip_pengobatan", "petugas_pengobatan", "finger_pengobatan", "waktu_pengobatan"},
-                {5, "nip_proses_rawat", "petugas_proses_rawat", "finger_proses_rawat", "waktu_proses_rawat"},
-                {6, "nip_alt_pengobatan", "petugas_alt_pengobatan", "finger_alt_pengobatan", "waktu_alt_pengobatan"},
-                {7, "nip_cara_penggunaan", "petugas_cara_penggunaan", "finger_cara_penggunaan", "waktu_cara_pengobatan"},
-                {8, "nip_dosis", "petugas_dosis", "finger_dosis", "waktu_dosis"},
-                {9, "nip_efek", "petugas_efek", "finger_efek", "waktu_efek"},
-                {10, "nip_diet", "petugas_diet", "finger_diet", "waktu_diet"},
-                {11, "nip_mobilisasi", "petugas_mobilisasi", "finger_mobilisasi", "waktu_mobilisasi"},
-                {12, "nip_perawatan_luka", "petugas_perawatan_luka", "finger_perawatan_luka", "waktu_perawatan_luka"},
-                {13, "nip_penggunaan_alat", "petugas_penggunaan_alat", "finger_penggunaan_alat", "waktu_penggunaan_alat_medis"},
-                {14, "nip_pencegahan_komplikasi", "petugas_pencegahan_komplikasi", "finger_pencegahan_komplikasi", "waktu_pencegahan_komplikasi"},
-                {15, "nip_manajemen_nyeri", "petugas_manajemen_nyeri", "finger_manajemen_nyeri", "waktu_manajemen_nyeri"},
-                {16, "nip_kebersihan", "petugas_kebersihan", "finger_kebersihan", "waktu_kebersihan"},
-                {17, "nip_penundaan", "petugas_penundaan", "finger_penundaan", "waktu_penundaan"},
-                {18, "nip_hambatan", "petugas_hambatan", "finger_hambatan", "waktu_hambatan"},
-                {19, "nip_resiko_jatuh", "petugas_resiko_jatuh", "finger_resiko_jatuh", "waktu_resiko_jatuh"},
-                {20, "nip_lain_lain", "petugas_lain_lain", "finger_lain_lain", "waktu_lain_lain"},
-                {21, "nip_lain_lain1", "petugas_lain_lain1", "finger_lain_lain1", "waktu_lain_lain1"},
-                {22, "nip_lain_lain2", "petugas_lain_lain2", "finger_lain_lain2", "waktu_lain_lain2"},
-                {23, "nip_lain_lain3", "petugas_lain_lain3", "finger_lain_lain3", "waktu_lain_lain3"},};
 
-// --- 2. Arrays (index 1-20, index 0 unused) ----------------------------------
+            String noRawat = tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString();
+            String tanggalParam = tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString();
+
+            // --- 1. Data definition: {arrayIndex, nipColumn, namaColumn, fingerParamKey, waktuColumn, kodeEdukasi, alias} ------
+            Object[][] pgMeta = {
+                {1, "nip_diagnosa", "petugas_diagnosa", "finger_diagnosa", "waktu_diagnosis", "diagnosis_penyakit", "diagnosis"},
+                {2, "nip_tanda", "petugas_tanda", "finger_tanda", "waktu_tanda", "tanda_gejala_penyakit", "tanda"},
+                {3, "nip_ren_medis", "petugas_ren_medis", "finger_ren_medis", "waktu_ren_medis", "ren_tindakan_medis", "renmedis"},
+                {4, "nip_pengobatan", "petugas_pengobatan", "finger_pengobatan", "waktu_pengobatan", "pengobatan_diberikan", "pengobatan"},
+                {5, "nip_proses_rawat", "petugas_proses_rawat", "finger_proses_rawat", "waktu_proses_rawat", "proses_perawatan", "proses"},
+                {6, "nip_alt_pengobatan", "petugas_alt_pengobatan", "finger_alt_pengobatan", "waktu_alt_pengobatan", "alternatif_pengobatan", "altpengobatan"},
+                {7, "nip_cara_penggunaan", "petugas_cara_penggunaan", "finger_cara_penggunaan", "waktu_cara_pengobatan", "cara_penggunaan_obat", "carapenggunaan"},
+                {8, "nip_dosis", "petugas_dosis", "finger_dosis", "waktu_dosis", "dosis_jadwal_obat", "dosis"},
+                {9, "nip_efek", "petugas_efek", "finger_efek", "waktu_efek", "efek_samping_obat", "efek"},
+                {10, "nip_diet", "petugas_diet", "finger_diet", "waktu_diet", "diet_nutrisi", "diet"},
+                {11, "nip_mobilisasi", "petugas_mobilisasi", "finger_mobilisasi", "waktu_mobilisasi", "aktivitas_mobilisasi", "mobilisasi"},
+                {12, "nip_perawatan_luka", "petugas_perawatan_luka", "finger_perawatan_luka", "waktu_perawatan_luka", "perawatan_luka", "perawatanluka"},
+                {13, "nip_penggunaan_alat", "petugas_penggunaan_alat", "finger_penggunaan_alat", "waktu_penggunaan_alat_medis", "penggunaan_alat_medis", "alatmedis"},
+                {14, "nip_pencegahan_komplikasi", "petugas_pencegahan_komplikasi", "finger_pencegahan_komplikasi", "waktu_pencegahan_komplikasi", "pencegahan_komplikasi", "komplikasi"},
+                {15, "nip_manajemen_nyeri", "petugas_manajemen_nyeri", "finger_manajemen_nyeri", "waktu_manajemen_nyeri", "manajemen_nyeri", "nyeri"},
+                {16, "nip_kebersihan", "petugas_kebersihan", "finger_kebersihan", "waktu_kebersihan", "kebersihan_diri", "kebersihan"},
+                {17, "nip_penundaan", "petugas_penundaan", "finger_penundaan", "waktu_penundaan", "penundaan_pelayanan", "penundaan"},
+                {18, "nip_hambatan", "petugas_hambatan", "finger_hambatan", "waktu_hambatan", "hambatan_pelayanan", "hambatan"},
+                {19, "nip_resiko_jatuh", "petugas_resiko_jatuh", "finger_resiko_jatuh", "waktu_resiko_jatuh", "pencegahan_resiko_jatuh", "resikojatuh"},
+                {20, "nip_lain_lain", "petugas_lain_lain", "finger_lain_lain", "waktu_lain_lain", "lain_lain", "lainlain"},
+                {21, "nip_lain_lain1", "petugas_lain_lain1", "finger_lain_lain1", "waktu_lain_lain1", "lain_lain1", "lainlain1"},
+                {22, "nip_lain_lain2", "petugas_lain_lain2", "finger_lain_lain2", "waktu_lain_lain2", "lain_lain2", "lainlain2"},
+                {23, "nip_lain_lain3", "petugas_lain_lain3", "finger_lain_lain3", "waktu_lain_lain3", "lain_lain3", "lainlain3"},};
+
+            // --- 2. Arrays (index 1-23, index 0 unused) ----------------------------------
             String[] nipPg = new String[24];
             String[] namaPg = new String[24];
             String[] waktuPg = new String[24];
+            String[] photoPg = new String[24];
+            String[] namaPenerimaPg = new String[24];
+            String[] hubunganKeluargaPg = new String[24];
+            String[] keteranganHubunganPg = new String[24];
 
-// --- 3. Query ----------------------------------------------------------------
+            String baseUrlFoto = "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB()
+                    + "/" + koneksiDB.HYBRIDWEB() + "/pelaksanaankie/";
+
+            // --- 3. Bangun tambahan SELECT & JOIN untuk bukti TTD per kategori -----------
+            StringBuilder buktiSelect = new StringBuilder();
+            StringBuilder buktiJoin = new StringBuilder();
+            for (Object[] meta : pgMeta) {
+                int idx = (int) meta[0];
+                String kode = (String) meta[5];
+                String alias = (String) meta[6];
+                String tblBukti = "bkt" + idx;
+
+                buktiJoin.append(" LEFT JOIN bukti_pelaksanaan_kie ").append(tblBukti)
+                        .append(" ON ").append(tblBukti).append(".no_rawat = pelaksanaan_kie.no_rawat")
+                        .append(" AND ").append(tblBukti).append(".tanggal = pelaksanaan_kie.tanggal")
+                        .append(" AND ").append(tblBukti).append(".kode_edukasi = '").append(kode).append("' ");
+
+                buktiSelect.append(", ").append(tblBukti).append(".photo AS photo_").append(alias)
+                        .append(", ").append(tblBukti).append(".nama_penerima AS nama_penerima_").append(alias)
+                        .append(", ").append(tblBukti).append(".hubungan_keluarga AS hubungan_keluarga_").append(alias)
+                        .append(", ").append(tblBukti).append(".keterangan_hubungan AS keterangan_hubungan_").append(alias)
+                        .append(" ");
+            }
+
+            // --- 4. Query ----------------------------------------------------------------
             try {
-                ps = koneksi.prepareStatement(
-                        "SELECT "
+                String sqlPegawai
+                        = "SELECT "
                         + "pg1.nik  AS nip_diagnosa,              pg1.nama  AS petugas_diagnosa,  pelaksanaan_kie.waktu_diagnosis AS waktu_diagnosis, "
                         + "pg2.nik  AS nip_tanda,                 pg2.nama  AS petugas_tanda,     pelaksanaan_kie.waktu_tanda AS waktu_tanda, "
                         + "pg3.nik  AS nip_ren_medis,             pg3.nama  AS petugas_ren_medis, pelaksanaan_kie.waktu_ren_medis AS waktu_ren_medis, "
@@ -1867,6 +1898,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                         + "pg21.nik AS nip_lain_lain1,            pg21.nama AS petugas_lain_lain1, pelaksanaan_kie.waktu_lain_lain1 AS waktu_lain_lain1, "
                         + "pg22.nik AS nip_lain_lain2,            pg22.nama AS petugas_lain_lain2, pelaksanaan_kie.waktu_lain_lain2 AS waktu_lain_lain2, "
                         + "pg23.nik AS nip_lain_lain3,            pg23.nama AS petugas_lain_lain3, pelaksanaan_kie.waktu_lain_lain3 AS waktu_lain_lain3 "
+                        + buktiSelect.toString()
                         + "FROM edukasi_pasien_keluarga_rj "
                         + "LEFT JOIN pelaksanaan_kie "
                         + "       ON pelaksanaan_kie.no_rawat = edukasi_pasien_keluarga_rj.no_rawat "
@@ -1894,27 +1926,33 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                         + "LEFT JOIN pegawai pg21 ON pg21.nik = pelaksanaan_kie.nip_lain_lain1 "
                         + "LEFT JOIN pegawai pg22 ON pg22.nik = pelaksanaan_kie.nip_lain_lain2 "
                         + "LEFT JOIN pegawai pg23 ON pg23.nik = pelaksanaan_kie.nip_lain_lain3 "
+                        + buktiJoin.toString()
                         + "WHERE edukasi_pasien_keluarga_rj.no_rawat = ? "
-                        + "AND   edukasi_pasien_keluarga_rj.tanggal  = ?"
-                );
+                        + "AND   edukasi_pasien_keluarga_rj.tanggal  = ?";
 
-                ps.setString(1, tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
-                ps.setString(2, tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
+                ps = koneksi.prepareStatement(sqlPegawai);
+                ps.setString(1, noRawat);
+                ps.setString(2, tanggalParam);
 
                 rs = ps.executeQuery();
 
                 if (rs.next()) {
 
-                    // --- 4. Populate arrays from ResultSet -------------------------------
+                    // --- 5. Populate arrays from ResultSet -------------------------------
                     for (Object[] meta : pgMeta) {
                         int idx = (int) meta[0];
                         String nipCol = (String) meta[1];
                         String namaCol = (String) meta[2];
                         String waktuCol = (String) meta[4];
+                        String alias = (String) meta[6];
 
                         nipPg[idx] = rs.getString(nipCol);
                         namaPg[idx] = rs.getString(namaCol);
                         waktuPg[idx] = rs.getString(waktuCol);
+                        photoPg[idx] = rs.getString("photo_" + alias);
+                        namaPenerimaPg[idx] = rs.getString("nama_penerima_" + alias);
+                        hubunganKeluargaPg[idx] = rs.getString("hubungan_keluarga_" + alias);
+                        keteranganHubunganPg[idx] = rs.getString("keterangan_hubungan_" + alias);
 
                         if (nipPg[idx] == null) {
                             nipPg[idx] = "";
@@ -1925,9 +1963,18 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                         if (waktuPg[idx] == null) {
                             waktuPg[idx] = "";
                         }
+                        if (namaPenerimaPg[idx] == null) {
+                            namaPenerimaPg[idx] = "";
+                        }
+                        if (hubunganKeluargaPg[idx] == null) {
+                            hubunganKeluargaPg[idx] = "";
+                        }
+                        if (keteranganHubunganPg[idx] == null) {
+                            keteranganHubunganPg[idx] = "";
+                        }
                     }
 
-                    // --- 5. Build param map ----------------------------------------------
+                    // --- 6. Build param map ----------------------------------------------
                     String tanggal = Tanggal.getSelectedItem().toString();
                     String namars = akses.getnamars();
                     String kabupaten = akses.getkabupatenrs();
@@ -1935,6 +1982,8 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     for (Object[] meta : pgMeta) {
                         int idx = (int) meta[0];
                         String paramKey = (String) meta[3];
+                        String alias = (String) meta[6];
+
                         String fg = "";
                         if (!nipPg[idx].isEmpty()) {
                             fg = Sequel.cariIsi(
@@ -1951,16 +2000,20 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                                 + "\n" + tanggal);
 
                         param.put("nama_" + paramKey.replace("finger_", ""), namaPg[idx]);
-
-                        // ✅ waktu for each entry
                         param.put("waktu_" + paramKey.replace("finger_", ""), waktuPg[idx]);
+
+                        // ✅ Param bukti TTD per kategori
+                        String photoUrl = (photoPg[idx] == null || photoPg[idx].isEmpty())
+                                ? null
+                                : baseUrlFoto + photoPg[idx];
+                        param.put("photo_" + alias, photoUrl);
+                        param.put("nama_penerima_" + alias, namaPenerimaPg[idx]);
+                        param.put("hubungan_keluarga_" + alias, hubunganKeluargaPg[idx]);
+                        param.put("keterangan_hubungan_" + alias, keteranganHubunganPg[idx]);
                     }
 
                 } else {
-                    System.out.println("[WARN] No row returned for no_rawat="
-                            + tbObat.getValueAt(tbObat.getSelectedRow(), 0)
-                            + " tanggal="
-                            + tbObat.getValueAt(tbObat.getSelectedRow(), 5));
+                    System.out.println("[WARN] No row returned for no_rawat=" + noRawat + " tanggal=" + tanggalParam);
                 }
 
             } catch (Exception e) {
@@ -1968,8 +2021,29 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                 e.printStackTrace();
             }
 
-//            System.out.println("[ERROR] FingerSignature block: " + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
-//            System.out.println("[ERROR] FingerSignature block: " + tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
+            // --- 7. Bangun query utama untuk Jasper dengan join bukti TTD per kategori ---
+            StringBuilder buktiJoinReport = new StringBuilder();
+            StringBuilder buktiSelectReport = new StringBuilder();
+            int i = 1;
+            for (Object[] meta : pgMeta) {
+                String kode = (String) meta[5];
+                String alias = (String) meta[6];
+                String tblBukti = "b" + i;
+
+                buktiJoinReport.append(" LEFT JOIN bukti_pelaksanaan_kie ").append(tblBukti)
+                        .append(" ON ").append(tblBukti).append(".no_rawat = pelaksanaan_kie.no_rawat")
+                        .append(" AND ").append(tblBukti).append(".tanggal = pelaksanaan_kie.tanggal")
+                        .append(" AND ").append(tblBukti).append(".kode_edukasi = '").append(kode).append("' ");
+
+                buktiSelectReport.append(", IF(").append(tblBukti).append(".photo IS NULL,NULL,CONCAT('")
+                        .append(baseUrlFoto).append("',").append(tblBukti).append(".photo)) AS photo_").append(alias)
+                        .append(", ").append(tblBukti).append(".nama_penerima AS nama_penerima_").append(alias)
+                        .append(", ").append(tblBukti).append(".hubungan_keluarga AS hubungan_keluarga_").append(alias)
+                        .append(", ").append(tblBukti).append(".keterangan_hubungan AS keterangan_hubungan_").append(alias)
+                        .append(" ");
+                i++;
+            }
+
             Valid.MyReportqry(
                     "rptFormulirEdukasiPasienRJ.jasper",
                     "report",
@@ -2009,8 +2083,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     + "edukasi_pasien_keluarga_rj.topik_edukasi_hasil_layanan, "
                     + "edukasi_pasien_keluarga_rj.nip, "
                     + "petugas.nama, "
-                    + // pelaksanaan_kie
-                    "pelaksanaan_kie.tanggal AS tanggal_kie, "
+                    + "pelaksanaan_kie.tanggal AS tanggal_kie, "
                     + "pelaksanaan_kie.diagnosis_penyakit, "
                     + "pelaksanaan_kie.kie_diagnosis_penyakit, "
                     + "pelaksanaan_kie.tanda_gejala_penyakit, "
@@ -2049,7 +2122,6 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     + "pelaksanaan_kie.kie_hambatan_pelayanan, "
                     + "pelaksanaan_kie.pencegahan_resiko_jatuh, "
                     + "pelaksanaan_kie.kie_pencegahan_resiko_jatuh, "
-                    + "IF(bukti_pelaksanaan_kie.photo IS NULL,NULL,concat('http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/pelaksanaankie/',bukti_pelaksanaan_kie.photo)) as photo, "
                     + "pelaksanaan_kie.nip_diagnosa, "
                     + "pg1.nama AS petugas_diagnosa, "
                     + "pelaksanaan_kie.nip_tanda, "
@@ -2104,6 +2176,7 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     + "pelaksanaan_kie.kie_lain_lain3, "
                     + "pelaksanaan_kie.nip_lain_lain3, "
                     + "pg23.nama AS petugas_lain_lain3 "
+                    + buktiSelectReport.toString()
                     + "FROM edukasi_pasien_keluarga_rj "
                     + "INNER JOIN reg_periksa "
                     + "ON edukasi_pasien_keluarga_rj.no_rawat = reg_periksa.no_rawat "
@@ -2116,12 +2189,6 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     + "LEFT JOIN pelaksanaan_kie "
                     + "ON edukasi_pasien_keluarga_rj.no_rawat = pelaksanaan_kie.no_rawat "
                     + "AND edukasi_pasien_keluarga_rj.tanggal = pelaksanaan_kie.tanggal "
-                    + "LEFT JOIN ( "
-                    + "SELECT no_rawat, tanggal, photo "
-                    + "FROM bukti_pelaksanaan_kie "
-                    + "GROUP BY no_rawat, tanggal "
-                    + ") bukti_pelaksanaan_kie ON bukti_pelaksanaan_kie.no_rawat = pelaksanaan_kie.no_rawat "
-                    + "AND bukti_pelaksanaan_kie.tanggal = pelaksanaan_kie.tanggal "
                     + "LEFT JOIN pegawai pg1 ON pg1.nik = pelaksanaan_kie.nip_diagnosa "
                     + "LEFT JOIN pegawai pg2 ON pg2.nik = pelaksanaan_kie.nip_tanda "
                     + "LEFT JOIN pegawai pg3 ON pg3.nik = pelaksanaan_kie.nip_ren_medis "
@@ -2145,10 +2212,11 @@ public final class RMEdukasiPasienKeluargaRawatJalan extends javax.swing.JDialog
                     + "LEFT JOIN pegawai pg21 ON pg21.nik = pelaksanaan_kie.nip_lain_lain1 "
                     + "LEFT JOIN pegawai pg22 ON pg22.nik = pelaksanaan_kie.nip_lain_lain2 "
                     + "LEFT JOIN pegawai pg23 ON pg23.nik = pelaksanaan_kie.nip_lain_lain3 "
+                    + buktiJoinReport.toString()
                     + "WHERE reg_periksa.no_rawat='"
-                    + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "' "
+                    + noRawat + "' "
                     + " and edukasi_pasien_keluarga_rj.tanggal ='"
-                    + tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() + "' ",
+                    + tanggalParam + "' ",
                     param
             );
         }

@@ -1,8 +1,6 @@
 /*
  * By Mas Elkhanza
  */
-
-
 package rekammedis;
 
 import fungsi.WarnaTable;
@@ -42,112 +40,117 @@ import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
 
-
 /**
  *
  * @author perpustakaan
  */
 public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDialog {
+
     private final DefaultTableModel tabMode;
-    private Connection koneksi=koneksiDB.condb();
-    private sekuel Sequel=new sekuel();
-    private validasi Valid=new validasi();
+    private Connection koneksi = koneksiDB.condb();
+    private sekuel Sequel = new sekuel();
+    private validasi Valid = new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private int i=0;
+    private int i = 0;
     private DlgCariDokter dokter;
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
     private StringBuilder htmlContent;
-    private String finger="";
-    private String TANGGALMUNDUR="yes";
-    
-    /** Creates new form DlgRujuk
+    private String finger = "";
+    private String TANGGALMUNDUR = "yes";
+
+    /**
+     * Creates new form DlgRujuk
+     *
      * @param parent
-     * @param modal */
+     * @param modal
+     */
     public RMLayananKedokteranFisikRehabilitasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        
-        tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Dokter Yang Menangani","Tanggal",
-            "Pendamping","Keterangan Pendamping","Anamnesa","Pemeriksaan Fisik & Uji Fungsi","Diagnosis Medis (ICD - 10)",
-            "Diagnosis Fungsi (ICD - 10)","Tata Laksana KFR (ICD - 9 CM)","Anjuran","Evaluasi","Suspek Akibat Kerja",
-            "Keterangan Suspek Penyakit","Goal","Frekuensi","Keterangan Frekuensi"
-        }){
-              @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
+
+        tabMode = new DefaultTableModel(null, new Object[]{
+            "No.Rawat", "No.RM", "Nama Pasien", "Tgl.Lahir", "J.K.", "Kode Dokter", "Dokter Yang Menangani", "Tanggal",
+            "Pendamping", "Keterangan Pendamping", "Anamnesa", "Pemeriksaan Fisik & Uji Fungsi", "Diagnosis Medis (ICD - 10)",
+            "Diagnosis Fungsi (ICD - 10)", "Tata Laksana KFR (ICD - 9 CM)", "Anjuran", "Evaluasi", "Suspek Akibat Kerja",
+            "Keterangan Suspek Penyakit", "Goal", "Frekuensi", "Keterangan Frekuensi"
+        }) {
+            @Override
+            public boolean isCellEditable(int rowIndex, int colIndex) {
+                return false;
+            }
         };
-        
+
         tbObat.setModel(tabMode);
-        tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
+        tbObat.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (i = 0; i < 22; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
-            if(i==0){
+            if (i == 0) {
                 column.setPreferredWidth(105);
-            }else if(i==1){
+            } else if (i == 1) {
                 column.setPreferredWidth(70);
-            }else if(i==2){
+            } else if (i == 2) {
                 column.setPreferredWidth(150);
-            }else if(i==3){
+            } else if (i == 3) {
                 column.setPreferredWidth(65);
-            }else if(i==4){
+            } else if (i == 4) {
                 column.setPreferredWidth(60);
-            }else if(i==5){
+            } else if (i == 5) {
                 column.setPreferredWidth(80);
-            }else if(i==6){
+            } else if (i == 6) {
                 column.setPreferredWidth(150);
-            }else if(i==7){
+            } else if (i == 7) {
                 column.setPreferredWidth(115);
-            }else if(i==8){
+            } else if (i == 8) {
                 column.setPreferredWidth(70);
-            }else if(i==9){
+            } else if (i == 9) {
                 column.setPreferredWidth(130);
-            }else if(i==10){
+            } else if (i == 10) {
                 column.setPreferredWidth(200);
-            }else if(i==11){
+            } else if (i == 11) {
                 column.setPreferredWidth(300);
-            }else if(i==12){
+            } else if (i == 12) {
                 column.setPreferredWidth(150);
-            }else if(i==13){
+            } else if (i == 13) {
                 column.setPreferredWidth(150);
-            }else if(i==14){
+            } else if (i == 14) {
                 column.setPreferredWidth(330);
-            }else if(i==15){
+            } else if (i == 15) {
                 column.setPreferredWidth(200);
-            }else if(i==16){
+            } else if (i == 16) {
                 column.setPreferredWidth(200);
-            }else if(i==17){
+            } else if (i == 17) {
                 column.setPreferredWidth(105);
-            }else if(i==18){
+            } else if (i == 18) {
                 column.setPreferredWidth(145);
-            }else if(i==19){
+            } else if (i == 19) {
                 column.setPreferredWidth(200);
-            }else if(i==20){
+            } else if (i == 20) {
                 column.setPreferredWidth(145);
-            }else if(i==21){
+            } else if (i == 21) {
                 column.setPreferredWidth(145);
             }
         }
         tbObat.setDefaultRenderer(Object.class, new WarnaTable());
-        
-        TNoRw.setDocument(new batasInput((byte)17).getKata(TNoRw));
-        KeteranganPendamping.setDocument(new batasInput((int)30).getKata(KeteranganPendamping));
-        Anamnesa.setDocument(new batasInput((int)500).getKata(Anamnesa));
-        PemeriksaanFisik.setDocument(new batasInput((int)1500).getKata(PemeriksaanFisik));
-        DiagnosisMedis.setDocument(new batasInput((int)200).getKata(DiagnosisMedis));
-        DiagnosisFungsi.setDocument(new batasInput((int)200).getKata(DiagnosisFungsi));
-        TatalaksanaKFR.setDocument(new batasInput((int)2000).getKata(TatalaksanaKFR));
-        Anjuran.setDocument(new batasInput((int)500).getKata(Anjuran));
-        Evaluasi.setDocument(new batasInput((int)500).getKata(Evaluasi));
-        KeteranganSuspekPenyakit.setDocument(new batasInput((int)70).getKata(KeteranganSuspekPenyakit));
+
+        TNoRw.setDocument(new batasInput((byte) 17).getKata(TNoRw));
+        KeteranganPendamping.setDocument(new batasInput((int) 30).getKata(KeteranganPendamping));
+        Anamnesa.setDocument(new batasInput((int) 500).getKata(Anamnesa));
+        PemeriksaanFisik.setDocument(new batasInput((int) 1500).getKata(PemeriksaanFisik));
+        DiagnosisMedis.setDocument(new batasInput((int) 200).getKata(DiagnosisMedis));
+        DiagnosisFungsi.setDocument(new batasInput((int) 200).getKata(DiagnosisFungsi));
+        TatalaksanaKFR.setDocument(new batasInput((int) 2000).getKata(TatalaksanaKFR));
+        Anjuran.setDocument(new batasInput((int) 500).getKata(Anjuran));
+        Evaluasi.setDocument(new batasInput((int) 500).getKata(Evaluasi));
+        KeteranganSuspekPenyakit.setDocument(new batasInput((int) 70).getKata(KeteranganSuspekPenyakit));
 //        
-        Goal.setDocument(new batasInput((int)500).getKata(Goal));
-        
-        
-        TCari.setDocument(new batasInput((int)100).getKata(TCari));
-        
+        Goal.setDocument(new batasInput((int) 500).getKata(Goal));
+
+        TCari.setDocument(new batasInput((int) 100).getKata(TCari));
+
         HTMLEditorKit kit = new HTMLEditorKit();
         LoadHTML.setEditable(true);
         LoadHTML.setEditorKit(kit);
@@ -155,35 +158,34 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         LoadHTML2.setEditorKit(kit);
         StyleSheet styleSheet = kit.getStyleSheet();
         styleSheet.addRule(
-                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                + ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"
+                + ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                + ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                + ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"
+                + ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"
+                + ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"
+                + ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"
+                + ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
         Document doc = kit.createDefaultDocument();
         LoadHTML.setDocument(doc);
         LoadHTML2.setDocument(doc);
-        
+
         ChkAccor.setSelected(false);
         isPhoto();
-        
+
         try {
-            TANGGALMUNDUR=koneksiDB.TANGGALMUNDUR();
+            TANGGALMUNDUR = koneksiDB.TANGGALMUNDUR();
         } catch (Exception e) {
-            TANGGALMUNDUR="yes";
+            TANGGALMUNDUR = "yes";
         }
     }
 
-
-    /** This method is called from within the constructor to
-     * initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is
-     * always regenerated by the Form Editor.
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -193,6 +195,8 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         jPopupMenu1 = new javax.swing.JPopupMenu();
         MnLayananRehab = new javax.swing.JMenuItem();
         MnLayananProgramKFR = new javax.swing.JMenuItem();
+        MnLayananProtokolTerapi = new javax.swing.JMenuItem();
+        MnCetakFormulirPendampingan = new javax.swing.JMenuItem();
         TanggalRegistrasi = new widget.TextBox();
         internalFrame1 = new widget.InternalFrame();
         panelGlass8 = new widget.panelisi();
@@ -313,6 +317,34 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
             }
         });
         jPopupMenu1.add(MnLayananProgramKFR);
+
+        MnLayananProtokolTerapi.setBackground(new java.awt.Color(255, 255, 254));
+        MnLayananProtokolTerapi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnLayananProtokolTerapi.setForeground(new java.awt.Color(50, 50, 50));
+        MnLayananProtokolTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnLayananProtokolTerapi.setText("Lembar Protokol Terapi");
+        MnLayananProtokolTerapi.setName("MnLayananProtokolTerapi"); // NOI18N
+        MnLayananProtokolTerapi.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnLayananProtokolTerapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnLayananProtokolTerapiActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnLayananProtokolTerapi);
+
+        MnCetakFormulirPendampingan.setBackground(new java.awt.Color(255, 255, 254));
+        MnCetakFormulirPendampingan.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnCetakFormulirPendampingan.setForeground(new java.awt.Color(50, 50, 50));
+        MnCetakFormulirPendampingan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnCetakFormulirPendampingan.setText("Lembar Protokol Terapi");
+        MnCetakFormulirPendampingan.setName("MnCetakFormulirPendampingan"); // NOI18N
+        MnCetakFormulirPendampingan.setPreferredSize(new java.awt.Dimension(220, 26));
+        MnCetakFormulirPendampingan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnCetakFormulirPendampinganActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(MnCetakFormulirPendampingan);
 
         TanggalRegistrasi.setHighlighter(null);
         TanggalRegistrasi.setName("TanggalRegistrasi"); // NOI18N
@@ -635,7 +667,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         jLabel11.setBounds(740, 10, 30, 23);
 
         TglAsuhan.setForeground(new java.awt.Color(50, 70, 50));
-        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026 17:52:03" }));
+        TglAsuhan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2026 11:48:43" }));
         TglAsuhan.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         TglAsuhan.setName("TglAsuhan"); // NOI18N
         TglAsuhan.setOpaque(false);
@@ -917,7 +949,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -931,7 +963,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-02-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "22-09-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -1069,20 +1101,20 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSimpanActionPerformed
-        if(TNoRM.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Anamnesa.getText().trim().equals("")){
-            Valid.textKosong(Anamnesa,"Tindakan Medis");
-        }else{
-            if(akses.getkode().equals("Admin Utama")){
+        if (TNoRM.getText().trim().equals("")) {
+            Valid.textKosong(TNoRw, "Nama Pasien");
+        } else if (NmDokter.getText().trim().equals("")) {
+            Valid.textKosong(BtnDokter, "Dokter");
+        } else if (Anamnesa.getText().trim().equals("")) {
+            Valid.textKosong(Anamnesa, "Tindakan Medis");
+        } else {
+            if (akses.getkode().equals("Admin Utama")) {
                 simpan();
-            }else{
-                if(TanggalRegistrasi.getText().equals("")){
-                    TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
+            } else {
+                if (TanggalRegistrasi.getText().equals("")) {
+                    TanggalRegistrasi.setText(Sequel.cariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?", TNoRw.getText()));
                 }
-                if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19))==true){
+                if (Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(), Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19)) == true) {
                     simpan();
                 }
             }
@@ -1090,10 +1122,10 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 }//GEN-LAST:event_BtnSimpanActionPerformed
 
     private void BtnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnSimpanKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnSimpanActionPerformed(null);
-        }else{
-            Valid.pindah(evt,KeteranganSuspekPenyakit,BtnBatal);
+        } else {
+            Valid.pindah(evt, KeteranganSuspekPenyakit, BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1102,73 +1134,75 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void BtnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnBatalKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             emptTeks();
-        }else{Valid.pindah(evt, BtnSimpan, BtnHapus);}
+        } else {
+            Valid.pindah(evt, BtnSimpan, BtnHapus);
+        }
 }//GEN-LAST:event_BtnBatalKeyPressed
 
     private void BtnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnHapusActionPerformed
-        if(tbObat.getSelectedRow()>-1){
-            if(akses.getkode().equals("Admin Utama")){
+        if (tbObat.getSelectedRow() > -1) {
+            if (akses.getkode().equals("Admin Utama")) {
                 hapus();
-            }else{
-                if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
-                    if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
+            } else {
+                if (KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString())) {
+                    if (Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(), 7).toString(), Sequel.ambiltanggalsekarang()) == true) {
                         hapus();
                     }
-                }else{
-                    JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh psikolog yang bersangkutan..!!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Hanya bisa dihapus oleh psikolog yang bersangkutan..!!");
                 }
             }
-        }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
-        }              
-            
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
+        }
+
 }//GEN-LAST:event_BtnHapusActionPerformed
 
     private void BtnHapusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnHapusKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnHapusActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnBatal, BtnEdit);
         }
 }//GEN-LAST:event_BtnHapusKeyPressed
 
     private void BtnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEditActionPerformed
-        if(TNoRM.getText().trim().equals("")){
-            Valid.textKosong(TNoRw,"Nama Pasien");
-        }else if(NmDokter.getText().trim().equals("")){
-            Valid.textKosong(BtnDokter,"Dokter");
-        }else if(Anamnesa.getText().trim().equals("")){
-            Valid.textKosong(Anamnesa,"Tindakan Medis");
-        }else{
-            if(tbObat.getSelectedRow()>-1){
-                if(akses.getkode().equals("Admin Utama")){
+        if (TNoRM.getText().trim().equals("")) {
+            Valid.textKosong(TNoRw, "Nama Pasien");
+        } else if (NmDokter.getText().trim().equals("")) {
+            Valid.textKosong(BtnDokter, "Dokter");
+        } else if (Anamnesa.getText().trim().equals("")) {
+            Valid.textKosong(Anamnesa, "Tindakan Medis");
+        } else {
+            if (tbObat.getSelectedRow() > -1) {
+                if (akses.getkode().equals("Admin Utama")) {
                     ganti();
-                }else{
-                    if(KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString())){
+                } else {
+                    if (KdDokter.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString())) {
 ////                        if(Sequel.cekTanggal48jam(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString(),Sequel.ambiltanggalsekarang())==true){
 //                            if(TanggalRegistrasi.getText().equals("")){
 //                                TanggalRegistrasi.setText(Seque.lcariIsi("select concat(reg_periksa.tgl_registrasi,' ',reg_periksa.jam_reg) from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
 //                            }
 //                            if(Sequel.cekTanggalRegistrasi(TanggalRegistrasi.getText(),Valid.SetTgl(TglAsuhan.getSelectedItem()+"")+" "+TglAsuhan.getSelectedItem().toString().substring(11,19))==true){
-                                ganti();
+                        ganti();
 //                            }
 //                        }
-                    }else{
-                        JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh yang bersangkutan..!!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Hanya bisa diganti oleh yang bersangkutan..!!");
                     }
                 }
-            }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
             }
         }
 }//GEN-LAST:event_BtnEditActionPerformed
 
     private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnEditKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnEditActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnHapus, BtnPrint);
         }
 }//GEN-LAST:event_BtnEditKeyPressed
@@ -1178,18 +1212,20 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnKeluarActionPerformed(null);
-        }else{Valid.pindah(evt,BtnEdit,TCari);}
+        } else {
+            Valid.pindah(evt, BtnEdit, TCari);
+        }
 }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
             BtnBatal.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            try{
+        } else if (tabMode.getRowCount() != 0) {
+            try {
                 htmlContent = new StringBuilder();
 //                htmlContent.append(                             
 //                    "<tr class='isi'>"+
@@ -1215,155 +1251,154 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 //                    "</tr>"
 //                );
 
-                htmlContent.append(                             
-                    "<tr class='isi'>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dokter Yang Menangani</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pendamping</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Pendamping</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesa</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Fisik & Uji Fungsi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis Medis (ICD - 10)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis Fungsi (ICD - 10)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tata Laksana KFR (ICD - 9 CM)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anjuran</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Evaluasi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suspek Akibat Kerja</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Suspek Penyakit Akibat Kerja</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Goal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Frekuensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Frekuensi</b></td>"+
-                    "</tr>"
+                htmlContent.append(
+                        "<tr class='isi'>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.Rawat</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>No.RM</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Nama Pasien</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tgl.Lahir</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>J.K.</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Kode Dokter</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Dokter Yang Menangani</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tanggal</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pendamping</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Pendamping</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anamnesa</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Pemeriksaan Fisik & Uji Fungsi</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis Medis (ICD - 10)</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Diagnosis Fungsi (ICD - 10)</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Tata Laksana KFR (ICD - 9 CM)</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Anjuran</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Evaluasi</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Suspek Akibat Kerja</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Suspek Penyakit Akibat Kerja</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Goal</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Frekuensi</b></td>"
+                        + "<td valign='middle' bgcolor='#FFFAF8' align='center'><b>Keterangan Frekuensi</b></td>"
+                        + "</tr>"
                 );
 
-                
                 for (i = 0; i < tabMode.getRowCount(); i++) {
                     htmlContent.append(
-                        "<tr class='isi'>"+
-                           "<td valign='top'>"+tbObat.getValueAt(i,0).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,1).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,2).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,3).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,4).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,5).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,6).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,7).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,8).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,9).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,10).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,11).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,12).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,13).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,14).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,15).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,16).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,17).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,18).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,19).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,20).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,21).toString()+"</td>"+
-                        "</tr>");
+                            "<tr class='isi'>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 0).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 1).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 2).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 3).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 4).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 5).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 6).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 7).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 8).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 9).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 10).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 11).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 12).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 13).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 14).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 15).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 16).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 17).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 18).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 19).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 20).toString() + "</td>"
+                            + "<td valign='top'>" + tbObat.getValueAt(i, 21).toString() + "</td>"
+                            + "</tr>");
                 }
-                
+
                 LoadHTML.setText(
-                    "<html>"+
-                      "<table width='2000' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
-                       htmlContent.toString()+
-                      "</table>"+
-                    "</html>"
+                        "<html>"
+                        + "<table width='2000' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"
+                        + htmlContent.toString()
+                        + "</table>"
+                        + "</html>"
                 );
 
-                File g = new File("file2.css");            
+                File g = new File("file2.css");
                 BufferedWriter bg = new BufferedWriter(new FileWriter(g));
                 bg.write(
-                    ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"+
-                    ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"+
-                    ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"+
-                    ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"+
-                    ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"+
-                    ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"+
-                    ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
+                        ".isi td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-bottom: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                        + ".isi2 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#323232;}"
+                        + ".isi3 td{border-right: 1px solid #e2e7dd;font: 8.5px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                        + ".isi4 td{font: 11px tahoma;height:12px;border-top: 1px solid #e2e7dd;background: #ffffff;color:#323232;}"
+                        + ".isi5 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#AA0000;}"
+                        + ".isi6 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#FF0000;}"
+                        + ".isi7 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#C8C800;}"
+                        + ".isi8 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#00AA00;}"
+                        + ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
                 );
                 bg.close();
 
-                File f = new File("DataLayananRawatJalanKedoketranFisikDanRehabilitasi.html");            
-                BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
-                bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
-                            "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
-                                "<tr class='isi2'>"+
-                                    "<td valign='top' align='center'>"+
-                                        "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
-                                        akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
-                                        akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA LAYANAN RAWAT JALAN KEDOKTERAN FISIK & REHABILITASI<br><br></font>"+        
-                                    "</td>"+
-                               "</tr>"+
-                            "</table>")
+                File f = new File("DataLayananRawatJalanKedoketranFisikDanRehabilitasi.html");
+                BufferedWriter bw = new BufferedWriter(new FileWriter(f));
+                bw.write(LoadHTML.getText().replaceAll("<head>", "<head>"
+                        + "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"
+                        + "<table width='2000px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"
+                        + "<tr class='isi2'>"
+                        + "<td valign='top' align='center'>"
+                        + "<font size='4' face='Tahoma'>" + akses.getnamars() + "</font><br>"
+                        + akses.getalamatrs() + ", " + akses.getkabupatenrs() + ", " + akses.getpropinsirs() + "<br>"
+                        + akses.getkontakrs() + ", E-mail : " + akses.getemailrs() + "<br><br>"
+                        + "<font size='2' face='Tahoma'>DATA LAYANAN RAWAT JALAN KEDOKTERAN FISIK & REHABILITASI<br><br></font>"
+                        + "</td>"
+                        + "</tr>"
+                        + "</table>")
                 );
-                bw.close();                         
+                bw.close();
                 Desktop.getDesktop().browse(f.toURI());
-            }catch(Exception e){
-                System.out.println("Notifikasi : "+e);
+            } catch (Exception e) {
+                System.out.println("Notifikasi : " + e);
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
 }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnPrintKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnPrintActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, BtnEdit, BtnKeluar);
         }
 }//GEN-LAST:event_BtnPrintKeyPressed
 
     private void TCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             BtnCariActionPerformed(null);
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             BtnCari.requestFocus();
-        }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
+        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
             BtnKeluar.requestFocus();
         }
 }//GEN-LAST:event_TCariKeyPressed
 
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        runBackground(() ->tampil());
+        runBackground(() -> tampil());
 }//GEN-LAST:event_BtnCariActionPerformed
 
     private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             BtnCariActionPerformed(null);
-        }else{
+        } else {
             Valid.pindah(evt, TCari, BtnAll);
         }
 }//GEN-LAST:event_BtnCariKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         TCari.setText("");
-        runBackground(() ->tampil());
+        runBackground(() -> tampil());
 }//GEN-LAST:event_BtnAllActionPerformed
 
     private void BtnAllKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnAllKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
             TCari.setText("");
-            runBackground(() ->tampil());
-        }else{
+            runBackground(() -> tampil());
+        } else {
             Valid.pindah(evt, BtnCari, TPasien);
         }
 }//GEN-LAST:event_BtnAllKeyPressed
 
     private void tbObatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbObatMouseClicked
-        if(tabMode.getRowCount()!=0){
+        if (tabMode.getRowCount() != 0) {
             try {
                 getData();
             } catch (java.lang.NullPointerException e) {
@@ -1373,20 +1408,20 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                 panggilPhoto();
             } catch (java.lang.NullPointerException e) {
             }
-            if((evt.getClickCount()==2)&&(tbObat.getSelectedColumn()==0)){
+            if ((evt.getClickCount() == 2) && (tbObat.getSelectedColumn() == 0)) {
                 TabRawat.setSelectedIndex(0);
             }
         }
 }//GEN-LAST:event_tbObatMouseClicked
 
     private void tbObatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbObatKeyPressed
-        if(tabMode.getRowCount()!=0){
-            if((evt.getKeyCode()==KeyEvent.VK_ENTER)||(evt.getKeyCode()==KeyEvent.VK_UP)||(evt.getKeyCode()==KeyEvent.VK_DOWN)){
+        if (tabMode.getRowCount() != 0) {
+            if ((evt.getKeyCode() == KeyEvent.VK_ENTER) || (evt.getKeyCode() == KeyEvent.VK_UP) || (evt.getKeyCode() == KeyEvent.VK_DOWN)) {
                 try {
                     getData();
                 } catch (java.lang.NullPointerException e) {
                 }
-            }else if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            } else if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
                 try {
                     getData();
                     TabRawat.setSelectedIndex(0);
@@ -1397,51 +1432,51 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 }//GEN-LAST:event_tbObatKeyPressed
 
     private void EvaluasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_EvaluasiKeyPressed
-        Valid.pindah2(evt,Anjuran,SuspekPenyakit);
+        Valid.pindah2(evt, Anjuran, SuspekPenyakit);
     }//GEN-LAST:event_EvaluasiKeyPressed
 
     private void MnLayananRehabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLayananRehabActionPerformed
-        if(tbObat.getSelectedRow()>-1){
+        if (tbObat.getSelectedRow() > -1) {
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());          
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
-            param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),6).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),5).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString())); 
-            Valid.MyReportqry("rptCetakLayananKedokteranFisikRehabilitasi.jasper","report","::[ Lembar Formulir Layanan Rawat Jalan Kedokteran Fisik & Rehabilitasi ]::",
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,layanan_kedokteran_fisik_rehabilitasi.tanggal,"+
-                        "layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,layanan_kedokteran_fisik_rehabilitasi.pendamping,layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping,"+
-                        "layanan_kedokteran_fisik_rehabilitasi.anamnesa,layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layanankedokteranfisikrehabilitasi/',bukti_layanan_kedokteran_fisik_rehabilitasi.photo) as photo,"+
-                        "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.anjuran,layanan_kedokteran_fisik_rehabilitasi.evaluasi,"+
-                        "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja,layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,"+
-                        "propinsi.nm_prop,poliklinik.nm_poli,pasien.alamat from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join kelurahan on kelurahan.kd_kel=pasien.kd_kel "+
-                        "inner join kecamatan on kecamatan.kd_kec=pasien.kd_kec inner join kabupaten on kabupaten.kd_kab=pasien.kd_kab inner join propinsi on propinsi.kd_prop=pasien.kd_prop "+
-                        "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
-                        "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter inner join bukti_layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
-                        "where layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
+            finger = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
+            param.put("finger", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString() + "\nID " + (finger.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() : finger) + "\n" + Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(), 7).toString()));
+            Valid.MyReportqry("rptCetakLayananKedokteranFisikRehabilitasi.jasper", "report", "::[ Lembar Formulir Layanan Rawat Jalan Kedokteran Fisik & Rehabilitasi ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,layanan_kedokteran_fisik_rehabilitasi.tanggal,"
+                    + "layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,layanan_kedokteran_fisik_rehabilitasi.pendamping,layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping,"
+                    + "layanan_kedokteran_fisik_rehabilitasi.anamnesa,layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,concat('http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/layanankedokteranfisikrehabilitasi/',bukti_layanan_kedokteran_fisik_rehabilitasi.photo) as photo,"
+                    + "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.anjuran,layanan_kedokteran_fisik_rehabilitasi.evaluasi,"
+                    + "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja,layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja,kelurahan.nm_kel,kecamatan.nm_kec,kabupaten.nm_kab,"
+                    + "propinsi.nm_prop,poliklinik.nm_poli,pasien.alamat from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join kelurahan on kelurahan.kd_kel=pasien.kd_kel "
+                    + "inner join kecamatan on kecamatan.kd_kec=pasien.kd_kec inner join kabupaten on kabupaten.kd_kab=pasien.kd_kab inner join propinsi on propinsi.kd_prop=pasien.kd_prop "
+                    + "inner join poliklinik on reg_periksa.kd_poli=poliklinik.kd_poli inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "
+                    + "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter inner join bukti_layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat "
+                    + "where layanan_kedokteran_fisik_rehabilitasi.no_rawat='" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "'", param);
         }
     }//GEN-LAST:event_MnLayananRehabActionPerformed
 
     private void PemeriksaanFisikKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PemeriksaanFisikKeyPressed
-        Valid.pindah2(evt,Anamnesa,DiagnosisMedis);
+        Valid.pindah2(evt, Anamnesa, DiagnosisMedis);
     }//GEN-LAST:event_PemeriksaanFisikKeyPressed
 
     private void DiagnosisMedisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisMedisKeyPressed
-        Valid.pindah2(evt,PemeriksaanFisik,DiagnosisFungsi);
+        Valid.pindah2(evt, PemeriksaanFisik, DiagnosisFungsi);
     }//GEN-LAST:event_DiagnosisMedisKeyPressed
 
     private void AnamnesaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnamnesaKeyPressed
-        Valid.pindah2(evt,KeteranganPendamping,PemeriksaanFisik);
+        Valid.pindah2(evt, KeteranganPendamping, PemeriksaanFisik);
     }//GEN-LAST:event_AnamnesaKeyPressed
 
     private void TNoRwKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRwKeyPressed
-        if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
+        if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             isRawat();
-        }else{
+        } else {
             //Valid.pindah(evt,TCari,BtnPetugas);
         }
     }//GEN-LAST:event_TNoRwKeyPressed
@@ -1452,23 +1487,25 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 
     private void BtnDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDokterActionPerformed
         if (dokter == null || !dokter.isDisplayable()) {
-            dokter=new DlgCariDokter(null,false);
+            dokter = new DlgCariDokter(null, false);
             dokter.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
             dokter.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    if(dokter.getTable().getSelectedRow()!= -1){        
-                         KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),0).toString());
-                         NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(),1).toString());
-                    }  
+                    if (dokter.getTable().getSelectedRow() != -1) {
+                        KdDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString());
+                        NmDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+                    }
                     BtnDokter.requestFocus();
-                    dokter=null;
+                    dokter = null;
                 }
             });
-            dokter.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            dokter.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
             dokter.setLocationRelativeTo(internalFrame1);
-        }   
-        if (dokter == null) return;
+        }
+        if (dokter == null) {
+            return;
+        }
         dokter.isCek();
         if (dokter.isVisible()) {
             dokter.toFront();
@@ -1482,125 +1519,317 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     }//GEN-LAST:event_BtnDokterKeyPressed
 
     private void PendampingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PendampingKeyPressed
-        Valid.pindah(evt,TglAsuhan,KeteranganPendamping);
+        Valid.pindah(evt, TglAsuhan, KeteranganPendamping);
     }//GEN-LAST:event_PendampingKeyPressed
 
     private void KeteranganPendampingKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganPendampingKeyPressed
-        Valid.pindah(evt,Pendamping,Anamnesa);
+        Valid.pindah(evt, Pendamping, Anamnesa);
     }//GEN-LAST:event_KeteranganPendampingKeyPressed
 
     private void DiagnosisFungsiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosisFungsiKeyPressed
-        Valid.pindah2(evt,DiagnosisMedis,TatalaksanaKFR);
+        Valid.pindah2(evt, DiagnosisMedis, TatalaksanaKFR);
     }//GEN-LAST:event_DiagnosisFungsiKeyPressed
 
     private void TatalaksanaKFRKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TatalaksanaKFRKeyPressed
-        Valid.pindah2(evt,DiagnosisFungsi,Anjuran);
+        Valid.pindah2(evt, DiagnosisFungsi, Anjuran);
     }//GEN-LAST:event_TatalaksanaKFRKeyPressed
 
     private void AnjuranKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AnjuranKeyPressed
-        Valid.pindah2(evt,TatalaksanaKFR,Goal);
+        Valid.pindah2(evt, TatalaksanaKFR, Goal);
     }//GEN-LAST:event_AnjuranKeyPressed
 
     private void SuspekPenyakitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SuspekPenyakitKeyPressed
-        Valid.pindah(evt,Evaluasi,KeteranganSuspekPenyakit);
+        Valid.pindah(evt, Evaluasi, KeteranganSuspekPenyakit);
     }//GEN-LAST:event_SuspekPenyakitKeyPressed
 
     private void KeteranganSuspekPenyakitKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganSuspekPenyakitKeyPressed
-        Valid.pindah(evt,SuspekPenyakit,Frekuensi);
+        Valid.pindah(evt, SuspekPenyakit, Frekuensi);
     }//GEN-LAST:event_KeteranganSuspekPenyakitKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
-        if(tbObat.getSelectedRow()!= -1){
+        if (tbObat.getSelectedRow() != -1) {
             isPhoto();
             panggilPhoto();
-        }else{
+        } else {
             ChkAccor.setSelected(false);
-            JOptionPane.showMessageDialog(null,"Silahkan pilih No.Pernyataan..!!!");
+            JOptionPane.showMessageDialog(null, "Silahkan pilih No.Pernyataan..!!!");
         }
     }//GEN-LAST:event_ChkAccorActionPerformed
 
     private void btnAmbilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis...!!!!");
+        if (tabMode.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Maaf, data sudah habis...!!!!");
             TCari.requestFocus();
-        }else{
-            if(tbObat.getSelectedRow()>-1){
+        } else {
+            if (tbObat.getSelectedRow() > -1) {
                 Sequel.queryu("delete from antrilayanankedokteranfisikrehabilitasi");
-                Sequel.queryu("insert into antrilayanankedokteranfisikrehabilitasi values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"')");
-                Sequel.queryu("delete from bukti_layanan_kedokteran_fisik_rehabilitasi where no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
-            }else{
-                JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data terlebih dahulu..!!");
+                Sequel.queryu("insert into antrilayanankedokteranfisikrehabilitasi values('" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "')");
+                Sequel.queryu("delete from bukti_layanan_kedokteran_fisik_rehabilitasi where no_rawat='" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "'");
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data terlebih dahulu..!!");
             }
         }
     }//GEN-LAST:event_btnAmbilActionPerformed
 
     private void BtnRefreshPhoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRefreshPhoto1ActionPerformed
-        if(tbObat.getSelectedRow()>-1){
+        if (tbObat.getSelectedRow() > -1) {
             panggilPhoto();
-        }else{
-            JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih data pelayanan terlebih dahulu..!!");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Silahkan anda pilih data pelayanan terlebih dahulu..!!");
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
     private void MnLayananProgramKFRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLayananProgramKFRActionPerformed
-        if(tbObat.getSelectedRow()>-1){
+        if (tbObat.getSelectedRow() > -1) {
             Map<String, Object> param = new HashMap<>();
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
-            Valid.MyReportqry("rptFormulirLayananProgramKFR.jasper","report","::[ Formulir Layanan Program KFR ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tanggal,layanan_program_kfr.no_rawat_layanan,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,"+
-                    "replace(replace(replace(layanan_kedokteran_fisik_rehabilitasi.tatalaksana,'\t',''),'\n','; '),'\r','; ') as tatalaksana,layanan_program_kfr.program,layanan_program_kfr.nip,petugas.nama,replace(replace(replace(layanan_kedokteran_fisik_rehabilitasi.evaluasi,'\t',''),'\n','; '),'\r','; ') as evaluasi,"+
-                    "concat('http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layananprogramkfr/',bukti_layanan_program_kfr.photo) as photo,layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,now() as sekarang from layanan_program_kfr "+
-                    "inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "+
-                    "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan inner join bukti_layanan_program_kfr on bukti_layanan_program_kfr.no_rawat=layanan_program_kfr.no_rawat "+
-                    "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where layanan_kedokteran_fisik_rehabilitasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' order by layanan_program_kfr.tanggal",param);
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
+            Valid.MyReportqry("rptFormulirLayananProgramKFR.jasper", "report", "::[ Formulir Layanan Program KFR ]::",
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,layanan_program_kfr.tanggal,layanan_program_kfr.no_rawat_layanan,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,"
+                    + "replace(replace(replace(layanan_kedokteran_fisik_rehabilitasi.tatalaksana,'\t',''),'\n','; '),'\r','; ') as tatalaksana,layanan_program_kfr.program,layanan_program_kfr.nip,petugas.nama,replace(replace(replace(layanan_kedokteran_fisik_rehabilitasi.evaluasi,'\t',''),'\n','; '),'\r','; ') as evaluasi,"
+                    + "concat('http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/layananprogramkfr/',bukti_layanan_program_kfr.photo) as photo,layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,now() as sekarang from layanan_program_kfr "
+                    + "inner join reg_periksa on layanan_program_kfr.no_rawat=reg_periksa.no_rawat inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on layanan_program_kfr.nip=petugas.nip "
+                    + "inner join layanan_kedokteran_fisik_rehabilitasi on layanan_kedokteran_fisik_rehabilitasi.no_rawat=layanan_program_kfr.no_rawat_layanan inner join bukti_layanan_program_kfr on bukti_layanan_program_kfr.no_rawat=layanan_program_kfr.no_rawat "
+                    + "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where layanan_kedokteran_fisik_rehabilitasi.no_rawat='" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "' order by layanan_program_kfr.tanggal", param);
         }
     }//GEN-LAST:event_MnLayananProgramKFRActionPerformed
 
     private void GoalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_GoalKeyPressed
-        Valid.pindah2(evt,Anjuran,Evaluasi);
+        Valid.pindah2(evt, Anjuran, Evaluasi);
     }//GEN-LAST:event_GoalKeyPressed
 
     private void KeteranganFrekuensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganFrekuensiKeyPressed
-        Valid.pindah(evt,Frekuensi,BtnSimpan);
+        Valid.pindah(evt, Frekuensi, BtnSimpan);
     }//GEN-LAST:event_KeteranganFrekuensiKeyPressed
 
     private void FrekuensiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FrekuensiKeyPressed
-        Valid.pindah(evt,KeteranganSuspekPenyakit,KeteranganFrekuensi);
+        Valid.pindah(evt, KeteranganSuspekPenyakit, KeteranganFrekuensi);
     }//GEN-LAST:event_FrekuensiKeyPressed
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
+        if (koneksiDB.CARICEPAT().equals("aktif")) {
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                    if (TCari.getText().length() > 2) {
+                        runBackground(() -> tampil());
                     }
                 }
+
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                    if (TCari.getText().length() > 2) {
+                        runBackground(() -> tampil());
                     }
                 }
+
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if(TCari.getText().length()>2){
-                        runBackground(() ->tampil());
+                    if (TCari.getText().length() > 2) {
+                        runBackground(() -> tampil());
                     }
                 }
             });
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void MnLayananProtokolTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnLayananProtokolTerapiActionPerformed
+        if (tbObat.getSelectedRow() > -1) {
+
+            String noRawat = tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString();
+
+            // =========================================================
+            // PARAMETER REPORT
+            // =========================================================
+            Map<String, Object> param = new HashMap<>();
+
+            param.put("namars", akses.getnamars());
+            param.put("alamatrs", akses.getalamatrs());
+            param.put("kotars", akses.getkabupatenrs());
+            param.put("propinsirs", akses.getpropinsirs());
+            param.put("kontakrs", akses.getkontakrs());
+            param.put("emailrs", akses.getemailrs());
+            param.put("logo", Sequel.cariGambar("select setting.logo from setting"));
+            param.put("no_rawat", noRawat);
+
+            // =========================================================
+            // DEFAULT PARAMETER UJI FUNGSI KFR (RIWAYAT)
+            // =========================================================
+            param.put("uji_fungsi_diagnosis_fungsional", "");
+            param.put("uji_fungsi_hasil_didapat", "");
+            param.put("uji_fungsi_diagnosis_medis", "");
+
+            // =========================================================
+            // AMBIL no_rkm_medis DARI KUNJUNGAN SAAT INI
+            // (dipakai sebagai acuan pencarian riwayat)
+            // =========================================================
+            String noRkmMedis = Sequel.cariIsi(
+                    "select no_rkm_medis from reg_periksa where no_rawat='" + noRawat + "'"
+            );
+            noRkmMedis = noRkmMedis == null ? "" : noRkmMedis;
+
+            // =========================================================
+            // CARI 1 DATA UJI FUNGSI KFR TERAKHIR DARI RIWAYAT KUNJUNGAN
+            // PASIEN INI, BERDASARKAN no_rkm_medis, TERBARU LEBIH DAHULU
+            // =========================================================
+            String dataUji = Sequel.cariIsi(
+                    "select concat_ws('|||', "
+                    + "ifnull(uji.diagnosis_fungsional,''), "
+                    + "ifnull(uji.hasil_didapat,''), "
+                    + "ifnull(uji.diagnosis_medis,'') "
+                    + ") "
+                    + "from reg_periksa reg "
+                    + "inner join uji_fungsi_kfr uji on uji.no_rawat=reg.no_rawat "
+                    + "where reg.no_rkm_medis='" + noRkmMedis + "' "
+                    + "order by reg.tgl_registrasi desc "
+                    + "limit 1"
+            );
+
+            if (dataUji == null || dataUji.isEmpty()) {
+
+                JOptionPane.showMessageDialog(
+                        null,
+                        "Tidak ada Uji Fungsi KFR pada riwayat kunjungan pasien.",
+                        "Informasi",
+                        JOptionPane.INFORMATION_MESSAGE
+                );
+
+            } else {
+
+                String[] uji = dataUji.split("\\|\\|\\|", -1);
+
+                param.put("uji_fungsi_diagnosis_fungsional", uji.length > 0 ? uji[0] : "");
+                param.put("uji_fungsi_hasil_didapat", uji.length > 1 ? uji[1] : "");
+                param.put("uji_fungsi_diagnosis_medis", uji.length > 2 ? uji[2] : "");
+            }
+
+            // =========================================================
+            // AMBIL DATA LAYANAN KEDOKTERAN FISIK & REHABILITASI
+            // (UNTUK KUNJUNGAN SAAT INI)
+            // =========================================================
+            String dataKFR = Sequel.cariIsi(
+                    "select concat_ws('|||', "
+                    + "ifnull(goal,''), "
+                    + "ifnull(tatalaksana,''), "
+                    + "ifnull(anjuran,''), "
+                    + "ifnull(frekuensi,''), "
+                    + "ifnull(keterangan_frekuensi,''), "
+                    + "ifnull(evaluasi,'') "
+                    + ") "
+                    + "from layanan_kedokteran_fisik_rehabilitasi "
+                    + "where no_rawat='" + noRawat + "' "
+                    + "limit 1"
+            );
+            dataKFR = dataKFR == null ? "" : dataKFR;
+            String[] kfr = dataKFR.split("\\|\\|\\|", -1);
+
+            param.put("goal", kfr.length > 0 ? kfr[0] : "");
+            param.put("tatalaksana", kfr.length > 1 ? kfr[1] : "");
+            param.put("anjuran", kfr.length > 2 ? kfr[2] : "");
+            param.put("frekuensi", kfr.length > 3 ? kfr[3] : "");
+            param.put("keterangan_frekuensi", kfr.length > 4 ? kfr[4] : "");
+            param.put("evaluasi", kfr.length > 5 ? kfr[5] : "");
+
+            // =========================================================
+            // FINGER / TANDA TANGAN ELEKTRONIK
+            // =========================================================
+            String finger = Sequel.cariIsi(
+                    "select sha1(sidikjari.sidikjari) "
+                    + "from sidikjari "
+                    + "inner join pegawai on pegawai.id=sidikjari.id "
+                    + "where pegawai.nik='" + tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() + "'"
+            );
+            finger = finger == null ? "" : finger;
+
+            param.put(
+                    "finger",
+                    "Dikeluarkan di " + akses.getnamars()
+                    + ", Kabupaten/Kota " + akses.getkabupatenrs()
+                    + "\nDitandatangani secara elektronik oleh "
+                    + tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString()
+                    + "\nID "
+                    + (finger.isEmpty()
+                    ? tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString()
+                    : finger)
+                    + "\n"
+                    + Valid.SetTgl3(
+                            tbObat.getValueAt(tbObat.getSelectedRow(), 7).toString()
+                    )
+            );
+
+            // =========================================================
+            // SQL UTAMA REPORT
+            // =========================================================
+            String SQL
+                    = "select "
+                    + "layanan.no_rawat, "
+                    + "reg.no_rkm_medis, "
+                    + "pasien.nm_pasien, "
+                    + "pasien.jk, "
+                    + "pasien.tgl_lahir, "
+                    + "pasien.alamat, "
+                    + "layanan.tanggal, "
+                    + "layanan.kd_dokter, "
+                    + "dokter.nm_dokter, "
+                    + "kelurahan.nm_kel, "
+                    + "kecamatan.nm_kec, "
+                    + "kabupaten.nm_kab, "
+                    + "propinsi.nm_prop, "
+                    + "poliklinik.nm_poli, "
+                    + "uji_fungsi.diagnosis_fungsional as uji_fungsi_diagnosis_fungsional, "
+                    + "uji_fungsi.hasil_didapat as uji_fungsi_hasil_didapat, "
+                    + "uji_fungsi.diagnosis_medis as uji_fungsi_diagnosis_medis "
+                    + "from layanan_kedokteran_fisik_rehabilitasi layanan "
+                    + "inner join reg_periksa reg "
+                    + "on reg.no_rawat=layanan.no_rawat "
+                    + "inner join pasien "
+                    + "on pasien.no_rkm_medis=reg.no_rkm_medis "
+                    + "inner join dokter "
+                    + "on dokter.kd_dokter=layanan.kd_dokter "
+                    + "inner join kelurahan "
+                    + "on kelurahan.kd_kel=pasien.kd_kel "
+                    + "inner join kecamatan "
+                    + "on kecamatan.kd_kec=pasien.kd_kec "
+                    + "inner join kabupaten "
+                    + "on kabupaten.kd_kab=pasien.kd_kab "
+                    + "inner join propinsi "
+                    + "on propinsi.kd_prop=pasien.kd_prop "
+                    + "inner join poliklinik "
+                    + "on poliklinik.kd_poli=reg.kd_poli "
+                    + "left join uji_fungsi_kfr uji_fungsi "
+                    + "on uji_fungsi.no_rawat=("
+                    + "select uji2.no_rawat from reg_periksa rp2 "
+                    + "inner join uji_fungsi_kfr uji2 on uji2.no_rawat=rp2.no_rawat "
+                    + "where rp2.no_rkm_medis=reg.no_rkm_medis "
+                    + "order by rp2.tgl_registrasi desc limit 1"
+                    + ") "
+                    + "where layanan.no_rawat='" + noRawat + "' "
+                    + "limit 1";
+
+// =========================================================
+// CETAK REPORT
+// =========================================================
+            Valid.MyReportqry(
+                    "rptCetakLayananProtokolTerapi.jasper",
+                    "report",
+                    "::[ Lembar Layanan Protokol Terapi ]::",
+                    SQL,
+                    param
+            );
+        }
+    }//GEN-LAST:event_MnLayananProtokolTerapiActionPerformed
+
+    private void MnCetakFormulirPendampinganActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCetakFormulirPendampinganActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MnCetakFormulirPendampinganActionPerformed
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             RMLayananKedokteranFisikRehabilitasi dialog = new RMLayananKedokteranFisikRehabilitasi(new javax.swing.JFrame(), true);
@@ -1646,7 +1875,9 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
     private widget.editorpane LoadHTML2;
+    private javax.swing.JMenuItem MnCetakFormulirPendampingan;
     private javax.swing.JMenuItem MnLayananProgramKFR;
+    private javax.swing.JMenuItem MnLayananProtokolTerapi;
     private javax.swing.JMenuItem MnLayananRehab;
     private widget.TextBox NmDokter;
     private widget.PanelBiasa PanelAccor;
@@ -1710,105 +1941,104 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 
     private void tampil() {
         Valid.tabelKosong(tabMode);
-        try{
-    //            if(TCari.getText().trim().equals("")){
-    //                ps=koneksi.prepareStatement(
-    //                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,layanan_kedokteran_fisik_rehabilitasi.tanggal,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,layanan_kedokteran_fisik_rehabilitasi.pendamping,layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.anamnesa,layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.anjuran,layanan_kedokteran_fisik_rehabilitasi.evaluasi,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja,layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja "+
-    //                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-    //                        "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
-    //                        "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where "+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? order by layanan_kedokteran_fisik_rehabilitasi.tanggal");
-    //            }else{
-    //                ps=koneksi.prepareStatement(
-    //                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,layanan_kedokteran_fisik_rehabilitasi.tanggal,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,layanan_kedokteran_fisik_rehabilitasi.pendamping,layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.anamnesa,layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.anjuran,layanan_kedokteran_fisik_rehabilitasi.evaluasi,"+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja,layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja "+
-    //                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-    //                        "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
-    //                        "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where "+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-    //                        "layanan_kedokteran_fisik_rehabilitasi.kd_dokter like ? or dokter.nm_dokter like ?) order by layanan_kedokteran_fisik_rehabilitasi.tanggal");
-    //            }
-            if(TCari.getText().trim().equals("")){
+        try {
+            //            if(TCari.getText().trim().equals("")){
+            //                ps=koneksi.prepareStatement(
+            //                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,layanan_kedokteran_fisik_rehabilitasi.tanggal,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,layanan_kedokteran_fisik_rehabilitasi.pendamping,layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.anamnesa,layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.anjuran,layanan_kedokteran_fisik_rehabilitasi.evaluasi,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja,layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja "+
+            //                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+            //                        "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
+            //                        "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where "+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? order by layanan_kedokteran_fisik_rehabilitasi.tanggal");
+            //            }else{
+            //                ps=koneksi.prepareStatement(
+            //                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,layanan_kedokteran_fisik_rehabilitasi.tanggal,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.kd_dokter,dokter.nm_dokter,layanan_kedokteran_fisik_rehabilitasi.pendamping,layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.anamnesa,layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik,layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi,layanan_kedokteran_fisik_rehabilitasi.tatalaksana,layanan_kedokteran_fisik_rehabilitasi.anjuran,layanan_kedokteran_fisik_rehabilitasi.evaluasi,"+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja,layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja "+
+            //                        "from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
+            //                        "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat=layanan_kedokteran_fisik_rehabilitasi.no_rawat "+
+            //                        "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter=dokter.kd_dokter where "+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
+            //                        "layanan_kedokteran_fisik_rehabilitasi.kd_dokter like ? or dokter.nm_dokter like ?) order by layanan_kedokteran_fisik_rehabilitasi.tanggal");
+            //            }
+            if (TCari.getText().trim().equals("")) {
                 ps = koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat, pasien.no_rkm_medis, pasien.nm_pasien, " +
-                    "if(pasien.jk='L','Laki-Laki','Perempuan') as jk, pasien.tgl_lahir, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.tanggal, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.kd_dokter, dokter.nm_dokter, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.pendamping, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.anamnesa, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.tatalaksana, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.anjuran, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.evaluasi, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.goal, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.frekuensi, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.keterangan_frekuensi " +
-                    "from reg_periksa " +
-                    "inner join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
-                    "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat = layanan_kedokteran_fisik_rehabilitasi.no_rawat " +
-                    "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter = dokter.kd_dokter " +
-                    "where layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? " +
-                    "order by layanan_kedokteran_fisik_rehabilitasi.tanggal"
+                        "select reg_periksa.no_rawat, pasien.no_rkm_medis, pasien.nm_pasien, "
+                        + "if(pasien.jk='L','Laki-Laki','Perempuan') as jk, pasien.tgl_lahir, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.tanggal, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.kd_dokter, dokter.nm_dokter, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.pendamping, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.anamnesa, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.tatalaksana, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.anjuran, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.evaluasi, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.goal, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.frekuensi, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.keterangan_frekuensi "
+                        + "from reg_periksa "
+                        + "inner join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis "
+                        + "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat = layanan_kedokteran_fisik_rehabilitasi.no_rawat "
+                        + "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter = dokter.kd_dokter "
+                        + "where layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? "
+                        + "order by layanan_kedokteran_fisik_rehabilitasi.tanggal"
                 );
             } else {
                 ps = koneksi.prepareStatement(
-                    "select reg_periksa.no_rawat, pasien.no_rkm_medis, pasien.nm_pasien, " +
-                    "if(pasien.jk='L','Laki-Laki','Perempuan') as jk, pasien.tgl_lahir, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.tanggal, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.kd_dokter, dokter.nm_dokter, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.pendamping, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.anamnesa, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.tatalaksana, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.anjuran, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.evaluasi, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.goal, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.frekuensi, " +
-                    "layanan_kedokteran_fisik_rehabilitasi.keterangan_frekuensi " +
-                    "from reg_periksa " +
-                    "inner join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
-                    "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat = layanan_kedokteran_fisik_rehabilitasi.no_rawat " +
-                    "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter = dokter.kd_dokter " +
-                    "where layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? and (" +
-                    "reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or " +
-                    "layanan_kedokteran_fisik_rehabilitasi.kd_dokter like ? or dokter.nm_dokter like ?) " +
-                    "order by layanan_kedokteran_fisik_rehabilitasi.tanggal"
+                        "select reg_periksa.no_rawat, pasien.no_rkm_medis, pasien.nm_pasien, "
+                        + "if(pasien.jk='L','Laki-Laki','Perempuan') as jk, pasien.tgl_lahir, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.tanggal, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.kd_dokter, dokter.nm_dokter, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.pendamping, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.keterangan_pendamping, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.anamnesa, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.pemeriksaan_fisik, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.diagnosa_medis, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.diagnosa_fungsi, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.tatalaksana, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.anjuran, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.evaluasi, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.suspek_penyakit_kerja, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.keterangan_suspek_penyakit_kerja, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.goal, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.frekuensi, "
+                        + "layanan_kedokteran_fisik_rehabilitasi.keterangan_frekuensi "
+                        + "from reg_periksa "
+                        + "inner join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis "
+                        + "inner join layanan_kedokteran_fisik_rehabilitasi on reg_periksa.no_rawat = layanan_kedokteran_fisik_rehabilitasi.no_rawat "
+                        + "inner join dokter on layanan_kedokteran_fisik_rehabilitasi.kd_dokter = dokter.kd_dokter "
+                        + "where layanan_kedokteran_fisik_rehabilitasi.tanggal between ? and ? and ("
+                        + "reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "
+                        + "layanan_kedokteran_fisik_rehabilitasi.kd_dokter like ? or dokter.nm_dokter like ?) "
+                        + "order by layanan_kedokteran_fisik_rehabilitasi.tanggal"
                 );
             }
 
-                
             try {
-                if(TCari.getText().trim().equals("")){
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                }else{
-                    ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+"")+" 00:00:00");
-                    ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+"")+" 23:59:59");
-                    ps.setString(3,"%"+TCari.getText()+"%");
-                    ps.setString(4,"%"+TCari.getText()+"%");
-                    ps.setString(5,"%"+TCari.getText()+"%");
-                    ps.setString(6,"%"+TCari.getText()+"%");
-                    ps.setString(7,"%"+TCari.getText()+"%");
-                }   
-                rs=ps.executeQuery();
-                while(rs.next()){
+                if (TCari.getText().trim().equals("")) {
+                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                } else {
+                    ps.setString(1, Valid.SetTgl(DTPCari1.getSelectedItem() + "") + " 00:00:00");
+                    ps.setString(2, Valid.SetTgl(DTPCari2.getSelectedItem() + "") + " 23:59:59");
+                    ps.setString(3, "%" + TCari.getText() + "%");
+                    ps.setString(4, "%" + TCari.getText() + "%");
+                    ps.setString(5, "%" + TCari.getText() + "%");
+                    ps.setString(6, "%" + TCari.getText() + "%");
+                    ps.setString(7, "%" + TCari.getText() + "%");
+                }
+                rs = ps.executeQuery();
+                while (rs.next()) {
 //                    tabMode.addRow(new Object[]{
 //                        rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),rs.getDate("tgl_lahir"),rs.getString("jk"),rs.getString("kd_dokter"),rs.getString("nm_dokter"),
 //                        rs.getString("tanggal"),rs.getString("pendamping"),rs.getString("keterangan_pendamping"),rs.getString("anamnesa"),rs.getString("pemeriksaan_fisik"),rs.getString("diagnosa_medis"),rs.getString("diagnosa_fungsi"),
@@ -1834,25 +2064,25 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
                         rs.getString("evaluasi"),
                         rs.getString("suspek_penyakit_kerja"),
                         rs.getString("keterangan_suspek_penyakit_kerja"),
-                        rs.getString("goal"),                        // newly added
-                        rs.getString("frekuensi"),                   // newly added
-                        rs.getString("keterangan_frekuensi")         // newly added
+                        rs.getString("goal"), // newly added
+                        rs.getString("frekuensi"), // newly added
+                        rs.getString("keterangan_frekuensi") // newly added
                     });
                 }
             } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
+                System.out.println("Notif : " + e);
+            } finally {
+                if (rs != null) {
                     rs.close();
                 }
-                if(ps!=null){
+                if (ps != null) {
                     ps.close();
                 }
             }
-        }catch(Exception e){
-            System.out.println("Notifikasi : "+e);
+        } catch (Exception e) {
+            System.out.println("Notifikasi : " + e);
         }
-        LCount.setText(""+tabMode.getRowCount());
+        LCount.setText("" + tabMode.getRowCount());
     }
 
     public void emptTeks() {
@@ -1873,10 +2103,10 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
         Goal.setText("");
         Frekuensi.setText("");
         KeteranganFrekuensi.setText("");
-    } 
+    }
 
     private void getData() {
-        if(tbObat.getSelectedRow() != -1){
+        if (tbObat.getSelectedRow() != -1) {
             TNoRw.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
             TNoRM.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 1).toString());
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
@@ -1902,80 +2132,80 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 
     private void isRawat() {
         try {
-            ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,"+
-                    "reg_periksa.tgl_registrasi,reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where reg_periksa.no_rawat=?");
+            ps = koneksi.prepareStatement(
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien, if(pasien.jk='L','Laki-Laki','Perempuan') as jk,pasien.tgl_lahir,"
+                    + "reg_periksa.tgl_registrasi,reg_periksa.jam_reg from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
+                    + "where reg_periksa.no_rawat=?");
             try {
-                ps.setString(1,TNoRw.getText());
-                rs=ps.executeQuery();
-                if(rs.next()){
+                ps.setString(1, TNoRw.getText());
+                rs = ps.executeQuery();
+                if (rs.next()) {
                     TNoRM.setText(rs.getString("no_rkm_medis"));
                     DTPCari1.setDate(rs.getDate("tgl_registrasi"));
                     TPasien.setText(rs.getString("nm_pasien"));
                     Jk.setText(rs.getString("jk"));
                     TglLahir.setText(rs.getString("tgl_lahir"));
-                    TanggalRegistrasi.setText(rs.getString("tgl_registrasi")+" "+rs.getString("jam_reg"));
+                    TanggalRegistrasi.setText(rs.getString("tgl_registrasi") + " " + rs.getString("jam_reg"));
                 }
             } catch (Exception e) {
-                System.out.println("Notif : "+e);
-            } finally{
-                if(rs!=null){
+                System.out.println("Notif : " + e);
+            } finally {
+                if (rs != null) {
                     rs.close();
                 }
-                if(ps!=null){
+                if (ps != null) {
                     ps.close();
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notif : "+e);
+            System.out.println("Notif : " + e);
         }
     }
- 
-    public void setNoRm(String norwt,Date tgl2) {
+
+    public void setNoRm(String norwt, Date tgl2) {
         TNoRw.setText(norwt);
         TCari.setText(norwt);
-        DTPCari2.setDate(tgl2);    
-        isRawat(); 
+        DTPCari2.setDate(tgl2);
+        isRawat();
     }
-    
-    public void isCek(){
+
+    public void isCek() {
         BtnSimpan.setEnabled(akses.getlayanan_kedokteran_fisik_rehabilitasi());
         BtnHapus.setEnabled(akses.getlayanan_kedokteran_fisik_rehabilitasi());
         BtnEdit.setEnabled(akses.getlayanan_kedokteran_fisik_rehabilitasi());
         BtnEdit.setEnabled(akses.getlayanan_kedokteran_fisik_rehabilitasi());
-        if(akses.getjml2()>=1){
+        if (akses.getjml2() >= 1) {
             KdDokter.setEditable(false);
             BtnDokter.setEnabled(false);
             KdDokter.setText(akses.getkode());
             NmDokter.setText(Sequel.CariDokter(KdDokter.getText()));
-            if(NmDokter.getText().equals("")){
+            if (NmDokter.getText().equals("")) {
                 KdDokter.setText("");
-                JOptionPane.showMessageDialog(null,"User login bukan dokter...!!");
+                JOptionPane.showMessageDialog(null, "User login bukan dokter...!!");
             }
-        }  
-        
-        if(TANGGALMUNDUR.equals("no")){
-            if(!akses.getkode().equals("Admin Utama")){
+        }
+
+        if (TANGGALMUNDUR.equals("no")) {
+            if (!akses.getkode().equals("Admin Utama")) {
                 TglAsuhan.setEditable(false);
                 TglAsuhan.setEnabled(false);
             }
         }
     }
-    
-    public void setTampil(){
-       TabRawat.setSelectedIndex(1);
+
+    public void setTampil() {
+        TabRawat.setSelectedIndex(1);
     }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from layanan_kedokteran_fisik_rehabilitasi where no_rawat=?",1,new String[]{
-            tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
-        })==true){
+        if (Sequel.queryu2tf("delete from layanan_kedokteran_fisik_rehabilitasi where no_rawat=?", 1, new String[]{
+            tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString()
+        }) == true) {
             tabMode.removeRow(tbObat.getSelectedRow());
-            LCount.setText(""+tabMode.getRowCount());
+            LCount.setText("" + tabMode.getRowCount());
             TabRawat.setSelectedIndex(1);
-        }else{
-            JOptionPane.showMessageDialog(null,"Gagal menghapus..!!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Gagal menghapus..!!");
         }
     }
 
@@ -2011,28 +2241,28 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 //        }
 //    }
     private void ganti() {
-        if (Sequel.mengedittf("layanan_kedokteran_fisik_rehabilitasi", "no_rawat=?", 
-            "no_rawat=?,tanggal=?,kd_dokter=?,pendamping=?,keterangan_pendamping=?,anamnesa=?,pemeriksaan_fisik=?,diagnosa_medis=?,diagnosa_fungsi=?,tatalaksana=?,anjuran=?,evaluasi=?,suspek_penyakit_kerja=?,keterangan_suspek_penyakit_kerja=?,goal=?,frekuensi=?,keterangan_frekuensi=?", 
-            18, new String[]{
-                TNoRw.getText(),
-                Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19),
-                KdDokter.getText(),
-                Pendamping.getSelectedItem().toString(),
-                KeteranganPendamping.getText(),
-                Anamnesa.getText(),
-                PemeriksaanFisik.getText(),
-                DiagnosisMedis.getText(),
-                DiagnosisFungsi.getText(),
-                TatalaksanaKFR.getText(),
-                Anjuran.getText(),
-                Evaluasi.getText(),
-                SuspekPenyakit.getSelectedItem().toString(),
-                KeteranganSuspekPenyakit.getText(),
-                Goal.getText(),                    // kolom baru
-                Frekuensi.getText(),              // kolom baru
-                KeteranganFrekuensi.getText(),    // kolom baru
-                tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString()
-            }) == true) {
+        if (Sequel.mengedittf("layanan_kedokteran_fisik_rehabilitasi", "no_rawat=?",
+                "no_rawat=?,tanggal=?,kd_dokter=?,pendamping=?,keterangan_pendamping=?,anamnesa=?,pemeriksaan_fisik=?,diagnosa_medis=?,diagnosa_fungsi=?,tatalaksana=?,anjuran=?,evaluasi=?,suspek_penyakit_kerja=?,keterangan_suspek_penyakit_kerja=?,goal=?,frekuensi=?,keterangan_frekuensi=?",
+                18, new String[]{
+                    TNoRw.getText(),
+                    Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19),
+                    KdDokter.getText(),
+                    Pendamping.getSelectedItem().toString(),
+                    KeteranganPendamping.getText(),
+                    Anamnesa.getText(),
+                    PemeriksaanFisik.getText(),
+                    DiagnosisMedis.getText(),
+                    DiagnosisFungsi.getText(),
+                    TatalaksanaKFR.getText(),
+                    Anjuran.getText(),
+                    Evaluasi.getText(),
+                    SuspekPenyakit.getSelectedItem().toString(),
+                    KeteranganSuspekPenyakit.getText(),
+                    Goal.getText(), // kolom baru
+                    Frekuensi.getText(), // kolom baru
+                    KeteranganFrekuensi.getText(), // kolom baru
+                    tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString()
+                }) == true) {
 
             tbObat.setValueAt(TNoRw.getText(), tbObat.getSelectedRow(), 0);
             tbObat.setValueAt(TNoRM.getText(), tbObat.getSelectedRow(), 1);
@@ -2060,8 +2290,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
             TabRawat.setSelectedIndex(1);
         }
     }
-    
-    
+
 //  Asli
 //    private void simpan() {
 //        if(Sequel.menyimpantf("layanan_kedokteran_fisik_rehabilitasi1","?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum Selesai'","No.Rawat",14,new String[]{
@@ -2081,104 +2310,101 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
 //        }
 //    }
     private void simpan() {
-       if (Sequel.menyimpantf(
-               "layanan_kedokteran_fisik_rehabilitasi",
-               "?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum Selesai',?,?,?",
-               "No.Rawat", 17, new String[]{
-                   TNoRw.getText(),
-                   Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19),
-                   KdDokter.getText(),
-                   Pendamping.getSelectedItem().toString(),
-                   KeteranganPendamping.getText(),
-                   Anamnesa.getText(),
-                   PemeriksaanFisik.getText(),
-                   DiagnosisMedis.getText(),
-                   DiagnosisFungsi.getText(),
-                   TatalaksanaKFR.getText(),
-                   Anjuran.getText(),
-                   Evaluasi.getText(),
-                   SuspekPenyakit.getSelectedItem().toString(),
-                   KeteranganSuspekPenyakit.getText(),
-                   Goal.getText(),
-                   Frekuensi.getText(),
-                   KeteranganFrekuensi.getText()
-               })) {
+        if (Sequel.menyimpantf(
+                "layanan_kedokteran_fisik_rehabilitasi",
+                "?,?,?,?,?,?,?,?,?,?,?,?,?,?,'Belum Selesai',?,?,?",
+                "No.Rawat", 17, new String[]{
+                    TNoRw.getText(),
+                    Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19),
+                    KdDokter.getText(),
+                    Pendamping.getSelectedItem().toString(),
+                    KeteranganPendamping.getText(),
+                    Anamnesa.getText(),
+                    PemeriksaanFisik.getText(),
+                    DiagnosisMedis.getText(),
+                    DiagnosisFungsi.getText(),
+                    TatalaksanaKFR.getText(),
+                    Anjuran.getText(),
+                    Evaluasi.getText(),
+                    SuspekPenyakit.getSelectedItem().toString(),
+                    KeteranganSuspekPenyakit.getText(),
+                    Goal.getText(),
+                    Frekuensi.getText(),
+                    KeteranganFrekuensi.getText()
+                })) {
 
-           tabMode.addRow(new Object[]{
-               TNoRw.getText(), TNoRM.getText(), TPasien.getText(), TglLahir.getText(), Jk.getText(),
-               KdDokter.getText(), NmDokter.getText(),
-               Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19),
-               Pendamping.getSelectedItem().toString(), KeteranganPendamping.getText(), Anamnesa.getText(),
-               PemeriksaanFisik.getText(), DiagnosisMedis.getText(), DiagnosisFungsi.getText(),
-               TatalaksanaKFR.getText(), Anjuran.getText(), Evaluasi.getText(),
-               SuspekPenyakit.getSelectedItem().toString(), KeteranganSuspekPenyakit.getText(),
-               Goal.getText(), Frekuensi.getText(), KeteranganFrekuensi.getText()
-           });
+            tabMode.addRow(new Object[]{
+                TNoRw.getText(), TNoRM.getText(), TPasien.getText(), TglLahir.getText(), Jk.getText(),
+                KdDokter.getText(), NmDokter.getText(),
+                Valid.SetTgl(TglAsuhan.getSelectedItem() + "") + " " + TglAsuhan.getSelectedItem().toString().substring(11, 19),
+                Pendamping.getSelectedItem().toString(), KeteranganPendamping.getText(), Anamnesa.getText(),
+                PemeriksaanFisik.getText(), DiagnosisMedis.getText(), DiagnosisFungsi.getText(),
+                TatalaksanaKFR.getText(), Anjuran.getText(), Evaluasi.getText(),
+                SuspekPenyakit.getSelectedItem().toString(), KeteranganSuspekPenyakit.getText(),
+                Goal.getText(), Frekuensi.getText(), KeteranganFrekuensi.getText()
+            });
 
-           emptTeks();
-           LCount.setText("" + tabMode.getRowCount());
-       }
-   }
+            emptTeks();
+            LCount.setText("" + tabMode.getRowCount());
+        }
+    }
 
-    
-    
-    
-    
-
-
-
-
-    
-    private void isPhoto(){
-        if(ChkAccor.isSelected()==true){
+    private void isPhoto() {
+        if (ChkAccor.isSelected() == true) {
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(480,HEIGHT));
-            FormPhoto.setVisible(true);  
+            PanelAccor.setPreferredSize(new Dimension(480, HEIGHT));
+            FormPhoto.setVisible(true);
             ChkAccor.setVisible(true);
-        }else if(ChkAccor.isSelected()==false){    
+        } else if (ChkAccor.isSelected() == false) {
             ChkAccor.setVisible(false);
-            PanelAccor.setPreferredSize(new Dimension(15,HEIGHT));
-            FormPhoto.setVisible(false);  
+            PanelAccor.setPreferredSize(new Dimension(15, HEIGHT));
+            FormPhoto.setVisible(false);
             ChkAccor.setVisible(true);
         }
     }
 
     private void panggilPhoto() {
-        if(FormPhoto.isVisible()==true){
+        if (FormPhoto.isVisible() == true) {
             try {
-                ps=koneksi.prepareStatement("select bukti_layanan_kedokteran_fisik_rehabilitasi.photo from bukti_layanan_kedokteran_fisik_rehabilitasi where bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat=?");
+                ps = koneksi.prepareStatement("select bukti_layanan_kedokteran_fisik_rehabilitasi.photo from bukti_layanan_kedokteran_fisik_rehabilitasi where bukti_layanan_kedokteran_fisik_rehabilitasi.no_rawat=?");
                 try {
-                    ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
-                    rs=ps.executeQuery();
-                    if(rs.next()){
-                        if(rs.getString("photo").equals("")||rs.getString("photo").equals("-")){
+                    ps.setString(1, tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
+                    rs = ps.executeQuery();
+                    if (rs.next()) {
+                        if (rs.getString("photo").equals("") || rs.getString("photo").equals("-")) {
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
-                        }else{
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/layanankedokteranfisikrehabilitasi/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
-                        }  
-                    }else{
+                        } else {
+                            LoadHTML2.setText("<html><body><center><img src='http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + koneksiDB.PORTWEB() + "/" + koneksiDB.HYBRIDWEB() + "/layanankedokteranfisikrehabilitasi/" + rs.getString("photo") + "' alt='photo' width='500' height='500'/></center></body></html>");
+                        }
+                    } else {
                         LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                     }
                 } catch (Exception e) {
-                    System.out.println("Notif : "+e);
-                } finally{
-                    if(rs!=null){
+                    System.out.println("Notif : " + e);
+                } finally {
+                    if (rs != null) {
                         rs.close();
                     }
-                    if(ps!=null){
+                    if (ps != null) {
                         ps.close();
                     }
                 }
             } catch (Exception e) {
-                System.out.println("Notif : "+e);
+                System.out.println("Notif : " + e);
             }
         }
     }
-    
+
     private void runBackground(Runnable task) {
-        if (ceksukses) return;
-        if (executor.isShutdown() || executor.isTerminated()) return;
-        if (!isDisplayable()) return;
+        if (ceksukses) {
+            return;
+        }
+        if (executor.isShutdown() || executor.isTerminated()) {
+            return;
+        }
+        if (!isDisplayable()) {
+            return;
+        }
 
         ceksukses = true;
         setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -2200,7 +2426,7 @@ public final class RMLayananKedokteranFisikRehabilitasi extends javax.swing.JDia
             ceksukses = false;
         }
     }
-    
+
     @Override
     public void dispose() {
         executor.shutdownNow();

@@ -1395,11 +1395,11 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             finger = Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?", tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
             param.put("finger", "Dikeluarkan di " + akses.getnamars() + ", Kabupaten/Kota " + akses.getkabupatenrs() + "\nDitandatangani secara elektronik oleh " + tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString() + "\nID " + (finger.equals("") ? tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString() : finger) + "\n" + Tanggal.getSelectedItem());
             Valid.MyReportqry("rptFormulirSkriningCURB65.jasper", "report", "::[ Formulir Skrining CURB-65 ]::",
-                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"
+                    "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,pegawai.nama,skrining_curb65.tanggal,reg_periksa.umurdaftar,reg_periksa.sttsumur,"
                     + "skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"
                     + "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,"
                     + "skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat "
-                    + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "
+                    + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on skrining_curb65.nip=pegawai.nik "
                     + "where reg_periksa.no_rawat='" + tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString() + "'", param);
         }
     }//GEN-LAST:event_MnSkriningInstrumenCURB65ActionPerformed
@@ -1589,21 +1589,21 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
         try {
             if (TCari.getText().trim().equals("")) {
                 ps = koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,"
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,pegawai.nama,skrining_curb65.tanggal,"
                         + "skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"
                         + "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,"
                         + "skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat "
-                        + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "
+                        + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on skrining_curb65.nip=pegawai.nik "
                         + "where skrining_curb65.tanggal between ? and ? order by skrining_curb65.tanggal ");
             } else {
                 ps = koneksi.prepareStatement(
-                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,petugas.nama,skrining_curb65.tanggal,"
+                        "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,skrining_curb65.nip,pegawai.nama,skrining_curb65.tanggal,"
                         + "skrining_curb65.pernyataancurb651,skrining_curb65.nilai_curb651,skrining_curb65.pernyataancurb652,skrining_curb65.nilai_curb652,skrining_curb65.pernyataancurb653,"
                         + "skrining_curb65.nilai_curb653,skrining_curb65.pernyataancurb654,skrining_curb65.nilai_curb654,skrining_curb65.pernyataancurb655,skrining_curb65.nilai_curb655,"
                         + "skrining_curb65.nilai_total_curb65,skrining_curb65.kesimpulan from skrining_curb65 inner join reg_periksa on skrining_curb65.no_rawat=reg_periksa.no_rawat "
-                        + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on skrining_curb65.nip=petugas.nip "
+                        + "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join pegawai on skrining_curb65.nip=pegawai.nik "
                         + "where skrining_curb65.tanggal between ? and ? and (reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or "
-                        + "pasien.nm_pasien like ? or skrining_curb65.nip like ? or petugas.nama like ?) "
+                        + "pasien.nm_pasien like ? or skrining_curb65.nip like ? or pegawai.nama like ?) "
                         + "order by skrining_curb65.tanggal ");
             }
 
@@ -1669,6 +1669,8 @@ public final class RMSkriningCURB65 extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 3).toString());
             Jk.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 4).toString());
+            KdPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 5).toString());
+            NmPetugas.setText(tbObat.getValueAt(tbObat.getSelectedRow(), 6).toString());
             Jam.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 7).toString().substring(11, 13));
             Menit.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 7).toString().substring(14, 15));
             Detik.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(), 7).toString().substring(17, 19));

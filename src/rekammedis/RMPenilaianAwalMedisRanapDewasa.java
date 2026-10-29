@@ -60,6 +60,8 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
     private volatile boolean ceksukses = false;
     private StringBuilder htmlContent;
     private String finger="";
+    private final PanelLokalis lokalis = new PanelLokalis();
+    private static final String TBL_LOKALIS = "penilaian_medis_ranap_lokalis";
     
     /** Creates new form DlgRujuk
      * @param parent
@@ -67,6 +69,18 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
     public RMPenilaianAwalMedisRanapDewasa(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
+        // Lapisan klik status lokalis di atas gambar PanelWall
+        
+        lokalis.setBounds(0, 0, PanelWall.getWidth(), PanelWall.getHeight());
+        PanelWall.add(lokalis);
+        lokalis.setOnUbah(() -> KetLokalis.setText(lokalis.teksKeterangan()));
+        PanelWall.addComponentListener(new java.awt.event.ComponentAdapter() {
+            @Override
+            public void componentResized(java.awt.event.ComponentEvent e) {
+                lokalis.setBounds(0, 0, PanelWall.getWidth(), PanelWall.getHeight());
+            }
+        });
         
         tabMode=new DefaultTableModel(null,new Object[]{
             "No.Rawat","No.RM","Nama Pasien","Tgl.Lahir","J.K.","Kode Dokter","Nama Dokter","Tanggal","Anamnesis","Hubungan","Keluhan Utama","Riwayat Penyakit Sekarang","Riwayat Penyakit Dahulu",
@@ -2180,7 +2194,8 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
             param.put("emailrs",akses.getemailrs());          
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             try {
-                param.put("lokalis",getClass().getResource("/picture/semua.png").openStream());
+//                param.put("lokalis",getClass().getResource("/picture/semua.png").openStream());
+param.put("lokalis", PanelLokalis.gambarCetak(TBL_LOKALIS, tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString(), "/picture/semua.png"));
             } catch (Exception e) {
             } 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
@@ -2590,6 +2605,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
         TglAsuhan.setDate(new Date());
         TabRawat.setSelectedIndex(0);
         Anamnesis.requestFocus();
+        lokalis.kosongkan();
     } 
 
     private void getData() {
@@ -2637,6 +2653,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
             Tatalaksana.setText(tbObat.getValueAt(tbObat.getSelectedRow(),43).toString());
             Edukasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),44).toString());
             Valid.SetTgl2(TglAsuhan,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            lokalis.muat(TBL_LOKALIS, tbObat.getValueAt(tbObat.getSelectedRow(), 0).toString());
         }
     }
 
@@ -2720,6 +2737,7 @@ public final class RMPenilaianAwalMedisRanapDewasa extends javax.swing.JDialog {
                     Kulit.getSelectedItem().toString(),KetFisik.getText(),KetLokalis.getText(),Laborat.getText(),Radiologi.getText(),Penunjang.getText(),Diagnosis.getText(),Tatalaksana.getText(),Edukasi.getText(),
                     tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
             })==true){
+               lokalis.simpan(TBL_LOKALIS, TNoRw.getText());
                runBackground(() ->tampil());
                emptTeks();
                TabRawat.setSelectedIndex(1);

@@ -265,7 +265,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private String[] kode, nama, kategori;
     private double[] totaltnd, bagianrs, bhp, jmdokter, jmperawat, kso, menejemen;
     private boolean sukses = false;
-    public boolean bypassranap = false;
+    public boolean bypassranap = false,sudahperiksa=false;
     private double ttljmdokter = 0, ttljmperawat = 0, ttlkso = 0, ttljasasarana = 0, ttlbhp = 0, ttlmenejemen = 0, ttlpendapatan = 0;
     private Jurnal jur = new Jurnal();
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -13834,6 +13834,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
         BtnAwalTerapiWicara.setVisible(akses.getpenilaian_terapi_wicara());
         if (akses.getpenilaian_terapi_wicara() == true) {
             tinggi = tinggi + 24;
+        }
         BtnIntervensiNyeriFarmakologi.setVisible(akses.getintervensi_nyeri_farmakologi()); 
         if(akses.getintervensi_nyeri_farmakologi()==true){
             tinggi=tinggi+24;

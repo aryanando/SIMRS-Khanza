@@ -1500,7 +1500,7 @@ public final class DlgIGD extends javax.swing.JDialog {
         MnPenilaianPasienTerminal.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
         MnPenilaianPasienTerminal.setForeground(new java.awt.Color(50, 50, 50));
         MnPenilaianPasienTerminal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnPenilaianPasienTerminal.setText("Pengkajian Pasien Terminal");
+        MnPenilaianPasienTerminal.setText("Penilaian Pasien Menjelang Akhir Hayat Kehidupan");
         MnPenilaianPasienTerminal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         MnPenilaianPasienTerminal.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnPenilaianPasienTerminal.setName("MnPenilaianPasienTerminal"); // NOI18N
@@ -10026,8 +10026,9 @@ public final class DlgIGD extends javax.swing.JDialog {
                 form.isCek();
                 form.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
                 form.setLocationRelativeTo(internalFrame1);
-                form.setVisible(true);
+                
                 form.emptTeks();
+                form.setVisible(true);
                 form.setNoRm(TNoRw.getText(), DTPCari2.getDate());
                 this.setCursor(Cursor.getDefaultCursor());
             }

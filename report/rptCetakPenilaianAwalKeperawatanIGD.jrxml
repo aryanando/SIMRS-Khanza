@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 5.2.0  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
+<!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="950" columnWidth="557" leftMargin="19" rightMargin="19" topMargin="19" bottomMargin="19" uuid="34c13d5a-cd6b-451e-8001-9fd298d2274a">
 	<property name="ireport.zoom" value="2.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -8,15 +8,6 @@
 	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="lokal"/>
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-	<property name="com.jaspersoft.studio.unit." value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
-	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
 	<parameter name="namars" class="java.lang.String"/>
 	<parameter name="alamatrs" class="java.lang.String"/>
 	<parameter name="kotars" class="java.lang.String"/>
@@ -41,7 +32,7 @@
                         penilaian_awal_keperawatan_igd.nyeri,penilaian_awal_keperawatan_igd.provokes,penilaian_awal_keperawatan_igd.ket_provokes,penilaian_awal_keperawatan_igd.quality,penilaian_awal_keperawatan_igd.ket_quality,penilaian_awal_keperawatan_igd.lokasi,penilaian_awal_keperawatan_igd.menyebar,
                         penilaian_awal_keperawatan_igd.skala_nyeri,penilaian_awal_keperawatan_igd.durasi,penilaian_awal_keperawatan_igd.nyeri_hilang,penilaian_awal_keperawatan_igd.ket_nyeri,penilaian_awal_keperawatan_igd.pada_dokter,penilaian_awal_keperawatan_igd.ket_dokter,
                         penilaian_awal_keperawatan_igd.berjalan_a,penilaian_awal_keperawatan_igd.berjalan_b,penilaian_awal_keperawatan_igd.berjalan_c,penilaian_awal_keperawatan_igd.hasil,penilaian_awal_keperawatan_igd.lapor,penilaian_awal_keperawatan_igd.ket_lapor,
-                        penilaian_awal_keperawatan_igd.rencana,penilaian_awal_keperawatan_igd.nip,petugas.nama 
+                        penilaian_awal_keperawatan_igd.rencana,penilaian_awal_keperawatan_igd.jenis_pelayanan,penilaian_awal_keperawatan_igd.nip,petugas.nama 
                         from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis 
                         inner join penilaian_awal_keperawatan_igd on reg_periksa.no_rawat=penilaian_awal_keperawatan_igd.no_rawat 
                         inner join petugas on penilaian_awal_keperawatan_igd.nip=petugas.nip 
@@ -493,8 +484,12 @@
 		<property name="com.jaspersoft.studio.field.label" value="nama"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="petugas"/>
 	</field>
+	<field name="jenis_pelayanan" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.tree.path" value="penilaian_awal_keperawatan_igd"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis_pelayanan"/>
+	</field>
 	<title>
-		<band height="804">
+		<band height="819">
 			<textField>
 				<reportElement x="0" y="44" width="555" height="14" uuid="2c2c779f-b976-4237-b015-6090c3225557"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -504,7 +499,7 @@
 				<textFieldExpression><![CDATA["E-mail : "+$P{emailrs}]]></textFieldExpression>
 			</textField>
 			<rectangle>
-				<reportElement x="0" y="60" width="557" height="740" uuid="5efab5f7-d253-4f54-804a-1cdb91cce032"/>
+				<reportElement x="0" y="60" width="557" height="755" uuid="5efab5f7-d253-4f54-804a-1cdb91cce032"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
@@ -1193,7 +1188,7 @@
 				<text><![CDATA[RENCANA KEPERAWATAN :]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="3" y="732" width="549" height="11" uuid="fd298c01-00b0-4303-bed1-17562dff1825">
+				<reportElement x="3" y="748" width="549" height="11" uuid="fd298c01-00b0-4303-bed1-17562dff1825">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -1204,19 +1199,19 @@
 				<text><![CDATA[YANG MELAKUKAN PENGKAJIAN]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="730" width="557" height="1" uuid="c70a9187-51a2-41d7-b607-43ae47f0123b"/>
+				<reportElement x="0" y="746" width="557" height="1" uuid="c70a9187-51a2-41d7-b607-43ae47f0123b"/>
 				<graphicElement>
 					<pen lineWidth="0.75"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="0" y="744" width="557" height="1" uuid="9229899b-e795-431e-91b1-418193fc64a7"/>
+				<reportElement x="0" y="760" width="557" height="1" uuid="9229899b-e795-431e-91b1-418193fc64a7"/>
 				<graphicElement>
 					<pen lineWidth="0.4"/>
 				</graphicElement>
 			</line>
 			<line>
-				<reportElement x="255" y="745" width="1" height="55" uuid="9bb61456-7b20-4b6a-9a9b-d1dd2d2b11f4">
+				<reportElement x="255" y="760" width="1" height="55" uuid="9bb61456-7b20-4b6a-9a9b-d1dd2d2b11f4">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<graphicElement>
@@ -1224,7 +1219,7 @@
 				</graphicElement>
 			</line>
 			<staticText>
-				<reportElement x="3" y="746" width="250" height="11" uuid="5684ecda-853e-4858-b7df-814d0b06f245">
+				<reportElement x="3" y="762" width="250" height="11" uuid="5684ecda-853e-4858-b7df-814d0b06f245">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -1235,7 +1230,7 @@
 				<text><![CDATA[Tanggal dan Jam]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="259" y="746" width="295" height="11" uuid="c55fbc69-44fe-43b1-97a2-916708275de2">
+				<reportElement x="259" y="762" width="295" height="11" uuid="c55fbc69-44fe-43b1-97a2-916708275de2">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -1246,13 +1241,13 @@
 				<text><![CDATA[Tanda Tangan dan Nama Perawat]]></text>
 			</staticText>
 			<line>
-				<reportElement x="0" y="758" width="557" height="1" uuid="acb9ddf8-3380-4528-b0b4-dd55296f61d1"/>
+				<reportElement x="0" y="774" width="557" height="1" uuid="acb9ddf8-3380-4528-b0b4-dd55296f61d1"/>
 				<graphicElement>
 					<pen lineWidth="0.4"/>
 				</graphicElement>
 			</line>
 			<textField pattern="MMM, dd/MM/yyyy hh:mm:ss z">
-				<reportElement mode="Transparent" x="3" y="772" width="250" height="11" uuid="6478b16d-97d4-4fc7-8960-6da336e896dc">
+				<reportElement mode="Transparent" x="3" y="788" width="250" height="11" uuid="6478b16d-97d4-4fc7-8960-6da336e896dc">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
@@ -1282,7 +1277,7 @@
 				<textFieldExpression><![CDATA[$P{masalah}]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement x="259" y="759" width="87" height="40" isRemoveLineWhenBlank="true" uuid="ccae1d7e-a50b-4275-802a-fbc40731168d">
+				<reportElement x="259" y="775" width="86" height="39" isRemoveLineWhenBlank="true" uuid="ccae1d7e-a50b-4275-802a-fbc40731168d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" errorCorrectionLevel="H">
@@ -1290,7 +1285,7 @@
 				</jr:QRCode>
 			</componentElement>
 			<textField>
-				<reportElement mode="Transparent" x="259" y="787" width="295" height="11" uuid="02cce3fb-797f-4c90-a5ef-645f7c9803bb">
+				<reportElement mode="Transparent" x="259" y="803" width="295" height="11" uuid="02cce3fb-797f-4c90-a5ef-645f7c9803bb">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -1663,6 +1658,34 @@
 					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{perdarahan}+($F{jumlah_perdarahan}.equals("")?"":", Jumlah : "+$F{jumlah_perdarahan})+($F{warna_perdarahan}.equals("")?"":", Warna : "+$F{warna_perdarahan})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="730" width="557" height="1" uuid="4b1df947-7aba-44f5-90ed-8c0459705210"/>
+				<graphicElement>
+					<pen lineWidth="0.75"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="2" y="733" width="86" height="11" uuid="bf799cd5-5776-4f65-a346-7e66f619789e">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[JENIS PELAYANAN :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="733" width="115" height="11" uuid="87920561-642e-4c14-b013-0b695cf35acc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jenis_pelayanan}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

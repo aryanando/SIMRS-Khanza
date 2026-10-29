@@ -403,7 +403,7 @@ public final class DlgCariObatPenyakit extends javax.swing.JDialog {
 
         DTPBeri.setEditable(false);
         DTPBeri.setForeground(new java.awt.Color(50, 70, 50));
-        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2019-12-19" }));
+        DTPBeri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2026-02-05" }));
         DTPBeri.setDisplayFormat("yyyy-MM-dd");
         DTPBeri.setName("DTPBeri"); // NOI18N
         DTPBeri.setOpaque(false);
