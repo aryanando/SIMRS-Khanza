@@ -259,8 +259,8 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnSignOutSebelumMenutupLuka = new javax.swing.JMenuItem();
+        jPopupMenu1 = new widget.PopupMenu();
+        MnSignOutSebelumMenutupLuka = new widget.MenuItem();
         LoadHTML = new widget.editorpane();
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
@@ -1816,7 +1816,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private widget.TextBox KodeDokterBedah;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnSignOutSebelumMenutupLuka;
+    private widget.MenuItem MnSignOutSebelumMenutupLuka;
     private widget.TextBox NamaDokterAnestesi;
     private widget.TextBox NamaDokterBedah;
     private widget.TextBox NmPetugasOK;
@@ -1874,6 +1874,7 @@ public final class RMSignOutSebelumMenutupLuka extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
+    // private widget.PopupMenu jPopupMenu1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;

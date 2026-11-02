@@ -268,7 +268,7 @@ public final class DlgResepPulang extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
-        tbResep.setAutoCreateRowSorter(true);
+        tbResep.setAutoCreateRowSorter(false);
         tbResep.setComponentPopupMenu(jPopupMenu1);
         tbResep.setName("tbResep"); // NOI18N
         tbResep.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1074,7 +1074,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPopupMenu jPopupMenu1;
+    private widget.PopupMenu jPopupMenu1;
     private widget.panelisi panelGlass8;
     private widget.panelisi panelGlass9;
     private javax.swing.JMenuItem ppListObatPulang;
